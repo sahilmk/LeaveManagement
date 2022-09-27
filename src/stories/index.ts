@@ -1,3 +1,5 @@
 import Input from './Input'
+import ButtonComponent from './ButtonComponent'
+import SidebarTab from './Sidebar tab'
 
-export { Input }
+export { Input, ButtonComponent, SidebarTab }

@@ -1,3 +1,3 @@
 import ButtonComponent from "./Button.component";
 
-export {ButtonComponent};
+export default ButtonComponent;
