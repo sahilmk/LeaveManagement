@@ -13,5 +13,5 @@ const Template: ComponentStory<typeof NavbarComponent> = (args) => {
 
 export const PrimaryNavbar = Template.bind({});
 PrimaryNavbar.args = {
-  userName: "John Doe",
+  user: "Pinak",
 };

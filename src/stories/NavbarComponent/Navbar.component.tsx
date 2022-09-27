@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StyledNavbar from "./Navbar.styled";
 
-const NavbarComponent = () => {
-  const [userName, setUserName] = useState("John Doe");
+type NavbarComponentProps = {
+  user: string;
+};
+
+const NavbarComponent = ({ user }: NavbarComponentProps) => {
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    setUserName(user);
+  }, []);
 
   return (
     <>
@@ -17,6 +25,8 @@ const NavbarComponent = () => {
   );
 };
 
-NavbarComponent.defaultProps = {};
+NavbarComponent.defaultProps = {
+  user: "John Doe",
+};
 
 export default NavbarComponent;
