@@ -6,6 +6,7 @@ export const PageTitleStyle = styled.div`
     align-items: center;
     display: flex;
     background-color: #fbfbfb;
+    height: 120px;
     width: calc(100% - 420px);
     padding:  30px 30px 18px;
     margin-left: 420px;

@@ -1,5 +1,6 @@
 import React from "react";
 import StyledButton from "./Button.styled";
+import '../../Icons/css/material-design-iconic-font.css'
 
 type ButtonComponentProps = {
   label: string;
@@ -9,6 +10,7 @@ type ButtonComponentProps = {
   size: string;
   border: string;
   borderRadius: boolean;
+  logo?: boolean
 };
 
 const ButtonComponent = ({
@@ -19,6 +21,7 @@ const ButtonComponent = ({
   size,
   border,
   borderRadius,
+  logo
 }: ButtonComponentProps) => {
   return (
     <>
@@ -30,6 +33,7 @@ const ButtonComponent = ({
         border={border}
         borderRadius={borderRadius}
       >
+        {logo && < i className="zmdi zmdi-power" />}
         {label}
       </StyledButton>
     </>
