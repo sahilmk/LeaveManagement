@@ -7,7 +7,7 @@ type SidebarProps = {
     icon: string,
     dropdown: boolean,
     label: string
-    onClick?: () => void
+    onClick?: (e?: undefined | React.MouseEvent<HTMLElement>) => void
 }
 
 function SidebarTab({ leave, onClick, icon, dropdown, label }: SidebarProps) {
