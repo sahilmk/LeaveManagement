@@ -4,7 +4,7 @@ type TabStyleProp = {
     leave: boolean
 }
 
-export const TabStyle = styled.div<TabStyleProp>`
+export const TabStyle = styled.a<TabStyleProp>`
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -34,5 +34,7 @@ export const TabStyle = styled.div<TabStyleProp>`
 
     .ic_remove_black_48dp-1{
         padding-right: 30px;
+        height: 16px;
+        width: 16px;
     }
 ` 
