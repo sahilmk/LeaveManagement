@@ -14,7 +14,7 @@ type InputTypes = {
     onFocus?: (event?: React.FocusEvent<HTMLInputElement> | undefined) => void,
 }
 
-function Input({ type, placeholder, value, inputtype, padding, width, onChange }: InputTypes) {
+function Input({ type, placeholder, value, inputtype, padding, width, onChange, onBlur, onFocus }: InputTypes) {
 
     return (
         <InputStyled
@@ -24,8 +24,10 @@ function Input({ type, placeholder, value, inputtype, padding, width, onChange }
             inputtype={inputtype}
             padding={padding}
             width={width}
-            onChange={(e: any) => onChange(e.target.value)
-            } />
+            onChange={onChange}
+            onBlur={onBlur}
+            onFocus={onFocus}
+        />
     )
 }
 
