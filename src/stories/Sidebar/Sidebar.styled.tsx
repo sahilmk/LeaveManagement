@@ -47,7 +47,7 @@ export const SidebarStyle = styled.div`
     .innerTabs{
         a{
             background-color: #fbfbfb;
-            /* &:active{
+            /* &:focus{
                 background-color: #f4f4f4;
                 margin: 10px;
             } */
