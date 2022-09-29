@@ -54,6 +54,10 @@ export const SidebarStyle = styled.div`
         }
     }
 
+    ul{
+        list-style: none;
+    }
+
     >ul{
         overflow-x: hidden;
         overflow-y: auto;
