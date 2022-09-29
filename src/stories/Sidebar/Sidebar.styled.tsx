@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const SidebarStyle = styled.div`
-    position: relative;
+    position: fixed;
     background-color: #fff;
     height: calc(100vh - 70px);
     width: 420px;
-    margin-top: 70px;
+    top: 70px;
+    left: 0px;
 
     .profile{
         background: url('./assets/images/profileCover.jpg') no-repeat center center/cover ;
