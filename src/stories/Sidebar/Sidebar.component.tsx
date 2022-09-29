@@ -1,14 +1,10 @@
 import React from 'react'
+import { useState } from 'react'
 import ButtonComponent from '../ButtonComponent'
 import SidebarTab from '../Sidebar tab'
 import { SidebarStyle } from './Sidebar.styled'
 
-type sidebarProp = {
-    user: string,
-    position: string,
-}
-
-const uilist = [
+const sidebarTabs = [
     { icon: 'home', label: 'Home' },
     { icon: 'local-florist', label: 'Holidays' },
     { icon: 'blur', label: 'Leaves' },
@@ -20,9 +16,20 @@ const uilist = [
     { icon: 'gamepad', label: 'Department' }
 ]
 
-function Sidebar({ user, position }: sidebarProp) {
+const innerSidebarTab = ['Leave Request', 'Approved Leaves', 'Pending Leaves', 'Rejected Leaves', 'Cancelled Leaves']
+
+function Sidebar({ user, position }: {
+    user: string,
+    position: string
+}) {
+    const [showInnerList, setShowInnerList] = useState(false)
+
+    const handleClick = (clickedTab: string | null) => {
+        clickedTab === 'Leaves' && setShowInnerList(!showInnerList)
+    }
+
     return (
-        <SidebarStyle className='sidebar'>
+        <SidebarStyle>
             <div className="profile">
                 <div className="profilepicture">
                     <img src="./assets/images/profile.png" alt={user} />
@@ -34,14 +41,26 @@ function Sidebar({ user, position }: sidebarProp) {
             </div>
 
             <ul>
-                {uilist.map((tab) =>
+                {sidebarTabs.map((tab) =>
                     <li key={tab.label}>
-                        <SidebarTab leave={tab.label === 'Leaves'} icon={tab.icon} dropdown={false} label={tab.label} />
+
+                        <SidebarTab leave={tab.label === 'Leaves'} icon={tab.icon} dropdown={showInnerList} label={tab.label} onClick={(e) => { handleClick((e?.target as HTMLInputElement).textContent) }} />
+
+                        {(tab.label === 'Leaves' && showInnerList) &&
+                            <ul>
+                                {innerSidebarTab.map(tabs =>
+                                    <li className='innerTabs' key={tabs}>
+                                        <SidebarTab leave={false} label={tabs} />
+                                    </li>)}
+                            </ul>
+                        }
+
                     </li>
                 )}
             </ul>
 
             <ButtonComponent label={` Logout`} borderRadius={false} color='#fff' logo={true} />
+
         </SidebarStyle>
     )
 }

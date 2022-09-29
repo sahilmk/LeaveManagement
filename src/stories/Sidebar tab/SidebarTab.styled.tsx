@@ -5,36 +5,41 @@ type TabStyleProp = {
 }
 
 export const TabStyle = styled.a<TabStyleProp>`
-    display: flex;
-    align-items: center;
     justify-content: space-between;
+    text-decoration: none;
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    background-color: #fff;
+    color: #777;
     height: 70px;
-    width: 420px;
-    background-color: #fbfbfb;
 
-    img{
+    /* &:focus{
+        color: #173346;
+    } */
+
+    i{
         height: 23px;
         width: 19px;
-        color: #777;
+        font-size: 25px;
     }
 
     span{
         font-family: 'SegoeUI';
         padding-left: 35px;
         font-size: 26.5px;
-        color: #777;
     }
 
     .Layer-1{
-        display: flex;
         align-items: center;
+        display: flex;
         height: 100%;
+        width: 100%;
         padding-left: 47px;
     }
 
     .ic_remove_black_48dp-1{
         padding-right: 30px;
-        height: 16px;
-        width: 16px;
+        font-size: 25px;
     }
 ` 

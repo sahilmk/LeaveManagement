@@ -1,33 +1,33 @@
 import styled from "styled-components";
 
 export const SidebarStyle = styled.div`
+    position: relative;
+    background-color: #fff;
     height: calc(100vh - 70px);
     width: 420px;
     margin-top: 70px;
-    background-color: #fff;
-    position: relative;
 
     .profile{
-        display: flex;
-        align-items: center;
         background: url('./assets/images/profileCover.jpg') no-repeat center center/cover ;
+        align-items: center;
+        display: flex;
         height: 120px;
         width: 100%;
     }
 
     .profiledescription{
-        display: flex;
         flex-direction: column;
+        display: flex;
         font-family: SegoeUI;
+        color: #fff;
         font-size: 26px;
         font-weight: 600;
-        color: #fff;
 
         .userposition{
             font-family: SegoeUI;
+            color: #fff;
             font-size: 20px;
             font-weight: 300;
-            color: #fff;
         }
     }
 
@@ -38,9 +38,25 @@ export const SidebarStyle = styled.div`
     }
 
     button{
-        position: absolute;
+        position: fixed;
         bottom: 20px;
         left: 20px;
-        width: calc(100% -  40px);
+        width: calc(420px -  40px);
+    }
+
+    .innerTabs{
+        a{
+            background-color: #fbfbfb;
+            /* &:active{
+                background-color: #f4f4f4;
+                margin: 10px;
+            } */
+        }
+    }
+
+    >ul{
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: calc(100vh - 270px);
     }
 `

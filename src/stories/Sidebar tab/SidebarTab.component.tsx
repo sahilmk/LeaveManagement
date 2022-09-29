@@ -4,8 +4,8 @@ import '../../Icons/css/material-design-iconic-font.css'
 
 type SidebarProps = {
     leave: boolean,
-    icon: string,
-    dropdown: boolean,
+    icon?: string,
+    dropdown?: boolean,
     label: string
     onClick?: (e?: undefined | React.MouseEvent<HTMLElement>) => void
 }
@@ -16,7 +16,7 @@ function SidebarTab({ leave, onClick, icon, dropdown, label }: SidebarProps) {
         <TabStyle
             className="Rectangle-5-copy"
             leave={leave}
-            onClick={onClick}>
+            onClick={onClick} href="#">
             < div className="Layer-1" >
                 <i className={`zmdi zmdi-${icon}`} />
                 <span className="Leaves">{label}</span>
