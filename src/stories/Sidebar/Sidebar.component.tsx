@@ -8,7 +8,7 @@ import { SidebarStyle } from './Sidebar.styled'
 const sidebarTabData = [
     { icon: 'home', label: 'Home', isExpandable: false, isOpen: false, route: '/home' },
     { icon: 'local-florist', label: 'Holidays', isExpandable: false, isOpen: false, route: '/holidays' },
-    { icon: 'blur', label: 'Leaves', isExpandable: true, isOpen: false, route: '/leaves/leaverequest' },
+    { icon: 'blur', label: 'Leaves', isExpandable: true, isOpen: false, route: '/leaverequest' },
     { icon: 'chart', label: 'Manage Leave Request', isExpandable: false, isOpen: false, route: '/manageleaverequest' },
     { icon: 'accounts', label: 'Employee List', isExpandable: false, isOpen: false, route: '/employeelist' },
     { icon: 'blur-linear', label: 'Employee Leaves List', isExpandable: false, isOpen: false, route: '/employeeleaveslist' },
@@ -18,11 +18,11 @@ const sidebarTabData = [
 ]
 
 const sidebarInnerTabData = [
-    { label: 'Leave Request', route: '/leaves/leaverequest' },
-    { label: 'Approved Leaves', route: '/leaves/approvedleaves' },
-    { label: 'Pending Leaves', route: '/leaves/pendingleaves' },
-    { label: 'Rejected Leaves', route: '/leaves/rejectedleaves' },
-    { label: 'Cancelled Leaves', route: '/leaves/cancelledleaves' }];
+    { label: 'Leave Request', route: '/leaverequest' },
+    { label: 'Approved Leaves', route: '/approvedleaves' },
+    { label: 'Pending Leaves', route: '/pendingleaves' },
+    { label: 'Rejected Leaves', route: '/rejectedleaves' },
+    { label: 'Cancelled Leaves', route: '/cancelledleaves' }];
 
 function Sidebar({ user, position }: {
     user: string,
