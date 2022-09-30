@@ -10,8 +10,8 @@ const Tamplate: ComponentStory<typeof SidebarTab> = args => <SidebarTab {...args
 
 export const SimpleTab = Tamplate.bind({});
 SimpleTab.args = {
-    leave: false,
+    isExpandable: false,
     icon: 'home',
-    dropdown: false,
+    isOpen: false,
     label: 'Leaves'
 }

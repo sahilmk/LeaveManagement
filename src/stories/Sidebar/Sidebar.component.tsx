@@ -1,32 +1,56 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
+import { useNavigate } from "react-router-dom";
 import ButtonComponent from '../ButtonComponent'
 import SidebarTab from '../Sidebar tab'
 import { SidebarStyle } from './Sidebar.styled'
 
-const sidebarTabs = [
-    { icon: 'home', label: 'Home' },
-    { icon: 'local-florist', label: 'Holidays' },
-    { icon: 'blur', label: 'Leaves' },
-    { icon: 'chart', label: 'Manage Leave Request' },
-    { icon: 'accounts', label: 'Employee List' },
-    { icon: 'blur-linear', label: 'Employee Leaves List' },
-    { icon: 'format-quote', label: 'Leave Reason' },
-    { icon: 'device-hub', label: 'Leave Type' },
-    { icon: 'gamepad', label: 'Department' }
+const sidebarTabData = [
+    { icon: 'home', label: 'Home', isExpandable: false, isOpen: false, route: '/home' },
+    { icon: 'local-florist', label: 'Holidays', isExpandable: false, isOpen: false, route: '/holidays' },
+    { icon: 'blur', label: 'Leaves', isExpandable: true, isOpen: false, route: '/leaves/leaverequest' },
+    { icon: 'chart', label: 'Manage Leave Request', isExpandable: false, isOpen: false, route: '/manageleaverequest' },
+    { icon: 'accounts', label: 'Employee List', isExpandable: false, isOpen: false, route: '/employeelist' },
+    { icon: 'blur-linear', label: 'Employee Leaves List', isExpandable: false, isOpen: false, route: '/employeeleaveslist' },
+    { icon: 'format-quote', label: 'Leave Reason', isExpandable: false, isOpen: false, route: '/leavereason' },
+    { icon: 'device-hub', label: 'Leave Type', isExpandable: false, isOpen: false, route: '/leavetype' },
+    { icon: 'gamepad', label: 'Department', isExpandable: false, isOpen: false, route: '/department' }
 ]
 
-const innerSidebarTab = ['Leave Request', 'Approved Leaves', 'Pending Leaves', 'Rejected Leaves', 'Cancelled Leaves']
+const sidebarInnerTabData = [
+    { label: 'Leave Request', route: '/leaves/leaverequest' },
+    { label: 'Approved Leaves', route: '/leaves/approvedleaves' },
+    { label: 'Pending Leaves', route: '/leaves/pendingleaves' },
+    { label: 'Rejected Leaves', route: '/leaves/rejectedleaves' },
+    { label: 'Cancelled Leaves', route: '/leaves/cancelledleaves' }];
 
 function Sidebar({ user, position }: {
     user: string,
     position: string
 }) {
-    const [showInnerList, setShowInnerList] = useState(false)
 
-    const handleClick = (clickedTab: string | null) => {
-        clickedTab === 'Leaves' && setShowInnerList(!showInnerList)
+    const [sidebarTabs, setSidebarTabs] = useState(sidebarTabData);
+    const navigate = useNavigate();
+
+    const openDropDown = (tab: { icon?: string, label: string, isExpandable?: boolean, isOpen?: boolean, route?: string }) => {
+        if (tab.route) {
+            navigate(tab.route)
+        }
+
+        if (tab.label === 'Leaves') {
+            const newSidebarTabs = sidebarTabs.map((item) => {
+                if (item.label === tab.label && item.isExpandable) {
+                    return { ...item, isOpen: !item.isOpen };
+                }
+                return item;
+            })
+            setSidebarTabs(newSidebarTabs)
+        }
     }
+
+    useEffect(() => {
+
+    }, [sidebarTabs]);
 
     return (
         <SidebarStyle>
@@ -41,22 +65,34 @@ function Sidebar({ user, position }: {
             </div>
 
             <ul>
-                {sidebarTabs.map((tab) =>
+                {sidebarTabs.map((tab) => (
                     <li key={tab.label}>
 
-                        <SidebarTab leave={tab.label === 'Leaves'} icon={tab.icon} dropdown={showInnerList} label={tab.label} onClick={(e) => { handleClick((e?.target as HTMLInputElement).textContent) }} />
+                        <SidebarTab
+                            isExpandable={tab.isExpandable}
+                            icon={tab.icon}
+                            isOpen={tab.isOpen}
+                            label={tab.label}
+                            path={tab.route}
+                            onClick={() => openDropDown(tab)} />
 
-                        {(tab.label === 'Leaves' && showInnerList) &&
+
+
+                        {(tab.isExpandable && tab.isOpen) &&
                             <ul>
-                                {innerSidebarTab.map(tabs =>
-                                    <li className='innerTabs' key={tabs}>
-                                        <SidebarTab leave={false} label={tabs} />
+                                {sidebarInnerTabData.map(tabs =>
+                                    <li className='innerTabs' key={tabs.label}>
+                                        <SidebarTab
+                                            isExpandable={false}
+                                            label={tabs.label}
+                                            path={tabs.route}
+                                            onClick={() => openDropDown(tabs)} />
                                     </li>)}
                             </ul>
                         }
 
                     </li>
-                )}
+                ))}
             </ul>
 
             <ButtonComponent label={` Logout`} borderRadius={false} color='#fff' logo={true} />

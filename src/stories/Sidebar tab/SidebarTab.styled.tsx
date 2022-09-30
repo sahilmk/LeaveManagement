@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
-type TabStyleProp = {
-    leave: boolean
-}
-
-export const TabStyle = styled.a<TabStyleProp>`
+export const TabStyle = styled.a`
     justify-content: space-between;
     text-decoration: none;
     align-items: center;

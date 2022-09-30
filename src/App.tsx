@@ -1,9 +1,13 @@
 import React from "react"
+import { Dashboard } from "./Pages"
+import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <Router>
+      <div className="App">
+      </div>
+    </Router>
   )
 }
 
