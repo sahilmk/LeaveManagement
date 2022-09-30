@@ -11,7 +11,7 @@ const Tamplate: ComponentStory<typeof SidebarTab> = args => <SidebarTab {...args
 export const SimpleTab = Tamplate.bind({});
 SimpleTab.args = {
     isExpandable: false,
-    icon: 'home',
     isOpen: false,
+    icon: 'blur',
     label: 'Leaves'
 }

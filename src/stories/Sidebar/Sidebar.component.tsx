@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import ButtonComponent from '../ButtonComponent'
-import SidebarTab from '../Sidebar tab'
+import SidebarTab from '../SidebarTab'
 import { SidebarStyle } from './Sidebar.styled'
 
 const sidebarTabData = [
