@@ -13,7 +13,7 @@ function PageTitle({ logindate, pagename, innerpage }: Pagetitleporp) {
         <PageTitleStyle>
             <div>
                 <span className="logindate">
-                    Last logged in: <span className="text-style-1">{logindate}</span>
+                    Last logged in: <span>{logindate}</span>
                 </span>
                 <div>
                     <span className="nameofpage">{pagename}</span>

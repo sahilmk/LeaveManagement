@@ -59,7 +59,7 @@ function Sidebar({ user, position }: {
                     <img src="./assets/images/profile.png" alt={user} />
                 </div>
                 <div className="profiledescription">
-                    <span>{user}</span>
+                    <span className='username'>{user}</span>
                     <span className='userposition'>{position}</span>
                 </div>
             </div>

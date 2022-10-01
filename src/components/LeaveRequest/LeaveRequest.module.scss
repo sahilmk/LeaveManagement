@@ -1,9 +1,99 @@
+@import '../../Styles/globalStyling.scss';
+
+#specifyColor {
+    accent-color: red;
+}
+
 .leaverequestform {
-    height: 49.3rem;
-    width: 100%;
     background-color: white;
+    height: 52.3rem;
+    width: 100%;
+    padding: 3rem;
+
+    h2 {
+        font-family: SegoeUI;
+        color: #173346;
+        font-size: 2.8rem;
+        font-weight: 600;
+        margin-bottom: 5rem;
+    }
+
+    .leavetypeselector {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 3rem;
+
+        .radioinputs {
+            align-items: center;
+            display: flex;
+
+            input[type=radio] {
+                width: 2.2rem;
+                height: 2.2rem;
+                accent-color: #173346;
+
+                &:checked~label {
+                    color: #173346;
+                }
+            }
+
+            label {
+                font-family: SegoeUI;
+                color: #aaa;
+                font-size: 2rem;
+                font-weight: 600;
+                margin: 0rem 5rem 0rem 1rem;
+            }
+        }
+    }
+
+    .inputfields {
+
+        .displayflex {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .displayinnerflex {
+            display: flex;
+        }
+
+        label {
+            font-family: SegoeUI;
+            display: block;
+            color: #173346;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.9rem;
+        }
+
+        input {
+            margin: 0rem 3rem 5rem 0rem;
+        }
+
+        select {
+            margin-right: 3rem;
+        }
+
+        .dropdown {
+            background-color: '#fafafa';
+            border: solid 0.2rem #ebebeb;
+            border-radius: 0rem;
+            padding: 1.4rem 1.8rem 1.4rem 1.9rem;
+            color: #173346;
+            font-size: 2rem;
+            height: 5rem;
+            width: 44rem;
+        }
+    }
+
+    button {
+        height: 5rem;
+        width: 18rem;
+        margin-right: 2rem;
+    }
 }
 
 .py30 {
-    padding: 30px;
+    padding: 3rem;
 }

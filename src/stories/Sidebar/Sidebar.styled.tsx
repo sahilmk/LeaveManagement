@@ -3,16 +3,16 @@ import styled from "styled-components";
 export const SidebarStyle = styled.div`
     position: fixed;
     background-color: #fff;
-    height: calc(100vh - 70px);
-    width: 420px;
-    top: 70px;
-    left: 0px;
+    height: calc(100vh - 7rem);
+    width: 42rem;
+    top: 7rem;
+    left: 0rem;
 
     .profile{
         background: url('./assets/images/profileCover.jpg') no-repeat center center/cover ;
         align-items: center;
         display: flex;
-        height: 120px;
+        height: 12rem;
         width: 100%;
     }
 
@@ -21,28 +21,32 @@ export const SidebarStyle = styled.div`
         display: flex;
         font-family: SegoeUI;
         color: #fff;
-        font-size: 26px;
-        font-weight: 600;
+
+        .username{
+            font-size: 2.6rem;
+            font-weight: 600;
+        }
 
         .userposition{
             font-family: SegoeUI;
             color: #fff;
-            font-size: 20px;
+            font-size: 2rem;
             font-weight: 300;
         }
     }
 
     img{
-        height: 80px;
-        width: 80px;
-        margin: 0px 25px 0px 45px;
+        height: 8rem;
+        width: 8rem;
+        margin: 0rem 2.5rem 0rem 4.5rem;
     }
 
     button{
         position: fixed;
-        bottom: 20px;
-        left: 20px;
-        width: calc(420px -  40px);
+        bottom: 2rem;
+        left: 2rem;
+        font-size: 2.15rem;
+        width: calc(42rem -  4rem);
     }
 
     .innerTabs{
@@ -50,7 +54,7 @@ export const SidebarStyle = styled.div`
             background-color: #fbfbfb;
             /* &:focus{
                 background-color: #f4f4f4;
-                margin: 10px;
+                margin: 1rem;
             } */
         }
     }
@@ -62,6 +66,6 @@ export const SidebarStyle = styled.div`
     >ul{
         overflow-x: hidden;
         overflow-y: auto;
-        height: calc(100vh - 270px);
+        height: calc(100vh - 27rem);
     }
 `

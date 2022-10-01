@@ -2,6 +2,7 @@ import React from 'react'
 import { InputStyled } from './input.styled'
 
 type InputTypes = {
+    id?: string,
     type: string,
     placeholder: string,
     name?: string,
@@ -14,10 +15,11 @@ type InputTypes = {
     onFocus?: (event?: React.FocusEvent<HTMLInputElement> | undefined) => void,
 }
 
-function Input({ type, placeholder, value, inputtype, padding, width, onChange, onBlur, onFocus }: InputTypes) {
+function Input({ id, type, placeholder, value, inputtype, padding, width, onChange, onBlur, onFocus }: InputTypes) {
 
     return (
         <InputStyled
+            id={id}
             type={type}
             placeholder={placeholder}
             value={value}
