@@ -20,6 +20,7 @@ function LeaveRequest() {
             errors.leavefrom = "Leave From date must be less than Leave To date";
             errors.leaveto = "Leave To date must be higher than Leave From date";
         }
+        return
     };
 
     const [radioValue, setRadioValue] = useState('multiday');
