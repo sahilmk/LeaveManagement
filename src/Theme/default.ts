@@ -3,8 +3,9 @@ export const Theme = {
         yankeesBlue: '#173346',
         lotion: '#fafafa',
         darkslategray: '#284960',
-        brightGray: '#EBEBEB',
+        brightGray: '#ebebeb',
         whiteColor: '#fff',
-        sonicSilver: '#777'
+        sonicSilver: '#777',
+        culturedColor: 'f4f4f4'
     }
 }
