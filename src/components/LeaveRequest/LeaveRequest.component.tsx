@@ -3,10 +3,24 @@ import { Input, PageTitle, ButtonComponent } from '../../stories'
 import { Form, Field } from 'react-final-form'
 import * as style from './LeaveRequest.module.scss'
 
+type fieldInputType = {
+    leavefrom?: Date | undefined,
+    leaveto?: Date,
+    reason: 'Other' | 'Sick Leave',
+    leavetype: 'Unpaid' | 'Paid',
+    otherremark: string
+}
+
 function LeaveRequest() {
 
-    const onSubmit = () => { };
-    const validate = () => { };
+    const onSubmit = (e: fieldInputType) => { console.log(e.leavefrom) };
+    const validate = (e: fieldInputType) => {
+        const errors = {};
+        if (e.leavefrom > e.leaveto) {
+            errors.leavefrom = "Leave From date must be less than Leave To date";
+            errors.leaveto = "Leave To date must be higher than Leave From date";
+        }
+    };
 
     const [radioValue, setRadioValue] = useState('multiday');
 
@@ -19,6 +33,7 @@ function LeaveRequest() {
                     <Form
                         onSubmit={onSubmit}
                         validate={validate}
+                        initialValues={{ reason: 'Other', leavetype: 'Paid' }}
                         render={({ handleSubmit }) => (
                             <form onSubmit={handleSubmit}>
                                 <div className={style.leavetypeselector}>
@@ -66,8 +81,8 @@ function LeaveRequest() {
                                         <div className={style.displayflex}>
                                             <div className={style.displayinnerflex}>
                                                 <div className="input">
-                                                    <Field name="username">
-                                                        {({ input, meta }) => (
+                                                    <Field name="leavefrom">
+                                                        {(e) => (
                                                             <div>
                                                                 <label htmlFor="leavefrom">Leave From</label>
                                                                 <Input
@@ -76,15 +91,19 @@ function LeaveRequest() {
                                                                     placeholder='Select Date'
                                                                     inputtype=''
                                                                     padding={'14px 18px 14px 19px'}
-                                                                    width={440} />
-                                                                {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                                    width={440}
+                                                                    onChange={e.input.onChange}
+                                                                    onBlur={e.input.onBlur}
+                                                                    onFocus={e.input.onFocus}
+                                                                />
+                                                                {e.meta.error && e.meta.touched && <span>{e.meta.error}</span>}
                                                             </div>
                                                         )}
                                                     </Field>
                                                 </div>
                                                 <div className="input">
-                                                    <Field name="username">
-                                                        {({ input, meta }) => (
+                                                    <Field name="leaveto">
+                                                        {(e) => (
                                                             <div>
                                                                 <label htmlFor="leaveto">Leave To</label>
                                                                 <Input
@@ -93,32 +112,16 @@ function LeaveRequest() {
                                                                     placeholder='Select Date'
                                                                     inputtype=''
                                                                     padding={'14px 18px 14px 19px'}
-                                                                    width={440} />
-                                                                {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                                    width={440}
+                                                                    onChange={e.input.onChange}
+                                                                    onBlur={e.input.onBlur}
+                                                                    onFocus={e.input.onFocus} />
+                                                                {e.meta.error && e.meta.touched && <span>{e.meta.error}</span>}
                                                             </div>
                                                         )}
                                                     </Field>
                                                 </div>
 
-                                                <div className="input">
-                                                    <Field name="username">
-                                                        {({ input, meta }) => (
-                                                            <div>
-                                                                <label htmlFor="reason">Reason</label>
-                                                                <Input
-                                                                    id='reason'
-                                                                    type='select'
-                                                                    placeholder='Select Date'
-                                                                    inputtype=''
-                                                                    padding={'14px 18px 14px 19px'}
-                                                                    width={440} />
-                                                                {meta.error && meta.touched && <span>{meta.error}</span>}
-                                                            </div>
-                                                        )}
-                                                    </Field>
-                                                </div>
-                                            </div>
-                                            <div className={style.displayinnerflex}>
                                                 <div className="input">
                                                     <label htmlFor="reason">Reason</label>
                                                     <Field name="reason" component="select" className={style.dropdown}>
@@ -126,20 +129,32 @@ function LeaveRequest() {
                                                         <option>Other</option>
                                                     </Field>
                                                 </div>
+                                            </div>
+                                            <div className={style.displayinnerflex}>
+                                                <div className="input">
+                                                    <label htmlFor="reason">Leave Type</label>
+                                                    <Field name="leavetype" component="select" className={style.dropdown}>
+                                                        <option>Paid</option>
+                                                        <option>Unpaid</option>
+                                                    </Field>
+                                                </div>
 
                                                 <div className="input">
-                                                    <Field name="username">
-                                                        {({ input, meta }) => (
+                                                    <Field name="otherremark">
+                                                        {(e) => (
                                                             <div>
                                                                 <label htmlFor="otherremark">Other Remark</label>
                                                                 <Input
                                                                     id='otherremark'
                                                                     type='text'
-                                                                    placeholder='Select Date'
+                                                                    placeholder='Remark'
                                                                     inputtype=''
                                                                     padding={'14px 18px 14px 19px'}
-                                                                    width={910} />
-                                                                {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                                    width={910}
+                                                                    onChange={e.input.onChange}
+                                                                    onBlur={e.input.onBlur}
+                                                                    onFocus={e.input.onFocus} />
+                                                                {e.meta.error && e.meta.touched && <span>{e.meta.error}</span>}
                                                             </div>
                                                         )}
                                                     </Field>
@@ -151,7 +166,7 @@ function LeaveRequest() {
                                             <div className={style.displayinnerflex}>
                                                 <div className="input">
                                                     <Field name="leavedate">
-                                                        {({ input, meta }) => (
+                                                        {(e) => (
                                                             <div>
                                                                 <label htmlFor="leavedate">Leave Date</label>
                                                                 <Input
@@ -160,52 +175,48 @@ function LeaveRequest() {
                                                                     placeholder='Select Date'
                                                                     inputtype=''
                                                                     padding={'14px 18px 14px 19px'}
-                                                                    width={440} />
-                                                                {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                                    width={440}
+                                                                    onChange={e.input.onChange}
+                                                                    onBlur={e.input.onBlur}
+                                                                    onFocus={e.input.onFocus} />
+                                                                {e.meta.error && e.meta.touched && <span>{e.meta.error}</span>}
                                                             </div>
                                                         )}
                                                     </Field>
                                                 </div>
 
                                                 <div className="input">
-                                                    <Field name="username">
-                                                        {({ input, meta }) => (
-                                                            <div>
-                                                                <label htmlFor="leavetype">Leave Type</label>
-                                                                <Input
-                                                                    id='leavetype'
-                                                                    type='select'
-                                                                    placeholder='Select Date'
-                                                                    inputtype=''
-                                                                    padding={'14px 18px 14px 19px'}
-                                                                    width={440} />
-                                                                {meta.error && meta.touched && <span>{meta.error}</span>}
-                                                            </div>
-                                                        )}
+                                                    <label htmlFor="reason">Leave Type</label>
+                                                    <Field name="leavetype" component="select" className={style.dropdown}>
+                                                        <option>Paid</option>
+                                                        <option>Unpaid</option>
                                                     </Field>
                                                 </div>
 
                                                 <div className="input">
                                                     <label htmlFor="reason">Reason</label>
-                                                    <Field name="favoriteColor" component="select" className={style.dropdown}>
-                                                        <option>Paid</option>
-                                                        <option>Unpaid</option>
+                                                    <Field name="reason" component="select" className={style.dropdown}>
+                                                        <option>Sick Leave</option>
+                                                        <option>Other</option>
                                                     </Field>
                                                 </div>
                                             </div>
                                             <div className="input">
-                                                <Field name="username">
-                                                    {({ input, meta }) => (
+                                                <Field name="otherremark">
+                                                    {(e) => (
                                                         <div>
                                                             <label htmlFor="otherremark">Other Remark</label>
                                                             <Input
                                                                 id='otherremark'
                                                                 type='text'
-                                                                placeholder='Select Date'
+                                                                placeholder='Remark'
                                                                 inputtype=''
                                                                 padding={'14px 18px 14px 19px'}
-                                                                width={910} />
-                                                            {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                                width={910}
+                                                                onChange={e.input.onChange}
+                                                                onBlur={e.input.onBlur}
+                                                                onFocus={e.input.onFocus} />
+                                                            {e.meta.error && e.meta.touched && <span>{e.meta.error}</span>}
                                                         </div>
                                                     )}
                                                 </Field>

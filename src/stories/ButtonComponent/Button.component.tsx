@@ -47,7 +47,7 @@ const ButtonComponent = ({
 ButtonComponent.defaultProps = {
   value: "",
   onClick: (e: React.MouseEvent) => {
-    console.log(e);
+
   },
   bgColor: "#284960",
   color: "#7a99af",

@@ -13,7 +13,6 @@ const StyledNavbar = styled.div`
   left: 0px;
 
   .Leave-Management {
-    font-family: Novecento;
     font-size: 29.5px;
     color: #fff;
     font-weight: normal;
@@ -25,7 +24,6 @@ const StyledNavbar = styled.div`
 
   .Welcome-John-doe {
     height: 24px;
-    font-family: SegoeUI;
     font-size: 26.5px;
     font-weight: 300;
     font-stretch: normal;
