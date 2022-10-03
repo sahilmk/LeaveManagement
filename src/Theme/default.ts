@@ -4,5 +4,7 @@ export const Theme = {
         lotion: '#fafafa',
         darkslategray: '#284960',
         brightGray: '#EBEBEB',
+        whiteColor: '#fff',
+        sonicSilver: '#777'
     }
 }
