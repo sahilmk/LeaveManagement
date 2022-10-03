@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Theme } from "../../Theme";
 
 export const TabStyle = styled.a`
     justify-content: space-between;
@@ -6,12 +7,12 @@ export const TabStyle = styled.a`
     align-items: center;
     cursor: pointer;
     display: flex;
-    background-color: #fff;
-    color: #777;
+    background-color: ${Theme.colors.whiteColor};
+    color: ${Theme.colors.sonicSilver};
     height: 70px;
 
     /* &:focus{
-        color: #173346;
+        color: ${Theme.colors.yankeesBlue};
     } */
 
     i{
