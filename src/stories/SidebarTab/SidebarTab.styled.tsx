@@ -12,7 +12,7 @@ export const TabStyle = styled.a`
     height: 70px;
 
     /* &:focus{
-        color: #173346;
+        color: ${Theme.colors.yankeesBlue};
     } */
 
     i{
