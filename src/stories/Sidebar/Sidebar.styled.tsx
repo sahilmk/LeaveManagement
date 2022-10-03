@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { Theme } from "../../Theme";
 
 export const SidebarStyle = styled.div`
+    background-color: ${Theme.colors.whiteColor};
     position: fixed;
-    background-color: #fff;
     height: calc(100vh - 7rem);
     width: 42rem;
     top: 7rem;
@@ -17,10 +18,10 @@ export const SidebarStyle = styled.div`
     }
 
     .profiledescription{
+        color: ${Theme.colors.whiteColor};
+        font-family: SegoeUI;
         flex-direction: column;
         display: flex;
-        font-family: SegoeUI;
-        color: #fff;
 
         .username{
             font-size: 2.6rem;
@@ -28,8 +29,8 @@ export const SidebarStyle = styled.div`
         }
 
         .userposition{
+            color: ${Theme.colors.whiteColor};
             font-family: SegoeUI;
-            color: #fff;
             font-size: 2rem;
             font-weight: 300;
         }
@@ -45,15 +46,14 @@ export const SidebarStyle = styled.div`
         position: fixed;
         bottom: 2rem;
         left: 2rem;
-        font-size: 2.15rem;
         width: calc(42rem -  4rem);
     }
 
     .innerTabs{
         a{
-            background-color: #fbfbfb;
+            background-color: ${Theme.colors.lotion};
             /* &:focus{
-                background-color: #f4f4f4;
+                background-color: ${Theme.colors.culturedColor};
                 margin: 1rem;
             } */
         }

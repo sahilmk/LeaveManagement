@@ -1,18 +1,16 @@
-#specifyColor {
-    accent-color: red;
-}
+@import '../../Styles/variable.scss';
 
 .leaverequestform {
-    background-color: white;
+    background-color: $whiteColor;
     height: 52.3rem;
     width: 100%;
     padding: 3rem;
 
     h2 {
-        color: #173346;
+        color: $yankeesBlueColor;
         font-size: 2.8rem;
-        font-weight: 600;
         margin-bottom: 5rem;
+        font-weight: 600;
     }
 
     .leavetypeselector {
@@ -25,17 +23,17 @@
             display: flex;
 
             input[type=radio] {
+                accent-color: $yankeesBlueColor;
                 width: 2.2rem;
                 height: 2.2rem;
-                accent-color: #173346;
 
                 &:checked~label {
-                    color: #173346;
+                    color: $yankeesBlueColor;
                 }
             }
 
             label {
-                color: #aaa;
+                color: $darkGrayColor;
                 font-size: 2rem;
                 font-weight: 600;
                 margin: 0rem 5rem 0rem 1rem;
@@ -55,39 +53,39 @@
         }
 
         label {
+            color: $yankeesBlueColor;
             display: block;
-            color: #173346;
             font-size: 1.8rem;
-            font-weight: 600;
             margin-bottom: 0.9rem;
+            font-weight: 600;
         }
 
         input {
-            margin: 0rem 3rem 5rem 0rem;
-            font-size: 20px;
+            color: $darkGrayColor;
             outline: none;
-            color: #aaa;
+            margin: 0rem 3rem 5rem 0rem;
+            font-size: 2rem;
         }
 
         select {
+            color: $darkGrayColor;
             outline: none;
-            color: #aaa;
             margin-right: 3rem;
 
             option {
+                color: $darkGrayColor;
                 font-size: 2rem;
-                color: #aaa;
             }
         }
 
         .dropdown {
-            background-color: '#fafafa';
-            border: solid 0.2rem #ebebeb;
-            border-radius: 0rem;
-            padding: 1.4rem 1.8rem 1.4rem 1.9rem;
-            font-size: 1.7rem;
+            background-color: $lotionColor;
+            border: solid 0.2rem $brightGrayColor;
             height: 5rem;
             width: 44rem;
+            padding: 1.1rem 1.8rem 1.1rem 1.9rem;
+            font-size: 2rem;
+            border-radius: 0rem;
         }
     }
 
@@ -95,6 +93,11 @@
         height: 5rem;
         width: 18rem;
         margin-right: 2rem;
+    }
+
+    .error {
+        color: $redColor;
+        font-size: 2rem;
     }
 }
 

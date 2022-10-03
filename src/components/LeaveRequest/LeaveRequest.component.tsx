@@ -1,51 +1,72 @@
 import React, { useState } from 'react'
 import { Input, PageTitle, ButtonComponent } from '../../stories'
 import { Form, Field } from 'react-final-form'
-import * as style from './LeaveRequest.module.scss'
+import style from './LeaveRequest.module.scss';
 
 type fieldInputType = {
-    leavefrom?: Date | undefined,
-    leaveto?: Date,
-    reason: 'Other' | 'Sick Leave',
-    leavetype: 'Unpaid' | 'Paid',
-    otherremark: string
+    leavefrom?: string | undefined,
+    leaveto?: string | undefined,
+    leavedate?: string | undefined,
+    reason?: 'Other' | 'Sick Leave',
+    leavetype?: 'Unpaid' | 'Paid',
+    leaveduration?: 'multipleday' | 'singleday' | 'halfday',
+    otherremark?: string,
 }
 
-function LeaveRequest() {
+function LeaveRequest({ logindate }: { logindate: string }) {
 
-    const onSubmit = (e: fieldInputType) => { console.log(e.leavefrom) };
+    const [radioValue, setRadioValue] = useState(true);
+
+    const onSubmit = (e: fieldInputType) => { console.log(e) };
+
     const validate = (e: fieldInputType) => {
-        const errors = {};
-        if (e.leavefrom > e.leaveto) {
-            errors.leavefrom = "Leave From date must be less than Leave To date";
-            errors.leaveto = "Leave To date must be higher than Leave From date";
+        const errors: fieldInputType = {};
+
+        if (radioValue) {
+            if (!e.leavefrom) {
+                errors.leavefrom = 'Please enter date';
+            }
+            if (!e.leaveto) {
+                errors.leaveto = 'Please enter date';
+            }
+            if (e.leavefrom! > e.leaveto!) {
+                errors.leavefrom = "Leave From date must be less than Leave To date";
+                errors.leaveto = "Leave To date must be higher than Leave From date";
+            }
+        } else {
+            if (!e.leavedate) {
+                errors.leavedate = 'Please enter a date from leavedate';
+            }
         }
-        return
+
+        if (!e.otherremark) {
+            errors.otherremark = "Please enter other remark";
+        }
+
+        return errors;
     };
 
-    const [radioValue, setRadioValue] = useState('multiday');
 
     return (
         <div >
-            <PageTitle logindate='12-10-1989' pagename={'Leaves'} innerpage='Leave Request' />
+            <PageTitle logindate={logindate} pagename={'Leaves'} innerpage='Leave Request' />
             <div className={style.py30}>
                 <div className={style.leaverequestform}>
                     <h2>Apply Leave</h2>
                     <Form
                         onSubmit={onSubmit}
                         validate={validate}
-                        initialValues={{ reason: 'Other', leavetype: 'Paid' }}
+                        initialValues={{ reason: 'Other', leavetype: 'Paid', leaveduration: 'multipleday' }}
                         render={({ handleSubmit }) => (
                             <form onSubmit={handleSubmit}>
                                 <div className={style.leavetypeselector}>
                                     <div className={style.radioinputs}>
                                         <Field
-                                            name="leavetype"
+                                            name="leaveduration"
                                             component="input"
                                             type="radio"
-                                            value="Multiple Day"
-                                            checked
-                                            onClick={() => setRadioValue('multiday')}
+                                            value="multipleday"
+                                            onClick={() => setRadioValue(true)}
                                         />
                                         <label>
                                             Multiple Day
@@ -53,11 +74,11 @@ function LeaveRequest() {
                                     </div>
                                     <div className={style.radioinputs}>
                                         <Field
-                                            name="leavetype"
+                                            name="leaveduration"
                                             component="input"
                                             type="radio"
-                                            value="Single Day"
-                                            onClick={() => setRadioValue('singleday')}
+                                            value="singleday"
+                                            onClick={() => setRadioValue(false)}
                                         />
                                         <label>
                                             Single Day
@@ -65,11 +86,11 @@ function LeaveRequest() {
                                     </div>
                                     <div className={style.radioinputs}>
                                         <Field
-                                            name="leavetype"
+                                            name="leaveduration"
                                             component="input"
                                             type="radio"
-                                            value="Half Day"
-                                            onClick={() => setRadioValue('halfday')}
+                                            value="halfday"
+                                            onClick={() => setRadioValue(false)}
                                         />
                                         <label>
                                             Half Day
@@ -78,7 +99,7 @@ function LeaveRequest() {
                                 </div>
 
                                 <div className={style.inputfields}>
-                                    {radioValue === 'multiday' ?
+                                    {radioValue ?
                                         <div className={style.displayflex}>
                                             <div className={style.displayinnerflex}>
                                                 <div className="input">
@@ -97,7 +118,7 @@ function LeaveRequest() {
                                                                     onBlur={e.input.onBlur}
                                                                     onFocus={e.input.onFocus}
                                                                 />
-                                                                {e.meta.error && e.meta.touched && <span>{e.meta.error}</span>}
+                                                                {e.meta.error && e.meta.touched && <span className={style.error}>{e.meta.error}</span>}
                                                             </div>
                                                         )}
                                                     </Field>
@@ -117,7 +138,7 @@ function LeaveRequest() {
                                                                     onChange={e.input.onChange}
                                                                     onBlur={e.input.onBlur}
                                                                     onFocus={e.input.onFocus} />
-                                                                {e.meta.error && e.meta.touched && <span>{e.meta.error}</span>}
+                                                                {e.meta.error && e.meta.touched && <span className={style.error}>{e.meta.error}</span>}
                                                             </div>
                                                         )}
                                                     </Field>
@@ -155,7 +176,7 @@ function LeaveRequest() {
                                                                     onChange={e.input.onChange}
                                                                     onBlur={e.input.onBlur}
                                                                     onFocus={e.input.onFocus} />
-                                                                {e.meta.error && e.meta.touched && <span>{e.meta.error}</span>}
+                                                                {e.meta.error && e.meta.touched && <span className={style.error}>{e.meta.error}</span>}
                                                             </div>
                                                         )}
                                                     </Field>
@@ -180,7 +201,7 @@ function LeaveRequest() {
                                                                     onChange={e.input.onChange}
                                                                     onBlur={e.input.onBlur}
                                                                     onFocus={e.input.onFocus} />
-                                                                {e.meta.error && e.meta.touched && <span>{e.meta.error}</span>}
+                                                                {e.meta.error && e.meta.touched && <span className={style.error}>{e.meta.error}</span>}
                                                             </div>
                                                         )}
                                                     </Field>
@@ -217,7 +238,7 @@ function LeaveRequest() {
                                                                 onChange={e.input.onChange}
                                                                 onBlur={e.input.onBlur}
                                                                 onFocus={e.input.onFocus} />
-                                                            {e.meta.error && e.meta.touched && <span>{e.meta.error}</span>}
+                                                            {e.meta.error && e.meta.touched && <span className={style.error}>{e.meta.error}</span>}
                                                         </div>
                                                     )}
                                                 </Field>

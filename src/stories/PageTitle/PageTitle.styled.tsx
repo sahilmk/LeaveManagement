@@ -1,36 +1,37 @@
 import styled from "styled-components";
+import { Theme } from "../../Theme";
 
 export const PageTitleStyle = styled.div`
-    justify-content: space-between;
-    box-sizing: border-box;
-    align-items: center;
+    background-color: ${Theme.colors.lotion};
     display: flex;
-    background-color: #fbfbfb;
+    justify-content: space-between;
+    align-items: center;
     height: 12rem;
     width: 100%;
     padding:  3rem 3rem 1.8rem;
 
     .logindate{
-        display: inline-block;
+        color: ${Theme.colors.yankeesBlue};
         font-family: SegoeUI;
-        color: #173346;
+        display: inline-block;
         margin-bottom: 1rem;
         font-size: 1.95rem;
+
         >span{
             font-size: 1.95rem;
         }
     }
 
     .nameofpage{
+        color: ${Theme.colors.yankeesBlue};
         font-family: SegoeUI;
-        color: #173346;
         font-weight: 600;
         font-size: 3rem;
     }
 
     .childpage{
+        color: ${Theme.colors.yankeesBlue};
         font-family: SegoeUI;
-        color: #173346;
         font-size: 2.4rem;
     }
 
