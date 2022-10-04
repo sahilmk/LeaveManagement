@@ -5,13 +5,13 @@ import { PageTitleStyle } from './PageTitle.styled'
 type Pagetitleporp = {
     logindate: string,
     pagename: string,
-    innerPageName?: string,
+    innerPageNames?: string[],
     buttonName?: string
     isinnerPage: boolean,
     isButton: boolean
 }
 
-function PageTitle({ logindate, pagename, innerPageName, buttonName, isinnerPage, isButton }: Pagetitleporp) {
+function PageTitle({ logindate, pagename, innerPageNames, buttonName, isinnerPage, isButton }: Pagetitleporp) {
     return (
         <PageTitleStyle>
             <div>
@@ -20,7 +20,11 @@ function PageTitle({ logindate, pagename, innerPageName, buttonName, isinnerPage
                 </span>
                 <div>
                     <span className="nameofpage">{pagename}</span>
-                    {isinnerPage && <span className='childpage'> &lt; {innerPageName}</span>}
+                    {isinnerPage &&
+                        innerPageNames?.map((innerPage) =>
+                            <span className='childpage'> &lt; {innerPage}</span>
+                        )
+                    }
                 </div>
             </div>
 
