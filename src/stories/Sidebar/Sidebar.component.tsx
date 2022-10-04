@@ -5,39 +5,46 @@ import ButtonComponent from '../ButtonComponent'
 import SidebarTab from '../SidebarTab'
 import { SidebarStyle } from './Sidebar.styled'
 
-const sidebarTabData = [
-    { icon: 'home', label: 'Home', isExpandable: false, isOpen: false, route: '/home' },
-    { icon: 'local-florist', label: 'Holidays', isExpandable: false, isOpen: false, route: '/holidays' },
-    { icon: 'blur', label: 'Leaves', isExpandable: true, isOpen: false, route: '/leaverequest' },
-    { icon: 'chart', label: 'Manage Leave Request', isExpandable: false, isOpen: false, route: '/manageleaverequest' },
-    { icon: 'accounts', label: 'Employee List', isExpandable: false, isOpen: false, route: '/employeelist' },
-    { icon: 'blur-linear', label: 'Employee Leaves List', isExpandable: false, isOpen: false, route: '/employeeleaveslist' },
-    { icon: 'format-quote', label: 'Leave Reason', isExpandable: false, isOpen: false, route: '/leavereason' },
-    { icon: 'device-hub', label: 'Leave Type', isExpandable: false, isOpen: false, route: '/leavetype' },
-    { icon: 'gamepad', label: 'Department', isExpandable: false, isOpen: false, route: '/department' }
-]
+export type sidebarTabTypes = {
+    icon?: string,
+    label: string,
+    isExpandable?: boolean,
+    isOpen?: boolean,
+    route?: string
+}
 
-const sidebarInnerTabData = [
-    { label: 'Leave Request', route: '/leaverequest' },
-    { label: 'Approved Leaves', route: '/approvedleaves' },
-    { label: 'Pending Leaves', route: '/pendingleaves' },
-    { label: 'Rejected Leaves', route: '/rejectedleaves' },
-    { label: 'Cancelled Leaves', route: '/cancelledleaves' }];
+export type innerSidebarDataType = {
+    label: string,
+    route: string
+}
 
-function Sidebar({ user, position }: {
+export type sidebarTabDataPropType = {
+    icon: string,
+    label: string,
+    isExpandable: boolean,
+    isOpen: boolean,
+    route: string,
+    innerSidebar?: innerSidebarDataType[]
+}
+
+export type sidebarPropType = {
     user: string,
-    position: string
-}) {
+    position: string,
+    sidebarTabData: sidebarTabDataPropType[],
+    userImage: string
+}
+
+function Sidebar({ user, position, sidebarTabData, userImage }: sidebarPropType) {
 
     const [sidebarTabs, setSidebarTabs] = useState(sidebarTabData);
     const navigate = useNavigate();
 
-    const openDropDown = (tab: { icon?: string, label: string, isExpandable?: boolean, isOpen?: boolean, route?: string }) => {
+    const openDropDown = (tab: sidebarTabTypes) => {
         if (tab.route) {
             navigate(tab.route)
         }
 
-        if (tab.label === 'Leaves') {
+        if (tab.isExpandable) {
             const newSidebarTabs = sidebarTabs.map((item) => {
                 if (item.label === tab.label && item.isExpandable) {
                     return { ...item, isOpen: !item.isOpen };
@@ -48,15 +55,11 @@ function Sidebar({ user, position }: {
         }
     }
 
-    useEffect(() => {
-
-    }, [sidebarTabs]);
-
     return (
         <SidebarStyle>
             <div className="profile">
                 <div className="profilepicture">
-                    <img src="./assets/images/profile.png" alt={user} />
+                    <img src={userImage} alt={user} />
                 </div>
                 <div className="profiledescription">
                     <span className='username'>{user}</span>
@@ -80,7 +83,7 @@ function Sidebar({ user, position }: {
 
                         {(tab.isExpandable && tab.isOpen) &&
                             <ul>
-                                {sidebarInnerTabData.map(tabs =>
+                                {tab.innerSidebar!.map(tabs =>
                                     <li className='innerTabs' key={tabs.label}>
                                         <SidebarTab
                                             isExpandable={false}
@@ -97,7 +100,7 @@ function Sidebar({ user, position }: {
 
             <ButtonComponent label={` Logout`} borderRadius={false} color='#fff' logo={true} />
 
-        </SidebarStyle>
+        </SidebarStyle >
     )
 }
 
