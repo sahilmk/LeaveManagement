@@ -12,12 +12,8 @@ const StyledNavbar = styled.div`
   top: 0px;
   left: 0px;
 
-<<<<<<< HEAD
-  .Leave-Management {
-=======
   .leaveManagementTitle {
     font-family: Novecento;
->>>>>>> 4-navbar
     font-size: 29.5px;
     color: #fff;
   }
