@@ -1,4 +1,3 @@
-import { type } from "os";
 import React from "react";
 import StyledButton from "./Button.styled";
 
@@ -10,8 +9,8 @@ type ButtonComponentProps = {
   size: string;
   border: string;
   borderRadius: boolean;
-  logo?: boolean
-  type: 'submit' | 'button' | 'reset'
+  logo?: boolean;
+  type: "submit" | "button" | "reset";
 };
 
 const ButtonComponent = ({
@@ -23,23 +22,21 @@ const ButtonComponent = ({
   border,
   borderRadius,
   logo,
-  type
+  type,
 }: ButtonComponentProps) => {
   return (
-    <>
-      <StyledButton
-        onClick={onClick}
-        bgColor={bgColor}
-        color={color}
-        size={size}
-        border={border}
-        borderRadius={borderRadius}
-        type={type}
-      >
-        {logo && < i className="zmdi zmdi-power" />}
-        {label}
-      </StyledButton>
-    </>
+    <StyledButton
+      onClick={onClick}
+      bgColor={bgColor}
+      color={color}
+      size={size}
+      border={border}
+      borderRadius={borderRadius}
+      type={type}
+    >
+      {logo && <i className="zmdi zmdi-power" />}
+      {label}
+    </StyledButton>
   );
 };
 
@@ -54,7 +51,7 @@ ButtonComponent.defaultProps = {
   border: "",
   borderRadius: true,
   logo: false,
-  type: 'button'
+  type: "button",
 };
 
 export default ButtonComponent;
