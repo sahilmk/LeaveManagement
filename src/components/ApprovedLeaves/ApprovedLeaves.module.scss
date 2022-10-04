@@ -1,0 +1,11 @@
+@import '../../Styles/variable.scss';
+
+.py3 {
+    margin: 3rem;
+}
+
+.approvedpage {
+    background-color: $whiteColor;
+    width: 100%;
+    min-height: calc(100vh - 25rem);
+}

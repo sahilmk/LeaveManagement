@@ -1,4 +1,5 @@
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { TableStyle } from './Table.styled'
 
 type TableComponentProps = {
   columns: GridColDef[];
@@ -10,7 +11,7 @@ type TableComponentProps = {
 const DataTable = ({ rows, columns, width, height }: TableComponentProps) => {
   return (
     <div style={{ height: height, width: width }}>
-      <DataGrid
+      <TableStyle
         rows={rows}
         columns={columns}
         pageSize={10}

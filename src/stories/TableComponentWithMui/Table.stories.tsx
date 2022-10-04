@@ -49,11 +49,11 @@ ApprovedLeaves.args = {
 
   rows: [
     {
+      appliedOn: "25/12/2017",
       id: "1",
       type: "Paid",
       reason: "Seek Leave",
       date: "12/01/2018 to 14/01/2018",
-      appliedOn: "25/12/2017",
     },
     {
       id: "2",
