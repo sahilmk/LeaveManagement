@@ -12,5 +12,7 @@ export const LeavePageTitle = Tamplate.bind({});
 LeavePageTitle.args = {
     logindate: '23rd july 2022',
     pagename: 'Leaves',
-    innerpage: 'Leave Request'
+    innerPageName: 'Leave Request',
+    isinnerPage: true,
+    isButton: false
 }
