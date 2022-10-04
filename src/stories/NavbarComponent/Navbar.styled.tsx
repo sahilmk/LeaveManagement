@@ -12,32 +12,19 @@ const StyledNavbar = styled.div`
   top: 0px;
   left: 0px;
 
-  .Leave-Management {
+  .leaveManagementTitle {
     font-family: Novecento;
     font-size: 29.5px;
     color: #fff;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
   }
 
-  .Welcome-John-doe {
+  .welcomeMessage {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     height: 24px;
-    font-family: SegoeUI;
     font-size: 26.5px;
     font-weight: 300;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
     text-align: right;
     color: #fff;
-
-    .text-style-1 {
-      font-weight: normal;
-    }
   }
 `;
 
