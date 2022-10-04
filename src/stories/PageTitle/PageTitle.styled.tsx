@@ -7,11 +7,7 @@ export const PageTitleStyle = styled.div`
     box-sizing: border-box;
     align-items: center;
     display: flex;
-    background-color: ${Theme.colors.lotion};
-    height: 12rem;
-    width: calc(100% - 42rem);
     padding:  3rem 3rem 1.8rem;
-    margin-left: 42rem;
 
     .logindate{
         color: ${Theme.colors.yankeesBlue};
