@@ -5,17 +5,41 @@ import ButtonComponent from '../ButtonComponent'
 import SidebarTab from '../SidebarTab'
 import { SidebarStyle } from './Sidebar.styled'
 
-function Sidebar({ user, position, sidebarTabData, userImage }: {
+export type sidebarTabTypes = {
+    icon?: string,
+    label: string,
+    isExpandable?: boolean,
+    isOpen?: boolean,
+    route?: string
+}
+
+export type innerSidebarDataType = {
+    label: string,
+    route: string
+}
+
+export type sidebarTabDataPropType = {
+    icon: string,
+    label: string,
+    isExpandable: boolean,
+    isOpen: boolean,
+    route: string,
+    innerSidebar?: innerSidebarDataType[]
+}
+
+export type sidebarPropType = {
     user: string,
     position: string,
-    sidebarTabData: Array<{ icon: string, label: string, isExpandable: boolean, isOpen: boolean, route: string, innerSidebar?: Array<{ label: string, route: string }> }>,
+    sidebarTabData: sidebarTabDataPropType[],
     userImage: string
-}) {
+}
+
+function Sidebar({ user, position, sidebarTabData, userImage }: sidebarPropType) {
 
     const [sidebarTabs, setSidebarTabs] = useState(sidebarTabData);
     const navigate = useNavigate();
 
-    const openDropDown = (tab: { icon?: string, label: string, isExpandable?: boolean, isOpen?: boolean, route?: string }) => {
+    const openDropDown = (tab: sidebarTabTypes) => {
         if (tab.route) {
             navigate(tab.route)
         }
@@ -30,10 +54,6 @@ function Sidebar({ user, position, sidebarTabData, userImage }: {
             setSidebarTabs(newSidebarTabs)
         }
     }
-
-    useEffect(() => {
-
-    }, [sidebarTabs]);
 
     return (
         <SidebarStyle>
