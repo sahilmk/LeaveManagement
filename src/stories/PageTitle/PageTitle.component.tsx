@@ -2,7 +2,7 @@ import React from 'react'
 import ButtonComponent from '../ButtonComponent'
 import { PageTitleStyle } from './PageTitle.styled'
 
-type Pagetitleporp = {
+export type Pagetitleporp = {
     logindate: string,
     pagename: string,
     innerPageNames?: string[],
