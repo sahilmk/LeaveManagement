@@ -4,11 +4,14 @@ import { PageTitleStyle } from './PageTitle.styled'
 
 type Pagetitleporp = {
     logindate: string,
-    pagename: 'Leaves' | 'Manage Leave Request' | 'Leave Reason',
-    innerpage: string
+    pagename: string,
+    innerPageName?: string,
+    buttonName?: string
+    isinnerPage: boolean,
+    isButton: boolean
 }
 
-function PageTitle({ logindate, pagename, innerpage }: Pagetitleporp) {
+function PageTitle({ logindate, pagename, innerPageName, buttonName, isinnerPage, isButton }: Pagetitleporp) {
     return (
         <PageTitleStyle>
             <div>
@@ -17,11 +20,11 @@ function PageTitle({ logindate, pagename, innerpage }: Pagetitleporp) {
                 </span>
                 <div>
                     <span className="nameofpage">{pagename}</span>
-                    {pagename === 'Leaves' && <span className='childpage'> &lt; {innerpage}</span>}
+                    {isinnerPage && <span className='childpage'> &lt; {innerPageName}</span>}
                 </div>
             </div>
 
-            {pagename === 'Leave Reason' && <ButtonComponent label='Add Reason' borderRadius={false} color='#fff' size='20px' />}
+            {isButton && <ButtonComponent label={buttonName!} borderRadius={false} color='#fff' size='2rem' />}
         </PageTitleStyle >
     )
 }

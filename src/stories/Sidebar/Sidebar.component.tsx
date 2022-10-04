@@ -5,28 +5,11 @@ import ButtonComponent from '../ButtonComponent'
 import SidebarTab from '../SidebarTab'
 import { SidebarStyle } from './Sidebar.styled'
 
-const sidebarTabData = [
-    { icon: 'home', label: 'Home', isExpandable: false, isOpen: false, route: '/home' },
-    { icon: 'local-florist', label: 'Holidays', isExpandable: false, isOpen: false, route: '/holidays' },
-    { icon: 'blur', label: 'Leaves', isExpandable: true, isOpen: false, route: '/leaves/leaverequest' },
-    { icon: 'chart', label: 'Manage Leave Request', isExpandable: false, isOpen: false, route: '/manageleaverequest' },
-    { icon: 'accounts', label: 'Employee List', isExpandable: false, isOpen: false, route: '/employeelist' },
-    { icon: 'blur-linear', label: 'Employee Leaves List', isExpandable: false, isOpen: false, route: '/employeeleaveslist' },
-    { icon: 'format-quote', label: 'Leave Reason', isExpandable: false, isOpen: false, route: '/leavereason' },
-    { icon: 'device-hub', label: 'Leave Type', isExpandable: false, isOpen: false, route: '/leavetype' },
-    { icon: 'gamepad', label: 'Department', isExpandable: false, isOpen: false, route: '/department' }
-]
-
-const sidebarInnerTabData = [
-    { label: 'Leave Request', route: '/leaves/leaverequest' },
-    { label: 'Approved Leaves', route: '/leaves/approvedleaves' },
-    { label: 'Pending Leaves', route: '/leaves/pendingleaves' },
-    { label: 'Rejected Leaves', route: '/leaves/rejectedleaves' },
-    { label: 'Cancelled Leaves', route: '/leaves/cancelledleaves' }];
-
-function Sidebar({ user, position }: {
+function Sidebar({ user, position, sidebarTabData, userImage }: {
     user: string,
-    position: string
+    position: string,
+    sidebarTabData: Array<{ icon: string, label: string, isExpandable: boolean, isOpen: boolean, route: string, innerSidebar?: Array<{ label: string, route: string }> }>,
+    userImage: string
 }) {
 
     const [sidebarTabs, setSidebarTabs] = useState(sidebarTabData);
@@ -37,7 +20,7 @@ function Sidebar({ user, position }: {
             navigate(tab.route)
         }
 
-        if (tab.label === 'Leaves') {
+        if (tab.isExpandable) {
             const newSidebarTabs = sidebarTabs.map((item) => {
                 if (item.label === tab.label && item.isExpandable) {
                     return { ...item, isOpen: !item.isOpen };
@@ -56,7 +39,7 @@ function Sidebar({ user, position }: {
         <SidebarStyle>
             <div className="profile">
                 <div className="profilepicture">
-                    <img src="./assets/images/profile.png" alt={user} />
+                    <img src={userImage} alt={user} />
                 </div>
                 <div className="profiledescription">
                     <span>{user}</span>
@@ -80,7 +63,7 @@ function Sidebar({ user, position }: {
 
                         {(tab.isExpandable && tab.isOpen) &&
                             <ul>
-                                {sidebarInnerTabData.map(tabs =>
+                                {tab.innerSidebar!.map(tabs =>
                                     <li className='innerTabs' key={tabs.label}>
                                         <SidebarTab
                                             isExpandable={false}
@@ -97,7 +80,7 @@ function Sidebar({ user, position }: {
 
             <ButtonComponent label={` Logout`} borderRadius={false} color='#fff' logo={true} />
 
-        </SidebarStyle>
+        </SidebarStyle >
     )
 }
 
