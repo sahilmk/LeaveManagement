@@ -13,7 +13,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   cursor: pointer;
   width: 204px;
   height: 60px;
-  font-family: "SegoeUI";
+  font-family: ${Theme.fontFamily};
   border: solid 2px ${Theme.colors.darkslategray};
 
   background-color: ${({ bgColor }) => bgColor};
