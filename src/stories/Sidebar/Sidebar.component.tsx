@@ -55,10 +55,6 @@ function Sidebar({ user, position, sidebarTabData, userImage }: sidebarPropType)
         }
     }
 
-    useEffect(() => {
-
-    }, [sidebarTabs]);
-
     return (
         <SidebarStyle>
             <div className="profile">
