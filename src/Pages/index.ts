@@ -1,4 +1,4 @@
 import Dashboard from "./Dashboard";
-import ProfilePage from "./Profile/Profile.page";
+import ProfilePage from "./Profile";
 
 export { Dashboard, ProfilePage };
