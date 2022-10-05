@@ -3,6 +3,7 @@ import { NavbarComponent, Sidebar } from "../../stories";
 import { LeaveRequest } from "../../components";
 import { sidebarTabData } from "../../Util/Constants";
 import * as styles from "./Dashboard.module.scss";
+import { ProfilePage } from "..";
 
 function Dashboard() {
   return (
@@ -16,7 +17,7 @@ function Dashboard() {
       />
       <div className={styles.maincontent}>
         <Routes>
-          <Route path="/home" element={<h1>Home</h1>} />
+          <Route path="/home" element={<ProfilePage />} />
           <Route path="/holidays" element={<h1>Holidays</h1>} />
           <Route
             path="leaverequest"
