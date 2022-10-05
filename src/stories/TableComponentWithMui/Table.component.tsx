@@ -1,16 +1,17 @@
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { TableStyle } from './Table.styled'
+import { DivStyle } from './Table.styled';
 
 type TableComponentProps = {
   columns: GridColDef[];
   rows: any;
   width: string;
-  height: number;
 };
 
-const DataTable = ({ rows, columns, width, height }: TableComponentProps) => {
+const DataTable = ({ rows, columns, width }: TableComponentProps) => {
   return (
-    <div style={{ height: height, width: width }}>
-      <DataGrid
+    <DivStyle style={{ height: 'calc(100vh - 43rem)', width: width }} className='upperdiv'>
+      <TableStyle
         rows={rows}
         columns={columns}
         pageSize={10}
@@ -18,7 +19,7 @@ const DataTable = ({ rows, columns, width, height }: TableComponentProps) => {
         getRowId={(row) => row.id}
         rowHeight={60}
       />
-    </div>
+    </DivStyle>
   );
 };
 

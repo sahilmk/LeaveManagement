@@ -22,7 +22,7 @@ function PageTitle({ logindate, pagename, innerPageNames, buttonName, isinnerPag
                     <span className="nameofpage">{pagename}</span>
                     {isinnerPage &&
                         innerPageNames?.map((innerPage) =>
-                            <span className='childpage'> &lt; {innerPage}</span>
+                            <span className='childpage' key={innerPage}> &lt; {innerPage}</span>
                         )
                     }
                 </div>

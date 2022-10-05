@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { NavbarComponent, Sidebar } from "../../stories";
-import { LeaveRequest } from "../../components";
+import { LeaveRequest, ApprovedLeave } from "../../components";
 import ProfilePage from "../Profile";
 import { sidebarTabData } from "../../Util/Constants";
 import * as styles from "./Dashboard.module.scss";
@@ -16,6 +16,7 @@ function Dashboard() {
           <Route path="/home" element={<ProfilePage />} />
           <Route path="/holidays" element={<h1>Holidays</h1>} />
           <Route path="leaverequest" element={<LeaveRequest logindate={"10-10-2020"} />} />
+          <Route path="/approvedleaves" element={<ApprovedLeave logindate={"10-12-2036"} />} />
           <Route path="/manageleaverequest" element={<h1>manageleaverequest</h1>} />
           <Route path="/employeelist" element={<h1>employeelist</h1>} />
           <Route path="/employeeleaveslist" element={<h1>employeeleaveslist</h1>} />

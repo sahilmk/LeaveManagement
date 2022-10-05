@@ -46,10 +46,10 @@ function LeaveRequest({ logindate }: { logindate: string }) {
     return errors;
   };
 
+
   return (
     <div >
       <PageTitle logindate={logindate} pagename={'Leaves'} isinnerPage={true} isButton={false} innerPageNames={['Leave Request']} />
-
       <div className={style.py30}>
         <div className={style.leaverequestform}>
           <h2>Apply Leave</h2>
