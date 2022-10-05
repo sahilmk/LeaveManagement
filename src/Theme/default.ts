@@ -8,6 +8,7 @@ export const Theme = {
         sonicSilver: '#777',
         culturedColor: 'f4f4f4',
         redColor: 'red',
-        cetaceanBlueColor: '#080341'
+        cetaceanBlueColor: '#080341',
+        darkGrayColor: '#aaa'
     }
 }

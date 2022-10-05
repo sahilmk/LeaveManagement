@@ -65,7 +65,6 @@ ApprovedLeaves.args = {
   ],
 
   width: "100%",
-  height: 500,
 };
 
 export const RejectedLeaves = Template.bind({});
@@ -115,7 +114,6 @@ RejectedLeaves.args = {
   ],
 
   width: "100%",
-  height: 500,
 };
 
 export const CancelledLeaves = Template.bind({});
@@ -164,7 +162,6 @@ CancelledLeaves.args = {
     },
   ],
   width: "100%",
-  height: 500,
 };
 
 export const ManageLeaveRequestLeave = Template.bind({});
@@ -214,7 +211,6 @@ ManageLeaveRequestLeave.args = {
   ],
 
   width: "100%",
-  height: 500,
 };
 
 export const PendingLeaves = Template.bind({});
@@ -272,5 +268,4 @@ PendingLeaves.args = {
   ],
 
   width: "100%",
-  height: 500,
 };
