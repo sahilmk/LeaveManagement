@@ -101,7 +101,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                                     <Input
                                                         id='search'
                                                         type='text'
-                                                        placeholder='Select Date'
+                                                        placeholder='Search here...'
                                                         inputtype=''
                                                         padding={'14px 18px 14px 19px'}
                                                         width={300}
