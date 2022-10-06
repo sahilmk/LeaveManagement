@@ -49,7 +49,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
 
     return (
         <div >
-            <PageTitle logindate={logindate} pagename={'Leaves'} innerPageNames={['Leave Request']} isinnerPage={true} isButton={false} />
+            <PageTitle logindate={logindate} pagename={'Leaves'} isinnerPage={true} isButton={false} innerPageNames={['Leave Request']} />
             <div className={style.py30}>
                 <div className={style.leaverequestform}>
                     <h2>Apply Leave</h2>
@@ -102,7 +102,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                     {radioValue ?
                                         <div className={style.displayflex}>
                                             <div className={style.displayinnerflex}>
-                                                <div className="input">
+                                                <div className={style.inputcontrol}>
                                                     <Field name="leavefrom">
                                                         {(e) => (
                                                             <div>
@@ -123,7 +123,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                         )}
                                                     </Field>
                                                 </div>
-                                                <div className="input">
+                                                <div className={style.inputcontrol}>
                                                     <Field name="leaveto">
                                                         {(e) => (
                                                             <div>
@@ -144,7 +144,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                     </Field>
                                                 </div>
 
-                                                <div className="input">
+                                                <div className={style.inputcontrol}>
                                                     <label htmlFor="reason">Reason</label>
                                                     <Field name="reason" component="select" className={style.dropdown}>
                                                         <option>Sick Leave</option>
@@ -153,7 +153,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                 </div>
                                             </div>
                                             <div className={style.displayinnerflex}>
-                                                <div className="input">
+                                                <div className={style.inputcontrol}>
                                                     <label htmlFor="reason">Leave Type</label>
                                                     <Field name="leavetype" component="select" className={style.dropdown}>
                                                         <option>Paid</option>
@@ -161,7 +161,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                     </Field>
                                                 </div>
 
-                                                <div className="input">
+                                                <div className={style.inputcontrol}>
                                                     <Field name="otherremark">
                                                         {(e) => (
                                                             <div>
@@ -186,7 +186,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                         :
                                         <div className={style.displayflex}>
                                             <div className={style.displayinnerflex}>
-                                                <div className="input">
+                                                <div className={style.inputcontrol}>
                                                     <Field name="leavedate">
                                                         {(e) => (
                                                             <div>
@@ -207,7 +207,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                     </Field>
                                                 </div>
 
-                                                <div className="input">
+                                                <div className={style.inputcontrol}>
                                                     <label htmlFor="reason">Leave Type</label>
                                                     <Field name="leavetype" component="select" className={style.dropdown}>
                                                         <option>Paid</option>
@@ -215,7 +215,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                     </Field>
                                                 </div>
 
-                                                <div className="input">
+                                                <div className={style.inputcontrol}>
                                                     <label htmlFor="reason">Reason</label>
                                                     <Field name="reason" component="select" className={style.dropdown}>
                                                         <option>Sick Leave</option>
@@ -223,7 +223,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                     </Field>
                                                 </div>
                                             </div>
-                                            <div className="input">
+                                            <div className={style.inputcontrol}>
                                                 <Field name="otherremark">
                                                     {(e) => (
                                                         <div>
