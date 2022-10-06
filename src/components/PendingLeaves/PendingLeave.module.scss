@@ -7,16 +7,20 @@
 .approvedpage {
     background-color: $whiteColor;
     overflow-y: auto;
-    height: calc(100vh - 26rem);
+    height: calc(100vh - 19rem);
     width: 100%;
 
     form {
-        padding: 3rem 3rem 0rem 3rem;
+        padding: 6rem 6rem 0rem 6rem;
 
         .error {
             color: $redColor;
             font-size: 2rem;
         }
+    }
+
+    >div {
+        padding: 0rem 3rem 0rem 3rem;
     }
 }
 
