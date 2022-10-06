@@ -109,7 +109,9 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
                                     </Field>
                                 </div>
 
-                                <ButtonComponent label='Clear' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 2px #ebebeb' />
+                                <div className={style.inputcontrol}>
+                                    <ButtonComponent label='Clear' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 2px #ebebeb' />
+                                </div>
                             </div>
                         </form>
                     )}
