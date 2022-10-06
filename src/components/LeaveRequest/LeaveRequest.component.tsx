@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Input, PageTitle, ButtonComponent } from '../../stories'
+import { Input, PageTitle, Button } from '../../stories'
 import { Form, Field } from 'react-final-form'
 import style from './LeaveRequest.module.scss';
 
@@ -247,8 +247,8 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                     }
                                 </div>
 
-                                <ButtonComponent label='Submit' type='submit' borderRadius={false} color='#fff' />
-                                <ButtonComponent label='Cancel' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 2px #ebebeb' />
+                                <Button label='Submit' type='submit' borderRadius={false} color='#fff' />
+                                <Button label='Cancel' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 2px #ebebeb' />
                             </form>
                         )}
                     />

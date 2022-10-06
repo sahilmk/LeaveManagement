@@ -6,7 +6,7 @@ export const Theme = {
         brightGray: '#ebebeb',
         whiteColor: '#fff',
         sonicSilver: '#777',
-        culturedColor: 'f4f4f4',
+        culturedColor: '#f4f4f4',
         redColor: 'red'
     }
 }
