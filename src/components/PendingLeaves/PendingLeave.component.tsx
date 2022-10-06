@@ -27,6 +27,10 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
         if (!e.enddate) {
             errors.enddate = 'Please enter data';
         }
+        if (e.startdate! > e.enddate!) {
+            errors.startdate = 'Start date must be higher than enddate';
+            errors.enddate = 'End date must be lesser than startdate';
+        }
         if (!e.search) {
             errors.search = 'Please enter value you want to search';
         }
@@ -48,7 +52,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
                     render={({ handleSubmit }) => (
                         <form onSubmit={handleSubmit}>
                             <div className={style.displayflex}>
-                                <div className={style.input}>
+                                <div className={style.inputcontrol}>
                                     <Field name="startdate">
                                         {(e) => (
                                             <div>
@@ -70,7 +74,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
                                     </Field>
                                 </div>
 
-                                <div className={style.input}>
+                                <div className={style.inputcontrol}>
                                     <Field name="enddate">
                                         {(e) => (
                                             <div>
@@ -91,7 +95,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
                                     </Field>
                                 </div>
 
-                                <div className={style.input}>
+                                <div className={style.inputcontrol}>
                                     <Field name="search">
                                         {(e) => (
                                             <div>
@@ -99,7 +103,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
                                                 <Input
                                                     id='search'
                                                     type='text'
-                                                    placeholder='Select Date'
+                                                    placeholder='Search here...'
                                                     inputtype=''
                                                     padding={'14px 18px 14px 19px'}
                                                     width={300}
