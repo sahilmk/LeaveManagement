@@ -1,6 +1,7 @@
 import { type } from "os";
 import React from "react";
 import StyledButton from "./Button.styled";
+import '../../Icons/css/material-design-iconic-font.css'
 
 type ButtonComponentProps = {
   label: string;
