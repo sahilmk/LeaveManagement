@@ -1,0 +1,55 @@
+@import '../../Styles/variable.scss';
+
+.approvedpage {
+    background-color: $whiteColor;
+    overflow-y: auto;
+    height: calc(100vh - 19rem);
+    width: 100%;
+
+    form {
+        padding: 6rem 6rem 0rem 6rem;
+
+        .error {
+            color: $redColor;
+            font-size: 2rem;
+        }
+    }
+
+    >div {
+        padding: 0rem 3rem 0rem 3rem;
+    }
+}
+
+.displayflex {
+    display: flex;
+    flex-basis: auto;
+    flex-wrap: wrap;
+    align-items: flex-end;
+
+    .inputcontrol {
+        margin: 0rem 2rem 5rem 0rem;
+    }
+
+    input {
+        color: $darkGrayColor;
+        outline: none;
+        font-size: 2rem;
+    }
+
+    label {
+        color: $yankeesBlueColor;
+        display: block;
+        font-size: 1.8rem;
+        margin-bottom: 0.9rem;
+        font-weight: 600;
+    }
+
+    button {
+        background-color: $brightGrayColor;
+        font-weight: normal;
+        margin-bottom: 5rem;
+        height: 5rem;
+        width: 10rem;
+        font-size: 2rem;
+    }
+}
