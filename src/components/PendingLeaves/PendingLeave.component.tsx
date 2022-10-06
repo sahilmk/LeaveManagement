@@ -48,7 +48,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
                     render={({ handleSubmit }) => (
                         <form onSubmit={handleSubmit}>
                             <div className={style.displayflex}>
-                                <div className={style.input}>
+                                <div className={style.inputcontrol}>
                                     <Field name="startdate">
                                         {(e) => (
                                             <div>
@@ -70,7 +70,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
                                     </Field>
                                 </div>
 
-                                <div className={style.input}>
+                                <div className={style.inputcontrol}>
                                     <Field name="enddate">
                                         {(e) => (
                                             <div>
@@ -91,7 +91,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
                                     </Field>
                                 </div>
 
-                                <div className={style.input}>
+                                <div className={style.inputcontrol}>
                                     <Field name="search">
                                         {(e) => (
                                             <div>
