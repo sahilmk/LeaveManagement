@@ -28,6 +28,10 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
         if (!e.enddate) {
             errors.enddate = 'Please enter data';
         }
+        if (e.startdate! > e.enddate!) {
+            errors.startdate = 'Start date must be higher than enddate';
+            errors.enddate = 'End date must be lesser than startdate';
+        }
         if (!e.search) {
             errors.search = 'Please enter value you want to search';
         }
@@ -50,7 +54,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                         render={({ handleSubmit }) => (
                             <form onSubmit={handleSubmit}>
                                 <div className={style.displayflex}>
-                                    <div className={style.input}>
+                                    <div className={style.inputcontrol}>
                                         <Field name="startdate">
                                             {(e) => (
                                                 <div>
@@ -72,7 +76,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                         </Field>
                                     </div>
 
-                                    <div className={style.input}>
+                                    <div className={style.inputcontrol}>
                                         <Field name="enddate">
                                             {(e) => (
                                                 <div>
@@ -93,7 +97,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                         </Field>
                                     </div>
 
-                                    <div className={style.input}>
+                                    <div className={style.inputcontrol}>
                                         <Field name="search">
                                             {(e) => (
                                                 <div>
@@ -101,7 +105,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                                     <Input
                                                         id='search'
                                                         type='text'
-                                                        placeholder='Select Date'
+                                                        placeholder='Search here...'
                                                         inputtype=''
                                                         padding={'14px 18px 14px 19px'}
                                                         width={300}
@@ -114,7 +118,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                         </Field>
                                     </div>
 
-                                    <div className={style.input}>
+                                    <div className={style.inputcontrol}>
                                         <label htmlFor="type">Type</label>
                                         <Field name="type" component="select" className={style.dropdown}>
                                             <option>Paid</option>
@@ -122,7 +126,9 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                         </Field>
                                     </div>
 
-                                    <ButtonComponent label='Clear' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 2px #ebebeb' />
+                                    <div className={style.inputcontrol}>
+                                        <ButtonComponent label='Clear' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 2px #ebebeb' />
+                                    </div>
                                 </div>
                             </form>
                         )}
