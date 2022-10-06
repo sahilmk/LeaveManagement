@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ProfileDetails } from "../../components";
 import { PageTitle } from "../../stories";
 import ProfilePageStyle from "./Profile.module.scss";
 
@@ -32,7 +33,7 @@ const ProfilePage = () => {
               )}
             </div>
             <div className={ProfilePageStyle.profileDetails__body}>
-              {proDetailToggler ? <h1>Profile Details</h1> : <></>}
+              {proDetailToggler ? <ProfileDetails /> : <></>}
             </div>
           </div>
           <div className={ProfilePageStyle.localAddress}>

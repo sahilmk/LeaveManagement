@@ -1,13 +1,15 @@
 @import "../../Styles/variable.scss";
 
 .profile {
-  height: 52.3rem;
+  height: 73rem;
   width: 100%;
   padding: 3rem;
 
   &__background {
     background-color: $whiteColor;
     padding: 3rem;
+    overflow-y: auto;
+    height: 100%;
   }
 }
 
@@ -15,7 +17,6 @@
 .localAddress,
 .perAddress,
 .changePwd {
-  margin-bottom: 20px;
 
   &__header {
     border-bottom: 2px solid $brightGrayColor;
