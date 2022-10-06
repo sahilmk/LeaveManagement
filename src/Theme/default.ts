@@ -1,3 +1,5 @@
+import SegoeUI from "../assets/fonts/SegoeUI.ttf";
+
 export const Theme = {
     colors: {
         yankeesBlue: '#173346',
