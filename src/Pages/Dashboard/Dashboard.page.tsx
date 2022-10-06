@@ -1,13 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { NavbarComponent, Sidebar } from '../../stories'
-<<<<<<< HEAD
 import { LeaveRequest, ApprovedLeave } from "../../components";
 import { sidebarTabData } from "../../Util/Constants";
-=======
-import { LeaveRequest } from "../../components";
-import { sidebarTabData } from '../../Util/Constants'
->>>>>>> 10-leave-request
 import * as styles from './Dashboard.module.scss'
 
 function Dashboard() {

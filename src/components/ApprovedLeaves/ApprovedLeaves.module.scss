@@ -15,6 +15,7 @@
 
         .error {
             color: $redColor;
+            display: block;
             font-size: 2rem;
         }
     }
@@ -24,7 +25,7 @@
     display: flex;
     flex-basis: auto;
     flex-wrap: wrap;
-    align-items: flex-end;
+    align-items: start;
 
     .inputcontrol {
         margin: 0rem 2rem 5rem 0rem;
@@ -67,7 +68,7 @@
     button {
         background-color: $brightGrayColor;
         font-weight: normal;
-        margin-bottom: 5rem;
+        margin-top: 3.5rem;
         height: 5rem;
         width: 10rem;
         font-size: 2rem;
