@@ -5,10 +5,15 @@ import { callLoginPost, setLoginData } from "../../APIs";
 import { useAuthContext } from "../../Hooks";
 import LoginPageStyle from "./Login.module.scss";
 
+type loginDataValues = {
+  email: string,
+  password: string
+}
+
 const LoginPage = () => {
   const { dispatch } = useAuthContext();
 
-  const onSubmit = (values: { email: string; password: string }) => {
+  const onSubmit = (values: loginDataValues) => {
     callLoginPost(values)
       .then((Response) => {
         const payload = {
@@ -60,8 +65,8 @@ const LoginPage = () => {
           <div className={LoginPageStyle.login__cardBody}>
             <Form
               onSubmit={onSubmit}
-              validate={(values) => {
-                let errors = {};
+              validate={(values: loginDataValues) => {
+                let errors: loginDataValues = {};
                 if (!values.email) {
                   errors.email = "*Required";
                 }
