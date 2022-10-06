@@ -1,20 +1,20 @@
 import React from 'react'
 import { Form, Field } from 'react-final-form'
 import { ButtonComponent, DataTable, Input, PageTitle } from '../../stories'
-import style from './RejectedLeave.module.scss'
+import style from './CancelledLeave.module.scss'
 
-export type rejectedLeavePropType = {
+export type cancelledLeavePropType = {
     logindate: string
 }
 
 export type formInputTypes = {
-    startdate?: string,
-    enddate?: string,
+    startdate?: string | undefined,
+    enddate?: string | undefined,
     search?: string,
     type?: 'Paid' | 'Unpaid'
 }
 
-function RejectedLeave({ logindate }: rejectedLeavePropType) {
+function CancelledLeave({ logindate }: cancelledLeavePropType) {
 
     const onSubmit = (e: formInputTypes) => { console.log(e) };
 
@@ -27,10 +27,12 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
         if (!e.enddate) {
             errors.enddate = 'Please enter data';
         }
+
         if (e.startdate! > e.enddate!) {
-            errors.startdate = 'Start date must be higher than enddate';
-            errors.enddate = 'End date must be lesser than startdate';
+            errors.startdate = 'Start date must higher than enddata';
+            errors.enddate = 'End date must less than startdata';
         }
+
         if (!e.search) {
             errors.search = 'Please enter value you want to search';
         }
@@ -40,7 +42,7 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
 
     return (
         <>
-            <PageTitle logindate={logindate} pagename={'Leaves'} innerPageNames={['Rejected Leaves']} isinnerPage={true} isButton={false} />
+            <PageTitle logindate={logindate} pagename={'Leaves'} innerPageNames={['Cancelled Leaves']} isinnerPage={true} isButton={false} />
 
             <div className={style.approvedpage}>
                 <Form
@@ -112,8 +114,6 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
                                         )}
                                     </Field>
                                 </div>
-
-                                <ButtonComponent label='Clear' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 2px #ebebeb' />
                             </div>
                         </form>
                     )}
@@ -169,4 +169,4 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
     )
 }
 
-export default RejectedLeave
+export default CancelledLeave
