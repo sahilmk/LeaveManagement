@@ -11,7 +11,7 @@
     &__input {
         display: flex;
         flex-direction: column;
-        margin: 0 3rem 3.9rem 0;
+        margin: 0 3rem 4rem 0;
 
         label {
             font-size: 1.8rem;
@@ -46,11 +46,11 @@
         margin-top: 7rem;
         display: flex;
         justify-content: space-between;
-        padding-right: 5.5rem;
+        padding-right: 6rem;
 
         button {
             height: 100%;
-
+            font-weight: 600;
         }
     }
 

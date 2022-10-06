@@ -171,8 +171,8 @@ const ProfileDetails = () => {
                                     </Field>
                                 </div>
                                 <div className={PageStyle.profileDetail__button}>
-                                    <ButtonComponent label={'Update Profile'} bgColor={'#173346'} color={'#fff'} size={'1.8rem'} borderRadius={false} onClick={(e) => { console.log(e) }} />
-                                    <ButtonComponent label={'Cancel'} bgColor={'#fafafa'} color={'#173346'} size={'2rem'} borderRadius={false} border={'solid 2px #ebebeb'} onClick={(e) => { console.log(e) }} />
+                                    <ButtonComponent label={'Update Profile'} bgColor={'#173346'} color={'#fff'} size={'1.8rem'} borderRadius={false} onClick={(e) => { console.log(e) }} type={'submit'} />
+                                    <ButtonComponent label={'Cancel'} bgColor={'#fafafa'} color={'#173346'} size={'2rem'} borderRadius={false} border={'solid 2px #ebebeb'} onClick={(e) => { console.log(e) }} type={'button'} />
                                 </div>
                             </div>
                         </div>

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { ProfileDetails } from "../../components";
+import { ChangePassword, LocalAddress, PermanentAddress, ProfileDetails } from "../../components";
 import { PageTitle } from "../../stories";
 import ProfilePageStyle from "./Profile.module.scss";
 
 const ProfilePage = () => {
-  const [proDetailToggler, setProDetToggler] = useState(true);
+  const [proDetailToggler, setProDetToggler] = useState(false);
   const [locAddToggler, setProLocAddToggler] = useState(false);
   const [perAddressToggler, setPerAddressToggler] = useState(false);
   const [pwdToggler, setPwdToggler] = useState(false);
@@ -50,7 +50,7 @@ const ProfilePage = () => {
               )}
             </div>
             <div className={ProfilePageStyle.localAddress__body}>
-              {locAddToggler ? <h1>Local Address</h1> : <></>}
+              {locAddToggler ? <LocalAddress /> : <></>}
             </div>
           </div>
           <div className={ProfilePageStyle.perAddress}>
@@ -67,7 +67,7 @@ const ProfilePage = () => {
               )}
             </div>
             <div className={ProfilePageStyle.perAddress__body}>
-              {perAddressToggler ? <h1>Local Address</h1> : <></>}
+              {perAddressToggler ? <PermanentAddress /> : <></>}
             </div>
           </div>
           <div className={ProfilePageStyle.changePwd}>
@@ -84,7 +84,7 @@ const ProfilePage = () => {
               )}
             </div>
             <div className={ProfilePageStyle.changePwd__body}>
-              {pwdToggler ? <h1>Local Address</h1> : <></>}
+              {pwdToggler ? <ChangePassword /> : <></>}
             </div>
           </div>
         </div>
