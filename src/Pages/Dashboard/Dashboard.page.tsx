@@ -3,23 +3,10 @@ import { Route, Routes } from "react-router-dom";
 import { NavbarComponent, Sidebar } from '../../stories'
 import { LeaveRequest, ApprovedLeave } from "../../components";
 import { sidebarTabData } from "../../Util/Constants";
-import { useAuthContext } from "../../Hooks";
 import { getData, removeData } from "../../Util";
-import { callLogoutGet } from "../../APIs";
 import * as styles from './Dashboard.module.scss'
 
 function Dashboard() {
-
-    // const { dispatch } = useAuthContext();
-    // const loginData = getData("LoginData");
-    // const logout = () => {
-    //     removeData("LoginData");
-    //     callLogoutGet({ headers: { Authorization: 'bearer ' + loginData.token } }).then((Response) =>
-    //         alert(Response.data.message)
-    //     );
-    //     dispatch({ type: "LOGGED_OUT", loggedIn: false });
-    // };.
-
     const loginData = getData("LoginData");
 
     const userName = loginData.data.user.employee.firstName + " " + loginData.data.user.employee.lastName;

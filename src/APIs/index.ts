@@ -5,4 +5,6 @@ import {
   setLoginData,
 } from "./authData";
 
-export { callLoginPost, callForgotPasswordPost, callLogoutGet, setLoginData };
+import { getLeaveData } from './getLeaveData'
+
+export { callLoginPost, callForgotPasswordPost, callLogoutGet, setLoginData, getLeaveData };

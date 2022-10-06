@@ -16,3 +16,5 @@ export const callForgotPasswordPost = (values: { email: string }) => {
 export const callLogoutGet = (config: { headers: { Authorization: string } }) => {
   return get(`${HostEndpoint}/logout`, config);
 };
+
+
