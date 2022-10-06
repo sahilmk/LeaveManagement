@@ -50,7 +50,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                         render={({ handleSubmit }) => (
                             <form onSubmit={handleSubmit}>
                                 <div className={style.displayflex}>
-                                    <div className={style.input}>
+                                    <div className={style.inputcontrol}>
                                         <Field name="startdate">
                                             {(e) => (
                                                 <div>
@@ -72,7 +72,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                         </Field>
                                     </div>
 
-                                    <div className={style.input}>
+                                    <div className={style.inputcontrol}>
                                         <Field name="enddate">
                                             {(e) => (
                                                 <div>
@@ -93,7 +93,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                         </Field>
                                     </div>
 
-                                    <div className={style.input}>
+                                    <div className={style.inputcontrol}>
                                         <Field name="search">
                                             {(e) => (
                                                 <div>
@@ -114,7 +114,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                         </Field>
                                     </div>
 
-                                    <div className={style.input}>
+                                    <div className={style.inputcontrol}>
                                         <label htmlFor="type">Type</label>
                                         <Field name="type" component="select" className={style.dropdown}>
                                             <option>Paid</option>
