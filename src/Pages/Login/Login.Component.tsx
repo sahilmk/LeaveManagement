@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { Form, Field } from "react-final-form";
 import { Input, ButtonComponent } from "../../stories";
-import { callLoginPost, setLoginData } from "../../APIs";
+import { callLoginPost } from "../../APIs";
 import { useAuthContext } from "../../Hooks";
 import LoginPageStyle from "./Login.module.scss";
+import { setLoginData } from "../../Util";
 
 type loginDataValues = {
   email: string,

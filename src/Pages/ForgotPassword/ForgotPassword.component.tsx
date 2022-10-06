@@ -9,7 +9,6 @@ const ForgotPassword = () => {
   const onSubmit = (values: { email: string }) => {
     callForgotPasswordPost(values)
       .then((Response) => {
-        console.log(Response.data);
         navigate("/OTP");
       })
       .catch((error) => alert(error.response.data.message));
