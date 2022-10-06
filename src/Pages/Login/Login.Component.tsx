@@ -46,6 +46,7 @@ const LoginPage = () => {
           loggedIn: false,
           payload: { error: error.response.data.payload.error },
         });
+        alert(error.response.data.payload.error)
       });
   };
 

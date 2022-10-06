@@ -1,8 +1,8 @@
 import {
   callLoginPost,
   callForgotPasswordPost,
-  callLogoutPost,
+  callLogoutGet,
   setLoginData,
 } from "./authData";
 
-export { callLoginPost, callForgotPasswordPost, callLogoutPost, setLoginData };
+export { callLoginPost, callForgotPasswordPost, callLogoutGet, setLoginData };

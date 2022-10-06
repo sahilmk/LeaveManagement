@@ -1,14 +1,14 @@
 import { getData, removeData } from "../../Util";
 import { useAuthContext } from "../../Hooks";
-import { callLogoutPost } from "../../APIs/authData";
+import { callLogoutGet } from "../../APIs/authData";
 
 const Dashboard = () => {
   const { dispatch } = useAuthContext();
   const loginData = getData("LoginData");
   const logout = () => {
     removeData("LoginData");
-    callLogoutPost(loginData.token).then((Response) =>
-      console.log(Response.data)
+    callLogoutGet({ headers: { Authorization: 'bearer ' + loginData.token } }).then((Response) =>
+      alert(Response.data.message)
     );
     dispatch({ type: "LOGGED_OUT", loggedIn: false });
   };
