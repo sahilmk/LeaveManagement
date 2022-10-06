@@ -28,6 +28,10 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
         if (!e.enddate) {
             errors.enddate = 'Please enter data';
         }
+        if (e.startdate! > e.enddate!) {
+            errors.startdate = 'Start date must be higher than enddate';
+            errors.enddate = 'End date must be lesser than startdate';
+        }
         if (!e.search) {
             errors.search = 'Please enter value you want to search';
         }
