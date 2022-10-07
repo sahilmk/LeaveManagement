@@ -19,7 +19,6 @@ export const SidebarStyle = styled.div`
 
     .profiledescription{
         color: ${Theme.colors.whiteColor};
-        font-family: SegoeUI;
         flex-direction: column;
         display: flex;
 
@@ -30,7 +29,6 @@ export const SidebarStyle = styled.div`
 
         .userposition{
             color: ${Theme.colors.whiteColor};
-            font-family: SegoeUI;
             font-size: 2rem;
             font-weight: 300;
         }

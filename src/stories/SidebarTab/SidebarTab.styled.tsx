@@ -22,7 +22,6 @@ export const TabStyle = styled.a`
     }
 
     span{
-        font-family: 'SegoeUI';
         padding-left: 35px;
         font-size: 26.5px;
     }

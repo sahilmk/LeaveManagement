@@ -13,13 +13,11 @@ const StyledNavbar = styled.div`
   left: 0px;
 
   .leaveManagementTitle {
-    font-family: Novecento;
     font-size: 29.5px;
     color: #fff;
   }
 
   .welcomeMessage {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     height: 24px;
     font-size: 26.5px;
     font-weight: 300;

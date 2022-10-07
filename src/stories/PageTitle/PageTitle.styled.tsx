@@ -12,7 +12,6 @@ export const PageTitleStyle = styled.div`
 
     .logindate{
         color: ${Theme.colors.yankeesBlueColor};
-        font-family: SegoeUI;
         display: inline-block;
         margin-bottom: 1rem;
         font-size: 1.95rem;
@@ -24,14 +23,12 @@ export const PageTitleStyle = styled.div`
 
     .nameofpage{
         color: ${Theme.colors.yankeesBlueColor};
-        font-family: SegoeUI;
         font-weight: 600;
         font-size: 3rem;
     }
 
     .childpage{
         color: ${Theme.colors.yankeesBlueColor};
-        font-family: SegoeUI;
         font-size: 2.4rem;
     }
 
