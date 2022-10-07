@@ -113,7 +113,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                                     placeholder='Select Date'
                                                                     inputtype=''
                                                                     padding={'14px 18px 14px 19px'}
-                                                                    width={440}
+                                                                    width='440px'
                                                                     onChange={e.input.onChange}
                                                                     onBlur={e.input.onBlur}
                                                                     onFocus={e.input.onFocus}
@@ -134,7 +134,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                                     placeholder='Select Date'
                                                                     inputtype=''
                                                                     padding={'14px 18px 14px 19px'}
-                                                                    width={440}
+                                                                    width='440px'
                                                                     onChange={e.input.onChange}
                                                                     onBlur={e.input.onBlur}
                                                                     onFocus={e.input.onFocus} />
@@ -172,7 +172,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                                     placeholder='Remark'
                                                                     inputtype=''
                                                                     padding={'14px 18px 14px 19px'}
-                                                                    width={910}
+                                                                    width='910px'
                                                                     onChange={e.input.onChange}
                                                                     onBlur={e.input.onBlur}
                                                                     onFocus={e.input.onFocus} />
@@ -197,7 +197,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                                     placeholder='Select Date'
                                                                     inputtype=''
                                                                     padding={'14px 18px 14px 19px'}
-                                                                    width={440}
+                                                                    width='440px'
                                                                     onChange={e.input.onChange}
                                                                     onBlur={e.input.onBlur}
                                                                     onFocus={e.input.onFocus} />
@@ -234,7 +234,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                                 placeholder='Remark'
                                                                 inputtype=''
                                                                 padding={'14px 18px 14px 19px'}
-                                                                width={910}
+                                                                width='910px'
                                                                 onChange={e.input.onChange}
                                                                 onBlur={e.input.onBlur}
                                                                 onFocus={e.input.onFocus} />
