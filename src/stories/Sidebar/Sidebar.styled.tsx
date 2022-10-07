@@ -51,7 +51,7 @@ export const SidebarStyle = styled.div`
 
     .innerTabs{
         a{
-            background-color: ${Theme.colors.lotion};
+            background-color: ${Theme.colors.lotionColor};
             /* &:focus{
                 background-color: ${Theme.colors.culturedColor};
                 margin: 1rem;

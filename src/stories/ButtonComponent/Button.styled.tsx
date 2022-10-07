@@ -10,11 +10,10 @@ type StyledButtonProps = {
 };
 
 const StyledButton = styled.button<StyledButtonProps>`
+  border: solid 2px ${Theme.colors.darkslategrayColor};
   cursor: pointer;
   width: 204px;
   height: 60px;
-  font-family: ${Theme.fontFamily};
-  border: solid 2px ${Theme.colors.darkslategray};
 
   background-color: ${({ bgColor }) => bgColor};
   color: ${({ color }) => color};

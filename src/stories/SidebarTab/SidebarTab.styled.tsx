@@ -8,11 +8,11 @@ export const TabStyle = styled.a`
     cursor: pointer;
     display: flex;
     background-color: ${Theme.colors.whiteColor};
-    color: ${Theme.colors.sonicSilver};
+    color: ${Theme.colors.sonicSilverColor};
     height: 70px;
 
     /* &:focus{
-        color: ${Theme.colors.yankeesBlue};
+        color: ${Theme.colors.yankeesBlueColor};
     } */
 
     i{
