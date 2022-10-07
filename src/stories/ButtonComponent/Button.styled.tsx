@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Theme } from "../../Theme";
 
 type StyledButtonProps = {
   bgColor: string;
@@ -12,8 +13,8 @@ const StyledButton = styled.button<StyledButtonProps>`
   cursor: pointer;
   width: 204px;
   height: 60px;
-  font-family: "SegoeUI";
-  border: solid 2px #284960;
+  font-family: ${Theme.fontFamily};
+  border: solid 2px ${Theme.colors.darkslategray};
 
   background-color: ${({ bgColor }) => bgColor};
   color: ${({ color }) => color};
