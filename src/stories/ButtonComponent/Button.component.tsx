@@ -2,7 +2,7 @@ import React from "react";
 import StyledButton from "./Button.styled";
 import '../../Icons/css/material-design-iconic-font.css'
 
-type ButtonComponentProps = {
+type ButtonProps = {
   label: string;
   onClick: React.MouseEventHandler;
   bgColor: string;
@@ -14,7 +14,7 @@ type ButtonComponentProps = {
   type: "submit" | "button" | "reset";
 };
 
-const ButtonComponent = ({
+const Button = ({
   label,
   onClick,
   bgColor,
@@ -23,8 +23,8 @@ const ButtonComponent = ({
   border,
   borderRadius,
   logo,
-  type,
-}: ButtonComponentProps) => {
+  type
+}: ButtonProps) => {
   return (
     <StyledButton
       onClick={onClick}
@@ -41,7 +41,7 @@ const ButtonComponent = ({
   );
 };
 
-ButtonComponent.defaultProps = {
+Button.defaultProps = {
   value: "",
   onClick: (e: React.MouseEvent) => {
 
@@ -55,4 +55,4 @@ ButtonComponent.defaultProps = {
   type: "button",
 };
 
-export default ButtonComponent;
+export default Button;

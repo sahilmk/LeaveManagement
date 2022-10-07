@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Field } from 'react-final-form'
-import { ButtonComponent, DataTable, Input, PageTitle } from '../../stories'
+import { Button, DataTable, Input, PageTitle } from '../../stories'
 import style from './CancelledLeave.module.scss'
 
 export type cancelledLeavePropType = {
@@ -62,7 +62,7 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
                                                     placeholder='Select Date'
                                                     inputtype=''
                                                     padding={'14px 18px 14px 19px'}
-                                                    width={300}
+                                                    width='300px'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
                                                     onFocus={e.input.onFocus}
@@ -84,7 +84,7 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
                                                     placeholder='Select Date'
                                                     inputtype=''
                                                     padding={'14px 18px 14px 19px'}
-                                                    width={300}
+                                                    width='300px'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
                                                     onFocus={e.input.onFocus} />
@@ -105,7 +105,7 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
                                                     placeholder='Search here... '
                                                     inputtype=''
                                                     padding={'14px 18px 14px 19px'}
-                                                    width={300}
+                                                    width='300px'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
                                                     onFocus={e.input.onFocus} />

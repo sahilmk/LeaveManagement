@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Input, PageTitle, ButtonComponent } from '../../stories'
+import { Input, PageTitle, Button } from '../../stories'
 import { Form, Field } from 'react-final-form'
 import style from './LeaveRequest.module.scss';
 
@@ -113,7 +113,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                                     placeholder='Select Date'
                                                                     inputtype=''
                                                                     padding={'14px 18px 14px 19px'}
-                                                                    width={440}
+                                                                    width='440px'
                                                                     onChange={e.input.onChange}
                                                                     onBlur={e.input.onBlur}
                                                                     onFocus={e.input.onFocus}
@@ -134,7 +134,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                                     placeholder='Select Date'
                                                                     inputtype=''
                                                                     padding={'14px 18px 14px 19px'}
-                                                                    width={440}
+                                                                    width='440px'
                                                                     onChange={e.input.onChange}
                                                                     onBlur={e.input.onBlur}
                                                                     onFocus={e.input.onFocus} />
@@ -172,7 +172,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                                     placeholder='Remark'
                                                                     inputtype=''
                                                                     padding={'14px 18px 14px 19px'}
-                                                                    width={910}
+                                                                    width='910px'
                                                                     onChange={e.input.onChange}
                                                                     onBlur={e.input.onBlur}
                                                                     onFocus={e.input.onFocus} />
@@ -197,7 +197,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                                     placeholder='Select Date'
                                                                     inputtype=''
                                                                     padding={'14px 18px 14px 19px'}
-                                                                    width={440}
+                                                                    width='440px'
                                                                     onChange={e.input.onChange}
                                                                     onBlur={e.input.onBlur}
                                                                     onFocus={e.input.onFocus} />
@@ -234,7 +234,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                                 placeholder='Remark'
                                                                 inputtype=''
                                                                 padding={'14px 18px 14px 19px'}
-                                                                width={910}
+                                                                width='910px'
                                                                 onChange={e.input.onChange}
                                                                 onBlur={e.input.onBlur}
                                                                 onFocus={e.input.onFocus} />
@@ -247,63 +247,8 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                     }
                                 </div>
 
-                                {/* <div className="input">
-                          <label htmlFor="reason">Reason</label>
-                          <Field
-                            name="reason"
-                            component="select"
-                            className={style.dropdown}
-                          >
-                            <option>Sick Leave</option>
-                            <option>Other</option>
-                          </Field>
-                        </div>
-                      </div>
-                      <div className="input">
-                        <Field name="otherremark">
-                          {(e) => (
-                            <div>
-                              <label htmlFor="otherremark">
-                                Other Remark
-                              </label>
-                              <Input
-                                id="otherremark"
-                                type="text"
-                                placeholder="Remark"
-                                inputtype=""
-                                padding={"14px 18px 14px 19px"}
-                                width={910}
-                                onChange={e.input.onChange}
-                                onBlur={e.input.onBlur}
-                                onFocus={e.input.onFocus}
-                              />
-                              {e.meta.error && e.meta.touched && (
-                                <span className={style.error}>
-                                  {e.meta.error}
-                                </span>
-                              )}
-                            </div>
-                          )}
-                        </Field>
-                      </div>
-                    </div>
-                  )}
-                </div> */}
-
-                                <ButtonComponent
-                                    label="Submit"
-                                    type="submit"
-                                    borderRadius={false}
-                                    color="#fff"
-                                />
-                                <ButtonComponent
-                                    label="Cancel"
-                                    type="reset"
-                                    borderRadius={false}
-                                    color="#173346"
-                                    bgColor="#fafafa"
-                                    border="solid 2px #ebebeb"
-                                />
+                                <Button label='Submit' type='submit' borderRadius={false} color='#fff' />
+                                <Button label='Cancel' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 2px #ebebeb' />
                             </form>
                         )}
                     />

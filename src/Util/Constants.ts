@@ -16,3 +16,19 @@ export const sidebarTabData = [
     { icon: 'device-hub', label: 'Leave Type', isExpandable: false, isOpen: false, route: '/leavetype' },
     { icon: 'gamepad', label: 'Department', isExpandable: false, isOpen: false, route: '/department' }
 ];
+
+export const homePath = "/home";
+
+export const holidayPath = "/holidays";
+
+export const manageleaverequestPath = "/manageleaverequest";
+
+export const employeelistPath = "/employeelist";
+
+export const employeeleaveslistPath = "/employeeleaveslist";
+
+export const leavetypePath = "/leavetype";
+
+export const departmentPath = "/department";
+
+export const leaverequestPath = "/leaverequest";

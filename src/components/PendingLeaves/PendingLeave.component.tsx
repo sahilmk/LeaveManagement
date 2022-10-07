@@ -63,7 +63,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
                                                     placeholder='Select Date'
                                                     inputtype=''
                                                     padding={'14px 18px 14px 19px'}
-                                                    width={300}
+                                                    width='300px'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
                                                     onFocus={e.input.onFocus}
@@ -85,7 +85,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
                                                     placeholder='Select Date'
                                                     inputtype=''
                                                     padding={'14px 18px 14px 19px'}
-                                                    width={300}
+                                                    width='300px'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
                                                     onFocus={e.input.onFocus} />
@@ -106,7 +106,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
                                                     placeholder='Search here...'
                                                     inputtype=''
                                                     padding={'14px 18px 14px 19px'}
-                                                    width={300}
+                                                    width='300px'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
                                                     onFocus={e.input.onFocus} />

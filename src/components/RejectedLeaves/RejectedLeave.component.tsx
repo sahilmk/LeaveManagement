@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Field } from 'react-final-form'
-import { ButtonComponent, DataTable, Input, PageTitle } from '../../stories'
+import { Button, DataTable, Input, PageTitle } from '../../stories'
 import style from './RejectedLeave.module.scss'
 
 export type rejectedLeavePropType = {
@@ -60,7 +60,7 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
                                                     placeholder='Select Date'
                                                     inputtype=''
                                                     padding={'14px 18px 14px 19px'}
-                                                    width={300}
+                                                    width='300px'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
                                                     onFocus={e.input.onFocus}
@@ -82,7 +82,7 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
                                                     placeholder='Select Date'
                                                     inputtype=''
                                                     padding={'14px 18px 14px 19px'}
-                                                    width={300}
+                                                    width='300px'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
                                                     onFocus={e.input.onFocus} />
@@ -103,7 +103,7 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
                                                     placeholder='Search here... '
                                                     inputtype=''
                                                     padding={'14px 18px 14px 19px'}
-                                                    width={300}
+                                                    width='300px'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
                                                     onFocus={e.input.onFocus} />
@@ -114,7 +114,7 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
                                 </div>
 
                                 <div className={style.inputcontrol}>
-                                    <ButtonComponent label='Clear' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 2px #ebebeb' />
+                                    <Button label='Clear' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 2px #ebebeb' />
                                 </div>
                             </div>
                         </form>
