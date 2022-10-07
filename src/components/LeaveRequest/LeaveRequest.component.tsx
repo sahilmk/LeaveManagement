@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Input, PageTitle, ButtonComponent } from '../../stories'
 import { Form, Field } from 'react-final-form';
 import style from './LeaveRequest.module.scss';
+import { postNewLeave } from '../../APIs/getLeaveData';
 
 type fieldInputType = {
     leavefrom?: string | undefined,
@@ -17,7 +18,29 @@ function LeaveRequest({ logindate }: { logindate: string }) {
 
     const [radioValue, setRadioValue] = useState(true);
 
-    const onSubmit = (e: fieldInputType) => { console.log(e) };
+    const onSubmit = (e: fieldInputType) => {
+        let newLeave = {};
+        if (e.leaveduration === 'multipleday') {
+            newLeave = {
+                startDate: e.leavefrom,
+                endDate: e.leaveto,
+                comments: e.otherremark,
+                leaveTypeId: (e.leavetype === 'Paid' ? 1 : e.leavetype === 'Unpaid' ? 2 : 3),
+                leaveReasonId: (e.reason === 'Sick Leave' ? 1 : 3),
+                type: 'multiple'
+            }
+        } else {
+            newLeave = {
+                startDate: e.leavedate,
+                comments: e.otherremark,
+                leaveTypeId: (e.leavetype === 'Paid' ? 1 : e.leavetype === 'Unpaid' ? 2 : 3),
+                leaveReasonId: (e.reason === 'Sick Leave' ? 1 : 3),
+                type: (e.leaveduration === 'halfday' ? 'half' : 'single')
+            }
+        }
+
+        postNewLeave(newLeave).then((res) => console.log(res))
+    };
 
     const validate = (e: fieldInputType) => {
         const errors: fieldInputType = {};
@@ -148,8 +171,8 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                 <div className={style.inputcontrol}>
                                                     <label htmlFor="reason">Reason</label>
                                                     <Field name="reason" component="select" className={style.dropdown}>
-                                                        <option>Sick Leave</option>
-                                                        <option>Other</option>
+                                                        <option value='Sick Leave'>Sick Leave</option>
+                                                        <option value='Other'>Other</option>
                                                     </Field>
                                                 </div>
                                             </div>
@@ -157,8 +180,9 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                 <div className={style.inputcontrol}>
                                                     <label htmlFor="reason">Leave Type</label>
                                                     <Field name="leavetype" component="select" className={style.dropdown}>
-                                                        <option>Paid</option>
-                                                        <option>Unpaid</option>
+                                                        <option value='Paid'>Paid</option>
+                                                        <option value='Unpaid'>Unpaid</option>
+                                                        <option value='Other'>Other</option>
                                                     </Field>
                                                 </div>
 
@@ -211,16 +235,17 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                 <div className={style.inputcontrol}>
                                                     <label htmlFor="reason">Leave Type</label>
                                                     <Field name="leavetype" component="select" className={style.dropdown}>
-                                                        <option>Paid</option>
-                                                        <option>Unpaid</option>
+                                                        <option value='Paid'>Paid</option>
+                                                        <option value='Unpaid'>Unpaid</option>
+                                                        <option value='Other'>Other</option>
                                                     </Field>
                                                 </div>
 
                                                 <div className={style.inputcontrol}>
                                                     <label htmlFor="reason">Reason</label>
                                                     <Field name="reason" component="select" className={style.dropdown}>
-                                                        <option>Sick Leave</option>
-                                                        <option>Other</option>
+                                                        <option value='Sick Leave'>Sick Leave</option>
+                                                        <option value='Other'>Other</option>
                                                     </Field>
                                                 </div>
                                             </div>
