@@ -8,7 +8,7 @@ type InputTypes = {
     value?: string,
     inputtype: string,
     padding: string,
-    width: number
+    width: string
     onBlur?: (event?: React.FocusEvent<HTMLInputElement> | undefined) => void,
     onChange?: (event: React.ChangeEvent<HTMLInputElement> | undefined) => void,
     onFocus?: (event?: React.FocusEvent<HTMLInputElement> | undefined) => void,
