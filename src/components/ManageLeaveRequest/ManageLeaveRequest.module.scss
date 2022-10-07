@@ -1,0 +1,17 @@
+@import '../../Styles/variable.scss';
+
+.py3 {
+    margin: 3rem;
+}
+
+.tablecontent {
+    background-color: $whiteColor;
+    overflow-y: auto;
+    height: calc(100vh - 25rem);
+    width: 100%;
+
+    >div {
+        height: calc(100vh - 27rem) !important;
+        padding-top: 3rem;
+    }
+}
