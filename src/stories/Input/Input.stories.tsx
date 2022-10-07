@@ -15,5 +15,5 @@ Primary.args = {
     placeholder: 'Enter Email',
     padding: '0px 0px 0px 40px',
     inputtype: 'authinput',
-    width: 450
+    width: '450px'
 }
