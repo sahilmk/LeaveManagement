@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Form, Field } from 'react-final-form'
 import { ButtonComponent, DataTable, Input, PageTitle } from '../../stories'
 import style from './ApprovedLeaves.module.scss';
 import '../../Icons/css/material-design-iconic-font.css'
+import { getData } from '../../Util';
+import { getLeaveData } from '../../APIs';
 
 export type approvedLeavePropType = {
     logindate: string
@@ -39,6 +41,11 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
         return errors;
     };
 
+    const loginData = getData("LoginData");
+
+    useEffect(() => {
+        getLeaveData({ headers: { Authorization: 'bearer ' + loginData.token } }, 'Pending').then((res) => console.log(res))
+    }, []);
 
     return (
         <>

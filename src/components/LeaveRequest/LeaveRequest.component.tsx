@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Input, PageTitle, ButtonComponent } from '../../stories'
 import { Form, Field } from 'react-final-form';
-import { getLeaveData } from '../../APIs';
 import style from './LeaveRequest.module.scss';
-import { getData } from '../../Util';
 
 type fieldInputType = {
     leavefrom?: string | undefined,
@@ -48,11 +46,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
         return errors;
     };
 
-    const loginData = getData("LoginData");
 
-    useEffect(() => {
-        getLeaveData({ headers: { Authorization: 'bearer ' + loginData.token } }, 'Pending').then((res) => console.log(res))
-    }, []);
 
     return (
         <div >
