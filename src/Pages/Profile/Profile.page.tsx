@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChangePassword, LocalAddress, PermanentAddress, ProfileDetails } from "../../components";
 import { PageTitle } from "../../stories";
+import { getData } from "../../Util/Helper";
 import ProfilePageStyle from "./Profile.module.scss";
 
 const ProfilePage = () => {
@@ -8,6 +9,11 @@ const ProfilePage = () => {
   const [locAddToggler, setProLocAddToggler] = useState(false);
   const [perAddressToggler, setPerAddressToggler] = useState(false);
   const [pwdToggler, setPwdToggler] = useState(false);
+
+  useEffect(() => {
+    const userinfo = getData('LoginData');
+
+  }, [])
 
   return (
     <>
