@@ -1,5 +1,5 @@
 import { Form, Field } from "react-final-form";
-import { Input, ButtonComponent } from "../../stories";
+import { Input, Button } from "../../stories";
 import { ProfileDetailType } from "../../Types";
 import PageStyle from "./ProfileDetails.module.scss";
 
@@ -8,8 +8,6 @@ const ProfileDetails = ({
 }: {
   profileData: ProfileDetailType | undefined;
 }) => {
-  console.log(profileData);
-
   const onSubmit = (e: ProfileDetailType) => {};
 
   const validate = (e: ProfileDetailType) => {
@@ -41,11 +39,11 @@ const ProfileDetails = ({
         }}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <div className={PageStyle.profileDetail__flex}>
+            <div className={PageStyle.profileDetail__formContainer}>
               <div>
                 <Field name="firstName">
                   {(e) => (
-                    <div className={PageStyle.profileDetail__input}>
+                    <div className={PageStyle.profileDetail__customInput}>
                       <label htmlFor="firstName"> First Name </label>
                       <Input
                         id="firstName"
@@ -67,7 +65,7 @@ const ProfileDetails = ({
                 </Field>
                 <Field name="email">
                   {(e) => (
-                    <div className={PageStyle.profileDetail__input}>
+                    <div className={PageStyle.profileDetail__customInput}>
                       <label htmlFor="email"> Email </label>
                       <Input
                         id="email"
@@ -89,7 +87,7 @@ const ProfileDetails = ({
                 </Field>
                 <Field name="landlineNo">
                   {(e) => (
-                    <div className={PageStyle.profileDetail__input}>
+                    <div className={PageStyle.profileDetail__customInput}>
                       <label htmlFor="landlineNo"> Landline No. </label>
                       <Input
                         id="landlineNo"
@@ -111,7 +109,7 @@ const ProfileDetails = ({
                 </Field>
                 <Field name="dateOfBirth">
                   {(e) => (
-                    <div className={PageStyle.profileDetail__input}>
+                    <div className={PageStyle.profileDetail__customInput}>
                       <label htmlFor="dateOfBirth"> Date Of Birth </label>
                       <Input
                         id="dateOfBirth"
@@ -133,7 +131,7 @@ const ProfileDetails = ({
                 </Field>
                 <Field name="designation">
                   {(e) => (
-                    <div className={PageStyle.profileDetail__input}>
+                    <div className={PageStyle.profileDetail__customInput}>
                       <label htmlFor="designation"> Designation </label>
                       <Input
                         id="designation"
@@ -157,7 +155,7 @@ const ProfileDetails = ({
               <div>
                 <Field name="lastName">
                   {(e) => (
-                    <div className={PageStyle.profileDetail__input}>
+                    <div className={PageStyle.profileDetail__customInput}>
                       <label htmlFor="lastName"> Last Name </label>
                       <Input
                         id="lastName"
@@ -179,7 +177,7 @@ const ProfileDetails = ({
                 </Field>
                 <Field name="mobNo">
                   {(e) => (
-                    <div className={PageStyle.profileDetail__input}>
+                    <div className={PageStyle.profileDetail__customInput}>
                       <label htmlFor="mobNo"> Enter Mobile no. </label>
                       <Input
                         id="mobNo"
@@ -199,49 +197,45 @@ const ProfileDetails = ({
                     </div>
                   )}
                 </Field>
-                <div className={PageStyle.profileDetail__input}>
+                <div className={PageStyle.profileDetail__customInput}>
                   <label htmlFor="gender">Gender</label>
                   <Field
                     name="gender"
                     component="select"
-                    className={PageStyle.dropdown}
+                    className={PageStyle.customDropdown}
                   >
                     <option value={"M"}>Male</option>
                     <option value={"F"}>Female</option>
                   </Field>
                 </div>
-                <div className={PageStyle.profileDetail__input}>
+                <div className={PageStyle.profileDetail__customInput}>
                   <label htmlFor="department">Department</label>
                   <Field
                     name="department"
                     component="select"
-                    className={PageStyle.dropdown}
+                    className={PageStyle.customDropdown}
                   >
                     <option>Department</option>
                   </Field>
                 </div>
-                <div className={PageStyle.profileDetail__button}>
-                  <ButtonComponent
+                <div className={PageStyle.profileDetail__buttonContainer}>
+                  <Button
                     label={"Update Profile"}
                     bgColor={"#173346"}
                     color={"#fff"}
                     size={"1.8rem"}
                     borderRadius={false}
-                    onClick={(e) => {
-                      console.log(e);
-                    }}
+                    onClick={(e) => {}}
                     type={"submit"}
                   />
-                  <ButtonComponent
+                  <Button
                     label={"Cancel"}
                     bgColor={"#fafafa"}
                     color={"#173346"}
                     size={"2rem"}
                     borderRadius={false}
                     border={"solid 2px #ebebeb"}
-                    onClick={(e) => {
-                      console.log(e);
-                    }}
+                    onClick={(e) => {}}
                     type={"button"}
                   />
                 </div>

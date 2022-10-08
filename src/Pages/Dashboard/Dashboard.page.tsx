@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { NavbarComponent, Sidebar } from "../../stories";
+import { Navbar, Sidebar } from "../../stories";
 import { LeaveRequest } from "../../components";
 import { sidebarTabData } from "../../Util/Constants";
 import * as styles from "./Dashboard.module.scss";
@@ -8,7 +8,7 @@ import { ProfilePage } from "..";
 function Dashboard() {
   return (
     <>
-      <NavbarComponent />
+      <Navbar />
       <Sidebar
         user="John Doe"
         position="Admin"

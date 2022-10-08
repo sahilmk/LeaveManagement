@@ -1,5 +1,5 @@
 import { Form, Field } from "react-final-form";
-import { Input, ButtonComponent } from "../../stories";
+import { Input, Button } from "../../stories";
 import { PermanentAddressType } from "../../Types";
 import PageStyle from "./PerAddress.module.scss";
 
@@ -8,8 +8,6 @@ const PermanentAddress = ({
 }: {
   permanentAdd: PermanentAddressType | undefined;
 }) => {
-  console.log(permanentAdd);
-
   const onSubmit = (e: PermanentAddressType) => {};
 
   const validate = (e: PermanentAddressType) => {
@@ -31,11 +29,11 @@ const PermanentAddress = ({
         }}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <div className={PageStyle.perAddress__flex}>
+            <div className={PageStyle.perAddress__formContainer}>
               <div>
                 <Field name="perAddress">
                   {(e) => (
-                    <div className={PageStyle.perAddress__input}>
+                    <div className={PageStyle.perAddress__customInput}>
                       <label htmlFor="perAddress"> Permanent Address 1</label>
                       <Input
                         id="perAddress"
@@ -57,7 +55,7 @@ const PermanentAddress = ({
                 </Field>
                 <Field name="perAddress2">
                   {(e) => (
-                    <div className={PageStyle.perAddress__input}>
+                    <div className={PageStyle.perAddress__customInput}>
                       <label htmlFor="perAddress2"> Permanent Address 2</label>
                       <Input
                         id="perAddress2"
@@ -77,11 +75,11 @@ const PermanentAddress = ({
                     </div>
                   )}
                 </Field>
-                <div className={PageStyle.perAddress__innerflex}>
+                <div className={PageStyle.perAddress__innerFlexContainer}>
                   <div>
                     <Field name="pincode">
                       {(e) => (
-                        <div className={PageStyle.perAddress__input}>
+                        <div className={PageStyle.perAddress__customInput}>
                           <label htmlFor="pincode"> Pincode </label>
                           <Input
                             id="pincode"
@@ -102,28 +100,24 @@ const PermanentAddress = ({
                       )}
                     </Field>
                   </div>
-                  <div className={PageStyle.perAddress__button}>
-                    <ButtonComponent
+                  <div className={PageStyle.perAddress__buttonContainer}>
+                    <Button
                       label={"Update Address"}
                       bgColor={"#173346"}
                       color={"#fff"}
                       size={"1.8rem"}
                       borderRadius={false}
-                      onClick={(e) => {
-                        console.log(e);
-                      }}
+                      onClick={(e) => {}}
                       type={"submit"}
                     />
-                    <ButtonComponent
+                    <Button
                       label={"Cancel"}
                       bgColor={"#fafafa"}
                       color={"#173346"}
                       size={"2rem"}
                       borderRadius={false}
                       border={"solid 2px #ebebeb"}
-                      onClick={(e) => {
-                        console.log(e);
-                      }}
+                      onClick={(e) => {}}
                       type={"button"}
                     />
                   </div>
@@ -132,7 +126,7 @@ const PermanentAddress = ({
               <div>
                 <Field name="state">
                   {(e) => (
-                    <div className={PageStyle.perAddress__input}>
+                    <div className={PageStyle.perAddress__customInput}>
                       <label htmlFor="state"> State</label>
                       <Input
                         id="state"
@@ -154,7 +148,7 @@ const PermanentAddress = ({
                 </Field>
                 <Field name="city">
                   {(e) => (
-                    <div className={PageStyle.perAddress__input}>
+                    <div className={PageStyle.perAddress__customInput}>
                       <label htmlFor="city"> City</label>
                       <Input
                         id="city"

@@ -1,14 +1,14 @@
-@import '../../Styles/variable.scss';
+@import '../../Styles/_variable.scss';
 
 .profileDetail {
 
     padding: 3rem 0;
 
-    &__flex {
+    &__formContainer {
         display: flex;
     }
 
-    &__input {
+    &__customInput {
         display: flex;
         flex-direction: column;
         margin: 0 3rem 4rem 0;
@@ -30,7 +30,7 @@
             }
         }
 
-        .dropdown {
+        .customDropdown {
             background-color: $lotionColor;
             border: solid 0.2rem $brightGrayColor;
             height: 5rem;
@@ -41,7 +41,7 @@
         }
     }
 
-    &__button {
+    &__buttonContainer {
         height: 5rem;
         margin-top: 7rem;
         display: flex;

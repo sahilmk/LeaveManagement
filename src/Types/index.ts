@@ -1,15 +1,8 @@
 import {
   UserInfo,
   ProfileDetailType,
-  LocalAddressType,
-  PermanentAddressType,
+  AddressType,
   ChangePasswordType,
 } from "./ProfilePagetypes";
 
-export type {
-  UserInfo,
-  ProfileDetailType,
-  LocalAddressType,
-  PermanentAddressType,
-  ChangePasswordType,
-};
+export type { UserInfo, ProfileDetailType, AddressType, ChangePasswordType };

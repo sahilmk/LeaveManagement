@@ -1,6 +1,4 @@
-import { Preview } from "@mui/icons-material";
 import { useEffect, useState } from "react";
-import { callProfilePageGet } from "../../APIs";
 import {
   ChangePassword,
   LocalAddress,
@@ -8,12 +6,9 @@ import {
   ProfileDetails,
 } from "../../components";
 import { PageTitle } from "../../stories";
-import {
-  LocalAddressType,
-  PermanentAddressType,
-  ProfileDetailType,
-} from "../../Types";
 import { getData } from "../../Util/Helper";
+import { ProfileDetailType } from "../../Types";
+import { callProfilePageGet } from "../../APIs";
 import ProfilePageStyle from "./Profile.module.scss";
 
 const ProfilePage = () => {
@@ -25,43 +20,46 @@ const ProfilePage = () => {
   });
   const userInfo = getData("LoginData");
   const [profileDetail, setProfileDetail] = useState<ProfileDetailType>();
-  const [localAddressdata, setLocalAddressData] = useState<LocalAddressType>();
-  const [permanentAddress, setPermanentAddress] =
-    useState<PermanentAddressType>();
+  const [addressdata, setAddressData] = useState({
+    localAdd: {},
+    permanentAddress: {},
+  });
 
   useEffect(() => {
     callProfilePageGet(userInfo.data.user.id, {
       headers: { Authorization: "bearer " + userInfo.token },
-    }).then((Response) => {
-      const requiredData = Response.data.payload.data.employee;
-      setProfileDetail({
-        firstName: requiredData.firstName,
-        lastName: requiredData.lastName,
-        email: requiredData.email,
-        mobileNo: requiredData.mobileNo,
-        gender: requiredData.gender,
-        department: requiredData.departmentId,
-        designation: requiredData.designation,
-        landlineNo: requiredData?.landlineNo,
-        dateOfBirth: requiredData?.dob,
-      });
-
-      setLocalAddressData({
-        localAddress: requiredData?.localAddress,
-        localAddress2: requiredData?.localAddress2,
-        city: requiredData?.localCity,
-        state: requiredData?.localSate,
-        pincode: requiredData?.localPincode,
-      });
-
-      setPermanentAddress({
-        perAddress: requiredData?.permanentAddress,
-        perAddress2: requiredData?.permanentAddress2,
-        city: requiredData?.permanentCity,
-        state: requiredData?.permanentState,
-        pincode: requiredData?.permanentPincode,
-      });
-    });
+    })
+      .then((Response) => {
+        const requiredData = Response.data.payload.data.employee;
+        setProfileDetail({
+          firstName: requiredData.firstName,
+          lastName: requiredData.lastName,
+          email: requiredData.email,
+          mobileNo: requiredData.mobileNo,
+          gender: requiredData.gender,
+          department: requiredData.departmentId,
+          designation: requiredData.designation,
+          landlineNo: requiredData?.landlineNo,
+          dateOfBirth: requiredData?.dob,
+        });
+        setAddressData({
+          localAdd: {
+            localAddress: requiredData?.localAddress,
+            localAddress2: requiredData?.localAddress2,
+            city: requiredData?.localCity,
+            state: requiredData?.localSate,
+            pincode: requiredData?.localPincode,
+          },
+          permanentAddress: {
+            perAddress: requiredData?.permanentAddress,
+            perAddress2: requiredData?.permanentAddress2,
+            city: requiredData?.permanentCity,
+            state: requiredData?.permanentState,
+            pincode: requiredData?.permanentPincode,
+          },
+        });
+      })
+      .catch((error) => alert(error));
   }, []);
 
   return (
@@ -120,7 +118,7 @@ const ProfilePage = () => {
             </div>
             <div className={ProfilePageStyle.localAddress__body}>
               {toggler.locAddToggler ? (
-                <LocalAddress localAdd={localAddressdata} />
+                <LocalAddress localAdd={addressdata.localAdd} />
               ) : (
                 <></>
               )}
@@ -146,7 +144,7 @@ const ProfilePage = () => {
             </div>
             <div className={ProfilePageStyle.perAddress__body}>
               {toggler.perAddressToggler ? (
-                <PermanentAddress permanentAdd={permanentAddress} />
+                <PermanentAddress permanentAdd={addressdata.permanentAddress} />
               ) : (
                 <></>
               )}

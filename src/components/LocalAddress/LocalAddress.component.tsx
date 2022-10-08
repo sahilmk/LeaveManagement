@@ -1,19 +1,14 @@
 import { Form, Field } from "react-final-form";
-import { Input, ButtonComponent } from "../../stories";
-import { LocalAddressType } from "../../Types";
+import { Input, Button } from "../../stories";
+import { AddressType } from "../../Types";
 import PageStyle from "./LocalAddress.module.scss";
 
-const LocalAddress = ({
-  localAdd,
-}: {
-  localAdd: LocalAddressType | undefined;
-}) => {
-  console.log(localAdd);
+const LocalAddress = ({ localAdd }: { localAdd: AddressType | undefined }) => {
+  const onSubmit = (e: AddressType) => {};
 
-  const onSubmit = (e: LocalAddressType) => {};
+  const validate = (e: AddressType) => {
+    const errors: AddressType = {};
 
-  const validate = (e: LocalAddressType) => {
-    const errors: LocalAddressType = {};
     return errors;
   };
 
@@ -23,19 +18,19 @@ const LocalAddress = ({
         onSubmit={onSubmit}
         validate={validate}
         initialValues={{
-          localAddress: localAdd?.localAddress,
-          localAddress2: localAdd?.localAddress2,
+          localAddress: localAdd?.Address,
+          localAddress2: localAdd?.Address2,
           pincode: localAdd?.pincode,
           state: localAdd?.state,
           city: localAdd?.city,
         }}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <div className={PageStyle.localAddress__flex}>
+            <div className={PageStyle.localAddress__formContainer}>
               <div>
                 <Field name="localAddress">
                   {(e) => (
-                    <div className={PageStyle.localAddress__input}>
+                    <div className={PageStyle.localAddress__customInput}>
                       <label htmlFor="localAddress"> Local Address 1</label>
                       <Input
                         id="localAddress"
@@ -57,7 +52,7 @@ const LocalAddress = ({
                 </Field>
                 <Field name="localAddress2">
                   {(e) => (
-                    <div className={PageStyle.localAddress__input}>
+                    <div className={PageStyle.localAddress__customInput}>
                       <label htmlFor="localAddress2"> Local Address 2</label>
                       <Input
                         id="localAddress2"
@@ -77,11 +72,11 @@ const LocalAddress = ({
                     </div>
                   )}
                 </Field>
-                <div className={PageStyle.localAddress__innerflex}>
+                <div className={PageStyle.localAddress__innerFlexContainer}>
                   <div>
                     <Field name="pincode">
                       {(e) => (
-                        <div className={PageStyle.localAddress__input}>
+                        <div className={PageStyle.localAddress__customInput}>
                           <label htmlFor="pincode"> Pincode </label>
                           <Input
                             id="pincode"
@@ -102,28 +97,24 @@ const LocalAddress = ({
                       )}
                     </Field>
                   </div>
-                  <div className={PageStyle.localAddress__button}>
-                    <ButtonComponent
+                  <div className={PageStyle.localAddress__buttonContainer}>
+                    <Button
                       label={"Update Address"}
                       bgColor={"#173346"}
                       color={"#fff"}
                       size={"1.8rem"}
                       borderRadius={false}
-                      onClick={(e) => {
-                        console.log(e);
-                      }}
+                      onClick={(e) => {}}
                       type={"submit"}
                     />
-                    <ButtonComponent
+                    <Button
                       label={"Cancel"}
                       bgColor={"#fafafa"}
                       color={"#173346"}
                       size={"2rem"}
                       borderRadius={false}
                       border={"solid 2px #ebebeb"}
-                      onClick={(e) => {
-                        console.log(e);
-                      }}
+                      onClick={(e) => {}}
                       type={"button"}
                     />
                   </div>
@@ -132,7 +123,7 @@ const LocalAddress = ({
               <div>
                 <Field name="state">
                   {(e) => (
-                    <div className={PageStyle.localAddress__input}>
+                    <div className={PageStyle.localAddress__customInput}>
                       <label htmlFor="state"> State</label>
                       <Input
                         id="state"
@@ -154,7 +145,7 @@ const LocalAddress = ({
                 </Field>
                 <Field name="city">
                   {(e) => (
-                    <div className={PageStyle.localAddress__input}>
+                    <div className={PageStyle.localAddress__customInput}>
                       <label htmlFor="city"> City</label>
                       <Input
                         id="city"

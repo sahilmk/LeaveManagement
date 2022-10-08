@@ -1,4 +1,4 @@
-@import "../../Styles/variable.scss";
+@import "../../Styles/_variable.scss";
 
 .profile {
   user-select: none;
@@ -8,9 +8,9 @@
 
   &__background {
     background-color: $whiteColor;
-    padding: 3rem;
     overflow-y: auto;
     height: 100%;
+    padding: 3rem;
   }
 }
 

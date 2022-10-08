@@ -1,10 +1,10 @@
 import { Form, Field } from "react-final-form";
-import { Input, ButtonComponent } from "../../stories";
+import { Input, Button } from "../../stories";
 import { ChangePasswordType } from "../../Types";
 import PageStyle from "./ChangePassword.module.scss";
 
 const initialValues = {
-  oldPassword: "Smart@123",
+  oldPassword: "",
   newPassword: "",
   confirmPassword: "",
 };
@@ -15,8 +15,16 @@ const ChangePassword = () => {
   const validate = (e: ChangePasswordType) => {
     const errors: ChangePasswordType = {};
 
+    if (e.oldPassword === "") {
+      errors.oldPassword = "Please enter valid password.";
+    }
+
     if (e.newPassword === e.oldPassword) {
       errors.newPassword = "Please try a new Password";
+    }
+
+    if (e.confirmPassword !== e.newPassword) {
+      errors.confirmPassword = "Please enter same password as of new password.";
     }
 
     return errors;
@@ -30,11 +38,11 @@ const ChangePassword = () => {
         initialValues={initialValues}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <div className={PageStyle.changePwd__flex}>
+            <div className={PageStyle.changePwd__formContainer}>
               <div>
                 <Field name="oldPassword">
                   {(e) => (
-                    <div className={PageStyle.changePwd__input}>
+                    <div className={PageStyle.changePwd__customInput}>
                       <label htmlFor="oldPassword"> Old Password </label>
                       <Input
                         id="oldPassword"
@@ -58,7 +66,7 @@ const ChangePassword = () => {
               <div>
                 <Field name="newPassword">
                   {(e) => (
-                    <div className={PageStyle.changePwd__input}>
+                    <div className={PageStyle.changePwd__customInput}>
                       <label htmlFor="newPassword"> New Password </label>
                       <Input
                         id="newPassword"
@@ -82,7 +90,7 @@ const ChangePassword = () => {
               <div>
                 <Field name="confirmPassword">
                   {(e) => (
-                    <div className={PageStyle.changePwd__input}>
+                    <div className={PageStyle.changePwd__customInput}>
                       <label htmlFor="confirmPassword">
                         {" "}
                         Confirm Password{" "}
@@ -107,16 +115,14 @@ const ChangePassword = () => {
                 </Field>
               </div>
             </div>
-            <div className={PageStyle.changePwd__button}>
-              <ButtonComponent
+            <div className={PageStyle.changePwd__buttonContainer}>
+              <Button
                 label={"Change Password"}
                 bgColor={"#173346"}
                 color={"#fff"}
                 size={"1.8rem"}
                 borderRadius={false}
-                onClick={(e) => {
-                  console.log(e);
-                }}
+                onClick={(e) => {}}
                 type={"submit"}
               />
             </div>

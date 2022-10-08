@@ -1,9 +1,9 @@
-@import '../../Styles/variable.scss';
+@import '../../Styles/_variable.scss';
 
 .localAddress {
     padding: 3rem 0;
 
-    &__flex {
+    &__formContainer {
         display: flex;
 
         div {
@@ -15,7 +15,7 @@
         }
     }
 
-    &__input {
+    &__customInput {
         display: flex;
         flex-direction: column;
         margin: 0 3rem 4rem 0;
@@ -27,12 +27,12 @@
         }
     }
 
-    &__innerflex {
+    &__innerFlexContainer {
         display: flex;
         padding-right: 3rem;
     }
 
-    &__button {
+    &__buttonContainer {
         display: flex;
         justify-content: space-between;
         height: 5rem;

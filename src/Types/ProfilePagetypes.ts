@@ -29,17 +29,9 @@ export type ProfileDetailType = {
   dateOfBirth?: string;
 };
 
-export type LocalAddressType = {
-  localAddress?: string | null;
-  localAddress2?: string | null;
-  pincode?: string | null;
-  state?: string | null;
-  city?: string | null;
-};
-
-export type PermanentAddressType = {
-  perAddress?: string;
-  perAddress2?: string;
+export type AddressType = {
+  Address?: string;
+  Address2?: string;
   pincode?: string;
   state?: string;
   city?: string;
