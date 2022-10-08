@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Field } from 'react-final-form'
-import { Button, DataTable, Input, PageTitle } from '../../stories'
+import { DataTable, Input, PageTitle } from '../../stories'
 import style from './CancelledLeave.module.scss'
 
 export type cancelledLeavePropType = {

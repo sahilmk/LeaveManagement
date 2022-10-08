@@ -1,7 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import { NavbarComponent, Sidebar } from "../../stories";
-import { LeaveRequest, ApprovedLeave, PendingLeave, RejectedLeave, CancelledLeave, ManageLeaveRequest } from "../../components";
+import LeaveRequest from "../LeaveRequest";
+import ApprovedLeave from "../ApprovedLeaves";
 import ProfilePage from "../Profile";
+import PendingLeave from "../PendingLeaves";
+import RejectedLeave from "../RejectedLeaves";
+import CancelledLeave from "../CancelledLeaves";
+import ManageLeaveRequest from "../ManageLeaveRequest";
 import { sidebarTabData } from "../../Util/Constants";
 import * as styles from "./Dashboard.module.scss";
 
