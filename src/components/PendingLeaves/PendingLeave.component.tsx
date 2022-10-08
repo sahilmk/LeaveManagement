@@ -44,7 +44,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
 
     const onSubmit = (e: formInputTypes) => { console.log(e) };
 
-    const [pendingLeaveData, setapprovedLeaveData] = useState<responseDataType[]>([]);
+    const [pendingLeaveData, setpendingLeaveData] = useState<responseDataType[]>([]);
 
     const validate = (e: formInputTypes) => {
         const errors: formInputTypes = {};
@@ -76,17 +76,17 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
         getLeaveData(config, 'Pending').then((res) => {
             let intermidate = res.data.payload.data;
 
-            intermidate = intermidate.map((approvedleave: responseDataType) => {
+            intermidate = intermidate.map((pendingleave: responseDataType) => {
                 const leaveObj = {
-                    id: approvedleave.id,
-                    type: approvedleave.type,
-                    reason: approvedleave.reason,
-                    date: `${approvedleave.startDate}${(approvedleave.endDate !== approvedleave.startDate) ? `to ${approvedleave.startDate}` : ''} `,
-                    appliedOn: approvedleave.created_at?.split(' ')[0]
+                    id: pendingleave.id,
+                    type: pendingleave.type,
+                    reason: pendingleave.reason,
+                    date: `${pendingleave.startDate}${(pendingleave.endDate !== pendingleave.startDate) ? `to ${pendingleave.startDate}` : ''} `,
+                    appliedOn: pendingleave.created_at?.split(' ')[0]
                 };
-                return { ...approvedleave, ...leaveObj }
+                return { ...pendingleave, ...leaveObj }
             })
-            setapprovedLeaveData(intermidate);
+            setpendingLeaveData(intermidate);
         });
 
     }, [])
