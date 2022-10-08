@@ -32,3 +32,20 @@ export const leavetypePath = "/leavetype";
 export const departmentPath = "/department";
 
 export const leaverequestPath = "/leaverequest";
+
+export const dummyData = [
+    {
+        id: "1",
+        type: "Paid",
+        reason: "Seek Leave",
+        date: "12/01/2018 to 14/01/2018",
+        appliedOn: "25/12/2017",
+    },
+    {
+        id: "2",
+        type: "Paid",
+        reason: "Seek Leave",
+        date: "10/01/2018",
+        appliedOn: "25/12/2017",
+    }
+]

@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, Field } from 'react-final-form'
+import { getLeaveData } from '../../APIs'
 import { DataTable, Input, PageTitle } from '../../stories'
+import { responseDataType } from '../../Types/globalTypes'
+import { dummyData } from '../../Util/Constants'
+import { getData } from '../../Util/Helper'
 import style from './CancelledLeave.module.scss'
 
 export type cancelledLeavePropType = {
@@ -15,6 +19,8 @@ export type formInputTypes = {
 }
 
 function CancelledLeave({ logindate }: cancelledLeavePropType) {
+
+    const [cancelledLeaveData, setcancelledLeaveData] = useState<responseDataType[]>([]);
 
     const onSubmit = (e: formInputTypes) => { console.log(e) };
 
@@ -39,6 +45,32 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
 
         return errors;
     };
+
+    useEffect(() => {
+        const loginData = getData("LoginData");
+
+        const config = {
+            headers: { Authorization: `Bearer ${loginData.token} ` }
+        };
+
+        getLeaveData(config, 'Cancelled').then((res) => {
+            let intermidate = res.data.payload.data;
+
+            intermidate = intermidate.map((cencelledleave: responseDataType) => {
+                const leaveObj = {
+                    id: cencelledleave.id,
+                    type: cencelledleave.type,
+                    reason: cencelledleave.reason,
+                    date: `${cencelledleave.startDate}${(cencelledleave.endDate !== cencelledleave.startDate) ? `to ${cencelledleave.startDate}` : ''} `,
+                    appliedOn: cencelledleave.created_at?.split(' ')[0]
+                };
+                return { ...cencelledleave, ...leaveObj }
+            })
+            setcancelledLeaveData(intermidate);
+        });
+
+    }, [])
+
 
     return (
         <>
@@ -147,22 +179,7 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
                             flex: 1,
                         },
                     ]}
-                    rows={[
-                        {
-                            id: "1",
-                            type: "Paid",
-                            reason: "Seek Leave",
-                            date: "12/01/2018 to 14/01/2018",
-                            appliedOn: "25/12/2017",
-                        },
-                        {
-                            id: "2",
-                            type: "Paid",
-                            reason: "Seek Leave",
-                            date: "10/01/2018",
-                            appliedOn: "25/12/2017",
-                        }
-                    ]}
+                    rows={cancelledLeaveData.length === 0 ? dummyData : cancelledLeaveData}
                 />
             </div>
         </>

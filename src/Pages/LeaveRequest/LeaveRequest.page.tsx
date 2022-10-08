@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import { Input, PageTitle, Button } from '../../stories'
 import { Form, Field } from 'react-final-form'
+import { Input, PageTitle, Button } from '../../stories'
+import { getData } from '../../Util/Helper';
+import { postNewLeave } from '../../APIs/getLeaveData';
 import style from './LeaveRequest.module.scss';
 
 type fieldInputType = {
@@ -17,7 +19,34 @@ function LeaveRequest({ logindate }: { logindate: string }) {
 
     const [radioValue, setRadioValue] = useState(true);
 
-    const onSubmit = (e: fieldInputType) => { console.log(e) };
+    const onSubmit = (e: fieldInputType) => {
+        let newLeave = {};
+        if (e.leaveduration === 'multipleday') {
+            newLeave = {
+                startDate: e.leavefrom,
+                endDate: e.leaveto,
+                comments: e.otherremark,
+                leaveTypeId: (e.leavetype === 'Paid' ? 1 : e.leavetype === 'Unpaid' ? 2 : 3),
+                leaveReasonId: (e.reason === 'Sick Leave' ? 1 : 3),
+                type: 'multiple'
+            }
+        } else {
+            newLeave = {
+                startDate: e.leavedate,
+                comments: e.otherremark,
+                leaveTypeId: (e.leavetype === 'Paid' ? 1 : e.leavetype === 'Unpaid' ? 2 : 3),
+                leaveReasonId: (e.reason === 'Sick Leave' ? 1 : 3),
+                type: (e.leaveduration === 'halfday' ? 'half' : 'single')
+            }
+        }
+
+        const loginData = getData("LoginData");
+        const config = {
+            headers: { Authorization: `Bearer ${loginData.token}` }
+        };
+        postNewLeave(config, newLeave).then((res) => console.log(res)).catch((e) => { alert(e.response.data.message) })
+    };
+
 
     const validate = (e: fieldInputType) => {
         const errors: fieldInputType = {};

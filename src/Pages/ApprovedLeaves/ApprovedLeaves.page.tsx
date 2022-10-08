@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, Field } from 'react-final-form'
 import { Button, DataTable, Input, PageTitle } from '../../stories'
-import style from './ApprovedLeaves.module.scss';
+import { getLeaveData } from '../../APIs';
+import { getData } from '../../Util/Helper';
+import { dummyData } from '../../Util/Constants';
+import { responseDataType } from '../../Types/globalTypes';
 import '../../Icons/css/material-design-iconic-font.css'
+import style from './ApprovedLeaves.module.scss';
 
 export type approvedLeavePropType = {
     logindate: string
@@ -16,6 +20,8 @@ export type formInputTypes = {
 }
 
 function ApprovedLeave({ logindate }: approvedLeavePropType) {
+
+    const [approvedLeaveData, setapprovedLeaveData] = useState<responseDataType[]>([]);
 
     const onSubmit = (e: formInputTypes) => { console.log(e) };
 
@@ -38,6 +44,31 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
 
         return errors;
     };
+
+    useEffect(() => {
+        const loginData = getData("LoginData");
+
+        const config = {
+            headers: { Authorization: `Bearer ${loginData.token} ` }
+        };
+
+        getLeaveData(config, 'Approved').then((res) => {
+            let intermidate = res.data.payload.data;
+
+            intermidate = intermidate.map((approvedleave: responseDataType) => {
+                const leaveObj = {
+                    id: approvedleave.id,
+                    type: approvedleave.type,
+                    reason: approvedleave.reason,
+                    date: `${approvedleave.startDate}${(approvedleave.endDate !== approvedleave.startDate) ? `to ${approvedleave.startDate}` : ''} `,
+                    appliedOn: approvedleave.created_at?.split(' ')[0]
+                };
+                return { ...approvedleave, ...leaveObj }
+            })
+            setapprovedLeaveData(intermidate);
+        });
+
+    }, []);
 
 
     return (
@@ -170,22 +201,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                 flex: 1,
                             },
                         ]}
-                        rows={[
-                            {
-                                id: "1",
-                                type: "Paid",
-                                reason: "Seek Leave",
-                                date: "12/01/2018 to 14/01/2018",
-                                appliedOn: "25/12/2017",
-                            },
-                            {
-                                id: "2",
-                                type: "Paid",
-                                reason: "Seek Leave",
-                                date: "10/01/2018",
-                                appliedOn: "25/12/2017",
-                            }
-                        ]}
+                        rows={approvedLeaveData.length === 0 ? dummyData : approvedLeaveData}
                     />
                 </div>
             </div>

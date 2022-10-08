@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Field, Form } from 'react-final-form';
 import { DataTable, Input, PageTitle } from '../../stories'
+import { getLeaveData } from '../../APIs';
+import { dummyData } from '../../Util/Constants';
+import { getData } from '../../Util/Helper';
+import { responseDataType } from '../../Types/globalTypes';
 import style from './PendingLeave.module.scss';
 
 export type pendingLeavePropType = {
@@ -15,6 +19,8 @@ export type formInputTypes = {
 }
 
 function PendingLeave({ logindate }: pendingLeavePropType) {
+
+    const [pendingLeaveData, setpendingLeaveData] = useState<responseDataType[]>([]);
 
     const onSubmit = (e: formInputTypes) => { console.log(e) };
 
@@ -37,6 +43,31 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
 
         return errors;
     };
+
+    useEffect(() => {
+        const loginData = getData("LoginData");
+
+        const config = {
+            headers: { Authorization: `Bearer ${loginData.token} ` }
+        };
+
+        getLeaveData(config, 'Pending').then((res) => {
+            let intermidate = res.data.payload.data;
+
+            intermidate = intermidate.map((pendingleave: responseDataType) => {
+                const leaveObj = {
+                    id: pendingleave.id,
+                    type: pendingleave.type,
+                    reason: pendingleave.reason,
+                    date: `${pendingleave.startDate}${(pendingleave.endDate !== pendingleave.startDate) ? `to ${pendingleave.startDate}` : ''} `,
+                    appliedOn: pendingleave.created_at?.split(' ')[0]
+                };
+                return { ...pendingleave, ...leaveObj }
+            })
+            setpendingLeaveData(intermidate);
+        });
+
+    }, []);
 
 
     return (
@@ -156,22 +187,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
                             flex: 1,
                         },
                     ]}
-                    rows={[
-                        {
-                            id: "1",
-                            type: "Paid",
-                            reason: "Seek Leave",
-                            date: "12/01/2018 to 14/01/2018",
-                            appliedOn: "25/12/2017",
-                        },
-                        {
-                            id: "2",
-                            type: "Paid",
-                            reason: "Seek Leave",
-                            date: "10/01/2018",
-                            appliedOn: "25/12/2017",
-                        }
-                    ]}
+                    rows={pendingLeaveData.length === 0 ? dummyData : pendingLeaveData}
                 />
             </div>
         </>
