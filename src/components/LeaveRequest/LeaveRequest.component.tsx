@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Input, PageTitle, ButtonComponent } from '../../stories'
-import { Form, Field } from 'react-final-form'
+import { Form, Field } from 'react-final-form';
+import { postNewLeave } from '../../APIs/getLeaveData';
+import { getData } from '../../Util/Helper';
 import style from './LeaveRequest.module.scss';
 
 type fieldInputType = {
@@ -17,7 +19,33 @@ function LeaveRequest({ logindate }: { logindate: string }) {
 
   const [radioValue, setRadioValue] = useState(true);
 
-  const onSubmit = (e: fieldInputType) => { console.log(e) };
+  const onSubmit = (e: fieldInputType) => {
+    let newLeave = {};
+    if (e.leaveduration === 'multipleday') {
+      newLeave = {
+        startDate: e.leavefrom,
+        endDate: e.leaveto,
+        comments: e.otherremark,
+        leaveTypeId: (e.leavetype === 'Paid' ? 1 : e.leavetype === 'Unpaid' ? 2 : 3),
+        leaveReasonId: (e.reason === 'Sick Leave' ? 1 : 3),
+        type: 'multiple'
+      }
+    } else {
+      newLeave = {
+        startDate: e.leavedate,
+        comments: e.otherremark,
+        leaveTypeId: (e.leavetype === 'Paid' ? 1 : e.leavetype === 'Unpaid' ? 2 : 3),
+        leaveReasonId: (e.reason === 'Sick Leave' ? 1 : 3),
+        type: (e.leaveduration === 'halfday' ? 'half' : 'single')
+      }
+    }
+
+    const loginData = getData("LoginData");
+    const config = {
+      headers: { Authorization: `Bearer ${loginData.token}` }
+    };
+    postNewLeave(config, newLeave).then((res) => console.log(res)).catch((e) => { alert(e.response.data.message) })
+  };
 
   const validate = (e: fieldInputType) => {
     const errors: fieldInputType = {};
@@ -45,6 +73,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
 
     return errors;
   };
+
 
 
   return (
@@ -99,156 +128,157 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                 </div>
 
                 <div className={style.inputfields}>
-                  {radioValue ? (
+                  {radioValue ?
                     <div className={style.displayflex}>
                       <div className={style.displayinnerflex}>
-                        <div className="input">
+                        <div className={style.inputcontrol}>
                           <Field name="leavefrom">
                             {(e) => (
                               <div>
                                 <label htmlFor="leavefrom">Leave From</label>
                                 <Input
-                                  id="leavefrom"
-                                  type="date"
-                                  placeholder="Select Date"
-                                  inputtype=""
-                                  padding={"14px 18px 14px 19px"}
+                                  id='leavefrom'
+                                  type='date'
+                                  placeholder='Select Date'
+                                  inputtype=''
+                                  padding={'14px 18px 14px 19px'}
                                   width={440}
                                   onChange={e.input.onChange}
                                   onBlur={e.input.onBlur}
                                   onFocus={e.input.onFocus}
                                 />
-                                {e.meta.error && e.meta.touched && (
-                                  <span className={style.error}>
-                                    {e.meta.error}
-                                  </span>
-                                )}
+                                {e.meta.error && e.meta.touched && <span className={style.error}>{e.meta.error}</span>}
                               </div>
                             )}
                           </Field>
                         </div>
-                        <div className="input">
+                        <div className={style.inputcontrol}>
                           <Field name="leaveto">
                             {(e) => (
                               <div>
                                 <label htmlFor="leaveto">Leave To</label>
                                 <Input
-                                  id="leaveto"
-                                  type="date"
-                                  placeholder="Select Date"
-                                  inputtype=""
-                                  padding={"14px 18px 14px 19px"}
+                                  id='leaveto'
+                                  type='date'
+                                  placeholder='Select Date'
+                                  inputtype=''
+                                  padding={'14px 18px 14px 19px'}
                                   width={440}
                                   onChange={e.input.onChange}
                                   onBlur={e.input.onBlur}
-                                  onFocus={e.input.onFocus}
-                                />
-                                {e.meta.error && e.meta.touched && (
-                                  <span className={style.error}>
-                                    {e.meta.error}
-                                  </span>
-                                )}
+                                  onFocus={e.input.onFocus} />
+                                {e.meta.error && e.meta.touched && <span className={style.error}>{e.meta.error}</span>}
                               </div>
                             )}
                           </Field>
                         </div>
 
-                        <div className="input">
+                        <div className={style.inputcontrol}>
                           <label htmlFor="reason">Reason</label>
-                          <Field
-                            name="reason"
-                            component="select"
-                            className={style.dropdown}
-                          >
-                            <option>Sick Leave</option>
-                            <option>Other</option>
+                          <Field name="reason" component="select" className={style.dropdown}>
+                            <option value='Sick Leave'>Sick Leave</option>
+                            <option value='Other'>Other</option>
                           </Field>
                         </div>
                       </div>
                       <div className={style.displayinnerflex}>
-                        <div className="input">
+                        <div className={style.inputcontrol}>
                           <label htmlFor="reason">Leave Type</label>
-                          <Field
-                            name="leavetype"
-                            component="select"
-                            className={style.dropdown}
-                          >
-                            <option>Paid</option>
-                            <option>Unpaid</option>
+                          <Field name="leavetype" component="select" className={style.dropdown}>
+                            <option value='Paid'>Paid</option>
+                            <option value='Unpaid'>Unpaid</option>
+                            <option value='Other'>Other</option>
                           </Field>
                         </div>
 
-                        <div className="input">
+                        <div className={style.inputcontrol}>
                           <Field name="otherremark">
                             {(e) => (
                               <div>
-                                <label htmlFor="otherremark">
-                                  Other Remark
-                                </label>
+                                <label htmlFor="otherremark">Other Remark</label>
                                 <Input
-                                  id="otherremark"
-                                  type="text"
-                                  placeholder="Remark"
-                                  inputtype=""
-                                  padding={"14px 18px 14px 19px"}
+                                  id='otherremark'
+                                  type='text'
+                                  placeholder='Remark'
+                                  inputtype=''
+                                  padding={'14px 18px 14px 19px'}
                                   width={910}
                                   onChange={e.input.onChange}
                                   onBlur={e.input.onBlur}
-                                  onFocus={e.input.onFocus}
-                                />
-                                {e.meta.error && e.meta.touched && (
-                                  <span className={style.error}>
-                                    {e.meta.error}
-                                  </span>
-                                )}
+                                  onFocus={e.input.onFocus} />
+                                {e.meta.error && e.meta.touched && <span className={style.error}>{e.meta.error}</span>}
                               </div>
                             )}
                           </Field>
                         </div>
                       </div>
                     </div>
-                  ) : (
+                    :
                     <div className={style.displayflex}>
                       <div className={style.displayinnerflex}>
-                        <div className="input">
+                        <div className={style.inputcontrol}>
                           <Field name="leavedate">
                             {(e) => (
                               <div>
                                 <label htmlFor="leavedate">Leave Date</label>
                                 <Input
-                                  id="leavedate"
-                                  type="date"
-                                  placeholder="Select Date"
-                                  inputtype=""
-                                  padding={"14px 18px 14px 19px"}
+                                  id='leavedate'
+                                  type='date'
+                                  placeholder='Select Date'
+                                  inputtype=''
+                                  padding={'14px 18px 14px 19px'}
                                   width={440}
                                   onChange={e.input.onChange}
                                   onBlur={e.input.onBlur}
-                                  onFocus={e.input.onFocus}
-                                />
-                                {e.meta.error && e.meta.touched && (
-                                  <span className={style.error}>
-                                    {e.meta.error}
-                                  </span>
-                                )}
+                                  onFocus={e.input.onFocus} />
+                                {e.meta.error && e.meta.touched && <span className={style.error}>{e.meta.error}</span>}
                               </div>
                             )}
                           </Field>
                         </div>
 
-                        <div className="input">
+                        <div className={style.inputcontrol}>
                           <label htmlFor="reason">Leave Type</label>
-                          <Field
-                            name="leavetype"
-                            component="select"
-                            className={style.dropdown}
-                          >
-                            <option>Paid</option>
-                            <option>Unpaid</option>
+                          <Field name="leavetype" component="select" className={style.dropdown}>
+                            <option value='Paid'>Paid</option>
+                            <option value='Unpaid'>Unpaid</option>
+                            <option value='Other'>Other</option>
                           </Field>
                         </div>
 
-                        <div className="input">
+                        <div className={style.inputcontrol}>
+                          <label htmlFor="reason">Reason</label>
+                          <Field name="reason" component="select" className={style.dropdown}>
+                            <option value='Sick Leave'>Sick Leave</option>
+                            <option value='Other'>Other</option>
+                          </Field>
+                        </div>
+                      </div>
+                      <div className={style.inputcontrol}>
+                        <Field name="otherremark">
+                          {(e) => (
+                            <div>
+                              <label htmlFor="otherremark">Other Remark</label>
+                              <Input
+                                id='otherremark'
+                                type='text'
+                                placeholder='Remark'
+                                inputtype=''
+                                padding={'14px 18px 14px 19px'}
+                                width={910}
+                                onChange={e.input.onChange}
+                                onBlur={e.input.onBlur}
+                                onFocus={e.input.onFocus} />
+                              {e.meta.error && e.meta.touched && <span className={style.error}>{e.meta.error}</span>}
+                            </div>
+                          )}
+                        </Field>
+                      </div>
+                    </div>
+                  }
+                </div>
+
+                {/* <div className="input">
                           <label htmlFor="reason">Reason</label>
                           <Field
                             name="reason"
@@ -289,7 +319,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                       </div>
                     </div>
                   )}
-                </div>
+                </div> */}
 
                 <ButtonComponent
                   label="Submit"

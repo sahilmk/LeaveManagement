@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import { callLogoutGet } from '../../APIs';
+import { useAuthContext } from '../../Hooks';
+import { getData, removeData } from '../../Util/Helper';
 import ButtonComponent from '../ButtonComponent'
 import SidebarTab from '../SidebarTab'
 import { SidebarStyle } from './Sidebar.styled'
@@ -55,6 +58,17 @@ function Sidebar({ user, position, sidebarTabData, userImage }: sidebarPropType)
         }
     }
 
+    const { dispatch } = useAuthContext();
+    const loginData = getData("LoginData");
+    // console.log(loginData)
+    const logout = () => {
+        removeData("LoginData");
+        callLogoutGet({ headers: { Authorization: 'bearer ' + loginData.token } }).then((Response) =>
+            alert(Response.data.message)
+        );
+        dispatch({ type: "LOGGED_OUT", loggedIn: false });
+    };
+
     return (
         <SidebarStyle>
             <div className="profile">
@@ -98,7 +112,7 @@ function Sidebar({ user, position, sidebarTabData, userImage }: sidebarPropType)
                 ))}
             </ul>
 
-            <ButtonComponent label={` Logout`} borderRadius={false} color='#fff' logo={true} />
+            <ButtonComponent label={` Logout`} borderRadius={false} color='#fff' logo={true} onClick={logout} />
 
         </SidebarStyle >
     )

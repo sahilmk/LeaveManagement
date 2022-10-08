@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Field, Form } from 'react-final-form';
+import { getLeaveData } from '../../APIs';
 import { DataTable, Input, PageTitle } from '../../stories'
+import { dummyData } from '../../Util/Constants';
+import { getData } from '../../Util/Helper';
 import style from './PendingLeave.module.scss';
 
 export type pendingLeavePropType = {
@@ -14,9 +17,34 @@ export type formInputTypes = {
     type?: 'Paid' | 'Unpaid'
 }
 
+type responseDataType = {
+    comments?: string,
+    created_at?: string,
+    department?: string,
+    employeeId?: number,
+    endDate?: string,
+    firstName?: string,
+    image?: string,
+    isHalfDay?: number,
+    isStartDateGone?: number,
+    lastName?: string,
+    reportedDate?: null | string,
+    reportingComments?: null | string,
+    reportingStatus?: string,
+    startDate?: string,
+    id: number,
+    reason: string,
+    type: string,
+    date?: string,
+    appliedOn?: string
+
+}
+
 function PendingLeave({ logindate }: pendingLeavePropType) {
 
     const onSubmit = (e: formInputTypes) => { console.log(e) };
+
+    const [pendingLeaveData, setapprovedLeaveData] = useState<responseDataType[]>([]);
 
     const validate = (e: formInputTypes) => {
         const errors: formInputTypes = {};
@@ -37,6 +65,31 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
 
         return errors;
     };
+
+    useEffect(() => {
+        const loginData = getData("LoginData");
+
+        const config = {
+            headers: { Authorization: `Bearer ${loginData.token} ` }
+        };
+
+        getLeaveData(config, 'Pending').then((res) => {
+            let intermidate = res.data.payload.data;
+
+            intermidate = intermidate.map((approvedleave: responseDataType) => {
+                const leaveObj = {
+                    id: approvedleave.id,
+                    type: approvedleave.type,
+                    reason: approvedleave.reason,
+                    date: `${approvedleave.startDate}${(approvedleave.endDate !== approvedleave.startDate) ? `to ${approvedleave.startDate}` : ''} `,
+                    appliedOn: approvedleave.created_at?.split(' ')[0]
+                };
+                return { ...approvedleave, ...leaveObj }
+            })
+            setapprovedLeaveData(intermidate);
+        });
+
+    }, [])
 
 
     return (
@@ -156,22 +209,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
                             flex: 1,
                         },
                     ]}
-                    rows={[
-                        {
-                            id: "1",
-                            type: "Paid",
-                            reason: "Seek Leave",
-                            date: "12/01/2018 to 14/01/2018",
-                            appliedOn: "25/12/2017",
-                        },
-                        {
-                            id: "2",
-                            type: "Paid",
-                            reason: "Seek Leave",
-                            date: "10/01/2018",
-                            appliedOn: "25/12/2017",
-                        }
-                    ]}
+                    rows={pendingLeaveData.length === 0 ? dummyData : pendingLeaveData}
                 />
             </div>
         </>
