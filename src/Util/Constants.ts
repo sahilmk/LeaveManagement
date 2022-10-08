@@ -16,3 +16,20 @@ export const sidebarTabData = [
     { icon: 'device-hub', label: 'Leave Type', isExpandable: false, isOpen: false, route: '/leavetype' },
     { icon: 'gamepad', label: 'Department', isExpandable: false, isOpen: false, route: '/department' }
 ];
+
+export const dummyData = [
+    {
+        id: "1",
+        type: "Paid",
+        reason: "Seek Leave",
+        date: "12/01/2018 to 14/01/2018",
+        appliedOn: "25/12/2017",
+    },
+    {
+        id: "2",
+        type: "Paid",
+        reason: "Seek Leave",
+        date: "10/01/2018",
+        appliedOn: "25/12/2017",
+    }
+]
