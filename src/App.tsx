@@ -9,7 +9,8 @@ import {
   OTPPage,
   ResetPassword,
 } from "./Pages";
-import { getData } from "./Util";
+import { getData } from "./Util/Helper";
+
 
 function App() {
   const { state, dispatch } = useAuthContext();

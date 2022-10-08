@@ -1,5 +1,5 @@
-import { HostEndpoint, get, getData } from "../Util";
-import { post } from "../Util/ApiManager";
+import { get, post } from "../Util/ApiManager";
+import { HostEndpoint } from "../Util/Endpoint";
 
 type formInputDatatype = {
     startDate: string,
@@ -14,13 +14,6 @@ export const getLeaveData = (config: { headers: { Authorization: string } }, sta
     return get(`${HostEndpoint}/leave?status=${statuscode}&pageNumber=1&recordsPerPage=10`, config)
 }
 
-export const postNewLeave = (formdata: formInputDatatype | {}) => {
-
-    const loginData = getData("LoginData");
-
-    const config = {
-        headers: { Authorization: `Bearer ${loginData.token}` }
-    };
-
+export const postNewLeave = (config: { headers: { Authorization: string } }, formdata: formInputDatatype | {}) => {
     return post(`${HostEndpoint}/leave`, formdata, config);
 };

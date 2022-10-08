@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { callLogoutGet } from '../../APIs';
 import { useAuthContext } from '../../Hooks';
-import { getData, removeData } from '../../Util';
+import { getData, removeData } from '../../Util/Helper';
 import ButtonComponent from '../ButtonComponent'
 import SidebarTab from '../SidebarTab'
 import { SidebarStyle } from './Sidebar.styled'

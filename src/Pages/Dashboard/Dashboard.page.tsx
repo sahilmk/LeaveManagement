@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { NavbarComponent, Sidebar } from '../../stories'
 import { LeaveRequest, ApprovedLeave } from "../../components";
 import { sidebarTabData } from "../../Util/Constants";
-import { getData, removeData } from "../../Util";
+import { getData } from "../../Util/Helper";
 import * as styles from './Dashboard.module.scss'
 
 function Dashboard() {

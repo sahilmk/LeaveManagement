@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Input, PageTitle, ButtonComponent } from '../../stories'
 import { Form, Field } from 'react-final-form';
-import style from './LeaveRequest.module.scss';
 import { postNewLeave } from '../../APIs/getLeaveData';
+import { getData } from '../../Util/Helper';
+import style from './LeaveRequest.module.scss';
 
 type fieldInputType = {
     leavefrom?: string | undefined,
@@ -39,7 +40,11 @@ function LeaveRequest({ logindate }: { logindate: string }) {
             }
         }
 
-        postNewLeave(newLeave).then((res) => console.log(res))
+        const loginData = getData("LoginData");
+        const config = {
+            headers: { Authorization: `Bearer ${loginData.token}` }
+        };
+        postNewLeave(config, newLeave).then((res) => console.log(res)).catch((e) => { alert(e.response.data.message) })
     };
 
     const validate = (e: fieldInputType) => {

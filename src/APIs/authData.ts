@@ -1,5 +1,7 @@
 import { SuccessPayload } from "../Context/AuthContext/Auth.reducer";
-import { HostEndpoint, post, get } from "../Util";
+import { post, get } from "../Util/ApiManager";
+import { HostEndpoint } from "../Util/Endpoint";
+
 
 export const setLoginData = (loginData: SuccessPayload) => {
   return window.localStorage.setItem("LoginData", JSON.stringify(loginData));
