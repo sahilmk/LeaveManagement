@@ -1,6 +1,7 @@
 import React from "react";
 import StyledButton from "./Button.styled";
-import '../../Icons/css/material-design-iconic-font.css'
+import '../../Icons/css/material-design-iconic-font.css';
+import { Theme } from '../../Theme'
 
 type ButtonProps = {
   label: string;
@@ -46,8 +47,8 @@ Button.defaultProps = {
   onClick: (e: React.MouseEvent) => {
 
   },
-  bgColor: "#284960",
-  color: "#7a99af",
+  bgColor: Theme.colors.darkslategrayColor,
+  color: Theme.colors.weldonBlueColor,
   size: "26px",
   border: "",
   borderRadius: true,

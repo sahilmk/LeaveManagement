@@ -4,7 +4,7 @@ import { HostEndpoint } from "../Util/Endpoint";
 
 
 export const setLoginData = (loginData: SuccessPayload) => {
-  return window.localStorage.setItem("LoginData", JSON.stringify(loginData));
+  return window.localStorage.setItem("loginData", JSON.stringify(loginData));
 };
 
 export const callLoginPost = (values: { email: string; password: string }) => {

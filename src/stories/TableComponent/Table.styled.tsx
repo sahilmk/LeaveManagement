@@ -1,18 +1,19 @@
 import styled from "styled-components";
+import { Theme } from "../../Theme";
 
 const StyledTable = styled.table`
+  background-color: ${Theme.colors.whiteColor};
   text-align: left;
-  background-color: #fff;
-  width: 100%;
   border-collapse: collapse;
+  width: 100%;
 
   thead,
   tbody {
-    border-bottom: 2px solid #ebebeb;
+    border-bottom: 2px solid ${Theme.colors.brightGrayColor};
   }
 
   th {
-    color: #080341;
+    color: ${Theme.colors.cetaceanBlueColor};
     font-weight: 600;
   }
 

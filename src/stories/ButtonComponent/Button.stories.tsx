@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Button from "./Button.component";
+import { Theme } from "../../Theme";
 
 export default {
   title: "Button",
@@ -16,28 +17,28 @@ const Template: ComponentStory<typeof Button> = (args) => (
 export const LoginPrimary = Template.bind({});
 LoginPrimary.args = {
   label: "Next",
-  bgColor: "#284960",
-  color: "#7a99af",
+  bgColor: Theme.colors.darkslategrayColor,
+  color: Theme.colors.weldonBlueColor,
   size: "26px",
-  border: "solid 2px #284960",
+  border: `solid 2px ${Theme.colors.darkslategrayColor}`,
   borderRadius: true,
 };
 
 export const LoginSecondary = Template.bind({});
 LoginSecondary.args = {
   label: "Back",
-  bgColor: "#173346",
-  color: "#7a99af",
+  bgColor: Theme.colors.yankeesBlueColor,
+  color: Theme.colors.weldonBlueColor,
   size: "26px",
-  border: "solid 2px #284960",
+  border: `solid 2px ${Theme.colors.darkslategrayColor}`,
   borderRadius: true,
 };
 
 export const inAppPrimary = Template.bind({});
 inAppPrimary.args = {
   label: "Update Profile",
-  bgColor: "#173346",
-  color: "#fff",
+  bgColor: Theme.colors.yankeesBlueColor,
+  color: Theme.colors.whiteColor,
   size: "20px",
   border: "",
   borderRadius: false,
@@ -46,9 +47,9 @@ inAppPrimary.args = {
 export const inAppSecondary = Template.bind({});
 inAppSecondary.args = {
   label: "Cancel",
-  bgColor: "#fafafa",
-  color: "#173346",
+  bgColor: Theme.colors.lotionColor,
+  color: Theme.colors.yankeesBlueColor,
   size: "20px",
-  border: "solid 2px #ebebeb",
+  border: `solid 2px ${Theme.colors.brightGrayColor}`,
   borderRadius: false,
 };

@@ -14,7 +14,7 @@ import { getData } from "../../Util/Helper";
 
 function Dashboard() {
 
-  const loginData = getData("LoginData");
+  const loginData = getData("loginData");
 
   const userName = loginData.data.user.employee.firstName + " " + loginData.data.user.employee.lastName;
 
@@ -29,7 +29,7 @@ function Dashboard() {
         <Routes>
           <Route path="/home" element={<ProfilePage />} />
           <Route path="/holidays" element={<h1>Holidays</h1>} />
-          <Route path="leaverequest" element={<LeaveRequest logindate={userLoginData} />} />
+          <Route path="/leaverequest" element={<LeaveRequest logindate={userLoginData} />} />
           <Route path="/approvedleaves" element={<ApprovedLeave logindate={userLoginData} />} />
           <Route path="/pendingleaves" element={<PendingLeave logindate={userLoginData} />} />
           <Route path="/rejectedleaves" element={<RejectedLeave logindate={userLoginData} />} />
@@ -37,6 +37,7 @@ function Dashboard() {
           <Route path="/manageleaverequest" element={<ManageLeaveRequest logindate={userLoginData} />} />
           <Route path="/employeelist" element={<h1>employeelist</h1>} />
           <Route path="/employeeleaveslist" element={<h1>employeeleaveslist</h1>} />
+          <Route path="/leavereason" element={<h1>Leave Reason</h1>} />
           <Route path="/leavetype" element={<h1>leavetype</h1>} />
           <Route path="/department" element={<h1>department</h1>} />
         </Routes>

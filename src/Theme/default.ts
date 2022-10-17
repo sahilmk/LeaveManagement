@@ -11,6 +11,7 @@ export const Theme = {
     culturedColor: 'f4f4f4',
     redColor: 'red',
     cetaceanBlueColor: '#080341',
-    darkGrayColor: '#aaa'
+    darkGrayColor: '#aaa',
+    weldonBlueColor: '#7a99af'
   }
 }

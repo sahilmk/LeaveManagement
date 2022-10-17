@@ -8,7 +8,7 @@ function App() {
   const { state, dispatch } = useAuthContext();
 
   const checkUserDetails = () => {
-    const storedData = getData("LoginData");
+    const storedData = getData("loginData");
     if (storedData) {
       dispatch({
         type: "FETCHED_SUCCESS",
@@ -52,6 +52,7 @@ function App() {
           <Route path="/manageleaverequest" element={<h1>manageleaverequest</h1>} />
           <Route path="/employeelist" element={<h1>employeelist</h1>} />
           <Route path="/employeeleaveslist" element={<h1>employeeleaveslist</h1>} />
+          <Route path="/leavereason" element={<h1>Leave Reason</h1>} />
           <Route path="/leavetype" element={<h1>leavetype</h1>} />
           <Route path="/department" element={<h1>department</h1>} />
         </Route>

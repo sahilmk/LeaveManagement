@@ -59,10 +59,10 @@ function Sidebar({ user, position, sidebarTabData, userImage }: sidebarPropType)
     }
 
     const { dispatch } = useAuthContext();
-    const loginData = getData("LoginData");
+    const loginData = getData("loginData");
     // console.log(loginData)
     const logout = () => {
-        removeData("LoginData");
+        removeData("loginData");
         callLogoutGet({ headers: { Authorization: 'bearer ' + loginData.token } }).then((Response) =>
             alert(Response.data.message)
         );

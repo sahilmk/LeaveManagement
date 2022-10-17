@@ -45,7 +45,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
     };
 
     useEffect(() => {
-        const loginData = getData("LoginData");
+        const loginData = getData("loginData");
 
         const config = {
             headers: { Authorization: `Bearer ${loginData.token} ` }
