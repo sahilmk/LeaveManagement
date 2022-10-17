@@ -10,16 +10,16 @@ type StyledButtonProps = {
 };
 
 const StyledButton = styled.button<StyledButtonProps>`
-  border: solid 2px ${Theme.colors.darkslategrayColor};
+  border: solid 0.2rem ${Theme.colors.darkslategrayColor};
   cursor: pointer;
-  width: 204px;
-  height: 60px;
+  width: 20.4rem;
+  height: 6rem;
 
   background-color: ${({ bgColor }) => bgColor};
   color: ${({ color }) => color};
   font-size: ${({ size }) => size};
   border: ${({ border }) => border};
-  border-radius: ${({ borderRadius }) => (borderRadius ? "30px" : "0px")};
+  border-radius: ${({ borderRadius }) => (borderRadius ? "3rem" : "0rem")};
 `;
 
 export default StyledButton;

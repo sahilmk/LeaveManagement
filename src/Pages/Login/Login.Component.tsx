@@ -85,8 +85,8 @@ const LoginPage = () => {
                           type="text"
                           placeholder="Email"
                           inputtype="authinput"
-                          padding="0px 0px 0px 40px"
-                          width='450px'
+                          padding="0rem 0rem 0rem 4rem"
+                          width='45rem'
                           onChange={e.input.onChange}
                           onBlur={e.input.onBlur}
                           onFocus={e.input.onFocus}
@@ -104,8 +104,8 @@ const LoginPage = () => {
                           type="password"
                           placeholder="Password"
                           inputtype="authinput"
-                          padding="0px 0px 0px 40px"
-                          width='450px'
+                          padding="0rem 0rem 0rem 4rem"
+                          width='45rem'
                           onChange={e.input.onChange}
                           onFocus={e.input.onFocus}
                           onBlur={e.input.onBlur}

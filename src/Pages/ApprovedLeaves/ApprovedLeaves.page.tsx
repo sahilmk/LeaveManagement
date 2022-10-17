@@ -23,7 +23,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
 
     const [approvedLeaveData, setapprovedLeaveData] = useState<responseDataType[]>([]);
 
-    const onSubmit = (e: formInputTypes) => { console.log(e) };
+    const onSubmit = (e: formInputTypes) => { };
 
     const validate = (e: formInputTypes) => {
         const errors: formInputTypes = {};
@@ -95,8 +95,8 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                                         type='date'
                                                         placeholder='Select Date'
                                                         inputtype=''
-                                                        padding={'14px 18px 14px 19px'}
-                                                        width='300px'
+                                                        padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                                        width='30rem'
                                                         onChange={e.input.onChange}
                                                         onBlur={e.input.onBlur}
                                                         onFocus={e.input.onFocus}
@@ -117,8 +117,8 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                                         type='date'
                                                         placeholder='Select Date'
                                                         inputtype=''
-                                                        padding={'14px 18px 14px 19px'}
-                                                        width='300px'
+                                                        padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                                        width='30rem'
                                                         onChange={e.input.onChange}
                                                         onBlur={e.input.onBlur}
                                                         onFocus={e.input.onFocus} />
@@ -138,8 +138,8 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                                         type='text'
                                                         placeholder='Search here...'
                                                         inputtype=''
-                                                        padding={'14px 18px 14px 19px'}
-                                                        width='300px'
+                                                        padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                                        width='30rem'
                                                         onChange={e.input.onChange}
                                                         onBlur={e.input.onBlur}
                                                         onFocus={e.input.onFocus} />
@@ -158,7 +158,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                     </div>
 
                                     <div className={style.inputcontrol}>
-                                        <Button label='Clear' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 2px #ebebeb' />
+                                        <Button label='Clear' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 0.2rem #ebebeb' />
                                     </div>
                                 </div>
                             </form>
@@ -181,7 +181,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                         <div>
                                             <i
                                                 onClick={() => {
-                                                    console.log("eye");
+
                                                 }}
                                                 style={{ cursor: "pointer" }}
                                                 className="zmdi zmdi-eye"
@@ -189,7 +189,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                             </i>
                                             <i
                                                 onClick={() => {
-                                                    console.log("eye");
+
                                                 }}
                                                 style={{ cursor: "pointer" }}
                                                 className="zmdi zmdi-close"

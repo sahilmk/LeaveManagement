@@ -44,7 +44,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
         const config = {
             headers: { Authorization: `Bearer ${loginData.token}` }
         };
-        postNewLeave(config, newLeave).then((res) => console.log(res)).catch((e) => { alert(e.response.data.message) })
+        postNewLeave(config, newLeave).then().catch((e) => { alert(e.response.data.message) })
     };
 
 
@@ -141,8 +141,8 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                                     type='date'
                                                                     placeholder='Select Date'
                                                                     inputtype=''
-                                                                    padding={'14px 18px 14px 19px'}
-                                                                    width='440px'
+                                                                    padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                                                    width='44rem'
                                                                     onChange={e.input.onChange}
                                                                     onBlur={e.input.onBlur}
                                                                     onFocus={e.input.onFocus}
@@ -162,8 +162,8 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                                     type='date'
                                                                     placeholder='Select Date'
                                                                     inputtype=''
-                                                                    padding={'14px 18px 14px 19px'}
-                                                                    width='440px'
+                                                                    padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                                                    width='44rem'
                                                                     onChange={e.input.onChange}
                                                                     onBlur={e.input.onBlur}
                                                                     onFocus={e.input.onFocus} />
@@ -200,8 +200,8 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                                     type='text'
                                                                     placeholder='Remark'
                                                                     inputtype=''
-                                                                    padding={'14px 18px 14px 19px'}
-                                                                    width='910px'
+                                                                    padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                                                    width='91rem'
                                                                     onChange={e.input.onChange}
                                                                     onBlur={e.input.onBlur}
                                                                     onFocus={e.input.onFocus} />
@@ -225,8 +225,8 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                                     type='date'
                                                                     placeholder='Select Date'
                                                                     inputtype=''
-                                                                    padding={'14px 18px 14px 19px'}
-                                                                    width='440px'
+                                                                    padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                                                    width='44rem'
                                                                     onChange={e.input.onChange}
                                                                     onBlur={e.input.onBlur}
                                                                     onFocus={e.input.onFocus} />
@@ -262,8 +262,8 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                                                 type='text'
                                                                 placeholder='Remark'
                                                                 inputtype=''
-                                                                padding={'14px 18px 14px 19px'}
-                                                                width='910px'
+                                                                padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                                                width='91rem'
                                                                 onChange={e.input.onChange}
                                                                 onBlur={e.input.onBlur}
                                                                 onFocus={e.input.onFocus} />
@@ -277,7 +277,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                 </div>
 
                                 <Button label='Submit' type='submit' borderRadius={false} color='#fff' />
-                                <Button label='Cancel' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 2px #ebebeb' />
+                                <Button label='Cancel' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 0.2rem #ebebeb' />
                             </form>
                         )}
                     />

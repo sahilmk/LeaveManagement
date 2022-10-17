@@ -22,7 +22,7 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
 
     const [cancelledLeaveData, setcancelledLeaveData] = useState<responseDataType[]>([]);
 
-    const onSubmit = (e: formInputTypes) => { console.log(e) };
+    const onSubmit = (e: formInputTypes) => { };
 
     const validate = (e: formInputTypes) => {
         const errors: formInputTypes = {};
@@ -93,8 +93,8 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
                                                     type='date'
                                                     placeholder='Select Date'
                                                     inputtype=''
-                                                    padding={'14px 18px 14px 19px'}
-                                                    width='300px'
+                                                    padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                                    width='30rem'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
                                                     onFocus={e.input.onFocus}
@@ -115,8 +115,8 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
                                                     type='date'
                                                     placeholder='Select Date'
                                                     inputtype=''
-                                                    padding={'14px 18px 14px 19px'}
-                                                    width='300px'
+                                                    padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                                    width='30rem'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
                                                     onFocus={e.input.onFocus} />
@@ -136,8 +136,8 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
                                                     type='text'
                                                     placeholder='Search here... '
                                                     inputtype=''
-                                                    padding={'14px 18px 14px 19px'}
-                                                    width='300px'
+                                                    padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                                    width='30rem'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
                                                     onFocus={e.input.onFocus} />
@@ -167,7 +167,7 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
                                     <div>
                                         <i
                                             onClick={() => {
-                                                console.log("eye");
+
                                             }}
                                             style={{ cursor: "pointer" }}
                                             className="zmdi zmdi-eye"

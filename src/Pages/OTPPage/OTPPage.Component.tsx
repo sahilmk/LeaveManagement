@@ -6,7 +6,6 @@ import OTPPageStyle from "./OTPPage.module.scss";
 const OTPPage = () => {
   const navigate = useNavigate();
   const onSubmit = (values: { top: string }) => {
-    console.log(values);
   };
 
   return (
@@ -36,8 +35,8 @@ const OTPPage = () => {
                           type="text"
                           placeholder="One Time Password"
                           inputtype="authinput"
-                          padding="0px 0px 0px 40px"
-                          width='450px'
+                          padding="0rem 0rem 0rem 4rem"
+                          width='45rem'
                           onChange={e.input.onChange}
                           onBlur={e.input.onBlur}
                           onFocus={e.input.onFocus}

@@ -47,8 +47,8 @@ const ResetPasswordPage = () => {
                           type="password"
                           placeholder="New Password"
                           inputtype="authinput"
-                          padding="0px 0px 0px 40px"
-                          width='450px'
+                          padding="0rem 0rem 0rem 4rem"
+                          width='45rem'
                           onChange={e.input.onChange}
                           onBlur={e.input.onBlur}
                           onFocus={e.input.onFocus}
@@ -66,8 +66,8 @@ const ResetPasswordPage = () => {
                           type="password"
                           placeholder="Confirm Password"
                           inputtype="authinput"
-                          padding="0px 0px 0px 40px"
-                          width='450px'
+                          padding="0rem 0rem 0rem 4rem"
+                          width='45rem'
                           onChange={e.input.onChange}
                           onBlur={e.input.onBlur}
                           onFocus={e.input.onFocus}

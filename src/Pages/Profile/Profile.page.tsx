@@ -1,17 +1,71 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {
+  ChangePassword,
+  LocalAddress,
+  PermanentAddress,
+  ProfileDetails,
+} from "../../components";
 import { PageTitle } from "../../stories";
+import { getData } from "../../Util/Helper";
+import { ProfileDetailType } from "../../Types";
+import { callProfilePageGet } from "../../APIs";
 import ProfilePageStyle from "./Profile.module.scss";
 
 const ProfilePage = () => {
-  const [proDetailToggler, setProDetToggler] = useState(true);
-  const [locAddToggler, setProLocAddToggler] = useState(false);
-  const [perAddressToggler, setPerAddressToggler] = useState(false);
-  const [pwdToggler, setPwdToggler] = useState(false);
+  const [toggler, setToggler] = useState({
+    proDetailToggler: false,
+    locAddToggler: false,
+    perAddressToggler: false,
+    pwdToggler: false,
+  });
+  const userInfo = getData("loginData");
+  const [profileDetail, setProfileDetail] = useState<ProfileDetailType>();
+  const [addressdata, setAddressData] = useState({
+    localAdd: {},
+    permanentAddress: {},
+  });
+
+  useEffect(() => {
+    callProfilePageGet(userInfo.data.user.id, {
+      headers: { Authorization: "bearer " + userInfo.token },
+    })
+      .then((Response) => {
+        const requiredData = Response.data.payload.data.employee;
+        setProfileDetail({
+          firstName: requiredData.firstName,
+          lastName: requiredData.lastName,
+          email: requiredData.email,
+          mobileNo: requiredData.mobileNo,
+          gender: requiredData.gender,
+          department: requiredData.departmentId,
+          designation: requiredData.designation,
+          landlineNo: requiredData?.landlineNo,
+          dateOfBirth: requiredData?.dob,
+        });
+        setAddressData({
+          localAdd: {
+            localAddress: requiredData?.localAddress,
+            localAddress2: requiredData?.localAddress2,
+            city: requiredData?.localCity,
+            state: requiredData?.localSate,
+            pincode: requiredData?.localPincode,
+          },
+          permanentAddress: {
+            perAddress: requiredData?.permanentAddress,
+            perAddress2: requiredData?.permanentAddress2,
+            city: requiredData?.permanentCity,
+            state: requiredData?.permanentState,
+            pincode: requiredData?.permanentPincode,
+          },
+        });
+      })
+      .catch((error) => alert(error));
+  }, []);
 
   return (
     <>
       <PageTitle
-        logindate={"23rd jan 2018"}
+        logindate={userInfo.data.user.lastLogin}
         pagename={"Profile"}
         isinnerPage={false}
         isButton={false}
@@ -22,68 +76,100 @@ const ProfilePage = () => {
             <div
               className={ProfilePageStyle.profileDetails__header}
               onClick={() => {
-                setProDetToggler((prev) => !prev);
+                setToggler((previous) => {
+                  return {
+                    ...previous,
+                    proDetailToggler: !previous.proDetailToggler,
+                  };
+                });
               }}
             >
-              {proDetailToggler ? (
+              {toggler.proDetailToggler ? (
                 <h1>- Profile Details</h1>
               ) : (
                 <h1>+ Profile Details</h1>
               )}
             </div>
             <div className={ProfilePageStyle.profileDetails__body}>
-              {proDetailToggler ? <h1>Profile Details</h1> : <></>}
+              {toggler.proDetailToggler ? (
+                <ProfileDetails profileData={profileDetail} />
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className={ProfilePageStyle.localAddress}>
             <div
               className={ProfilePageStyle.localAddress__header}
               onClick={() => {
-                setProLocAddToggler((prev) => !prev);
+                setToggler((previous) => {
+                  return {
+                    ...previous,
+                    locAddToggler: !previous.locAddToggler,
+                  };
+                });
               }}
             >
-              {locAddToggler ? (
+              {toggler.locAddToggler ? (
                 <h1>- Local Address</h1>
               ) : (
                 <h1>+ Local Address</h1>
               )}
             </div>
             <div className={ProfilePageStyle.localAddress__body}>
-              {locAddToggler ? <h1>Local Address</h1> : <></>}
+              {toggler.locAddToggler ? (
+                <LocalAddress localAdd={addressdata.localAdd} />
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className={ProfilePageStyle.perAddress}>
             <div
               className={ProfilePageStyle.perAddress__header}
               onClick={() => {
-                setPerAddressToggler((prev) => !prev);
+                setToggler((previous) => {
+                  return {
+                    ...previous,
+                    perAddressToggler: !previous.perAddressToggler,
+                  };
+                });
               }}
             >
-              {perAddressToggler ? (
+              {toggler.perAddressToggler ? (
                 <h1>- Permanent Address</h1>
               ) : (
                 <h1>+ Permanent Address</h1>
               )}
             </div>
             <div className={ProfilePageStyle.perAddress__body}>
-              {perAddressToggler ? <h1>Local Address</h1> : <></>}
+              {toggler.perAddressToggler ? (
+                <PermanentAddress permanentAdd={addressdata.permanentAddress} />
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className={ProfilePageStyle.changePwd}>
             <div
               className={ProfilePageStyle.changePwd__header}
               onClick={() => {
-                setPwdToggler((prev) => !prev);
+                setToggler((previous) => {
+                  return {
+                    ...previous,
+                    pwdToggler: !previous.pwdToggler,
+                  };
+                });
               }}
             >
-              {pwdToggler ? (
+              {toggler.pwdToggler ? (
                 <h1>- Change Password</h1>
               ) : (
                 <h1>+ Change Password</h1>
               )}
             </div>
             <div className={ProfilePageStyle.changePwd__body}>
-              {pwdToggler ? <h1>Local Address</h1> : <></>}
+              {toggler.pwdToggler ? <ChangePassword /> : <></>}
             </div>
           </div>
         </div>

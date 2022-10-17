@@ -71,7 +71,7 @@ function ManageLeaveRequest({ logindate }: manageLeaveRequestPropType) {
                                         <div>
                                             <i
                                                 onClick={() => {
-                                                    console.log("eye");
+
                                                 }}
                                                 style={{ cursor: "pointer" }}
                                                 className="zmdi zmdi-eye"

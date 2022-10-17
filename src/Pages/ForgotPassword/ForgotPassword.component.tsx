@@ -9,7 +9,6 @@ const ForgotPassword = () => {
   const onSubmit = (values: { email: string }) => {
     callForgotPasswordPost(values)
       .then((Response) => {
-        console.log(Response.data);
         navigate("/OTP");
       })
       .catch((error) => alert(error.response.data.message));
@@ -41,8 +40,8 @@ const ForgotPassword = () => {
                           type="text"
                           placeholder="Email"
                           inputtype="authinput"
-                          padding="0px 0px 0px 40px"
-                          width='450px'
+                          padding="0rem 0rem 0rem 4rem"
+                          width='45rem'
                           onChange={e.input.onChange}
                           onBlur={e.input.onBlur}
                           onFocus={e.input.onFocus}

@@ -19,8 +19,8 @@ LoginPrimary.args = {
   label: "Next",
   bgColor: Theme.colors.darkslategrayColor,
   color: Theme.colors.weldonBlueColor,
-  size: "26px",
-  border: `solid 2px ${Theme.colors.darkslategrayColor}`,
+  size: "2.6rem",
+  border: `solid 0.2rem ${Theme.colors.darkslategrayColor}`,
   borderRadius: true,
 };
 
@@ -29,8 +29,8 @@ LoginSecondary.args = {
   label: "Back",
   bgColor: Theme.colors.yankeesBlueColor,
   color: Theme.colors.weldonBlueColor,
-  size: "26px",
-  border: `solid 2px ${Theme.colors.darkslategrayColor}`,
+  size: "2.6rem",
+  border: `solid 0.2rem ${Theme.colors.darkslategrayColor}`,
   borderRadius: true,
 };
 
@@ -39,7 +39,7 @@ inAppPrimary.args = {
   label: "Update Profile",
   bgColor: Theme.colors.yankeesBlueColor,
   color: Theme.colors.whiteColor,
-  size: "20px",
+  size: "2rem",
   border: "",
   borderRadius: false,
 };
@@ -49,7 +49,7 @@ inAppSecondary.args = {
   label: "Cancel",
   bgColor: Theme.colors.lotionColor,
   color: Theme.colors.yankeesBlueColor,
-  size: "20px",
-  border: `solid 2px ${Theme.colors.brightGrayColor}`,
+  size: "2rem",
+  border: `solid 0.2rem ${Theme.colors.brightGrayColor}`,
   borderRadius: false,
 };

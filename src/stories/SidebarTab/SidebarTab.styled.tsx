@@ -9,21 +9,21 @@ export const TabStyle = styled.a`
     display: flex;
     background-color: ${Theme.colors.whiteColor};
     color: ${Theme.colors.sonicSilverColor};
-    height: 70px;
+    height: 7rem;
 
     /* &:focus{
         color: ${Theme.colors.yankeesBlueColor};
     } */
 
     i{
-        height: 23px;
-        width: 19px;
-        font-size: 25px;
+        height: 2.3rem;
+        width: 1.9rem;
+        font-size: 2.5rem;
     }
 
     span{
-        padding-left: 35px;
-        font-size: 26.5px;
+        padding-left: 3.5rem;
+        font-size: 2.65rem;
     }
 
     .Layer-1{
@@ -31,11 +31,11 @@ export const TabStyle = styled.a`
         display: flex;
         height: 100%;
         width: 100%;
-        padding-left: 47px;
+        padding-left: 4.7rem;
     }
 
     .ic_remove_black_48dp-1{
-        padding-right: 30px;
-        font-size: 25px;
+        padding-right: 3rem;
+        font-size: 2.5rem;
     }
 ` 

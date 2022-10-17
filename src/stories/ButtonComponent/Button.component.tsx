@@ -49,7 +49,7 @@ Button.defaultProps = {
   },
   bgColor: Theme.colors.darkslategrayColor,
   color: Theme.colors.weldonBlueColor,
-  size: "26px",
+  size: "2.6rem",
   border: "",
   borderRadius: true,
   logo: false,

@@ -9,7 +9,7 @@ const StyledTable = styled.table`
 
   thead,
   tbody {
-    border-bottom: 2px solid ${Theme.colors.brightGrayColor};
+    border-bottom: 0.2rem solid ${Theme.colors.brightGrayColor};
   }
 
   th {
@@ -19,8 +19,8 @@ const StyledTable = styled.table`
 
   th,
   td {
-    padding: 10px 20px;
-    font-size: 22px;
+    padding: 1rem 2rem;
+    font-size: 2.2rem;
   }
 
   td {
@@ -28,7 +28,7 @@ const StyledTable = styled.table`
       display: flex;
 
       span {
-        margin-right: 16px;
+        margin-right: 1.6rem;
       }
     }
   }
