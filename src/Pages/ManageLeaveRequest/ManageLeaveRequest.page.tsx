@@ -1,5 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { DataTable, PageTitle } from '../../stories'
+import { getLeaveData } from '../../APIs'
+import { getData } from '../../Util/Helper'
+import { responseDataType } from '../../Types/globalTypes'
+import { dummyData } from '../../Util/Constants'
 import style from './ManageLeaveRequest.module.scss'
 
 export type manageLeaveRequestPropType = {
@@ -7,6 +11,34 @@ export type manageLeaveRequestPropType = {
 }
 
 function ManageLeaveRequest({ logindate }: manageLeaveRequestPropType) {
+
+    const [pendingLeaveData, setpendingLeaveData] = useState<responseDataType[]>([]);
+
+    useEffect(() => {
+        const loginData = getData("loginData");
+
+        const config = {
+            headers: { Authorization: `Bearer ${loginData.token} ` }
+        };
+
+        getLeaveData(config, 'Pending').then((res) => {
+            let intermidate = res.data.payload.data;
+
+            intermidate = intermidate.map((pendingleave: responseDataType) => {
+                const leaveObj = {
+                    id: pendingleave.id,
+                    department: pendingleave.department,
+                    reason: pendingleave.reason,
+                    name: `${pendingleave.firstName} ${pendingleave.lastName}`,
+                    date: `${pendingleave.startDate}${(pendingleave.endDate !== pendingleave.startDate) ? `to ${pendingleave.startDate}` : ''} `
+                };
+                return { ...pendingleave, ...leaveObj }
+            })
+            setpendingLeaveData(intermidate);
+        });
+
+    }, []);
+
     return (
         <>
             <PageTitle logindate={logindate} pagename={'Manage Leave Request'} isinnerPage={false} isButton={false} />
@@ -51,24 +83,7 @@ function ManageLeaveRequest({ logindate }: manageLeaveRequestPropType) {
                                 flex: 1,
                             }
                         ]}
-                        rows={[
-                            {
-                                id: "1",
-                                name: `John Doe`,
-                                reason: "Seek Leave",
-                                department: "HRD",
-                                date: "12/01/2018 to 14/01/2018",
-                                appliedOn: "25/12/2017",
-                            },
-                            {
-                                id: "2",
-                                name: "Darvin Lynn",
-                                reason: "Seek Leave",
-                                department: "HRD",
-                                date: "10/01/2018",
-                                appliedOn: "25/12/2017",
-                            }
-                        ]}
+                        rows={pendingLeaveData.length === 0 ? dummyData : pendingLeaveData}
                     />
                 </div>
             </div>
