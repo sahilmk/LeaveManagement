@@ -220,19 +220,19 @@ const ProfileDetails = ({
                 </div>
                 <div className={PageStyle.profileDetail__buttonContainer}>
                   <Button
-                    label={"Update Profile"}
+                    label="Update Profile"
                     bgColor={"#173346"}
                     color={"#fff"}
-                    size={"0.18rem"}
+                    size={"1.8rem"}
                     borderRadius={false}
                     onClick={(e) => { }}
                     type={"submit"}
                   />
                   <Button
-                    label={"Cancel"}
+                    label='Cancel'
                     bgColor={"#fafafa"}
                     color={"#173346"}
-                    size={"0.2rem"}
+                    size={"2rem"}
                     borderRadius={false}
                     border={"solid 0.2rem #ebebeb"}
                     onClick={(e) => { }}

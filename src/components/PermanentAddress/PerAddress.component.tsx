@@ -114,7 +114,7 @@ const PermanentAddress = ({
                       label={"Cancel"}
                       bgColor={"#fafafa"}
                       color={"#173346"}
-                      size={"0.2rem"}
+                      size={"2rem"}
                       borderRadius={false}
                       border={"solid 0.2rem #ebebeb"}
                       onClick={(e) => { }}
