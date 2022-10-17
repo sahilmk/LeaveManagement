@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useAuthContext } from "./Hooks";
-import { ApprovedLeave, CancelledLeave, Dashboard, ForgotPassword, LeaveRequest, LoginPage, OTPPage, PendingLeave, RejectedLeave, ResetPassword } from "./Pages";
+import { ApprovedLeave, CancelledLeave, Dashboard, ForgotPassword, LeaveRequest, LoginPage, ManageLeaveRequest, OTPPage, PendingLeave, RejectedLeave, ResetPassword } from "./Pages";
 import { approvedLeavesPath, cancelledLeavesPath, dashboardPath, departmentPath, employeeLeavesListPath, employeeListPath, forgotPasswordPath, holidayPath, homePath, leaveReasonPath, leaveRequestPath, leaveTypePath, manageLeaverequestPath, otpPath, pendingLeavesPath, rejectedLeavesPath, resetPasswordPath } from "./Util/Constants";
 import { getData } from "./Util/Helper";
+import './Styles/globalStyling.scss'
 
 function App() {
   const { state, dispatch } = useAuthContext();
@@ -50,7 +51,7 @@ function App() {
           <Route path={pendingLeavesPath} element={<PendingLeave logindate={"10-12-2036"} />} />
           <Route path={rejectedLeavesPath} element={<RejectedLeave logindate={"10-12-2036"} />} />
           <Route path={cancelledLeavesPath} element={<CancelledLeave logindate={"10-12-2036"} />} />
-          <Route path={manageLeaverequestPath} element={<h1>manageleaverequest</h1>} />
+          <Route path={manageLeaverequestPath} element={<ManageLeaveRequest logindate={'10-12-2036'} />} />
           <Route path={employeeListPath} element={<h1>employeelist</h1>} />
           <Route path={employeeLeavesListPath} element={<h1>employeeleaveslist</h1>} />
           <Route path={leaveReasonPath} element={<h1>Leave Reason</h1>} />
