@@ -3,10 +3,11 @@ import { Theme } from "../../Theme";
 
 export const PageTitleStyle = styled.div`
     background-color: ${Theme.colors.lotion};
-    justify-content: space-between;
-    box-sizing: border-box;
-    align-items: center;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 12rem;
+    width: 100%;
     padding:  3rem 3rem 1.8rem;
 
     .logindate{
@@ -15,6 +16,10 @@ export const PageTitleStyle = styled.div`
         display: inline-block;
         margin-bottom: 1rem;
         font-size: 1.95rem;
+
+        >span{
+            font-size: 1.95rem;
+        }
     }
 
     .nameofpage{

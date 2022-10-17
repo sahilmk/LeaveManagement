@@ -1,3 +1,8 @@
+@import '../../Styles/variable.scss';
+
 .maincontent {
+    background-color: $culturedColor;
     margin: 70px 0px 0px 420px;
+    height: calc(100vh - 70px);
+    width: calc(100% - 420px);
 }

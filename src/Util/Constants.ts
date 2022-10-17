@@ -30,3 +30,5 @@ export const employeeleaveslistPath = "/employeeleaveslist";
 export const leavetypePath = "/leavetype";
 
 export const departmentPath = "/department";
+
+export const leaverequestPath = "/leaverequest";

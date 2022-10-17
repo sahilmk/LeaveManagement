@@ -22,8 +22,11 @@ export const SidebarStyle = styled.div`
         font-family: SegoeUI;
         flex-direction: column;
         display: flex;
-        font-size: 2.6rem;
-        font-weight: 600;
+
+        .username{
+            font-size: 2.6rem;
+            font-weight: 600;
+        }
 
         .userposition{
             color: ${Theme.colors.whiteColor};
