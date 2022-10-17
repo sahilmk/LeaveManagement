@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Form, Field } from "react-final-form";
 import { Button, DataTable, Input, PageTitle } from "../../stories";
+import { dummyData } from "../../Util/Constants";
+import { getData } from "../../Util/Helper";
+import { getLeaveData } from "../../APIs";
 import style from "./ApprovedLeaves.module.scss";
 import "../../Icons/css/material-design-iconic-font.css";
-import { getLeaveData } from "../../APIs";
-import { getData } from "../../Util/Helper";
-import { dummyData } from "../../Util/Constants";
 
 export type approvedLeavePropType = {
   logindate: string;

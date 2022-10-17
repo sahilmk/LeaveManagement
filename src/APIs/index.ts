@@ -5,7 +5,7 @@ import {
   setLoginData,
 } from "./authData";
 import { callProfilePageGet } from "./ProfilePage";
-import { getLeaveData } from "./getLeaveData";
+import { getLeaveData, postNewLeave } from "./getLeaveData";
 
 export {
   callLoginPost,
@@ -14,4 +14,5 @@ export {
   setLoginData,
   getLeaveData,
   callProfilePageGet,
+  postNewLeave,
 };

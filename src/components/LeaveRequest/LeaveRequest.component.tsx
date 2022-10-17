@@ -1,8 +1,8 @@
-import { postNewLeave } from "../../APIs/getLeaveData";
-import { getData } from "../../Util/Helper";
 import React, { useState } from "react";
-import { Input, PageTitle, Button } from "../../stories";
 import { Form, Field } from "react-final-form";
+import { Input, PageTitle, Button } from "../../stories";
+import { getData } from "../../Util/Helper";
+import { postNewLeave } from "../../APIs";
 import style from "./LeaveRequest.module.scss";
 
 type fieldInputType = {
