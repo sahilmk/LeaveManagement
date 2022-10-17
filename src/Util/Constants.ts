@@ -17,6 +17,42 @@ export const sidebarTabData = [
     { icon: 'gamepad', label: 'Department', isExpandable: false, isOpen: false, route: '/department' }
 ];
 
+export const homePath = "/home";
+
+export const holidayPath = "/holidays";
+
+export const leaveRequestPath = "/leaverequest";
+
+export const approvedLeavesPath = "/approvedleaves";
+
+export const pendingLeavesPath = "/pendingleaves";
+
+export const rejectedLeavesPath = "/rejectedleaves";
+
+export const cancelledLeavesPath = "/cancelledleaves";
+
+export const manageLeaverequestPath = "/manageleaverequest";
+
+export const employeeListPath = "/employeelist";
+
+export const employeeLeavesListPath = "/employeeleaveslist";
+
+export const leaveReasonPath = "/leavereason";
+
+export const leaveTypePath = "/leavetype";
+
+export const departmentPath = "/department";
+
+export const forgotPasswordPath = "/forgotpassword";
+
+export const otpPath = "/otp";
+
+export const resetPasswordPath = "/resetpassword";
+
+export const dashboardPath = "/dashboard";
+
+export const profilePath = "/profile";
+
 export const dummyData = [
     {
         id: "1",
@@ -24,6 +60,8 @@ export const dummyData = [
         reason: "Seek Leave",
         date: "12/01/2018 to 14/01/2018",
         appliedOn: "25/12/2017",
+        name: 'John Doe',
+        department: 'Front-End'
     },
     {
         id: "2",
@@ -31,5 +69,7 @@ export const dummyData = [
         reason: "Seek Leave",
         date: "10/01/2018",
         appliedOn: "25/12/2017",
+        name: 'Mical filips',
+        department: 'HRD'
     }
 ]

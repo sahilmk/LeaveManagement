@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Input, PageTitle, ButtonComponent } from '../../stories'
-import { Form, Field } from 'react-final-form';
-import { postNewLeave } from '../../APIs/getLeaveData';
+import { Form, Field } from 'react-final-form'
+import { Input, PageTitle, Button } from '../../stories'
 import { getData } from '../../Util/Helper';
+import { postNewLeave } from '../../APIs/getLeaveData';
 import style from './LeaveRequest.module.scss';
 
 type fieldInputType = {
@@ -40,11 +40,11 @@ function LeaveRequest({ logindate }: { logindate: string }) {
       }
     }
 
-    const loginData = getData("LoginData");
+    const loginData = getData("loginData");
     const config = {
       headers: { Authorization: `Bearer ${loginData.token}` }
     };
-    postNewLeave(config, newLeave).then((res) => console.log(res)).catch((e) => { alert(e.response.data.message) })
+    postNewLeave(config, newLeave).then().catch((e) => { alert(e.response.data.message) })
   };
 
   const validate = (e: fieldInputType) => {
@@ -73,6 +73,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
 
     return errors;
   };
+
 
 
 
@@ -141,8 +142,8 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                   type='date'
                                   placeholder='Select Date'
                                   inputtype=''
-                                  padding={'14px 18px 14px 19px'}
-                                  width={440}
+                                  padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                  width='44rem'
                                   onChange={e.input.onChange}
                                   onBlur={e.input.onBlur}
                                   onFocus={e.input.onFocus}
@@ -162,8 +163,8 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                   type='date'
                                   placeholder='Select Date'
                                   inputtype=''
-                                  padding={'14px 18px 14px 19px'}
-                                  width={440}
+                                  padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                  width='44rem'
                                   onChange={e.input.onChange}
                                   onBlur={e.input.onBlur}
                                   onFocus={e.input.onFocus} />
@@ -201,8 +202,8 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                   type='text'
                                   placeholder='Remark'
                                   inputtype=''
-                                  padding={'14px 18px 14px 19px'}
-                                  width={910}
+                                  padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                  width='91rem'
                                   onChange={e.input.onChange}
                                   onBlur={e.input.onBlur}
                                   onFocus={e.input.onFocus} />
@@ -226,8 +227,8 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                   type='date'
                                   placeholder='Select Date'
                                   inputtype=''
-                                  padding={'14px 18px 14px 19px'}
-                                  width={440}
+                                  padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                  width='44rem'
                                   onChange={e.input.onChange}
                                   onBlur={e.input.onBlur}
                                   onFocus={e.input.onFocus} />
@@ -240,20 +241,21 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                         <div className={style.inputcontrol}>
                           <label htmlFor="reason">Leave Type</label>
                           <Field name="leavetype" component="select" className={style.dropdown}>
-                            <option value='Paid'>Paid</option>
-                            <option value='Unpaid'>Unpaid</option>
-                            <option value='Other'>Other</option>
+                            <option>Paid</option>
+                            <option>Unpaid</option>
                           </Field>
                         </div>
+
 
                         <div className={style.inputcontrol}>
                           <label htmlFor="reason">Reason</label>
                           <Field name="reason" component="select" className={style.dropdown}>
-                            <option value='Sick Leave'>Sick Leave</option>
-                            <option value='Other'>Other</option>
+                            <option>Sick Leave</option>
+                            <option>Other</option>
                           </Field>
                         </div>
                       </div>
+
                       <div className={style.inputcontrol}>
                         <Field name="otherremark">
                           {(e) => (
@@ -264,8 +266,8 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                 type='text'
                                 placeholder='Remark'
                                 inputtype=''
-                                padding={'14px 18px 14px 19px'}
-                                width={910}
+                                padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                width='91rem'
                                 onChange={e.input.onChange}
                                 onBlur={e.input.onBlur}
                                 onFocus={e.input.onFocus} />
@@ -278,26 +280,14 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                   }
                 </div>
 
-                <ButtonComponent
-                  label="Submit"
-                  type="submit"
-                  borderRadius={false}
-                  color="#fff"
-                />
-                <ButtonComponent
-                  label="Cancel"
-                  type="reset"
-                  borderRadius={false}
-                  color="#173346"
-                  bgColor="#fafafa"
-                  border="solid 2px #ebebeb"
-                />
+                <Button label='Submit' type='submit' borderRadius={false} color='#fff' />
+                <Button label='Cancel' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 0.2rem #ebebeb' />
               </form>
             )}
           />
-        </div>
-      </div>
-    </div>
+        </div >
+      </div >
+    </div >
   );
 }
 

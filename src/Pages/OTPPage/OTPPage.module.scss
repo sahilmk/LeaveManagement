@@ -1,3 +1,5 @@
+@import '../../Styles/variable.scss';
+
 .otp {
   display: flex;
   flex-direction: column;
@@ -7,14 +9,14 @@
 
   &__card {
     width: 35%;
-    background-color: #173346;
+    background-color: $yankeesBlueColor;
     margin: 0 auto;
-    padding: 30px 0 50px;
+    padding: 3rem 0 5rem;
   }
 
   &__cardHeader {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 2.5rem;
   }
 
   &__cardBody {
@@ -26,30 +28,29 @@
       div {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 40px;
+        margin-bottom: 4rem;
 
         &:first-child {
           flex-direction: column;
         }
 
         span {
-          color: red;
-          padding: 5px 0 0 40px;
+          color: $redColor;
+          padding: 0.5rem 0 0 4rem;
           font-weight: bold;
         }
       }
     }
 
     a {
-      font-family: SegoeUI;
+      color: $darkSlateGrayColor;
       font-stretch: normal;
       font-style: normal;
       line-height: normal;
       letter-spacing: normal;
       text-align: center;
-      font-size: 22px;
+      font-size: 2.2rem;
       font-weight: 600;
-      color: #284960;
     }
   }
 }

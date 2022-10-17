@@ -1,6 +1,8 @@
+@import '../../Styles/variable.scss';
+
 .maincontent {
-    background-color: #f4f4f4;
-    margin: 70px 0px 0px 420px;
-    height: calc(100vh - 70px);
-    width: calc(100% - 420px);
+    background-color: $culturedColor;
+    margin: 7rem 0rem 0rem 42rem;
+    height: calc(100vh - 7rem);
+    width: calc(100% - 42rem);
 }

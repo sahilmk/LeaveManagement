@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Form, Field } from 'react-final-form'
+import { Button, DataTable, Input, PageTitle } from '../../stories'
 import { getLeaveData } from '../../APIs'
-import { ButtonComponent, DataTable, Input, PageTitle } from '../../stories'
 import { dummyData } from '../../Util/Constants'
 import { getData } from '../../Util/Helper'
+import { responseDataType } from '../../Types/globalTypes'
 import style from './RejectedLeave.module.scss'
 
 export type rejectedLeavePropType = {
@@ -17,34 +18,11 @@ export type formInputTypes = {
     type?: 'Paid' | 'Unpaid'
 }
 
-type responseDataType = {
-    comments?: string,
-    created_at?: string,
-    department?: string,
-    employeeId?: number,
-    endDate?: string,
-    firstName?: string,
-    image?: string,
-    isHalfDay?: number,
-    isStartDateGone?: number,
-    lastName?: string,
-    reportedDate?: null | string,
-    reportingComments?: null | string,
-    reportingStatus?: string,
-    startDate?: string,
-    id: number,
-    reason: string,
-    type: string,
-    date?: string,
-    appliedOn?: string
-
-}
-
 function RejectedLeave({ logindate }: rejectedLeavePropType) {
 
     const [rejectedLeaveData, setrejectedLeaveData] = useState<responseDataType[]>([]);
 
-    const onSubmit = (e: formInputTypes) => { console.log(e) };
+    const onSubmit = (e: formInputTypes) => { };
 
     const validate = (e: formInputTypes) => {
         const errors: formInputTypes = {};
@@ -67,7 +45,7 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
     };
 
     useEffect(() => {
-        const loginData = getData("LoginData");
+        const loginData = getData("loginData");
 
         const config = {
             headers: { Authorization: `Bearer ${loginData.token} ` }
@@ -89,7 +67,9 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
             setrejectedLeaveData(intermidate);
         });
 
-    }, [])
+    }, []);
+
+
 
     return (
         <>
@@ -112,8 +92,8 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
                                                     type='date'
                                                     placeholder='Select Date'
                                                     inputtype=''
-                                                    padding={'14px 18px 14px 19px'}
-                                                    width={300}
+                                                    padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                                    width='30rem'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
                                                     onFocus={e.input.onFocus}
@@ -134,8 +114,8 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
                                                     type='date'
                                                     placeholder='Select Date'
                                                     inputtype=''
-                                                    padding={'14px 18px 14px 19px'}
-                                                    width={300}
+                                                    padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                                    width='30rem'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
                                                     onFocus={e.input.onFocus} />
@@ -155,8 +135,8 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
                                                     type='text'
                                                     placeholder='Search here... '
                                                     inputtype=''
-                                                    padding={'14px 18px 14px 19px'}
-                                                    width={300}
+                                                    padding={'1.4rem 1.8rem 1.4rem 1.9rem'}
+                                                    width='30rem'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
                                                     onFocus={e.input.onFocus} />
@@ -167,7 +147,7 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
                                 </div>
 
                                 <div className={style.inputcontrol}>
-                                    <ButtonComponent label='Clear' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 2px #ebebeb' />
+                                    <Button label='Clear' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 0.2rem #ebebeb' />
                                 </div>
                             </div>
                         </form>
@@ -190,7 +170,7 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
                                     <div>
                                         <i
                                             onClick={() => {
-                                                console.log("eye");
+
                                             }}
                                             style={{ cursor: "pointer" }}
                                             className="zmdi zmdi-eye"

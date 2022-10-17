@@ -1,9 +1,9 @@
-import { type } from "os";
 import React from "react";
 import StyledButton from "./Button.styled";
-import '../../Icons/css/material-design-iconic-font.css'
+import '../../Icons/css/material-design-iconic-font.css';
+import { Theme } from '../../Theme'
 
-type ButtonComponentProps = {
+type ButtonProps = {
   label: string;
   onClick: React.MouseEventHandler;
   bgColor: string;
@@ -11,11 +11,11 @@ type ButtonComponentProps = {
   size: string;
   border: string;
   borderRadius: boolean;
-  logo?: boolean
-  type: 'submit' | 'button' | 'reset'
+  logo?: boolean;
+  type: "submit" | "button" | "reset";
 };
 
-const ButtonComponent = ({
+const Button = ({
   label,
   onClick,
   bgColor,
@@ -25,37 +25,35 @@ const ButtonComponent = ({
   borderRadius,
   logo,
   type
-}: ButtonComponentProps) => {
+}: ButtonProps) => {
   return (
-    <>
-      <StyledButton
-        onClick={onClick}
-        bgColor={bgColor}
-        color={color}
-        size={size}
-        border={border}
-        borderRadius={borderRadius}
-        type={type}
-      >
-        {logo && < i className="zmdi zmdi-power" />}
-        {label}
-      </StyledButton>
-    </>
+    <StyledButton
+      onClick={onClick}
+      bgColor={bgColor}
+      color={color}
+      size={size}
+      border={border}
+      borderRadius={borderRadius}
+      type={type}
+    >
+      {logo && <i className="zmdi zmdi-power" />}
+      {label}
+    </StyledButton>
   );
 };
 
-ButtonComponent.defaultProps = {
+Button.defaultProps = {
   value: "",
   onClick: (e: React.MouseEvent) => {
 
   },
-  bgColor: "#284960",
-  color: "#7a99af",
-  size: "26px",
+  bgColor: Theme.colors.darkslategrayColor,
+  color: Theme.colors.weldonBlueColor,
+  size: "2.6rem",
   border: "",
   borderRadius: true,
   logo: false,
-  type: 'button'
+  type: "button",
 };
 
-export default ButtonComponent;
+export default Button;

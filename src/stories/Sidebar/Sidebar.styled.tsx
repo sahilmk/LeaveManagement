@@ -19,9 +19,9 @@ export const SidebarStyle = styled.div`
 
     .profiledescription{
         color: ${Theme.colors.whiteColor};
-        font-family: SegoeUI;
         flex-direction: column;
         display: flex;
+        text-decoration: none;
 
         .username{
             font-size: 2.6rem;
@@ -30,7 +30,6 @@ export const SidebarStyle = styled.div`
 
         .userposition{
             color: ${Theme.colors.whiteColor};
-            font-family: SegoeUI;
             font-size: 2rem;
             font-weight: 300;
         }
@@ -51,11 +50,11 @@ export const SidebarStyle = styled.div`
 
     .innerTabs{
         a{
-            background-color: ${Theme.colors.lotion};
-            /* &:focus{
+            background-color: ${Theme.colors.lotionColor};
+            &:focus{
                 background-color: ${Theme.colors.culturedColor};
                 margin: 1rem;
-            } */
+            }
         }
     }
 

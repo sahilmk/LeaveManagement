@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Theme } from "../../Theme";
 
 export const PageTitleStyle = styled.div`
-    background-color: ${Theme.colors.lotion};
+    background-color: ${Theme.colors.lotionColor};
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,8 +11,7 @@ export const PageTitleStyle = styled.div`
     padding:  3rem 3rem 1.8rem;
 
     .logindate{
-        color: ${Theme.colors.yankeesBlue};
-        font-family: SegoeUI;
+        color: ${Theme.colors.yankeesBlueColor};
         display: inline-block;
         margin-bottom: 1rem;
         font-size: 1.95rem;
@@ -23,15 +22,13 @@ export const PageTitleStyle = styled.div`
     }
 
     .nameofpage{
-        color: ${Theme.colors.yankeesBlue};
-        font-family: SegoeUI;
+        color: ${Theme.colors.yankeesBlueColor};
         font-weight: 600;
         font-size: 3rem;
     }
 
     .childpage{
-        color: ${Theme.colors.yankeesBlue};
-        font-family: SegoeUI;
+        color: ${Theme.colors.yankeesBlueColor};
         font-size: 2.4rem;
     }
 

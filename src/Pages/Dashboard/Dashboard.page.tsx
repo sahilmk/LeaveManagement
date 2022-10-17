@@ -1,40 +1,46 @@
 import { Route, Routes } from "react-router-dom";
 import { NavbarComponent, Sidebar } from "../../stories";
-import { LeaveRequest, ApprovedLeave, PendingLeave, RejectedLeave, CancelledLeave } from "../../components";
+import LeaveRequest from "../LeaveRequest";
+import ApprovedLeave from "../ApprovedLeaves";
 import ProfilePage from "../Profile";
+import PendingLeave from "../PendingLeaves";
+import RejectedLeave from "../RejectedLeaves";
+import CancelledLeave from "../CancelledLeaves";
+import ManageLeaveRequest from "../ManageLeaveRequest";
+import { approvedLeavesPath, cancelledLeavesPath, departmentPath, employeeLeavesListPath, employeeListPath, holidayPath, homePath, leaveReasonPath, leaveRequestPath, leaveTypePath, manageLeaverequestPath, pendingLeavesPath, profilePath, rejectedLeavesPath, sidebarTabData } from "../../Util/Constants";
 import { getData } from "../../Util/Helper";
-import { sidebarTabData } from "../../Util/Constants";
-import * as styles from './Dashboard.module.scss'
+import styles from "./Dashboard.module.scss";
+
 
 function Dashboard() {
-  const loginData = getData("LoginData");
+
+  const loginData = getData("loginData");
 
   const userName = loginData.data.user.employee.firstName + " " + loginData.data.user.employee.lastName;
 
+  const userLoginData = loginData.data.user.lastLogin;
+
+
   return (
     <>
-      <NavbarComponent
-        user={userName} />
-
-      <Sidebar
-        user={userName}
-        position={loginData.data.user.employee.designation} sidebarTabData={sidebarTabData}
-        userImage={"./assets/images/profile.png"} />
-
+      <NavbarComponent user={userName} />
+      <Sidebar user={userName} position={loginData.data.user.employee.designation} sidebarTabData={sidebarTabData} userImage={"./assets/images/profile.png"} />
       <div className={styles.maincontent}>
         <Routes>
-          <Route path="/home" element={<ProfilePage />} />
-          <Route path="/holidays" element={<h1>Holidays</h1>} />
-          <Route path="/leaverequest" element={<LeaveRequest logindate={loginData.data.user.lastLogin} />} />
-          <Route path="/approvedleaves" element={<ApprovedLeave logindate={"10-12-2036"} />} />
-          <Route path="/pendingleaves" element={<PendingLeave logindate={"10-12-2036"} />} />
-          <Route path="/rejectedleaves" element={<RejectedLeave logindate={"10-12-2036"} />} />
-          <Route path="/cancelledleaves" element={<CancelledLeave logindate={"10-12-2036"} />} />
-          <Route path="/manageleaverequest" element={<h1>manageleaverequest</h1>} />
-          <Route path="/employeelist" element={<h1>employeelist</h1>} />
-          <Route path="/employeeleaveslist" element={<h1>employeeleaveslist</h1>} />
-          <Route path="/leavetype" element={<h1>leavetype</h1>} />
-          <Route path="/department" element={<h1>department</h1>} />
+          <Route path={profilePath} element={<ProfilePage />} />
+          <Route path={homePath} element={<h1 className="emptypage">Home</h1>} />
+          <Route path={holidayPath} element={<h1 className="emptypage">Holidays</h1>} />
+          <Route path={leaveRequestPath} element={<LeaveRequest logindate={userLoginData} />} />
+          <Route path={approvedLeavesPath} element={<ApprovedLeave logindate={userLoginData} />} />
+          <Route path={pendingLeavesPath} element={<PendingLeave logindate={userLoginData} />} />
+          <Route path={rejectedLeavesPath} element={<RejectedLeave logindate={userLoginData} />} />
+          <Route path={cancelledLeavesPath} element={<CancelledLeave logindate={userLoginData} />} />
+          <Route path={manageLeaverequestPath} element={<ManageLeaveRequest logindate={userLoginData} />} />
+          <Route path={employeeListPath} element={<h1 className="emptypage">Employee List</h1>} />
+          <Route path={employeeLeavesListPath} element={<h1 className="emptypage">Employee Leaves List</h1>} />
+          <Route path={leaveReasonPath} element={<h1 className="emptypage">Leave Reason</h1>} />
+          <Route path={leaveTypePath} element={<h1 className="emptypage">Leave Type</h1>} />
+          <Route path={departmentPath} element={<h1 className="emptypage">Department</h1>} />
         </Routes>
       </div>
     </>

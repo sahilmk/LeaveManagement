@@ -5,7 +5,7 @@ type NavbarComponentProps = {
   user: string;
 };
 
-const NavbarComponent = ({ user }: NavbarComponentProps) => {
+const Navbar = ({ user }: NavbarComponentProps) => {
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
@@ -25,8 +25,8 @@ const NavbarComponent = ({ user }: NavbarComponentProps) => {
   );
 };
 
-NavbarComponent.defaultProps = {
+Navbar.defaultProps = {
   user: "John Doe",
 };
 
-export default NavbarComponent;
+export default Navbar;

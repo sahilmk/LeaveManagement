@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Form, Field } from "react-final-form";
-import { Input, ButtonComponent } from "../../stories";
+import { Input, Button } from "../../stories";
 import { callLoginPost, setLoginData } from "../../APIs";
 import { useAuthContext } from "../../Hooks";
 import LoginPageStyle from "./Login.module.scss";
@@ -85,8 +85,8 @@ const LoginPage = () => {
                           type="text"
                           placeholder="Email"
                           inputtype="authinput"
-                          padding="0px 0px 0px 40px"
-                          width={450}
+                          padding="0rem 0rem 0rem 4rem"
+                          width='45rem'
                           onChange={e.input.onChange}
                           onBlur={e.input.onBlur}
                           onFocus={e.input.onFocus}
@@ -104,8 +104,8 @@ const LoginPage = () => {
                           type="password"
                           placeholder="Password"
                           inputtype="authinput"
-                          padding="0px 0px 0px 40px"
-                          width={450}
+                          padding="0rem 0rem 0rem 4rem"
+                          width='45rem'
                           onChange={e.input.onChange}
                           onFocus={e.input.onFocus}
                           onBlur={e.input.onBlur}
@@ -116,7 +116,7 @@ const LoginPage = () => {
                       </div>
                     )}
                   </Field>
-                  <ButtonComponent label={"Login"} type={"submit"} />
+                  <Button label={"Login"} type={"submit"} />
                 </form>
               )}
             />

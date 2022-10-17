@@ -1,44 +1,45 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import ButtonComponent from "./Button.component";
+import Button from "./Button.component";
+import { Theme } from "../../Theme";
 
 export default {
   title: "Button",
-  component: ButtonComponent,
+  component: Button,
   argTypes: {
     onClick: { action: "clicked" },
   },
-} as ComponentMeta<typeof ButtonComponent>;
+} as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof ButtonComponent> = (args) => (
-  <ButtonComponent {...args} />
+const Template: ComponentStory<typeof Button> = (args) => (
+  <Button {...args} />
 );
 
 export const LoginPrimary = Template.bind({});
 LoginPrimary.args = {
   label: "Next",
-  bgColor: "#284960",
-  color: "#7a99af",
-  size: "26px",
-  border: "solid 2px #284960",
+  bgColor: Theme.colors.darkslategrayColor,
+  color: Theme.colors.weldonBlueColor,
+  size: "2.6rem",
+  border: `solid 0.2rem ${Theme.colors.darkslategrayColor}`,
   borderRadius: true,
 };
 
 export const LoginSecondary = Template.bind({});
 LoginSecondary.args = {
   label: "Back",
-  bgColor: "#173346",
-  color: "#7a99af",
-  size: "26px",
-  border: "solid 2px #284960",
+  bgColor: Theme.colors.yankeesBlueColor,
+  color: Theme.colors.weldonBlueColor,
+  size: "2.6rem",
+  border: `solid 0.2rem ${Theme.colors.darkslategrayColor}`,
   borderRadius: true,
 };
 
 export const inAppPrimary = Template.bind({});
 inAppPrimary.args = {
   label: "Update Profile",
-  bgColor: "#173346",
-  color: "#fff",
-  size: "20px",
+  bgColor: Theme.colors.yankeesBlueColor,
+  color: Theme.colors.whiteColor,
+  size: "2rem",
   border: "",
   borderRadius: false,
 };
@@ -46,9 +47,9 @@ inAppPrimary.args = {
 export const inAppSecondary = Template.bind({});
 inAppSecondary.args = {
   label: "Cancel",
-  bgColor: "#fafafa",
-  color: "#173346",
-  size: "20px",
-  border: "solid 2px #ebebeb",
+  bgColor: Theme.colors.lotionColor,
+  color: Theme.colors.yankeesBlueColor,
+  size: "2rem",
+  border: `solid 0.2rem ${Theme.colors.brightGrayColor}`,
   borderRadius: false,
 };

@@ -24,20 +24,10 @@ ApprovedLeaves.args = {
       renderCell: (params) => {
         return (
           <div>
-            <span
-              onClick={() => {
-                console.log("eye");
-              }}
-              style={{ cursor: "pointer" }}
-            >
+            <span onClick={() => {}} style={{ cursor: "pointer" }}>
               E
             </span>
-            <span
-              onClick={() => {
-                console.log("remove");
-              }}
-              style={{ cursor: "pointer" }}
-            >
+            <span onClick={() => {}} style={{ cursor: "pointer" }}>
               R
             </span>
           </div>
@@ -81,12 +71,7 @@ RejectedLeaves.args = {
       renderCell: (params) => {
         return (
           <div>
-            <span
-              onClick={() => {
-                console.log("eye");
-              }}
-              style={{ cursor: "pointer" }}
-            >
+            <span onClick={() => {}} style={{ cursor: "pointer" }}>
               E
             </span>
           </div>
@@ -130,12 +115,7 @@ CancelledLeaves.args = {
       renderCell: (params) => {
         return (
           <div>
-            <span
-              onClick={() => {
-                console.log("eye");
-              }}
-              style={{ cursor: "pointer" }}
-            >
+            <span onClick={() => {}} style={{ cursor: "pointer" }}>
               E
             </span>
           </div>
@@ -178,12 +158,7 @@ ManageLeaveRequestLeave.args = {
       renderCell: (params) => {
         return (
           <div>
-            <span
-              onClick={() => {
-                console.log("eye");
-              }}
-              style={{ cursor: "pointer" }}
-            >
+            <span onClick={() => {}} style={{ cursor: "pointer" }}>
               E
             </span>
           </div>
@@ -227,20 +202,10 @@ PendingLeaves.args = {
       renderCell: (params) => {
         return (
           <div>
-            <span
-              onClick={() => {
-                console.log("eye");
-              }}
-              style={{ cursor: "pointer" }}
-            >
+            <span onClick={() => {}} style={{ cursor: "pointer" }}>
               E
             </span>
-            <span
-              onClick={() => {
-                console.log("remove");
-              }}
-              style={{ cursor: "pointer" }}
-            >
+            <span onClick={() => {}} style={{ cursor: "pointer" }}>
               R
             </span>
           </div>

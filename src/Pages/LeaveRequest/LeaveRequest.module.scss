@@ -1,4 +1,4 @@
-@import '../../Styles/variable.scss';
+@import '../../Styles/_variable.scss';
 
 .leaverequestform {
     background-color: $whiteColor;
@@ -76,7 +76,6 @@
         select {
             color: $darkGrayColor;
             outline: none;
-            margin-right: 3rem;
 
             option {
                 color: $darkGrayColor;

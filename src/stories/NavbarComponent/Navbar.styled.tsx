@@ -1,30 +1,29 @@
 import styled from "styled-components";
+import { Theme } from "../../Theme";
 
 const StyledNavbar = styled.div`
   display: flex;
   position: fixed;
   align-items: center;
   justify-content: space-between;
-  background-color: #173346;
-  height: 70px;
+  background-color: ${Theme.colors.yankeesBlueColor};
+  height: 7rem;
   width: 100%;
-  padding: 0px 30px;
-  top: 0px;
-  left: 0px;
+  padding: 0rem 3rem;
+  top: 0rem;
+  left: 0rem;
 
   .leaveManagementTitle {
-    font-family: Novecento;
-    font-size: 29.5px;
-    color: #fff;
+    font-size: 2.95rem;
+    color: ${Theme.colors.whiteColor};
   }
 
   .welcomeMessage {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    height: 24px;
-    font-size: 26.5px;
+    height: 2.4rem;
+    font-size: 2.65rem;
     font-weight: 300;
     text-align: right;
-    color: #fff;
+    color: ${Theme.colors.whiteColor};
   }
 `;
 

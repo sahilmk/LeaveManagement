@@ -1,25 +1,26 @@
 import styled from "styled-components";
+import { Theme } from "../../Theme";
 
 const StyledTable = styled.table`
+  background-color: ${Theme.colors.whiteColor};
   text-align: left;
-  background-color: #fff;
-  width: 100%;
   border-collapse: collapse;
+  width: 100%;
 
   thead,
   tbody {
-    border-bottom: 2px solid #ebebeb;
+    border-bottom: 0.2rem solid ${Theme.colors.brightGrayColor};
   }
 
   th {
-    color: #080341;
+    color: ${Theme.colors.cetaceanBlueColor};
     font-weight: 600;
   }
 
   th,
   td {
-    padding: 10px 20px;
-    font-size: 22px;
+    padding: 1rem 2rem;
+    font-size: 2.2rem;
   }
 
   td {
@@ -27,7 +28,7 @@ const StyledTable = styled.table`
       display: flex;
 
       span {
-        margin-right: 16px;
+        margin-right: 1.6rem;
       }
     }
   }

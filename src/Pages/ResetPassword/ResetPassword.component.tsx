@@ -1,6 +1,6 @@
 import { Form, Field } from "react-final-form";
 import { useNavigate } from "react-router-dom";
-import { Input, ButtonComponent } from "../../stories";
+import { Input, Button } from "../../stories";
 import ResetPasswordPageStyle from "./ResetPassword.module.scss";
 
 const ResetPasswordPage = () => {
@@ -47,8 +47,8 @@ const ResetPasswordPage = () => {
                           type="password"
                           placeholder="New Password"
                           inputtype="authinput"
-                          padding="0px 0px 0px 40px"
-                          width={450}
+                          padding="0rem 0rem 0rem 4rem"
+                          width='45rem'
                           onChange={e.input.onChange}
                           onBlur={e.input.onBlur}
                           onFocus={e.input.onFocus}
@@ -66,8 +66,8 @@ const ResetPasswordPage = () => {
                           type="password"
                           placeholder="Confirm Password"
                           inputtype="authinput"
-                          padding="0px 0px 0px 40px"
-                          width={450}
+                          padding="0rem 0rem 0rem 4rem"
+                          width='45rem'
                           onChange={e.input.onChange}
                           onBlur={e.input.onBlur}
                           onFocus={e.input.onFocus}
@@ -79,14 +79,14 @@ const ResetPasswordPage = () => {
                     )}
                   </Field>
                   <div>
-                    <ButtonComponent
+                    <Button
                       label={"Back"}
                       bgColor={"#173346"}
                       onClick={() => {
                         navigate("/OTP");
                       }}
                     />
-                    <ButtonComponent label={"Next"} type={"submit"} />
+                    <Button label={"Next"} type={"submit"} />
                   </div>
                 </form>
               )}

@@ -1,0 +1,60 @@
+@import '../../Styles/_variable.scss';
+
+.profileDetail {
+
+    padding: 3rem 0;
+
+    &__formContainer {
+        display: flex;
+    }
+
+    &__customInput {
+        display: flex;
+        flex-direction: column;
+        margin: 0 3rem 4rem 0;
+
+        label {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.9rem;
+        }
+
+        select {
+            color: $darkGrayColor;
+            outline: none;
+            margin-right: 3rem;
+
+            option {
+                color: $darkGrayColor;
+                font-size: 2rem;
+            }
+        }
+
+        .customDropdown {
+            background-color: $lotionColor;
+            border: solid 0.2rem $brightGrayColor;
+            height: 5rem;
+            width: 44rem;
+            padding: 1.1rem 1.8rem 1.1rem 1.9rem;
+            font-size: 2rem;
+            border-radius: 0rem;
+        }
+    }
+
+    &__buttonContainer {
+        height: 5rem;
+        margin-top: 7rem;
+        display: flex;
+        justify-content: space-between;
+        padding-right: 6rem;
+
+        button {
+            height: 100%;
+            font-weight: 600;
+        }
+    }
+
+    .error {
+        color: $redColor;
+    }
+}
