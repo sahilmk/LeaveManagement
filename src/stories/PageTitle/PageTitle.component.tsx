@@ -1,5 +1,5 @@
 import React from 'react'
-import ButtonComponent from '../ButtonComponent'
+import Button from '../ButtonComponent'
 import { PageTitleStyle } from './PageTitle.styled'
 
 export type Pagetitleporp = {
@@ -16,7 +16,7 @@ function PageTitle({ logindate, pagename, innerPageNames, buttonName, isinnerPag
         <PageTitleStyle>
             <div>
                 <span className="logindate">
-                    Last logged in: <span className="text-style-1">{logindate}</span>
+                    Last logged in: <span>{logindate}</span>
                 </span>
                 <div>
                     <span className="nameofpage">{pagename}</span>
@@ -28,7 +28,7 @@ function PageTitle({ logindate, pagename, innerPageNames, buttonName, isinnerPag
                 </div>
             </div>
 
-            {isButton && <ButtonComponent label={buttonName!} borderRadius={false} color='#fff' size='2rem' />}
+            {isButton && <Button label={buttonName!} borderRadius={false} color='#fff' size='2rem' />}
         </PageTitleStyle >
     )
 }

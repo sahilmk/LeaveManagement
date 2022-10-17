@@ -1,11 +1,10 @@
 import React from "react"
-import { Sidebar } from "./stories"
-import { sidebarTabData } from './Util/Constants'
+import { Dashboard } from "./Pages"
 
 function App() {
   return (
     <div className="App">
-      <Sidebar user='sahil' position='dev' sidebarTabData={sidebarTabData} userImage='./assets/images/profile.png' />
+      <Dashboard />
     </div>
   )
 }

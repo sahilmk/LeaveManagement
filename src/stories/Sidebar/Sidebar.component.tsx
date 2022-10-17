@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
-import ButtonComponent from '../ButtonComponent'
+import Button from '../ButtonComponent'
 import SidebarTab from '../SidebarTab'
 import { SidebarStyle } from './Sidebar.styled'
 
@@ -62,7 +62,7 @@ function Sidebar({ user, position, sidebarTabData, userImage }: sidebarPropType)
                     <img src={userImage} alt={user} />
                 </div>
                 <div className="profiledescription">
-                    <span>{user}</span>
+                    <span className='username'>{user}</span>
                     <span className='userposition'>{position}</span>
                 </div>
             </div>
@@ -98,7 +98,7 @@ function Sidebar({ user, position, sidebarTabData, userImage }: sidebarPropType)
                 ))}
             </ul>
 
-            <ButtonComponent label={` Logout`} borderRadius={false} color='#fff' logo={true} />
+            <Button label={` Logout`} borderRadius={false} color='#fff' logo={true} />
 
         </SidebarStyle >
     )
