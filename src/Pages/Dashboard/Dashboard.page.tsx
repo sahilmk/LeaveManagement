@@ -1,21 +1,11 @@
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router";
+import { ProfilePage } from "..";
+import { ApprovedLeave, LeaveRequest } from "../../components";
 import { Navbar, Sidebar } from "../../stories";
-import { LeaveRequest, ApprovedLeave } from "../../components";
 import { sidebarTabData } from "../../Util/Constants";
 import { getData } from "../../Util/Helper";
+import { routes } from "../../Util/routes";
 import * as styles from "./Dashboard.module.scss";
-import {
-  approvedLeavesPages,
-  departmentPage,
-  employeeLeaveListPage,
-  employeeListPage,
-  holidaysPage,
-  homePage,
-  leaveRequestPages,
-  leavetypePage,
-  manageLeaveRequestPage,
-} from "../../Util/routes";
-import { ProfilePage } from "..";
 
 function Dashboard() {
   const loginData = getData("loginData");
@@ -37,29 +27,50 @@ function Dashboard() {
       />
 
       <div className={styles.maincontent}>
-        <Routes>
-          <Route path={homePage} element={<ProfilePage />} />
-          <Route path={holidaysPage} element={<h1>Holidays</h1>} />
-          <Route
-            path={leaveRequestPages}
-            element={<LeaveRequest logindate={"18/10/2022"} />}
-          />
-          <Route
-            path={approvedLeavesPages}
-            element={<ApprovedLeave logindate={"10-12-2036"} />}
-          />
-          <Route
-            path={manageLeaveRequestPage}
-            element={<h1>manageleaverequest</h1>}
-          />
-          <Route path={employeeListPage} element={<h1>employeelist</h1>} />
-          <Route
-            path={employeeLeaveListPage}
-            element={<h1>employeeleaveslist</h1>}
-          />
-          <Route path={leavetypePage} element={<h1>leavetype</h1>} />
-          <Route path={departmentPage} element={<h1>department</h1>} />
-        </Routes>
+        <Outlet>
+          <Routes>
+            <Route path={routes.homePath} element={<ProfilePage />} />
+            <Route path={routes.holidayPath} element={<h1>Holidays</h1>} />
+            <Route
+              path={routes.leaveRequestPath}
+              element={<LeaveRequest logindate={loginData} />}
+            />
+            <Route
+              path={routes.approvedLeavesPath}
+              element={<ApprovedLeave logindate={loginData} />}
+            />
+            <Route
+              path={routes.pendingLeavesPath}
+              element={<h1>Pending Leaves</h1>}
+            />
+            <Route
+              path={routes.rejectedLeavesPath}
+              element={<h1>Rejected Leaves</h1>}
+            />
+            <Route
+              path={routes.cancelledLeavesPath}
+              element={<h1>Cancelled Leaves</h1>}
+            />
+            <Route
+              path={routes.manageLeaverequestPath}
+              element={<h1>Manage Leave Requests</h1>}
+            />
+            <Route
+              path={routes.employeeListPath}
+              element={<h1>employeelist</h1>}
+            />
+            <Route
+              path={routes.employeeLeavesListPath}
+              element={<h1>employeeleaveslist</h1>}
+            />
+            <Route
+              path={routes.leaveReasonPath}
+              element={<h1>Leave Reason</h1>}
+            />
+            <Route path={routes.leaveTypePath} element={<h1>leavetype</h1>} />
+            <Route path={routes.departmentPath} element={<h1>department</h1>} />
+          </Routes>
+        </Outlet>
       </div>
     </>
   );

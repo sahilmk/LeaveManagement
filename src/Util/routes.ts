@@ -1,9 +1,19 @@
-export const homePage = "/home";
-export const holidaysPage = "/holidays";
-export const leaveRequestPages = "/leaverequest";
-export const approvedLeavesPages = "/approvedleaves";
-export const manageLeaveRequestPage = "/manageleaverequest";
-export const employeeListPage = "/employeelist";
-export const employeeLeaveListPage = "/employeeleaveslist";
-export const leavetypePage = "/leavetype";
-export const departmentPage = "/department";
+export const routes = {
+  homePath: "/home",
+  holidayPath: "/holidays",
+  leaveRequestPath: "/leaverequest",
+  approvedLeavesPath: "/approvedleaves",
+  pendingLeavesPath: "/pendingleaves",
+  rejectedLeavesPath: "/rejectedleaves",
+  cancelledLeavesPath: "/cancelledleaves",
+  manageLeaverequestPath: "/manageleaverequest",
+  employeeListPath: "/employeelist",
+  employeeLeavesListPath: "/employeeleaveslist",
+  leaveReasonPath: "/leavereason",
+  leaveTypePath: "/leavetype",
+  departmentPath: "/department",
+  forgotPasswordPath: "/forgotpassword",
+  otpPath: "/otp",
+  resetPasswordPath: "/resetpassword",
+  dashboardPath: "/dashboard",
+};

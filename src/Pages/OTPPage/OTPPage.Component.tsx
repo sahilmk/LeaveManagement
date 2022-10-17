@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Form, Field } from "react-final-form";
-import { Input, ButtonComponent } from "../../stories";
+import { Input, Button } from "../../stories";
 import OTPPageStyle from "./OTPPage.module.scss";
 
 const OTPPage = () => {
@@ -49,14 +49,14 @@ const OTPPage = () => {
                     )}
                   </Field>
                   <div>
-                    <ButtonComponent
+                    <Button
                       label={"Back"}
                       bgColor={"#173346"}
                       onClick={() => {
                         navigate("/ForgotPassword");
                       }}
                     />
-                    <ButtonComponent label={"Next"} type={"submit"} />
+                    <Button label={"Next"} type={"submit"} />
                   </div>
                 </form>
               )}

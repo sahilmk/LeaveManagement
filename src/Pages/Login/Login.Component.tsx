@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import { Form, Field } from "react-final-form";
-import { Input, ButtonComponent } from "../../stories";
+import { Input, Button } from "../../stories";
 import { callLoginPost, setLoginData } from "../../APIs";
 import { useAuthContext } from "../../Hooks";
 import LoginPageStyle from "./Login.module.scss";
 
 type loginDataValues = {
-  email: string,
-  password: string
-}
+  email: string;
+  password: string;
+};
 
 const LoginPage = () => {
   const { dispatch } = useAuthContext();
@@ -51,7 +51,7 @@ const LoginPage = () => {
           loggedIn: false,
           payload: { error: error.response.data.payload.error },
         });
-        alert(error.response.data.payload.error)
+        alert(error.response.data.payload.error);
       });
   };
 
@@ -116,7 +116,7 @@ const LoginPage = () => {
                       </div>
                     )}
                   </Field>
-                  <ButtonComponent label={"Login"} type={"submit"} />
+                  <Button label={"Login"} type={"submit"} />
                 </form>
               )}
             />

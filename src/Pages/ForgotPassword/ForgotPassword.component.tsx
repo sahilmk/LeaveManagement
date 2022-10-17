@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Form, Field } from "react-final-form";
-import { ButtonComponent, Input } from "../../stories";
+import { Button, Input } from "../../stories";
 import { callForgotPasswordPost } from "../../APIs/authData";
 import ForgotPasswordPageStyle from "./ForgotPassword.module.scss";
 
@@ -55,14 +55,14 @@ const ForgotPassword = () => {
                   </Field>
 
                   <div>
-                    <ButtonComponent
+                    <Button
                       label={"Back"}
                       bgColor={"#173346"}
                       onClick={() => {
                         navigate("/");
                       }}
                     />
-                    <ButtonComponent label={"Next"} type={"submit"} />
+                    <Button label={"Next"} type={"submit"} />
                   </div>
                 </form>
               )}
