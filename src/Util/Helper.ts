@@ -5,7 +5,7 @@ export const getData = (key: string) => {
 };
 
 export const setLoginData = (loginData: SuccessPayload) => {
-  return window.localStorage.setItem("LoginData", JSON.stringify(loginData));
+  return window.localStorage.setItem("loginData", JSON.stringify(loginData));
 };
 
 export const removeData = (key: string) => {

@@ -4,12 +4,12 @@ import { callLogoutGet } from "../../APIs/authData";
 
 const Dashboard = () => {
   const { dispatch } = useAuthContext();
-  const loginData = getData("LoginData");
+  const loginData = getData("loginData");
   const logout = () => {
-    removeData("LoginData");
-    callLogoutGet({ headers: { Authorization: 'bearer ' + loginData.token } }).then((Response) =>
-      alert(Response.data.message)
-    );
+    removeData("loginData");
+    callLogoutGet({
+      headers: { Authorization: "bearer " + loginData.token },
+    }).then((Response) => alert(Response.data.message));
     dispatch({ type: "LOGGED_OUT", loggedIn: false });
   };
 

@@ -14,7 +14,7 @@ function App() {
   const { state, dispatch } = useAuthContext();
 
   const checkUserDetails = () => {
-    const storedData = getData("LoginData");
+    const storedData = getData("loginData");
     if (storedData) {
       dispatch({
         type: "FETCHED_SUCCESS",
