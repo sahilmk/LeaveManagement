@@ -7,7 +7,7 @@ import PendingLeave from "../PendingLeaves";
 import RejectedLeave from "../RejectedLeaves";
 import CancelledLeave from "../CancelledLeaves";
 import ManageLeaveRequest from "../ManageLeaveRequest";
-import { approvedLeavesPath, cancelledLeavesPath, departmentPath, employeeLeavesListPath, employeeListPath, holidayPath, homePath, leaveReasonPath, leaveRequestPath, leaveTypePath, manageLeaverequestPath, pendingLeavesPath, rejectedLeavesPath, sidebarTabData } from "../../Util/Constants";
+import { approvedLeavesPath, cancelledLeavesPath, departmentPath, employeeLeavesListPath, employeeListPath, holidayPath, homePath, leaveReasonPath, leaveRequestPath, leaveTypePath, manageLeaverequestPath, pendingLeavesPath, profilePath, rejectedLeavesPath, sidebarTabData } from "../../Util/Constants";
 import { getData } from "../../Util/Helper";
 import styles from "./Dashboard.module.scss";
 
@@ -27,7 +27,8 @@ function Dashboard() {
       <Sidebar user={userName} position={loginData.data.user.employee.designation} sidebarTabData={sidebarTabData} userImage={"./assets/images/profile.png"} />
       <div className={styles.maincontent}>
         <Routes>
-          <Route path={homePath} element={<ProfilePage />} />
+          <Route path={profilePath} element={<ProfilePage />} />
+          <Route path={homePath} element={<h1 className="emptypage">Home</h1>} />
           <Route path={holidayPath} element={<h1 className="emptypage">Holidays</h1>} />
           <Route path={leaveRequestPath} element={<LeaveRequest logindate={userLoginData} />} />
           <Route path={approvedLeavesPath} element={<ApprovedLeave logindate={userLoginData} />} />

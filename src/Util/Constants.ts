@@ -51,6 +51,8 @@ export const resetPasswordPath = "/resetpassword";
 
 export const dashboardPath = "/dashboard";
 
+export const profilePath = "/profile";
+
 export const dummyData = [
     {
         id: "1",

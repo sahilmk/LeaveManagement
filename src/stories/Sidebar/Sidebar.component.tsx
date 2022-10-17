@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SidebarTab from '../SidebarTab'
 import Button from '../ButtonComponent'
 import { callLogoutGet } from '../../APIs';
@@ -79,10 +79,10 @@ function Sidebar({
         <div className="profilepicture">
           <img src={userImage} alt={user} />
         </div>
-        <div className="profiledescription">
+        <Link className="profiledescription" to='/profile'>
           <span className='username'>{user}</span>
           <span className='userposition'>{position}</span>
-        </div>
+        </Link>
       </div>
 
       <ul>

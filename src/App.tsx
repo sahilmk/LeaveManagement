@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useAuthContext } from "./Hooks";
-import { ApprovedLeave, CancelledLeave, Dashboard, ForgotPassword, LeaveRequest, LoginPage, ManageLeaveRequest, OTPPage, PendingLeave, RejectedLeave, ResetPassword } from "./Pages";
-import { approvedLeavesPath, cancelledLeavesPath, dashboardPath, departmentPath, employeeLeavesListPath, employeeListPath, forgotPasswordPath, holidayPath, homePath, leaveReasonPath, leaveRequestPath, leaveTypePath, manageLeaverequestPath, otpPath, pendingLeavesPath, rejectedLeavesPath, resetPasswordPath } from "./Util/Constants";
+import { ApprovedLeave, CancelledLeave, Dashboard, ForgotPassword, LeaveRequest, LoginPage, ManageLeaveRequest, OTPPage, PendingLeave, ProfilePage, RejectedLeave, ResetPassword } from "./Pages";
+import { approvedLeavesPath, cancelledLeavesPath, dashboardPath, departmentPath, employeeLeavesListPath, employeeListPath, forgotPasswordPath, holidayPath, homePath, leaveReasonPath, leaveRequestPath, leaveTypePath, manageLeaverequestPath, otpPath, pendingLeavesPath, profilePath, rejectedLeavesPath, resetPasswordPath } from "./Util/Constants";
 import { getData } from "./Util/Helper";
 import './Styles/globalStyling.scss'
 
@@ -44,6 +44,7 @@ function App() {
         />
       ) : state.loggedIn ? (
         <Route path="/" element={<Dashboard />} >
+          <Route path={profilePath} element={<ProfilePage />} />
           <Route path={homePath} element={<h1>Home</h1>} />
           <Route path={holidayPath} element={<h1>Holidays</h1>} />
           <Route path={leaveRequestPath} element={<LeaveRequest logindate={"10-12-2036"} />} />

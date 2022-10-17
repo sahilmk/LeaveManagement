@@ -11,9 +11,9 @@ export const TabStyle = styled.a`
     color: ${Theme.colors.sonicSilverColor};
     height: 7rem;
 
-    /* &:focus{
+    &:focus{
         color: ${Theme.colors.yankeesBlueColor};
-    } */
+    }
 
     i{
         height: 2.3rem;

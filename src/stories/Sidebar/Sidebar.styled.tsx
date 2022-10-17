@@ -21,6 +21,7 @@ export const SidebarStyle = styled.div`
         color: ${Theme.colors.whiteColor};
         flex-direction: column;
         display: flex;
+        text-decoration: none;
 
         .username{
             font-size: 2.6rem;
@@ -50,10 +51,10 @@ export const SidebarStyle = styled.div`
     .innerTabs{
         a{
             background-color: ${Theme.colors.lotionColor};
-            /* &:focus{
+            &:focus{
                 background-color: ${Theme.colors.culturedColor};
                 margin: 1rem;
-            } */
+            }
         }
     }
 
