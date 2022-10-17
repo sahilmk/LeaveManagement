@@ -18,12 +18,12 @@ export type UserInfo = {
 };
 
 export type ProfileDetailType = {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
+  firstName: string;
+  lastName: string;
+  email: string;
   mobileNo?: string;
   landlineNo?: string | null;
-  gender?: "M" | "F";
+  gender: "M" | "F";
   department?: string;
   designation?: string;
   dateOfBirth?: string;
@@ -38,7 +38,7 @@ export type AddressType = {
 };
 
 export type ChangePasswordType = {
-  oldPassword?: string;
-  newPassword?: string;
-  confirmPassword?: string;
+  oldPassword: string;
+  newPassword: string;
+  confirmPassword: string;
 };

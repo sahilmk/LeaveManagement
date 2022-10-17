@@ -18,7 +18,7 @@ const ProfilePage = () => {
     perAddressToggler: false,
     pwdToggler: false,
   });
-  const userInfo = getData("LoginData");
+  const userInfo = getData("loginData");
   const [profileDetail, setProfileDetail] = useState<ProfileDetailType>();
   const [addressdata, setAddressData] = useState({
     localAdd: {},

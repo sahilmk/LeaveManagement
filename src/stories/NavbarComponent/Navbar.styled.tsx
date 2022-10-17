@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import { Theme } from "../../Theme";
 
 const StyledNavbar = styled.div`
   display: flex;
   position: fixed;
   align-items: center;
   justify-content: space-between;
-  background-color: #173346;
+  background-color: ${Theme.colors.yankeesBlue};
   height: 70px;
   width: 100%;
   padding: 0px 30px;
@@ -15,7 +16,7 @@ const StyledNavbar = styled.div`
   .leaveManagementTitle {
     font-family: Novecento;
     font-size: 29.5px;
-    color: #fff;
+    color: ${Theme.colors.whiteColor};
   }
 
   .welcomeMessage {
@@ -24,7 +25,7 @@ const StyledNavbar = styled.div`
     font-size: 26.5px;
     font-weight: 300;
     text-align: right;
-    color: #fff;
+    color: ${Theme.colors.whiteColor};
   }
 `;
 

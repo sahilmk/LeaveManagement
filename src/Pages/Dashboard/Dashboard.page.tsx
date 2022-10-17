@@ -1,6 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import { Navbar, Sidebar } from "../../stories";
 import { LeaveRequest } from "../../components";
+import {
+  departmentPage,
+  employeeLeaveListPage,
+  employeeListPage,
+  holidaysPage,
+  homePage,
+  leaveRequestPages,
+  leavetypePage,
+  manageLeaveRequestPage,
+} from "../../Util/routes";
 import { sidebarTabData } from "../../Util/Constants";
 import * as styles from "./Dashboard.module.scss";
 import { ProfilePage } from "..";
@@ -17,23 +27,23 @@ function Dashboard() {
       />
       <div className={styles.maincontent}>
         <Routes>
-          <Route path="/home" element={<ProfilePage />} />
-          <Route path="/holidays" element={<h1>Holidays</h1>} />
+          <Route path={homePage} element={<ProfilePage />} />
+          <Route path={holidaysPage} element={<h1>Holidays</h1>} />
           <Route
-            path="leaverequest"
+            path={leaveRequestPages}
             element={<LeaveRequest logindate={"18/10/2022"} />}
           />
           <Route
-            path="/manageleaverequest"
+            path={manageLeaveRequestPage}
             element={<h1>manageleaverequest</h1>}
           />
-          <Route path="/employeelist" element={<h1>employeelist</h1>} />
+          <Route path={employeeListPage} element={<h1>employeelist</h1>} />
           <Route
-            path="/employeeleaveslist"
+            path={employeeLeaveListPage}
             element={<h1>employeeleaveslist</h1>}
           />
-          <Route path="/leavetype" element={<h1>leavetype</h1>} />
-          <Route path="/department" element={<h1>department</h1>} />
+          <Route path={leavetypePage} element={<h1>leavetype</h1>} />
+          <Route path={departmentPage} element={<h1>department</h1>} />
         </Routes>
       </div>
     </>
