@@ -40,6 +40,10 @@ export const TableStyle = styled(DataGrid)`
     .MuiSvgIcon-root{
         font-size: 3rem;
     }
+
+    a{
+        font-size: 2.2rem;
+    }
 `;
 
 

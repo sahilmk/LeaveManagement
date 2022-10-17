@@ -16,10 +16,20 @@ function ManageLeaveRequest({ logindate }: manageLeaveRequestPropType) {
                     {/* Table */}
                     <DataTable width={'100%'}
                         columns={[
-                            { field: "type", headerName: "Name", flex: 1 },
-                            { field: "reason", headerName: "Department", flex: 1 },
+                            {
+                                field: "name",
+                                headerName: "Name",
+                                sortable: true,
+                                renderCell: (params) => {
+                                    return (
+                                        <a href='/#'>{params.row.name}</a>
+                                    );
+                                },
+                                flex: 1,
+                            },
+                            { field: "department", headerName: "Department", flex: 1 },
                             { field: "date", headerName: "Date", flex: 1 },
-                            { field: "appliedOn", headerName: "Reason", flex: 1 },
+                            { field: "reason", headerName: "Reason", flex: 1 },
                             {
                                 field: "actions",
                                 headerName: "Action",
@@ -39,20 +49,22 @@ function ManageLeaveRequest({ logindate }: manageLeaveRequestPropType) {
                                     );
                                 },
                                 flex: 1,
-                            },
+                            }
                         ]}
                         rows={[
                             {
                                 id: "1",
-                                type: "Paid",
+                                name: `John Doe`,
                                 reason: "Seek Leave",
+                                department: "HRD",
                                 date: "12/01/2018 to 14/01/2018",
                                 appliedOn: "25/12/2017",
                             },
                             {
                                 id: "2",
-                                type: "Paid",
+                                name: "Darvin Lynn",
                                 reason: "Seek Leave",
+                                department: "HRD",
                                 date: "10/01/2018",
                                 appliedOn: "25/12/2017",
                             }
