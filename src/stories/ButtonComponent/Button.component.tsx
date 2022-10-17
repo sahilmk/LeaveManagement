@@ -1,7 +1,6 @@
-import { type } from "os";
 import React from "react";
 import StyledButton from "./Button.styled";
-import '../../Icons/css/material-design-iconic-font.css'
+import "../../Icons/css/material-design-iconic-font.css";
 
 type ButtonComponentProps = {
   label: string;
@@ -11,11 +10,11 @@ type ButtonComponentProps = {
   size: string;
   border: string;
   borderRadius: boolean;
-  logo?: boolean
-  type: 'submit' | 'button' | 'reset'
+  logo?: boolean;
+  type: "submit" | "button" | "reset";
 };
 
-const ButtonComponent = ({
+const Button = ({
   label,
   onClick,
   bgColor,
@@ -24,7 +23,7 @@ const ButtonComponent = ({
   border,
   borderRadius,
   logo,
-  type
+  type,
 }: ButtonComponentProps) => {
   return (
     <>
@@ -37,25 +36,23 @@ const ButtonComponent = ({
         borderRadius={borderRadius}
         type={type}
       >
-        {logo && < i className="zmdi zmdi-power" />}
+        {logo && <i className="zmdi zmdi-power" />}
         {label}
       </StyledButton>
     </>
   );
 };
 
-ButtonComponent.defaultProps = {
+Button.defaultProps = {
   value: "",
-  onClick: (e: React.MouseEvent) => {
-
-  },
+  onClick: (e: React.MouseEvent) => {},
   bgColor: "#284960",
   color: "#7a99af",
   size: "26px",
   border: "",
   borderRadius: true,
   logo: false,
-  type: 'button'
+  type: "button",
 };
 
-export default ButtonComponent;
+export default Button;

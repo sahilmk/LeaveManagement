@@ -3,5 +3,13 @@ import ForgotPassword from "./ForgotPassword";
 import OTPPage from "./OTPPage";
 import ResetPassword from "./ResetPassword";
 import Dashboard from "./Dashboard";
+import ProfilePage from "./Profile/Profile.page";
 
-export { LoginPage, ForgotPassword, OTPPage, ResetPassword, Dashboard };
+export {
+  LoginPage,
+  ForgotPassword,
+  OTPPage,
+  ResetPassword,
+  Dashboard,
+  ProfilePage,
+};

@@ -11,7 +11,6 @@ import {
 } from "./Pages";
 import { getData } from "./Util/Helper";
 
-
 function App() {
   const { state, dispatch } = useAuthContext();
 
@@ -49,14 +48,26 @@ function App() {
           }
         />
       ) : state.loggedIn ? (
-        <Route path="/" element={<Dashboard />} >
+        <Route path="/" element={<Dashboard />}>
           <Route path="/home" element={<h1>Home</h1>} />
           <Route path="/holidays" element={<h1>Holidays</h1>} />
-          <Route path="/leaverequest" element={<LeaveRequest logindate={"10-12-2036"} />} />
-          <Route path="/approvedleaves" element={<ApprovedLeave logindate={"10-12-2036"} />} />
-          <Route path="/manageleaverequest" element={<h1>manageleaverequest</h1>} />
+          <Route
+            path="/leaverequest"
+            element={<LeaveRequest logindate={"10-12-2036"} />}
+          />
+          <Route
+            path="/approvedleaves"
+            element={<ApprovedLeave logindate={"10-12-2036"} />}
+          />
+          <Route
+            path="/manageleaverequest"
+            element={<h1>manageleaverequest</h1>}
+          />
           <Route path="/employeelist" element={<h1>employeelist</h1>} />
-          <Route path="/employeeleaveslist" element={<h1>employeeleaveslist</h1>} />
+          <Route
+            path="/employeeleaveslist"
+            element={<h1>employeeleaveslist</h1>}
+          />
           <Route path="/leavetype" element={<h1>leavetype</h1>} />
           <Route path="/department" element={<h1>department</h1>} />
         </Route>

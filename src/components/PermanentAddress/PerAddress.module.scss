@@ -1,0 +1,46 @@
+@import '../../Styles/_variable.scss';
+
+.perAddress {
+    padding: 3rem 0;
+
+    &__formContainer {
+        display: flex;
+
+        div {
+            flex-grow: 8;
+
+            &:nth-child(2) {
+                flex-grow: 4;
+            }
+        }
+    }
+
+    &__customInput {
+        display: flex;
+        flex-direction: column;
+        margin: 0 3rem 4rem 0;
+
+        label {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.9rem;
+        }
+    }
+
+    &__innerFlexContainer {
+        display: flex;
+        padding-right: 3rem;
+    }
+
+    &__buttonContainer {
+        display: flex;
+        justify-content: space-between;
+        height: 5rem;
+        margin-top: 3.15rem;
+
+        button {
+            height: 100%;
+            font-weight: 600;
+        }
+    }
+}

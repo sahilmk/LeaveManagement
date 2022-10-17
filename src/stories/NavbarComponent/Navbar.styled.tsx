@@ -1,41 +1,31 @@
 import styled from "styled-components";
+import { Theme } from "../../Theme";
 
 const StyledNavbar = styled.div`
   display: flex;
   position: fixed;
   align-items: center;
   justify-content: space-between;
-  background-color: #173346;
+  background-color: ${Theme.colors.yankeesBlue};
   height: 70px;
   width: 100%;
   padding: 0px 30px;
   top: 0px;
   left: 0px;
 
-  .Leave-Management {
+  .leaveManagementTitle {
+    font-family: Novecento;
     font-size: 29.5px;
-    color: #fff;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
+    color: ${Theme.colors.whiteColor};
   }
 
-  .Welcome-John-doe {
+  .welcomeMessage {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     height: 24px;
     font-size: 26.5px;
     font-weight: 300;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
     text-align: right;
-    color: #fff;
-
-    .text-style-1 {
-      font-weight: normal;
-    }
+    color: ${Theme.colors.whiteColor};
   }
 `;
 
