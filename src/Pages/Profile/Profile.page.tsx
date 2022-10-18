@@ -41,9 +41,13 @@ const ProfilePage = () => {
           designation: requiredData.designation,
           landlineNo: requiredData?.landlineNo,
           dateOfBirth: requiredData?.dob,
+          localCity: requiredData?.localCity,
+          localState: requiredData?.localState,
         });
         setAddressData({
           localAdd: {
+            firstName: requiredData?.firstName,
+            lastName: requiredData?.lastName,
             localAddress: requiredData?.localAddress,
             localAddress2: requiredData?.localAddress2,
             city: requiredData?.localCity,
@@ -51,6 +55,8 @@ const ProfilePage = () => {
             pincode: requiredData?.localPincode,
           },
           permanentAddress: {
+            firstName: requiredData?.firstName,
+            lastName: requiredData?.lastName,
             perAddress: requiredData?.permanentAddress,
             perAddress2: requiredData?.permanentAddress2,
             city: requiredData?.permanentCity,

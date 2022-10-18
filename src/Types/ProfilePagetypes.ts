@@ -27,9 +27,13 @@ export type ProfileDetailType = {
   department?: string;
   designation?: string;
   dateOfBirth?: string;
+  localCity: string | null;
+  localState: string | null;
 };
 
 export type AddressType = {
+  firstName?: string;
+  lastName?: string;
   Address?: string;
   Address2?: string;
   pincode?: string;

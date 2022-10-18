@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Form, Field } from "react-final-form";
 import { Button, Input } from "../../stories";
 import { callForgotPasswordPost } from "../../APIs/authData";
+import { Theme } from "../../Theme";
 import ForgotPasswordPageStyle from "./ForgotPassword.module.scss";
 
 const ForgotPassword = () => {
@@ -41,7 +42,7 @@ const ForgotPassword = () => {
                           placeholder="Email"
                           inputtype="authinput"
                           padding="0rem 0rem 0rem 4rem"
-                          width='45rem'
+                          width="45rem"
                           onChange={e.input.onChange}
                           onBlur={e.input.onBlur}
                           onFocus={e.input.onFocus}
@@ -56,7 +57,7 @@ const ForgotPassword = () => {
                   <div>
                     <Button
                       label={"Back"}
-                      bgColor={"#173346"}
+                      bgColor={Theme.colors.yankeesBlueColor}
                       onClick={() => {
                         navigate("/");
                       }}

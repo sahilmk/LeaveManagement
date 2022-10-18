@@ -1,17 +1,17 @@
 import { Form, Field } from "react-final-form";
 import { Input, Button } from "../../stories";
-import { PermanentAddressType } from "../../Types";
+import { AddressType } from "../../Types";
 import PageStyle from "./PerAddress.module.scss";
 
 const PermanentAddress = ({
   permanentAdd,
 }: {
-  permanentAdd: PermanentAddressType | undefined;
+  permanentAdd: AddressType | undefined;
 }) => {
-  const onSubmit = (e: PermanentAddressType) => { };
+  const onSubmit = (e: AddressType) => {};
 
-  const validate = (e: PermanentAddressType) => {
-    const errors: PermanentAddressType = {};
+  const validate = (e: AddressType) => {
+    const errors: AddressType = {};
     return errors;
   };
 
@@ -21,8 +21,8 @@ const PermanentAddress = ({
         onSubmit={onSubmit}
         validate={validate}
         initialValues={{
-          perAddress: permanentAdd?.perAddress,
-          perAddress2: permanentAdd?.perAddress2,
+          perAddress: permanentAdd?.Address,
+          perAddress2: permanentAdd?.Address2,
           city: permanentAdd?.city,
           pincode: permanentAdd?.pincode,
           state: permanentAdd?.state,
@@ -41,7 +41,7 @@ const PermanentAddress = ({
                         placeholder="Enter Permanent Address Line 1"
                         inputtype=""
                         padding={"1.4rem 1.8rem 1.4rem 1.9rem"}
-                        width='90rem'
+                        width="90rem"
                         value={e.input.value}
                         onChange={e.input.onChange}
                         onBlur={e.input.onBlur}
@@ -63,7 +63,7 @@ const PermanentAddress = ({
                         placeholder="Enter Permanent Address Line 2"
                         inputtype=""
                         padding={"1.4rem 1.8rem 1.4rem 1.9rem"}
-                        width='90rem'
+                        width="90rem"
                         value={e.input.value}
                         onChange={e.input.onChange}
                         onBlur={e.input.onBlur}
@@ -87,7 +87,7 @@ const PermanentAddress = ({
                             placeholder="Enter Pincode"
                             inputtype=""
                             padding={"1.4rem 1.8rem 1.4rem 1.9rem"}
-                            width='44rem'
+                            width="44rem"
                             value={e.input.value}
                             onChange={e.input.onChange}
                             onBlur={e.input.onBlur}
@@ -107,7 +107,7 @@ const PermanentAddress = ({
                       color={"#fff"}
                       size={"1.8rem"}
                       borderRadius={false}
-                      onClick={(e) => { }}
+                      onClick={(e) => {}}
                       type={"submit"}
                     />
                     <Button
@@ -117,7 +117,7 @@ const PermanentAddress = ({
                       size={"2rem"}
                       borderRadius={false}
                       border={"solid 0.2rem #ebebeb"}
-                      onClick={(e) => { }}
+                      onClick={(e) => {}}
                       type={"button"}
                     />
                   </div>
@@ -134,7 +134,7 @@ const PermanentAddress = ({
                         placeholder="Enter State"
                         inputtype=""
                         padding={"1.4rem 1.8rem 1.4rem 1.9rem"}
-                        width='42rem'
+                        width="42rem"
                         value={e.input.value}
                         onChange={e.input.onChange}
                         onBlur={e.input.onBlur}
@@ -156,7 +156,7 @@ const PermanentAddress = ({
                         placeholder="Enter city"
                         inputtype=""
                         padding={"1.4rem 1.8rem 1.4rem 1.9rem"}
-                        width='42rem'
+                        width="42rem"
                         value={e.input.value}
                         onChange={e.input.onChange}
                         onBlur={e.input.onBlur}

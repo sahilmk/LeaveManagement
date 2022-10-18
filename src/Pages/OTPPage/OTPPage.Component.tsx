@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { Form, Field } from "react-final-form";
 import { Input, Button } from "../../stories";
 import OTPPageStyle from "./OTPPage.module.scss";
+import { Theme } from "../../Theme";
 
 const OTPPage = () => {
   const navigate = useNavigate();
-  const onSubmit = (values: { top: string }) => {
-  };
+  const onSubmit = (values: { otp: any; top: string }) => {};
 
   return (
     <>
@@ -36,7 +36,7 @@ const OTPPage = () => {
                           placeholder="One Time Password"
                           inputtype="authinput"
                           padding="0rem 0rem 0rem 4rem"
-                          width='45rem'
+                          width="45rem"
                           onChange={e.input.onChange}
                           onBlur={e.input.onBlur}
                           onFocus={e.input.onFocus}
@@ -50,7 +50,7 @@ const OTPPage = () => {
                   <div>
                     <Button
                       label={"Back"}
-                      bgColor={"#173346"}
+                      bgColor={Theme.colors.yankeesBlueColor}
                       onClick={() => {
                         navigate("/ForgotPassword");
                       }}

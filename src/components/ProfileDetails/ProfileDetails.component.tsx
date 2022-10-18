@@ -8,7 +8,7 @@ const ProfileDetails = ({
 }: {
   profileData: ProfileDetailType | undefined;
 }) => {
-  const onSubmit = (e: ProfileDetailType) => { };
+  const onSubmit = (e: ProfileDetailType) => {};
 
   const validate = (e: ProfileDetailType) => {
     const errors: ProfileDetailType = {};
@@ -51,7 +51,7 @@ const ProfileDetails = ({
                         placeholder="Enter first name "
                         inputtype=""
                         padding={"1.4rem 1.8rem 1.4rem 1.9rem"}
-                        width='44rem'
+                        width="44rem"
                         value={e.input.value}
                         onChange={e.input.onChange}
                         onBlur={e.input.onBlur}
@@ -73,7 +73,7 @@ const ProfileDetails = ({
                         placeholder="Enter email"
                         inputtype=""
                         padding={"1.4rem 1.8rem 1.4rem 1.9rem"}
-                        width='44rem'
+                        width="44rem"
                         value={e.input.value}
                         onChange={e.input.onChange}
                         onBlur={e.input.onBlur}
@@ -95,7 +95,7 @@ const ProfileDetails = ({
                         placeholder="Enter Landline No. "
                         inputtype=""
                         padding={"1.4rem 1.8rem 1.4rem 1.9rem"}
-                        width='44rem'
+                        width="44rem"
                         value={e.input.value}
                         onChange={e.input.onChange}
                         onBlur={e.input.onBlur}
@@ -117,7 +117,7 @@ const ProfileDetails = ({
                         placeholder=""
                         inputtype=""
                         padding={"1.4rem 1.8rem 1.4rem 1.9rem"}
-                        width='44rem'
+                        width="44rem"
                         value={e.input.value}
                         onChange={e.input.onChange}
                         onBlur={e.input.onBlur}
@@ -139,7 +139,7 @@ const ProfileDetails = ({
                         placeholder="Enter Designation"
                         inputtype=""
                         padding={"1.4rem 1.8rem 1.4rem 1.9rem"}
-                        width='44rem'
+                        width="44rem"
                         value={e.input.value}
                         onChange={e.input.onChange}
                         onBlur={e.input.onBlur}
@@ -163,7 +163,7 @@ const ProfileDetails = ({
                         placeholder="Enter last name "
                         inputtype=""
                         padding={"1.4rem 1.8rem 1.4rem 1.9rem"}
-                        width='44rem'
+                        width="44rem"
                         value={e.input.value}
                         onChange={e.input.onChange}
                         onBlur={e.input.onBlur}
@@ -185,7 +185,7 @@ const ProfileDetails = ({
                         placeholder="Enter Mobile Number"
                         inputtype=""
                         padding={"1.4rem 1.8rem 1.4rem 1.9rem"}
-                        width='44rem'
+                        width="44rem"
                         value={e.input.value}
                         onChange={e.input.onChange}
                         onBlur={e.input.onBlur}
@@ -225,17 +225,17 @@ const ProfileDetails = ({
                     color={"#fff"}
                     size={"1.8rem"}
                     borderRadius={false}
-                    onClick={(e) => { }}
+                    onClick={(e) => {}}
                     type={"submit"}
                   />
                   <Button
-                    label='Cancel'
+                    label="Cancel"
                     bgColor={"#fafafa"}
                     color={"#173346"}
                     size={"2rem"}
                     borderRadius={false}
                     border={"solid 0.2rem #ebebeb"}
-                    onClick={(e) => { }}
+                    onClick={(e) => {}}
                     type={"button"}
                   />
                 </div>
