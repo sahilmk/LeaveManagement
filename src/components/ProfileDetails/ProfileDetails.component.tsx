@@ -1,10 +1,9 @@
 import { Form, Field } from "react-final-form";
-import { setLoginData } from "../../APIs";
-import { callProfileUpdatePost } from "../../APIs/profilePage";
 import { Input, Button } from "../../stories";
-import { Theme } from "../../Theme";
-import { ProfileDetailType } from "../../Types";
+import { setLoginData, callProfileUpdatePost } from "../../APIs";
 import { getData } from "../../Util/Helper";
+import { ProfileDetailType } from "../../Types";
+import { Theme } from "../../Theme";
 import PageStyle from "./ProfileDetails.module.scss";
 
 const ProfileDetails = ({
@@ -19,19 +18,25 @@ const ProfileDetails = ({
     const formType = {
       formType: "all",
     };
+
     profileData = { ...profileData, ...e, ...formType };
+
     callProfileUpdatePost(employeeId, profileData, {
       headers: { Authorization: "bearer" + token },
-    }).then((res) => {
-      if (res.status === 200) {
-        requiredData.data.user.employee.firstName = profileData?.firstName;
-        requiredData.data.user.employee.lastName = profileData?.lastName;
-        setLoginData(requiredData);
-        alert("Profile Details has been updated successfully.");
-      } else {
-        alert(res.data.message);
-      }
-    });
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          requiredData.data.user.employee.firstName = profileData?.firstName;
+          requiredData.data.user.employee.lastName = profileData?.lastName;
+
+          setLoginData(requiredData);
+
+          alert("Profile Details has been updated successfully.");
+        } else {
+          alert(res.data.message);
+        }
+      })
+      .catch((error) => alert(error));
   };
 
   const validate = (e: ProfileDetailType) => {

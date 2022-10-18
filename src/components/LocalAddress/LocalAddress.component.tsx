@@ -1,9 +1,9 @@
 import { Form, Field } from "react-final-form";
-import { callProfileUpdatePost } from "../../APIs/profilePage";
 import { Input, Button } from "../../stories";
-import { Theme } from "../../Theme";
-import { AddressType } from "../../Types";
+import { callProfileUpdatePost } from "../../APIs";
 import { getData } from "../../Util/Helper";
+import { AddressType } from "../../Types";
+import { Theme } from "../../Theme";
 import PageStyle from "./LocalAddress.module.scss";
 
 const LocalAddress = ({ localAdd }: { localAdd: AddressType | undefined }) => {
@@ -14,16 +14,21 @@ const LocalAddress = ({ localAdd }: { localAdd: AddressType | undefined }) => {
     const formType = {
       formType: "all",
     };
+
     localAdd = { ...localAdd, ...e, ...formType };
+
+    //Calling the update Profile Post
     callProfileUpdatePost(employeeId, localAdd, {
       headers: { Authorization: "bearer" + token },
-    }).then((res) => {
-      if (res.status === 200) {
-        alert("Local Addresss has been updated successfully.");
-      } else {
-        alert(res.data.message);
-      }
-    });
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          alert("Local Addresss has been updated successfully.");
+        } else {
+          alert(res.data.message);
+        }
+      })
+      .catch((error) => alert(error));
   };
 
   const validate = (e: AddressType) => {
