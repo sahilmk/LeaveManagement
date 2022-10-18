@@ -1,15 +1,39 @@
 import { Form, Field } from "react-final-form";
+import { callProfileUpdatePost } from "../../APIs/ProfilePage";
 import { Input, Button } from "../../stories";
 import { Theme } from "../../Theme";
 import { AddressType } from "../../Types";
+import { getData } from "../../Util/Helper";
 import PageStyle from "./LocalAddress.module.scss";
 
 const LocalAddress = ({ localAdd }: { localAdd: AddressType | undefined }) => {
-  const onSubmit = (e: AddressType) => {};
+  const onSubmit = (e: AddressType) => {
+    const requiredData = getData("loginData");
+    const token = requiredData.token;
+    const employeeId = requiredData.data.user.employee.id;
+    const formType = {
+      formType: "all",
+    };
+    localAdd = { ...localAdd, ...e, ...formType };
+    callProfileUpdatePost(employeeId, localAdd, {
+      headers: { Authorization: "bearer" + token },
+    }).then((res) => {
+      if (res.status === 200) {
+        alert("Local Addresss has been updated successfully.");
+      } else {
+        alert(res.data.message);
+      }
+    });
+  };
 
   const validate = (e: AddressType) => {
     const errors: AddressType = {};
-
+    if (!e.localCity) {
+      errors.localCity = "Enter a localCity";
+    }
+    if (!e.localState) {
+      errors.localState = "Enter a localState";
+    }
     return errors;
   };
 
@@ -19,11 +43,11 @@ const LocalAddress = ({ localAdd }: { localAdd: AddressType | undefined }) => {
         onSubmit={onSubmit}
         validate={validate}
         initialValues={{
-          localAddress: localAdd?.Address,
-          localAddress2: localAdd?.Address2,
-          pincode: localAdd?.pincode,
-          state: localAdd?.state,
-          city: localAdd?.city,
+          localAddress: localAdd?.localAddress,
+          localAddress2: localAdd?.localAddress2,
+          localPincode: localAdd?.localPincode,
+          localState: localAdd?.localState,
+          localCity: localAdd?.localCity,
         }}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
@@ -75,12 +99,12 @@ const LocalAddress = ({ localAdd }: { localAdd: AddressType | undefined }) => {
                 </Field>
                 <div className={PageStyle.localAddress__innerFlexContainer}>
                   <div>
-                    <Field name="pincode">
+                    <Field name="localPincode">
                       {(e) => (
                         <div className={PageStyle.localAddress__customInput}>
-                          <label htmlFor="pincode"> Pincode </label>
+                          <label htmlFor="localPincode"> Pincode </label>
                           <Input
-                            id="pincode"
+                            id="localPincode"
                             type="text"
                             placeholder="Enter Pincode"
                             inputtype=""
@@ -122,12 +146,12 @@ const LocalAddress = ({ localAdd }: { localAdd: AddressType | undefined }) => {
                 </div>
               </div>
               <div>
-                <Field name="state">
+                <Field name="localState">
                   {(e) => (
                     <div className={PageStyle.localAddress__customInput}>
-                      <label htmlFor="state"> State</label>
+                      <label htmlFor="localState"> State</label>
                       <Input
-                        id="state"
+                        id="localState"
                         type="text"
                         placeholder="Enter State"
                         inputtype=""
@@ -144,12 +168,12 @@ const LocalAddress = ({ localAdd }: { localAdd: AddressType | undefined }) => {
                     </div>
                   )}
                 </Field>
-                <Field name="city">
+                <Field name="localCity">
                   {(e) => (
                     <div className={PageStyle.localAddress__customInput}>
-                      <label htmlFor="city"> City</label>
+                      <label htmlFor="localCity"> City</label>
                       <Input
-                        id="city"
+                        id="localCity"
                         type="text"
                         placeholder="Enter city"
                         inputtype=""

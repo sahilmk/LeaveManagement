@@ -34,11 +34,16 @@ export type ProfileDetailType = {
 export type AddressType = {
   firstName?: string;
   lastName?: string;
-  Address?: string;
-  Address2?: string;
-  pincode?: string;
-  state?: string;
-  city?: string;
+  localCity?: string;
+  localState?: string;
+  localAddress?: string;
+  localAddress2?: string;
+  localPincode?: string;
+  permanentAddress?: string;
+  permanentAddress2?: string;
+  permanentCity?: string;
+  permanentState?: string;
+  permanentPincode?: string;
 };
 
 export type ChangePasswordType = {

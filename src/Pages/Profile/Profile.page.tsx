@@ -21,8 +21,26 @@ const ProfilePage = () => {
   const userInfo = getData("loginData");
   const [profileDetail, setProfileDetail] = useState<ProfileDetailType>();
   const [addressdata, setAddressData] = useState({
-    localAdd: {},
-    permanentAddress: {},
+    localAdd: {
+      firstName: "",
+      lastName: "",
+      localCity: "",
+      localState: "",
+      localAddress: "",
+      localAddress2: "",
+      localPincode: "",
+    },
+    permanentAddress: {
+      firstName: "",
+      lastName: "",
+      localCity: "",
+      localState: "",
+      permanentAddress: "",
+      permanentAddress2: "",
+      permanentCity: "",
+      permanentState: "",
+      permanentPincode: "",
+    },
   });
 
   useEffect(() => {
@@ -48,20 +66,22 @@ const ProfilePage = () => {
           localAdd: {
             firstName: requiredData?.firstName,
             lastName: requiredData?.lastName,
+            localCity: requiredData?.localCity,
+            localState: requiredData?.localState,
             localAddress: requiredData?.localAddress,
             localAddress2: requiredData?.localAddress2,
-            city: requiredData?.localCity,
-            state: requiredData?.localSate,
-            pincode: requiredData?.localPincode,
+            localPincode: requiredData?.localPincode,
           },
           permanentAddress: {
             firstName: requiredData?.firstName,
             lastName: requiredData?.lastName,
-            perAddress: requiredData?.permanentAddress,
-            perAddress2: requiredData?.permanentAddress2,
-            city: requiredData?.permanentCity,
-            state: requiredData?.permanentState,
-            pincode: requiredData?.permanentPincode,
+            localCity: requiredData?.localCity,
+            localState: requiredData?.localState,
+            permanentAddress: requiredData?.permanentAddress,
+            permanentAddress2: requiredData?.permanentAddress2,
+            permanentCity: requiredData?.permanentCity,
+            permanentState: requiredData?.permanentState,
+            permanentPincode: requiredData?.permanentPincode,
           },
         });
       })
@@ -71,7 +91,7 @@ const ProfilePage = () => {
   return (
     <>
       <PageTitle
-        logindate={userInfo.data.user.lastLogin.split(' ')[0]}
+        logindate={userInfo.data.user.lastLogin.split(" ")[0]}
         pagename={"Profile"}
         isinnerPage={false}
         isButton={false}

@@ -1,7 +1,9 @@
 import { Form, Field } from "react-final-form";
+import { callProfileUpdatePost } from "../../APIs/ProfilePage";
 import { Input, Button } from "../../stories";
 import { Theme } from "../../Theme";
 import { AddressType } from "../../Types";
+import { getData } from "../../Util/Helper";
 import PageStyle from "./PerAddress.module.scss";
 
 const PermanentAddress = ({
@@ -9,7 +11,24 @@ const PermanentAddress = ({
 }: {
   permanentAdd: AddressType | undefined;
 }) => {
-  const onSubmit = (e: AddressType) => {};
+  const onSubmit = (e: AddressType) => {
+    const requiredData = getData("loginData");
+    const token = requiredData.token;
+    const employeeId = requiredData.data.user.employee.id;
+    const formType = {
+      formType: "all",
+    };
+    permanentAdd = { ...permanentAdd, ...e, ...formType };
+    callProfileUpdatePost(employeeId, permanentAdd, {
+      headers: { Authorization: "bearer" + token },
+    }).then((res) => {
+      if (res.status === 200) {
+        alert("Permanent Addresss has been updated successfully.");
+      } else {
+        alert(res.data.message);
+      }
+    });
+  };
 
   const validate = (e: AddressType) => {
     const errors: AddressType = {};
@@ -22,22 +41,25 @@ const PermanentAddress = ({
         onSubmit={onSubmit}
         validate={validate}
         initialValues={{
-          perAddress: permanentAdd?.Address,
-          perAddress2: permanentAdd?.Address2,
-          city: permanentAdd?.city,
-          pincode: permanentAdd?.pincode,
-          state: permanentAdd?.state,
+          permanentAddress: permanentAdd?.permanentAddress,
+          permanentAddress2: permanentAdd?.permanentAddress2,
+          permanentCity: permanentAdd?.permanentCity,
+          permanentPincode: permanentAdd?.permanentPincode,
+          permanentState: permanentAdd?.permanentState,
         }}
         render={({ handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <div className={PageStyle.perAddress__formContainer}>
               <div>
-                <Field name="perAddress">
+                <Field name="permanentAddress">
                   {(e) => (
                     <div className={PageStyle.perAddress__customInput}>
-                      <label htmlFor="perAddress"> Permanent Address 1</label>
+                      <label htmlFor="permanentAddress">
+                        {" "}
+                        Permanent Address 1
+                      </label>
                       <Input
-                        id="perAddress"
+                        id="permanentAddress"
                         type="text"
                         placeholder="Enter Permanent Address Line 1"
                         inputtype=""
@@ -54,12 +76,15 @@ const PermanentAddress = ({
                     </div>
                   )}
                 </Field>
-                <Field name="perAddress2">
+                <Field name="permanentAddress2">
                   {(e) => (
                     <div className={PageStyle.perAddress__customInput}>
-                      <label htmlFor="perAddress2"> Permanent Address 2</label>
+                      <label htmlFor="permanentAddress2">
+                        {" "}
+                        Permanent Address 2
+                      </label>
                       <Input
-                        id="perAddress2"
+                        id="permanentAddress2"
                         type="text"
                         placeholder="Enter Permanent Address Line 2"
                         inputtype=""
@@ -78,12 +103,12 @@ const PermanentAddress = ({
                 </Field>
                 <div className={PageStyle.perAddress__innerFlexContainer}>
                   <div>
-                    <Field name="pincode">
+                    <Field name="permanentPincode">
                       {(e) => (
                         <div className={PageStyle.perAddress__customInput}>
-                          <label htmlFor="pincode"> Pincode </label>
+                          <label htmlFor="permanentPincode"> Pincode </label>
                           <Input
-                            id="pincode"
+                            id="permanentPincode"
                             type="text"
                             placeholder="Enter Pincode"
                             inputtype=""
@@ -125,12 +150,12 @@ const PermanentAddress = ({
                 </div>
               </div>
               <div>
-                <Field name="state">
+                <Field name="permanentState">
                   {(e) => (
                     <div className={PageStyle.perAddress__customInput}>
-                      <label htmlFor="state"> State</label>
+                      <label htmlFor="permanentState"> State</label>
                       <Input
-                        id="state"
+                        id="permanentState"
                         type="text"
                         placeholder="Enter State"
                         inputtype=""
@@ -147,12 +172,12 @@ const PermanentAddress = ({
                     </div>
                   )}
                 </Field>
-                <Field name="city">
+                <Field name="permanentCity">
                   {(e) => (
                     <div className={PageStyle.perAddress__customInput}>
-                      <label htmlFor="city"> City</label>
+                      <label htmlFor="permanentCity"> City</label>
                       <Input
-                        id="city"
+                        id="permanentCity"
                         type="text"
                         placeholder="Enter city"
                         inputtype=""

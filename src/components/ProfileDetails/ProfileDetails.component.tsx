@@ -1,7 +1,9 @@
 import { Form, Field } from "react-final-form";
+import { callProfileUpdatePost } from "../../APIs/ProfilePage";
 import { Input, Button } from "../../stories";
 import { Theme } from "../../Theme";
 import { ProfileDetailType } from "../../Types";
+import { getData } from "../../Util/Helper";
 import PageStyle from "./ProfileDetails.module.scss";
 
 const ProfileDetails = ({
@@ -9,15 +11,40 @@ const ProfileDetails = ({
 }: {
   profileData: ProfileDetailType | undefined;
 }) => {
-  const onSubmit = (e: ProfileDetailType) => {};
+  const onSubmit = (e: ProfileDetailType) => {
+    const requiredData = getData("loginData");
+    const token = requiredData.token;
+    const employeeId = requiredData.data.user.employee.id;
+    const formType = {
+      formType: "all",
+    };
+    profileData = { ...profileData, ...e, ...formType };
+    callProfileUpdatePost(employeeId, profileData, {
+      headers: { Authorization: "bearer" + token },
+    }).then((res) => {
+      if (res.status === 200) {
+        alert("Profile Details has been updated successfully.");
+      } else {
+        alert(res.data.message);
+      }
+    });
+  };
 
   const validate = (e: ProfileDetailType) => {
     const errors: ProfileDetailType = {};
     if (!e.firstName) {
       errors.firstName = "Please Enter valid first name.";
     }
+    if (!e.lastName) {
+    }
     if (!e.email) {
       errors.email = "Please Enter email";
+    }
+    if (!e.mobileNo) {
+      errors.mobileNo = "Please Enter email";
+    }
+    if (!e.landlineNo) {
+      errors.landlineNo = "Please Enter email";
     }
     return errors;
   };
