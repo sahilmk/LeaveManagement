@@ -1,7 +1,7 @@
 import { Form, Field } from "react-final-form";
 import { Input, Button } from "../../stories";
-import { Theme } from "../../Theme";
 import { ChangePasswordType } from "../../Types";
+import { Theme } from "../../Theme";
 import PageStyle from "./ChangePassword.module.scss";
 
 const initialValues = {

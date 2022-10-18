@@ -1,9 +1,9 @@
 import { Form, Field } from "react-final-form";
-import { callProfileUpdatePost } from "../../APIs/profilePage";
 import { Input, Button } from "../../stories";
-import { Theme } from "../../Theme";
-import { AddressType } from "../../Types";
+import { callProfileUpdatePost } from "../../APIs";
 import { getData } from "../../Util/Helper";
+import { AddressType } from "../../Types";
+import { Theme } from "../../Theme";
 import PageStyle from "./PerAddress.module.scss";
 
 const PermanentAddress = ({
@@ -18,16 +18,20 @@ const PermanentAddress = ({
     const formType = {
       formType: "all",
     };
+
     permanentAdd = { ...permanentAdd, ...e, ...formType };
+
     callProfileUpdatePost(employeeId, permanentAdd, {
       headers: { Authorization: "bearer" + token },
-    }).then((res) => {
-      if (res.status === 200) {
-        alert("Permanent Addresss has been updated successfully.");
-      } else {
-        alert(res.data.message);
-      }
-    });
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          alert("Permanent Addresss has been updated successfully.");
+        } else {
+          alert(res.data.message);
+        }
+      })
+      .catch((error) => alert(error));
   };
 
   const validate = (e: AddressType) => {
