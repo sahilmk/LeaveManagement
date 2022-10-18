@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Form, Field } from 'react-final-form'
 import { Button, DataTable, Input, PageTitle } from '../../stories'
+import { Theme } from '../../Theme'
 import { getLeaveData } from '../../APIs'
 import { dummyData } from '../../Util/Constants'
 import { getData } from '../../Util/Helper'
@@ -147,7 +148,7 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
                                 </div>
 
                                 <div className={style.inputcontrol}>
-                                    <Button label='Clear' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 0.2rem #ebebeb' />
+                                    <Button label='Clear' type='reset' borderRadius={false} color={Theme.colors.yankeesBlueColor} bgColor={Theme.colors.lotionColor} border={`solid 0.2rem ${Theme.colors.brightGrayColor}`} />
                                 </div>
                             </div>
                         </form>

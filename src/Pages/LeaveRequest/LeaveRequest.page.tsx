@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Field } from 'react-final-form'
 import { Input, PageTitle, Button } from '../../stories'
+import { Theme } from '../../Theme';
 import { getData } from '../../Util/Helper';
 import { postNewLeave } from '../../APIs/getLeaveData';
 import style from './LeaveRequest.module.scss';
@@ -276,8 +277,8 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                                     }
                                 </div>
 
-                                <Button label='Submit' type='submit' borderRadius={false} color='#fff' />
-                                <Button label='Cancel' type='reset' borderRadius={false} color='#173346' bgColor='#fafafa' border='solid 0.2rem #ebebeb' />
+                                <Button label='Submit' type='submit' borderRadius={false} color={Theme.colors.whiteColor} />
+                                <Button label='Cancel' type='reset' borderRadius={false} color={Theme.colors.yankeesBlueColor} bgColor={Theme.colors.lotionColor} border={`solid 0.2rem ${Theme.colors.brightGrayColor}`} />
                             </form>
                         )}
                     />

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SidebarTab from '../SidebarTab'
 import Button from '../ButtonComponent'
+import { Theme } from "../../Theme";
 import { callLogoutGet } from '../../APIs';
 import { useAuthContext } from '../../Hooks';
 import { getData, removeData } from '../../Util/Helper';
@@ -116,7 +117,7 @@ function Sidebar({
         ))}
       </ul>
 
-      <Button label={` Logout`} borderRadius={false} color='#fff' logo={true} onClick={logout} />
+      <Button label={` Logout`} borderRadius={false} color={Theme.colors.whiteColor} logo={true} onClick={logout} />
 
     </SidebarStyle >
   )
