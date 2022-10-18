@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from '../ButtonComponent'
 import { PageTitleStyle } from './PageTitle.styled'
+import { Theme } from '../../Theme';
 
 export type Pagetitleporp = {
   logindate: string;
@@ -28,7 +29,7 @@ function PageTitle({ logindate, pagename, innerPageNames, buttonName, isinnerPag
         </div>
       </div>
 
-      {isButton && <Button label={buttonName!} borderRadius={false} color='#fff' size='2rem' />}
+      {isButton && <Button label={buttonName!} borderRadius={false} color={Theme.colors.whiteColor} size='2rem' />}
     </PageTitleStyle >
   )
 }
