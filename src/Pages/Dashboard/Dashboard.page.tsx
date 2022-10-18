@@ -18,7 +18,7 @@ function Dashboard() {
 
   const userName = loginData.data.user.employee.firstName + " " + loginData.data.user.employee.lastName;
 
-  const userLoginData = loginData.data.user.lastLogin;
+  const userLoginData = loginData.data.user.lastLogin.split(' ')[0];
 
 
   return (

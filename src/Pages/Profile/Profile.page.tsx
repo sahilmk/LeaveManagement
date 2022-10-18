@@ -71,7 +71,7 @@ const ProfilePage = () => {
   return (
     <>
       <PageTitle
-        logindate={userInfo.data.user.lastLogin}
+        logindate={userInfo.data.user.lastLogin.split(' ')[0]}
         pagename={"Profile"}
         isinnerPage={false}
         isButton={false}
