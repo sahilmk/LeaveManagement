@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Form, Field } from 'react-final-form'
 import { Button, DataTable, Input, PageTitle } from '../../stories';
-import { Theme } from '../../Theme';
 import { getLeaveData } from '../../APIs';
+import { responseDataType } from '../../Types/globalTypes';
 import { getData } from '../../Util/Helper';
 import { dummyData } from '../../Util/Constants';
-import { responseDataType } from '../../Types/globalTypes';
+import { Theme } from '../../Theme';
 import '../../Icons/css/material-design-iconic-font.css'
 import style from './ApprovedLeaves.module.scss';
 

@@ -2,11 +2,11 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SidebarTab from "../SidebarTab";
 import Button from "../ButtonComponent";
-import { Theme } from "../../Theme";
-import { callLogoutGet } from "../../APIs";
 import { useAuthContext } from "../../Hooks";
+import { callLogoutGet } from "../../APIs";
 import { getData, removeData } from "../../Util/Helper";
 import { SidebarStyle } from "./Sidebar.styled";
+import { Theme } from "../../Theme";
 
 export type sidebarTabTypes = {
   icon?: string;

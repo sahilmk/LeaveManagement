@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Form, Field } from 'react-final-form'
 import { Button, DataTable, Input, PageTitle } from '../../stories'
-import { Theme } from '../../Theme'
 import { getLeaveData } from '../../APIs'
+import { responseDataType } from '../../Types/globalTypes'
 import { dummyData } from '../../Util/Constants'
 import { getData } from '../../Util/Helper'
-import { responseDataType } from '../../Types/globalTypes'
 import style from './RejectedLeave.module.scss'
+import { Theme } from '../../Theme'
 
 export type rejectedLeavePropType = {
     logindate: string

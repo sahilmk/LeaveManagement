@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Form, Field } from 'react-final-form'
 import { Input, PageTitle, Button } from '../../stories'
-import { Theme } from '../../Theme';
-import { getData } from '../../Util/Helper';
 import { postNewLeave } from '../../APIs/getLeaveData';
+import { getData } from '../../Util/Helper';
+import { Theme } from '../../Theme';
 import style from './LeaveRequest.module.scss';
 
 type fieldInputType = {

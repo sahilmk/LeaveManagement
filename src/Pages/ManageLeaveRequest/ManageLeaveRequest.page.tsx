@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { DataTable, PageTitle } from '../../stories'
 import { getLeaveData } from '../../APIs'
-import { getData } from '../../Util/Helper'
 import { responseDataType } from '../../Types/globalTypes'
+import { getData } from '../../Util/Helper'
 import { dummyData } from '../../Util/Constants'
 import style from './ManageLeaveRequest.module.scss'
 
