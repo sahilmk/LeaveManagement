@@ -1,6 +1,6 @@
 import { Form, Field } from "react-final-form";
 import { setLoginData } from "../../APIs";
-import { callProfileUpdatePost } from "../../APIs/ProfilePage";
+import { callProfileUpdatePost } from "../../APIs/profilePage";
 import { Input, Button } from "../../stories";
 import { Theme } from "../../Theme";
 import { ProfileDetailType } from "../../Types";

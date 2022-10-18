@@ -1,5 +1,5 @@
 import { Form, Field } from "react-final-form";
-import { callProfileUpdatePost } from "../../APIs/ProfilePage";
+import { callProfileUpdatePost } from "../../APIs/profilePage";
 import { Input, Button } from "../../stories";
 import { Theme } from "../../Theme";
 import { AddressType } from "../../Types";
