@@ -24,9 +24,9 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
     const [unchangedData, setUnchangedData] = useState<responseDataType[]>([]);
 
     const onSubmit = (e: formInputTypes) => {
-        console.log(pendingLeaveData)
+        let newPendingLeaveData
         if (e.startdate) {
-            const newPendingLeaveData = unchangedData.filter((leave) => {
+            newPendingLeaveData = unchangedData.filter((leave) => {
                 return leave.startDate === e.startdate;
             })
             if (newPendingLeaveData.length === 0) {
@@ -37,7 +37,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
         }
 
         if (e.endDate) {
-            const newPendingLeaveData = unchangedData.filter((leave) => {
+            newPendingLeaveData = unchangedData.filter((leave) => {
                 return leave.endDate === e.endDate;
             })
             if (newPendingLeaveData.length === 0) {
@@ -48,7 +48,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
         }
 
         if (e.search) {
-            const newPendingLeaveData = unchangedData.filter((leave) => {
+            newPendingLeaveData = unchangedData.filter((leave) => {
                 return leave.reason.includes(e.search);
             })
             if (newPendingLeaveData.length === 0) {

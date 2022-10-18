@@ -26,47 +26,49 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
     const [unchangedData, setUnchangedData] = useState<responseDataType[]>([]);
 
     const onSubmit = (e: formInputTypes) => {
+        let newApprovedLeaveData;
+
         if (e.startdate) {
-            const newPendingLeaveData = unchangedData.filter((leave) => {
+            newApprovedLeaveData = unchangedData.filter((leave) => {
                 return leave.startDate === e.startdate;
             })
-            if (newPendingLeaveData.length === 0) {
+            if (newApprovedLeaveData.length === 0) {
                 alert('No Data Found');
             } else {
-                setapprovedLeaveData(newPendingLeaveData)
+                setapprovedLeaveData(newApprovedLeaveData)
             }
         }
 
         if (e.enddate) {
-            const newPendingLeaveData = unchangedData.filter((leave) => {
+            newApprovedLeaveData = unchangedData.filter((leave) => {
                 return leave.endDate === e.enddate;
             })
-            if (newPendingLeaveData.length === 0) {
+            if (newApprovedLeaveData.length === 0) {
                 alert('No Data Found');
             } else {
-                setapprovedLeaveData(newPendingLeaveData)
+                setapprovedLeaveData(newApprovedLeaveData)
             }
         }
 
         if (e.search) {
-            const newPendingLeaveData = unchangedData.filter((leave) => {
+            newApprovedLeaveData = unchangedData.filter((leave) => {
                 return leave.reason.includes(e.search);
             })
-            if (newPendingLeaveData.length === 0) {
+            if (newApprovedLeaveData.length === 0) {
                 alert('No Data Found');
             } else {
-                setapprovedLeaveData(newPendingLeaveData)
+                setapprovedLeaveData(newApprovedLeaveData)
             }
         }
 
         if (e.type) {
-            const newPendingLeaveData = unchangedData.filter((leave) => {
+            newApprovedLeaveData = unchangedData.filter((leave) => {
                 return leave.type === e.type;
             })
-            if (newPendingLeaveData.length === 0) {
+            if (newApprovedLeaveData.length === 0) {
                 alert('No Data Found');
             } else {
-                setapprovedLeaveData(newPendingLeaveData)
+                setapprovedLeaveData(newApprovedLeaveData)
             }
         }
     };

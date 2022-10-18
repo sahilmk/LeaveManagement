@@ -25,36 +25,38 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
     const [unchangedData, setUnchangedData] = useState<responseDataType[]>([]);
 
     const onSubmit = (e: formInputTypes) => {
+        let newRejectedLeaveData;
+
         if (e.startdate) {
-            const newPendingLeaveData = unchangedData.filter((leave) => {
+            newRejectedLeaveData = unchangedData.filter((leave) => {
                 return leave.startDate === e.startdate;
             })
-            if (newPendingLeaveData.length === 0) {
+            if (newRejectedLeaveData.length === 0) {
                 alert('No Data Found');
             } else {
-                setrejectedLeaveData(newPendingLeaveData)
+                setrejectedLeaveData(newRejectedLeaveData)
             }
         }
 
         if (e.enddate) {
-            const newPendingLeaveData = unchangedData.filter((leave) => {
+            newRejectedLeaveData = unchangedData.filter((leave) => {
                 return leave.endDate === e.enddate;
             })
-            if (newPendingLeaveData.length === 0) {
+            if (newRejectedLeaveData.length === 0) {
                 alert('No Data Found');
             } else {
-                setrejectedLeaveData(newPendingLeaveData)
+                setrejectedLeaveData(newRejectedLeaveData)
             }
         }
 
         if (e.search) {
-            const newPendingLeaveData = unchangedData.filter((leave) => {
+            newRejectedLeaveData = unchangedData.filter((leave) => {
                 return leave.reason.includes(e.search);
             })
-            if (newPendingLeaveData.length === 0) {
+            if (newRejectedLeaveData.length === 0) {
                 alert('No Data Found');
             } else {
-                setrejectedLeaveData(newPendingLeaveData)
+                setrejectedLeaveData(newRejectedLeaveData)
             }
         }
 

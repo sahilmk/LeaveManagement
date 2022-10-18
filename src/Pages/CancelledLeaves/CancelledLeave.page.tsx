@@ -24,36 +24,38 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
     const [unchangedData, setUnchangedData] = useState<responseDataType[]>([]);
 
     const onSubmit = (e: formInputTypes) => {
+        let newCancelledLeaveData;
+
         if (e.startdate) {
-            const newPendingLeaveData = unchangedData.filter((leave) => {
+            newCancelledLeaveData = unchangedData.filter((leave) => {
                 return leave.startDate === e.startdate;
             })
-            if (newPendingLeaveData.length === 0) {
+            if (newCancelledLeaveData.length === 0) {
                 alert('No Data Found');
             } else {
-                setcancelledLeaveData(newPendingLeaveData)
+                setcancelledLeaveData(newCancelledLeaveData)
             }
         }
 
         if (e.enddate) {
-            const newPendingLeaveData = unchangedData.filter((leave) => {
+            newCancelledLeaveData = unchangedData.filter((leave) => {
                 return leave.endDate === e.enddate;
             })
-            if (newPendingLeaveData.length === 0) {
+            if (newCancelledLeaveData.length === 0) {
                 alert('No Data Found');
             } else {
-                setcancelledLeaveData(newPendingLeaveData)
+                setcancelledLeaveData(newCancelledLeaveData)
             }
         }
 
         if (e.search) {
-            const newPendingLeaveData = unchangedData.filter((leave) => {
+            newCancelledLeaveData = unchangedData.filter((leave) => {
                 return leave.reason.includes(e.search);
             })
-            if (newPendingLeaveData.length === 0) {
+            if (newCancelledLeaveData.length === 0) {
                 alert('No Data Found');
             } else {
-                setcancelledLeaveData(newPendingLeaveData)
+                setcancelledLeaveData(newCancelledLeaveData)
             }
         }
     };
