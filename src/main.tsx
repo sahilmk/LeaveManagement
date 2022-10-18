@@ -1,11 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter as Router } from 'react-router-dom';
-import App from './App'
-import { LoginContextProvider } from './Context/AuthContext';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router } from "react-router-dom";
+import App from "./App";
+import { LoginContextProvider } from "./Contexts/AuthContext";
 import "./Styles/globalStyling.scss";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <LoginContextProvider>
       <Router>
@@ -13,4 +13,4 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       </Router>
     </LoginContextProvider>
   </React.StrictMode>
-)
+);

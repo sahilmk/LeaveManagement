@@ -5,6 +5,13 @@ import {
   setLoginData,
 } from "./authData";
 
-import { getLeaveData } from './getLeaveData'
-import { callProfilePageGet } from "./ProfilePage";
-export { callLoginPost, callForgotPasswordPost, callLogoutGet, setLoginData, getLeaveData, callProfilePageGet };
+import { getLeaveData } from "./getLeaveData";
+import { callProfilePageGet } from "./profilePage";
+export {
+  callLoginPost,
+  callForgotPasswordPost,
+  callLogoutGet,
+  setLoginData,
+  getLeaveData,
+  callProfilePageGet,
+};
