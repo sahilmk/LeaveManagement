@@ -61,7 +61,7 @@ const ProfileDetails = ({
           landlineNo: profileData?.landlineNo,
           dateOfBirth: profileData?.dateOfBirth,
           designation: profileData?.designation,
-          mobNo: profileData?.mobileNo,
+          mobileNo: profileData?.mobileNo,
           department: profileData?.department,
           gender: profileData?.gender,
         }}
@@ -203,12 +203,12 @@ const ProfileDetails = ({
                     </div>
                   )}
                 </Field>
-                <Field name="mobNo">
+                <Field name="mobileNo">
                   {(e) => (
                     <div className={PageStyle.profileDetail__customInput}>
-                      <label htmlFor="mobNo"> Enter Mobile no. </label>
+                      <label htmlFor="mobileNo"> Enter Mobile no. </label>
                       <Input
-                        id="mobNo"
+                        id="mobileNo"
                         type="text"
                         placeholder="Enter Mobile Number"
                         inputtype=""
