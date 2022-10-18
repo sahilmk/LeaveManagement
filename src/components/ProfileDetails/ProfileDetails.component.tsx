@@ -1,5 +1,6 @@
 import { Form, Field } from "react-final-form";
 import { Input, Button } from "../../stories";
+import { Theme } from "../../Theme";
 import { ProfileDetailType } from "../../Types";
 import PageStyle from "./ProfileDetails.module.scss";
 
@@ -221,8 +222,8 @@ const ProfileDetails = ({
                 <div className={PageStyle.profileDetail__buttonContainer}>
                   <Button
                     label="Update Profile"
-                    bgColor={"#173346"}
-                    color={"#fff"}
+                    bgColor={Theme.colors.yankeesBlueColor}
+                    color={Theme.colors.whiteColor}
                     size={"1.8rem"}
                     borderRadius={false}
                     onClick={(e) => {}}
@@ -230,11 +231,11 @@ const ProfileDetails = ({
                   />
                   <Button
                     label="Cancel"
-                    bgColor={"#fafafa"}
-                    color={"#173346"}
+                    bgColor={Theme.colors.lotionColor}
+                    color={Theme.colors.yankeesBlueColor}
                     size={"2rem"}
                     borderRadius={false}
-                    border={"solid 0.2rem #ebebeb"}
+                    border={`solid 0.2rem ${Theme.colors.brightGrayColor}`}
                     onClick={(e) => {}}
                     type={"button"}
                   />

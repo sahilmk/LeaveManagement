@@ -1,5 +1,6 @@
 import { Form, Field } from "react-final-form";
 import { Input, Button } from "../../stories";
+import { Theme } from "../../Theme";
 import { AddressType } from "../../Types";
 import PageStyle from "./PerAddress.module.scss";
 
@@ -103,8 +104,8 @@ const PermanentAddress = ({
                   <div className={PageStyle.perAddress__buttonContainer}>
                     <Button
                       label={"Update Address"}
-                      bgColor={"#173346"}
-                      color={"#fff"}
+                      bgColor={Theme.colors.yankeesBlueColor}
+                      color={Theme.colors.whiteColor}
                       size={"1.8rem"}
                       borderRadius={false}
                       onClick={(e) => {}}
@@ -112,11 +113,11 @@ const PermanentAddress = ({
                     />
                     <Button
                       label={"Cancel"}
-                      bgColor={"#fafafa"}
-                      color={"#173346"}
+                      bgColor={Theme.colors.lotionColor}
+                      color={Theme.colors.yankeesBlueColor}
                       size={"2rem"}
                       borderRadius={false}
-                      border={"solid 0.2rem #ebebeb"}
+                      border={`solid 0.2rem ${Theme.colors.brightGrayColor}`}
                       onClick={(e) => {}}
                       type={"button"}
                     />

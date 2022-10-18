@@ -1,5 +1,6 @@
 import { Form, Field } from "react-final-form";
 import { Input, Button } from "../../stories";
+import { Theme } from "../../Theme";
 import { ChangePasswordType } from "../../Types";
 import PageStyle from "./ChangePassword.module.scss";
 
@@ -10,7 +11,7 @@ const initialValues = {
 };
 
 const ChangePassword = () => {
-  const onSubmit = (e: ChangePasswordType) => { };
+  const onSubmit = (e: ChangePasswordType) => {};
 
   const validate = (e: ChangePasswordType) => {
     const errors: ChangePasswordType = {};
@@ -50,7 +51,7 @@ const ChangePassword = () => {
                         placeholder="Enter Old Password"
                         inputtype=""
                         padding={"1.4rem 1.8rem 1.4rem 1.9rem"}
-                        width='44rem'
+                        width="44rem"
                         value={e.input.value}
                         onChange={e.input.onChange}
                         onBlur={e.input.onBlur}
@@ -74,7 +75,7 @@ const ChangePassword = () => {
                         placeholder="Enter New Password"
                         inputtype=""
                         padding={"1.4rem 1.8rem 1.4rem 1.9rem"}
-                        width='44rem'
+                        width="44rem"
                         value={e.input.value}
                         onChange={e.input.onChange}
                         onBlur={e.input.onBlur}
@@ -101,7 +102,7 @@ const ChangePassword = () => {
                         placeholder="Enter Confirm Password"
                         inputtype=""
                         padding={"1.4rem 1.8rem 1.4rem 1.9rem"}
-                        width='44rem'
+                        width="44rem"
                         value={e.input.value}
                         onChange={e.input.onChange}
                         onBlur={e.input.onBlur}
@@ -118,11 +119,11 @@ const ChangePassword = () => {
             <div className={PageStyle.changePwd__buttonContainer}>
               <Button
                 label={"Change Password"}
-                bgColor={"#173346"}
-                color={"#fff"}
+                bgColor={Theme.colors.yankeesBlueColor}
+                color={Theme.colors.whiteColor}
                 size={"1.8rem"}
                 borderRadius={false}
-                onClick={(e) => { }}
+                onClick={(e) => {}}
                 type={"submit"}
               />
             </div>
