@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import SidebarTab from '../SidebarTab'
-import Button from '../ButtonComponent'
+import SidebarTab from "../SidebarTab";
+import Button from "../ButtonComponent";
 import { Theme } from "../../Theme";
-import { callLogoutGet } from '../../APIs';
-import { useAuthContext } from '../../Hooks';
-import { getData, removeData } from '../../Util/Helper';
-import { SidebarStyle } from './Sidebar.styled'
+import { callLogoutGet } from "../../APIs";
+import { useAuthContext } from "../../Hooks";
+import { getData, removeData } from "../../Util/Helper";
+import { SidebarStyle } from "./Sidebar.styled";
 
 export type sidebarTabTypes = {
   icon?: string;
@@ -67,12 +67,12 @@ function Sidebar({
 
   const logout = () => {
     removeData("loginData");
-    callLogoutGet({ headers: { Authorization: 'bearer ' + loginData.token } }).then((Response) =>
-      alert(Response.data.message)
-    );
+    callLogoutGet({
+      headers: { Authorization: "bearer " + loginData.token },
+    }).then((Response) => alert(Response.data.message));
     dispatch({ type: "LOGGED_OUT", loggedIn: false });
+    navigate("/");
   };
-
 
   return (
     <SidebarStyle>
@@ -80,47 +80,51 @@ function Sidebar({
         <div className="profilepicture">
           <img src={userImage} alt={user} />
         </div>
-        <Link className="profiledescription" to='/profile'>
-          <span className='username'>{user}</span>
-          <span className='userposition'>{position}</span>
+        <Link className="profiledescription" to="/profile">
+          <span className="username">{user}</span>
+          <span className="userposition">{position}</span>
         </Link>
       </div>
 
       <ul>
         {sidebarTabs.map((tab) => (
           <li key={tab.label}>
-
             <SidebarTab
               isExpandable={tab.isExpandable}
               icon={tab.icon}
               isOpen={tab.isOpen}
               label={tab.label}
               path={tab.route}
-              onClick={() => openDropDown(tab)} />
+              onClick={() => openDropDown(tab)}
+            />
 
-
-
-            {(tab.isExpandable && tab.isOpen) &&
+            {tab.isExpandable && tab.isOpen && (
               <ul>
-                {tab.innerSidebar!.map(tabs =>
-                  <li className='innerTabs' key={tabs.label}>
+                {tab.innerSidebar!.map((tabs) => (
+                  <li className="innerTabs" key={tabs.label}>
                     <SidebarTab
                       isExpandable={false}
                       label={tabs.label}
                       path={tabs.route}
-                      onClick={() => openDropDown(tabs)} />
-                  </li>)}
+                      onClick={() => openDropDown(tabs)}
+                    />
+                  </li>
+                ))}
               </ul>
-            }
-
+            )}
           </li>
         ))}
       </ul>
 
-      <Button label={` Logout`} borderRadius={false} color={Theme.colors.whiteColor} logo={true} onClick={logout} />
-
-    </SidebarStyle >
-  )
+      <Button
+        label={` Logout`}
+        borderRadius={false}
+        color={Theme.colors.whiteColor}
+        logo={true}
+        onClick={logout}
+      />
+    </SidebarStyle>
+  );
 }
 
 export default Sidebar;
