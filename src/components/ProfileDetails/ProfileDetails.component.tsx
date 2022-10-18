@@ -1,4 +1,5 @@
 import { Form, Field } from "react-final-form";
+import { setLoginData } from "../../APIs";
 import { callProfileUpdatePost } from "../../APIs/ProfilePage";
 import { Input, Button } from "../../stories";
 import { Theme } from "../../Theme";
@@ -23,6 +24,9 @@ const ProfileDetails = ({
       headers: { Authorization: "bearer" + token },
     }).then((res) => {
       if (res.status === 200) {
+        requiredData.data.user.employee.firstName = profileData?.firstName;
+        requiredData.data.user.employee.lastName = profileData?.lastName;
+        setLoginData(requiredData);
         alert("Profile Details has been updated successfully.");
       } else {
         alert(res.data.message);
@@ -59,10 +63,10 @@ const ProfileDetails = ({
           lastName: profileData?.lastName,
           email: profileData?.email,
           landlineNo: profileData?.landlineNo,
-          dateOfBirth: profileData?.dateOfBirth,
+          dob: profileData?.dateOfBirth,
           designation: profileData?.designation,
           mobileNo: profileData?.mobileNo,
-          department: profileData?.department,
+          departmentId: profileData?.department,
           gender: profileData?.gender,
         }}
         render={({ handleSubmit }) => (
@@ -135,12 +139,12 @@ const ProfileDetails = ({
                     </div>
                   )}
                 </Field>
-                <Field name="dateOfBirth">
+                <Field name="dob">
                   {(e) => (
                     <div className={PageStyle.profileDetail__customInput}>
-                      <label htmlFor="dateOfBirth"> Date Of Birth </label>
+                      <label htmlFor="dob"> Date Of Birth </label>
                       <Input
-                        id="dateOfBirth"
+                        id="dob"
                         type="Date"
                         placeholder=""
                         inputtype=""
@@ -237,9 +241,9 @@ const ProfileDetails = ({
                   </Field>
                 </div>
                 <div className={PageStyle.profileDetail__customInput}>
-                  <label htmlFor="department">Department</label>
+                  <label htmlFor="departmentId">Department</label>
                   <Field
-                    name="department"
+                    name="departmentId"
                     component="select"
                     className={PageStyle.customDropdown}
                   >
