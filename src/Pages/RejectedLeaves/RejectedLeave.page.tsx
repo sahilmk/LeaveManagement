@@ -22,27 +22,42 @@ export type formInputTypes = {
 function RejectedLeave({ logindate }: rejectedLeavePropType) {
 
     const [rejectedLeaveData, setrejectedLeaveData] = useState<responseDataType[]>([]);
+    const [unchangedData, setUnchangedData] = useState<responseDataType[]>([]);
 
-    const onSubmit = (e: formInputTypes) => { };
-
-    const validate = (e: formInputTypes) => {
-        const errors: formInputTypes = {};
-
-        if (!e.startdate) {
-            errors.startdate = 'Please enter data';
-        }
-        if (!e.enddate) {
-            errors.enddate = 'Please enter data';
-        }
-        if (e.startdate! > e.enddate!) {
-            errors.startdate = 'Start date must be higher than enddate';
-            errors.enddate = 'End date must be lesser than startdate';
-        }
-        if (!e.search) {
-            errors.search = 'Please enter value you want to search';
+    const onSubmit = (e: formInputTypes) => {
+        if (e.startdate) {
+            const newPendingLeaveData = unchangedData.filter((leave) => {
+                return leave.startDate === e.startdate;
+            })
+            if (newPendingLeaveData.length === 0) {
+                alert('No Data Found');
+            } else {
+                setrejectedLeaveData(newPendingLeaveData)
+            }
         }
 
-        return errors;
+        if (e.enddate) {
+            const newPendingLeaveData = unchangedData.filter((leave) => {
+                return leave.endDate === e.enddate;
+            })
+            if (newPendingLeaveData.length === 0) {
+                alert('No Data Found');
+            } else {
+                setrejectedLeaveData(newPendingLeaveData)
+            }
+        }
+
+        if (e.search) {
+            const newPendingLeaveData = unchangedData.filter((leave) => {
+                return leave.reason.includes(e.search);
+            })
+            if (newPendingLeaveData.length === 0) {
+                alert('No Data Found');
+            } else {
+                setrejectedLeaveData(newPendingLeaveData)
+            }
+        }
+
     };
 
     useEffect(() => {
@@ -60,12 +75,13 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
                     id: rejectedleave.id,
                     type: rejectedleave.type,
                     reason: rejectedleave.reason,
-                    date: `${rejectedleave.startDate}${(rejectedleave.endDate !== rejectedleave.startDate) ? `to ${rejectedleave.startDate}` : ''} `,
+                    date: `${rejectedleave.startDate}${(rejectedleave.endDate !== rejectedleave.startDate) ? ` to ${rejectedleave.endDate}` : ''} `,
                     appliedOn: rejectedleave.created_at?.split(' ')[0]
                 };
                 return { ...rejectedleave, ...leaveObj }
             })
-            setrejectedLeaveData(intermidate);
+            setrejectedLeaveData(intermidate.length === 0 ? dummyData : intermidate);
+            setUnchangedData(intermidate.length === 0 ? dummyData : intermidate);
         });
 
     }, []);
@@ -79,9 +95,8 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
             <div className={style.approvedpage}>
                 <Form
                     onSubmit={onSubmit}
-                    validate={validate}
                     render={({ handleSubmit }) => (
-                        <form onSubmit={handleSubmit}>
+                        <form onChange={handleSubmit}>
                             <div className={style.displayflex}>
                                 <div className={style.inputcontrol}>
                                     <Field name="startdate">
@@ -183,7 +198,7 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
                             flex: 1,
                         },
                     ]}
-                    rows={rejectedLeaveData.length === 0 ? dummyData : rejectedLeaveData}
+                    rows={rejectedLeaveData}
                 />
             </div>
         </>

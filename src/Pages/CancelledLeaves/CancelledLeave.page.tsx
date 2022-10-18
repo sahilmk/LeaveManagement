@@ -21,29 +21,41 @@ export type formInputTypes = {
 function CancelledLeave({ logindate }: cancelledLeavePropType) {
 
     const [cancelledLeaveData, setcancelledLeaveData] = useState<responseDataType[]>([]);
+    const [unchangedData, setUnchangedData] = useState<responseDataType[]>([]);
 
-    const onSubmit = (e: formInputTypes) => { };
-
-    const validate = (e: formInputTypes) => {
-        const errors: formInputTypes = {};
-
-        if (!e.startdate) {
-            errors.startdate = 'Please enter data';
-        }
-        if (!e.enddate) {
-            errors.enddate = 'Please enter data';
-        }
-
-        if (e.startdate! > e.enddate!) {
-            errors.startdate = 'Start date must higher than enddata';
-            errors.enddate = 'End date must less than startdata';
+    const onSubmit = (e: formInputTypes) => {
+        if (e.startdate) {
+            const newPendingLeaveData = unchangedData.filter((leave) => {
+                return leave.startDate === e.startdate;
+            })
+            if (newPendingLeaveData.length === 0) {
+                alert('No Data Found');
+            } else {
+                setcancelledLeaveData(newPendingLeaveData)
+            }
         }
 
-        if (!e.search) {
-            errors.search = 'Please enter value you want to search';
+        if (e.enddate) {
+            const newPendingLeaveData = unchangedData.filter((leave) => {
+                return leave.endDate === e.enddate;
+            })
+            if (newPendingLeaveData.length === 0) {
+                alert('No Data Found');
+            } else {
+                setcancelledLeaveData(newPendingLeaveData)
+            }
         }
 
-        return errors;
+        if (e.search) {
+            const newPendingLeaveData = unchangedData.filter((leave) => {
+                return leave.reason.includes(e.search);
+            })
+            if (newPendingLeaveData.length === 0) {
+                alert('No Data Found');
+            } else {
+                setcancelledLeaveData(newPendingLeaveData)
+            }
+        }
     };
 
     useEffect(() => {
@@ -61,12 +73,13 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
                     id: cencelledleave.id,
                     type: cencelledleave.type,
                     reason: cencelledleave.reason,
-                    date: `${cencelledleave.startDate}${(cencelledleave.endDate !== cencelledleave.startDate) ? `to ${cencelledleave.startDate}` : ''} `,
+                    date: `${cencelledleave.startDate}${(cencelledleave.endDate !== cencelledleave.startDate) ? ` to ${cencelledleave.endDate}` : ''} `,
                     appliedOn: cencelledleave.created_at?.split(' ')[0]
                 };
                 return { ...cencelledleave, ...leaveObj }
             })
             setcancelledLeaveData(intermidate);
+            setUnchangedData(intermidate.length === 0 ? dummyData : intermidate);
         });
 
     }, [])
@@ -79,9 +92,8 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
             <div className={style.approvedpage}>
                 <Form
                     onSubmit={onSubmit}
-                    validate={validate}
                     render={({ handleSubmit }) => (
-                        <form onSubmit={handleSubmit}>
+                        <form onChange={handleSubmit}>
                             <div className={style.displayflex}>
                                 <div className={style.inputcontrol}>
                                     <Field name="startdate">

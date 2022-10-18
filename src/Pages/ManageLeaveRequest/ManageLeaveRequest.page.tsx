@@ -30,7 +30,7 @@ function ManageLeaveRequest({ logindate }: manageLeaveRequestPropType) {
                     department: pendingleave.department,
                     reason: pendingleave.reason,
                     name: `${pendingleave.firstName} ${pendingleave.lastName}`,
-                    date: `${pendingleave.startDate}${(pendingleave.endDate !== pendingleave.startDate) ? `to ${pendingleave.startDate}` : ''} `
+                    date: `${pendingleave.startDate}${(pendingleave.endDate !== pendingleave.startDate) ? ` to ${pendingleave.endDate}` : ''} `
                 };
                 return { ...pendingleave, ...leaveObj }
             })

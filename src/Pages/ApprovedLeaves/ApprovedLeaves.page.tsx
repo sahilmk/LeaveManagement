@@ -23,27 +23,52 @@ export type formInputTypes = {
 function ApprovedLeave({ logindate }: approvedLeavePropType) {
 
     const [approvedLeaveData, setapprovedLeaveData] = useState<responseDataType[]>([]);
+    const [unchangedData, setUnchangedData] = useState<responseDataType[]>([]);
 
-    const onSubmit = (e: formInputTypes) => { };
-
-    const validate = (e: formInputTypes) => {
-        const errors: formInputTypes = {};
-
-        if (!e.startdate) {
-            errors.startdate = 'Please enter data';
-        }
-        if (!e.enddate) {
-            errors.enddate = 'Please enter data';
-        }
-        if (e.startdate! > e.enddate!) {
-            errors.startdate = 'Start date must be higher than enddate';
-            errors.enddate = 'End date must be lesser than startdate';
-        }
-        if (!e.search) {
-            errors.search = 'Please enter value you want to search';
+    const onSubmit = (e: formInputTypes) => {
+        if (e.startdate) {
+            const newPendingLeaveData = unchangedData.filter((leave) => {
+                return leave.startDate === e.startdate;
+            })
+            if (newPendingLeaveData.length === 0) {
+                alert('No Data Found');
+            } else {
+                setapprovedLeaveData(newPendingLeaveData)
+            }
         }
 
-        return errors;
+        if (e.enddate) {
+            const newPendingLeaveData = unchangedData.filter((leave) => {
+                return leave.endDate === e.enddate;
+            })
+            if (newPendingLeaveData.length === 0) {
+                alert('No Data Found');
+            } else {
+                setapprovedLeaveData(newPendingLeaveData)
+            }
+        }
+
+        if (e.search) {
+            const newPendingLeaveData = unchangedData.filter((leave) => {
+                return leave.reason.includes(e.search);
+            })
+            if (newPendingLeaveData.length === 0) {
+                alert('No Data Found');
+            } else {
+                setapprovedLeaveData(newPendingLeaveData)
+            }
+        }
+
+        if (e.type) {
+            const newPendingLeaveData = unchangedData.filter((leave) => {
+                return leave.type === e.type;
+            })
+            if (newPendingLeaveData.length === 0) {
+                alert('No Data Found');
+            } else {
+                setapprovedLeaveData(newPendingLeaveData)
+            }
+        }
     };
 
     useEffect(() => {
@@ -61,12 +86,13 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                     id: approvedleave.id,
                     type: approvedleave.type,
                     reason: approvedleave.reason,
-                    date: `${approvedleave.startDate}${(approvedleave.endDate !== approvedleave.startDate) ? `to ${approvedleave.startDate}` : ''} `,
+                    date: `${approvedleave.startDate}${(approvedleave.endDate !== approvedleave.startDate) ? ` to ${approvedleave.endDate}` : ''} `,
                     appliedOn: approvedleave.created_at?.split(' ')[0]
                 };
                 return { ...approvedleave, ...leaveObj }
             })
-            setapprovedLeaveData(intermidate);
+            setapprovedLeaveData(intermidate.length === 0 ? dummyData : intermidate);
+            setUnchangedData(intermidate.length === 0 ? dummyData : intermidate);
         });
 
     }, []);
@@ -81,10 +107,9 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                 <div className={style.approvedpage}>
                     <Form
                         onSubmit={onSubmit}
-                        validate={validate}
                         initialValues={{ type: 'Paid' }}
                         render={({ handleSubmit }) => (
-                            <form onSubmit={handleSubmit}>
+                            <form onChange={handleSubmit}>
                                 <div className={style.displayflex}>
                                     <div className={style.inputcontrol}>
                                         <Field name="startdate">
@@ -155,6 +180,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                         <Field name="type" component="select" className={style.dropdown}>
                                             <option>Paid</option>
                                             <option>Unpaid</option>
+                                            <option>extra2</option>
                                         </Field>
                                     </div>
 
@@ -202,7 +228,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                 flex: 1,
                             },
                         ]}
-                        rows={approvedLeaveData.length === 0 ? dummyData : approvedLeaveData}
+                        rows={approvedLeaveData}
                     />
                 </div>
             </div>

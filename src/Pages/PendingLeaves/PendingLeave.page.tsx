@@ -13,7 +13,7 @@ export type pendingLeavePropType = {
 
 export type formInputTypes = {
     startdate?: string,
-    enddate?: string,
+    endDate?: string,
     search?: string,
     type?: 'Paid' | 'Unpaid'
 }
@@ -21,27 +21,42 @@ export type formInputTypes = {
 function PendingLeave({ logindate }: pendingLeavePropType) {
 
     const [pendingLeaveData, setpendingLeaveData] = useState<responseDataType[]>([]);
+    const [unchangedData, setUnchangedData] = useState<responseDataType[]>([]);
 
-    const onSubmit = (e: formInputTypes) => { };
-
-    const validate = (e: formInputTypes) => {
-        const errors: formInputTypes = {};
-
-        if (!e.startdate) {
-            errors.startdate = 'Please enter data';
-        }
-        if (!e.enddate) {
-            errors.enddate = 'Please enter data';
-        }
-        if (e.startdate! > e.enddate!) {
-            errors.startdate = 'Start date must be higher than enddate';
-            errors.enddate = 'End date must be lesser than startdate';
-        }
-        if (!e.search) {
-            errors.search = 'Please enter value you want to search';
+    const onSubmit = (e: formInputTypes) => {
+        console.log(pendingLeaveData)
+        if (e.startdate) {
+            const newPendingLeaveData = unchangedData.filter((leave) => {
+                return leave.startDate === e.startdate;
+            })
+            if (newPendingLeaveData.length === 0) {
+                alert('No Data Found');
+            } else {
+                setpendingLeaveData(newPendingLeaveData)
+            }
         }
 
-        return errors;
+        if (e.endDate) {
+            const newPendingLeaveData = unchangedData.filter((leave) => {
+                return leave.endDate === e.endDate;
+            })
+            if (newPendingLeaveData.length === 0) {
+                alert('No Data Found');
+            } else {
+                setpendingLeaveData(newPendingLeaveData)
+            }
+        }
+
+        if (e.search) {
+            const newPendingLeaveData = unchangedData.filter((leave) => {
+                return leave.reason.includes(e.search);
+            })
+            if (newPendingLeaveData.length === 0) {
+                alert('No Data Found');
+            } else {
+                setpendingLeaveData(newPendingLeaveData)
+            }
+        }
     };
 
     useEffect(() => {
@@ -59,12 +74,13 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
                     id: pendingleave.id,
                     type: pendingleave.type,
                     reason: pendingleave.reason,
-                    date: `${pendingleave.startDate}${(pendingleave.endDate !== pendingleave.startDate) ? `to ${pendingleave.startDate}` : ''} `,
+                    date: `${pendingleave.startDate}${(pendingleave.endDate !== pendingleave.startDate) ? ` to ${pendingleave.endDate}` : ''} `,
                     appliedOn: pendingleave.created_at?.split(' ')[0]
                 };
                 return { ...pendingleave, ...leaveObj }
             })
             setpendingLeaveData(intermidate);
+            setUnchangedData(intermidate.length === 0 ? dummyData : intermidate);
         });
 
     }, []);
@@ -78,10 +94,9 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
             <div className={style.approvedpage}>
                 <Form
                     onSubmit={onSubmit}
-                    validate={validate}
                     initialValues={{ type: 'Paid' }}
                     render={({ handleSubmit }) => (
-                        <form onSubmit={handleSubmit}>
+                        <form onChange={handleSubmit} >
                             <div className={style.displayflex}>
                                 <div className={style.inputcontrol}>
                                     <Field name="startdate">
@@ -106,12 +121,12 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
                                 </div>
 
                                 <div className={style.inputcontrol}>
-                                    <Field name="enddate">
+                                    <Field name="endDate">
                                         {(e) => (
                                             <div>
-                                                <label htmlFor="enddate">End Date</label>
+                                                <label htmlFor="endDate">End Date</label>
                                                 <Input
-                                                    id='enddate'
+                                                    id='endDate'
                                                     type='date'
                                                     placeholder='Select Date'
                                                     inputtype=''
