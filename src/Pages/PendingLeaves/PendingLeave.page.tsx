@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Field, Form } from 'react-final-form';
 import { DataTable, Input, PageTitle } from '../../stories'
 import { getLeaveData } from '../../APIs';
+import { responseDataType } from '../../Types/globalTypes';
 import { dummyData } from '../../Util/Constants';
 import { getData } from '../../Util/Helper';
-import { responseDataType } from '../../Types/globalTypes';
 import style from './PendingLeave.module.scss';
 
 export type pendingLeavePropType = {

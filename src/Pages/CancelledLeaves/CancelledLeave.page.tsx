@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Form, Field } from 'react-final-form'
-import { getLeaveData } from '../../APIs'
 import { DataTable, Input, PageTitle } from '../../stories'
+import { getLeaveData } from '../../APIs'
 import { responseDataType } from '../../Types/globalTypes'
-import { dummyData } from '../../Util/Constants'
 import { getData } from '../../Util/Helper'
+import { dummyData } from '../../Util/Constants'
 import style from './CancelledLeave.module.scss'
 
 export type cancelledLeavePropType = {
