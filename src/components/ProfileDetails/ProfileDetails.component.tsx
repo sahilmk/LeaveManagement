@@ -31,6 +31,8 @@ const ProfileDetails = ({
 
           setLoginData(requiredData);
 
+          window.location.reload();
+
           alert("Profile Details has been updated successfully.");
         } else {
           alert(res.data.message);
