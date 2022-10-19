@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Form, Field } from "react-final-form";
 import { Button, Input } from "../../stories";
 import { callForgotPasswordPost } from "../../APIs/authData";
+import { required } from "../../Util/Validation";
 import { Theme } from "../../Theme";
 import ForgotPasswordPageStyle from "./ForgotPassword.module.scss";
 
@@ -24,17 +25,10 @@ const ForgotPassword = () => {
           <div className={ForgotPasswordPageStyle.forgotPassword__cardBody}>
             <Form
               onSubmit={onSubmit}
-              validate={(values) => {
-                const errors = {};
-                if (!values.email) {
-                  errors.email = "*Required";
-                }
-                return errors;
-              }}
               initialValues={{ email: "" }}
               render={({ handleSubmit, values }) => (
                 <form onSubmit={handleSubmit}>
-                  <Field name="email">
+                  <Field name="email" validate={required}>
                     {(e) => (
                       <div>
                         <Input

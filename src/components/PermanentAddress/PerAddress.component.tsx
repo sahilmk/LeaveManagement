@@ -2,6 +2,7 @@ import { Form, Field } from "react-final-form";
 import { Input, Button } from "../../stories";
 import { callProfileUpdatePost } from "../../APIs";
 import { getData } from "../../Util/Helper";
+import { mustBeString } from "../../Util/Validation";
 import { AddressType } from "../../Types";
 import { Theme } from "../../Theme";
 import PageStyle from "./PerAddress.module.scss";
@@ -34,16 +35,10 @@ const PermanentAddress = ({
       .catch((error) => alert(error));
   };
 
-  const validate = (e: AddressType) => {
-    const errors: AddressType = {};
-    return errors;
-  };
-
   return (
     <div className={PageStyle.perAddress}>
       <Form
         onSubmit={onSubmit}
-        validate={validate}
         initialValues={{
           permanentAddress: permanentAdd?.permanentAddress,
           permanentAddress2: permanentAdd?.permanentAddress2,

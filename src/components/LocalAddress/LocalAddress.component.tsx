@@ -2,6 +2,7 @@ import { Form, Field } from "react-final-form";
 import { Input, Button } from "../../stories";
 import { callProfileUpdatePost } from "../../APIs";
 import { getData } from "../../Util/Helper";
+import { required } from "../../Util/Validation";
 import { AddressType } from "../../Types";
 import { Theme } from "../../Theme";
 import PageStyle from "./LocalAddress.module.scss";
@@ -31,22 +32,10 @@ const LocalAddress = ({ localAdd }: { localAdd: AddressType | undefined }) => {
       .catch((error) => alert(error));
   };
 
-  const validate = (e: AddressType) => {
-    const errors: AddressType = {};
-    if (!e.localCity) {
-      errors.localCity = "Enter a localCity";
-    }
-    if (!e.localState) {
-      errors.localState = "Enter a localState";
-    }
-    return errors;
-  };
-
   return (
     <div className={PageStyle.localAddress}>
       <Form
         onSubmit={onSubmit}
-        validate={validate}
         initialValues={{
           localAddress: localAdd?.localAddress,
           localAddress2: localAdd?.localAddress2,
@@ -153,7 +142,7 @@ const LocalAddress = ({ localAdd }: { localAdd: AddressType | undefined }) => {
                 </div>
               </div>
               <div>
-                <Field name="localState">
+                <Field name="localState" validate={required}>
                   {(e) => (
                     <div className={PageStyle.localAddress__customInput}>
                       <label htmlFor="localState"> State</label>
@@ -175,7 +164,7 @@ const LocalAddress = ({ localAdd }: { localAdd: AddressType | undefined }) => {
                     </div>
                   )}
                 </Field>
-                <Field name="localCity">
+                <Field name="localCity" validate={required}>
                   {(e) => (
                     <div className={PageStyle.localAddress__customInput}>
                       <label htmlFor="localCity"> City</label>
