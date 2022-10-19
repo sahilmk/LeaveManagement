@@ -2,6 +2,14 @@ import { Form, Field } from "react-final-form";
 import { Input, Button } from "../../stories";
 import { setLoginData, callProfileUpdatePost } from "../../APIs";
 import { getData } from "../../Util/Helper";
+import {
+  composeValidators,
+  mustBeDesignation,
+  mustBeEmail,
+  mustBePhoneNo,
+  mustBeString,
+  required,
+} from "../../Util/Validation";
 import { ProfileDetailType } from "../../Types";
 import { Theme } from "../../Theme";
 import PageStyle from "./ProfileDetails.module.scss";
@@ -31,6 +39,8 @@ const ProfileDetails = ({
 
           setLoginData(requiredData);
 
+          window.location.reload();
+
           alert("Profile Details has been updated successfully.");
         } else {
           alert(res.data.message);
@@ -39,30 +49,10 @@ const ProfileDetails = ({
       .catch((error) => alert(error));
   };
 
-  const validate = (e: ProfileDetailType) => {
-    const errors: ProfileDetailType = {};
-    if (!e.firstName) {
-      errors.firstName = "Please Enter valid first name.";
-    }
-    if (!e.lastName) {
-    }
-    if (!e.email) {
-      errors.email = "Please Enter email";
-    }
-    if (!e.mobileNo) {
-      errors.mobileNo = "Please Enter email";
-    }
-    if (!e.landlineNo) {
-      errors.landlineNo = "Please Enter email";
-    }
-    return errors;
-  };
-
   return (
     <div className={PageStyle.profileDetail}>
       <Form
         onSubmit={onSubmit}
-        validate={validate}
         initialValues={{
           firstName: profileData?.firstName,
           lastName: profileData?.lastName,
@@ -74,11 +64,14 @@ const ProfileDetails = ({
           departmentId: profileData?.department,
           gender: profileData?.gender,
         }}
-        render={({ handleSubmit }) => (
+        render={({ handleSubmit, form }) => (
           <form onSubmit={handleSubmit}>
             <div className={PageStyle.profileDetail__formContainer}>
               <div>
-                <Field name="firstName">
+                <Field
+                  name="firstName"
+                  validate={composeValidators(required, mustBeString)}
+                >
                   {(e) => (
                     <div className={PageStyle.profileDetail__customInput}>
                       <label htmlFor="firstName"> First Name </label>
@@ -100,7 +93,7 @@ const ProfileDetails = ({
                     </div>
                   )}
                 </Field>
-                <Field name="email">
+                <Field name="email" validate={mustBeEmail}>
                   {(e) => (
                     <div className={PageStyle.profileDetail__customInput}>
                       <label htmlFor="email"> Email </label>
@@ -166,7 +159,10 @@ const ProfileDetails = ({
                     </div>
                   )}
                 </Field>
-                <Field name="designation">
+                <Field
+                  name="designation"
+                  validate={composeValidators(required, mustBeDesignation)}
+                >
                   {(e) => (
                     <div className={PageStyle.profileDetail__customInput}>
                       <label htmlFor="designation"> Designation </label>
@@ -190,7 +186,10 @@ const ProfileDetails = ({
                 </Field>
               </div>
               <div>
-                <Field name="lastName">
+                <Field
+                  name="lastName"
+                  validate={composeValidators(required, mustBeString)}
+                >
                   {(e) => (
                     <div className={PageStyle.profileDetail__customInput}>
                       <label htmlFor="lastName"> Last Name </label>
@@ -212,7 +211,10 @@ const ProfileDetails = ({
                     </div>
                   )}
                 </Field>
-                <Field name="mobileNo">
+                <Field
+                  name="mobileNo"
+                  validate={composeValidators(required, mustBePhoneNo)}
+                >
                   {(e) => (
                     <div className={PageStyle.profileDetail__customInput}>
                       <label htmlFor="mobileNo"> Enter Mobile no. </label>
@@ -272,7 +274,9 @@ const ProfileDetails = ({
                     size={"2rem"}
                     borderRadius={false}
                     border={`solid 0.2rem ${Theme.colors.brightGrayColor}`}
-                    onClick={(e) => {}}
+                    onClick={(e) => {
+                      form.reset();
+                    }}
                     type={"button"}
                   />
                 </div>

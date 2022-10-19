@@ -6,7 +6,13 @@ import {
 } from "./authData";
 
 import { getLeaveData } from "./getLeaveData";
-import { callProfilePageGet, callProfileUpdatePost } from "./profilePage";
+
+import {
+  callProfilePageGet,
+  callProfileUpdatePost,
+  callPasswordChange,
+} from "./profilePage";
+
 export {
   callLoginPost,
   callForgotPasswordPost,
@@ -15,4 +21,5 @@ export {
   getLeaveData,
   callProfilePageGet,
   callProfileUpdatePost,
+  callPasswordChange,
 };

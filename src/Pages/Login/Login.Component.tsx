@@ -3,12 +3,13 @@ import { Form, Field } from "react-final-form";
 import { Input, Button } from "../../stories";
 import { callLoginPost, setLoginData } from "../../APIs";
 import { useAuthContext } from "../../Hooks";
+import { required } from "../../Util/Validation";
 import LoginPageStyle from "./Login.module.scss";
 
 type loginDataValues = {
-  email: string,
-  password: string
-}
+  email: string;
+  password: string;
+};
 
 const LoginPage = () => {
   const { dispatch } = useAuthContext();
@@ -51,7 +52,7 @@ const LoginPage = () => {
           loggedIn: false,
           payload: { error: error.response.data.payload.error },
         });
-        alert(error.response.data.payload.error)
+        alert(error.response.data.payload.error);
       });
   };
 
@@ -65,20 +66,10 @@ const LoginPage = () => {
           <div className={LoginPageStyle.login__cardBody}>
             <Form
               onSubmit={onSubmit}
-              validate={(values: loginDataValues) => {
-                let errors: loginDataValues = {};
-                if (!values.email) {
-                  errors.email = "*Required";
-                }
-                if (!values.password) {
-                  errors.password = "*Required";
-                }
-                return errors;
-              }}
               initialValues={{ email: "", password: "" }}
-              render={({ handleSubmit, values }) => (
+              render={({ handleSubmit }) => (
                 <form onSubmit={handleSubmit}>
-                  <Field name="email">
+                  <Field name="email" validate={required}>
                     {(e) => (
                       <div>
                         <Input
@@ -86,7 +77,7 @@ const LoginPage = () => {
                           placeholder="Email"
                           inputtype="authinput"
                           padding="0rem 0rem 0rem 4rem"
-                          width='45rem'
+                          width="45rem"
                           onChange={e.input.onChange}
                           onBlur={e.input.onBlur}
                           onFocus={e.input.onFocus}
@@ -97,7 +88,7 @@ const LoginPage = () => {
                       </div>
                     )}
                   </Field>
-                  <Field name="password">
+                  <Field name="password" validate={required}>
                     {(e) => (
                       <div>
                         <Input
@@ -105,7 +96,7 @@ const LoginPage = () => {
                           placeholder="Password"
                           inputtype="authinput"
                           padding="0rem 0rem 0rem 4rem"
-                          width='45rem'
+                          width="45rem"
                           onChange={e.input.onChange}
                           onFocus={e.input.onFocus}
                           onBlur={e.input.onBlur}
