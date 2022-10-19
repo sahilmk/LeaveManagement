@@ -24,41 +24,77 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
     const [unchangedData, setUnchangedData] = useState<responseDataType[]>([]);
 
     const onSubmit = (e: formInputTypes) => {
-        let newCancelledLeaveData;
+        let newCancelledLeaveData: responseDataType[] = [];
 
-        if (e.startdate) {
-            newCancelledLeaveData = unchangedData.filter((leave) => {
-                return leave.startDate === e.startdate;
-            })
-            if (newCancelledLeaveData.length === 0) {
-                alert('No Data Found');
-            } else {
-                setcancelledLeaveData(newCancelledLeaveData)
-            }
-        }
+        if (e.startdate || e.enddate) {
+            if (e.startdate) {
 
-        if (e.enddate) {
-            newCancelledLeaveData = unchangedData.filter((leave) => {
-                return leave.endDate === e.enddate;
-            })
-            if (newCancelledLeaveData.length === 0) {
-                alert('No Data Found');
-            } else {
-                setcancelledLeaveData(newCancelledLeaveData)
+                (unchangedData.filter((leave) => {
+                    return leave.startDate! >= e.startdate!;
+                })).map((filterData) => {
+                    newCancelledLeaveData.push(filterData)
+                });
+
+                if (newCancelledLeaveData.length === 0) {
+                    alert('No Data Found');
+                    setcancelledLeaveData([{
+                        id: 0,
+                        type: '',
+                        reason: '',
+                        date: '',
+                        appliedOn: ''
+                    }]);
+                } else {
+                    setcancelledLeaveData(newCancelledLeaveData);
+                }
             }
+
+            if (e.enddate) {
+
+                newCancelledLeaveData = ((newCancelledLeaveData.length === 0 ? unchangedData : newCancelledLeaveData).filter((leave) => {
+                    return leave.endDate! <= e.enddate!;
+                }))
+
+                if (newCancelledLeaveData.length === 0) {
+                    alert('No Data Found');
+                    setcancelledLeaveData([{
+                        id: 0,
+                        type: '',
+                        reason: '',
+                        date: '',
+                        appliedOn: ''
+                    }]);
+                } else {
+                    setcancelledLeaveData(newCancelledLeaveData)
+                }
+            }
+        } else {
+            setcancelledLeaveData(unchangedData);
         }
 
         if (e.search) {
-            newCancelledLeaveData = unchangedData.filter((leave) => {
-                return leave.reason.includes(e.search);
+            newCancelledLeaveData = (newCancelledLeaveData.length === 0 ? unchangedData : newCancelledLeaveData).filter((leave) => {
+                return leave.reason.includes(e.search!);
             })
+
             if (newCancelledLeaveData.length === 0) {
                 alert('No Data Found');
+                (document.getElementById('search')! as HTMLInputElement).value = '';
             } else {
                 setcancelledLeaveData(newCancelledLeaveData)
             }
         }
     };
+
+    const validate = (e: formInputTypes) => {
+        const errors: formInputTypes = {};
+
+        if (e.enddate! < e.startdate!) {
+            errors.enddate = 'Enddate must be less than start date';
+        }
+
+        return errors;
+    }
 
     useEffect(() => {
         const loginData = getData("loginData");
@@ -94,6 +130,7 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
             <div className={style.approvedpage}>
                 <Form
                     onSubmit={onSubmit}
+                    validate={validate}
                     render={({ handleSubmit }) => (
                         <form onChange={handleSubmit}>
                             <div className={style.displayflex}>
