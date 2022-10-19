@@ -54,7 +54,7 @@ const LocalAddress = ({ localAdd }: { localAdd: AddressType | undefined }) => {
           localState: localAdd?.localState,
           localCity: localAdd?.localCity,
         }}
-        render={({ handleSubmit }) => (
+        render={({ handleSubmit, form }) => (
           <form onSubmit={handleSubmit}>
             <div className={PageStyle.localAddress__formContainer}>
               <div>
@@ -144,7 +144,9 @@ const LocalAddress = ({ localAdd }: { localAdd: AddressType | undefined }) => {
                       size={"2rem"}
                       borderRadius={false}
                       border={`solid 0.2rem ${Theme.colors.brightGrayColor}`}
-                      onClick={(e) => {}}
+                      onClick={(e) => {
+                        form.reset();
+                      }}
                       type={"button"}
                     />
                   </div>

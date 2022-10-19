@@ -74,7 +74,7 @@ const ProfileDetails = ({
           departmentId: profileData?.department,
           gender: profileData?.gender,
         }}
-        render={({ handleSubmit }) => (
+        render={({ handleSubmit, form }) => (
           <form onSubmit={handleSubmit}>
             <div className={PageStyle.profileDetail__formContainer}>
               <div>
@@ -272,7 +272,9 @@ const ProfileDetails = ({
                     size={"2rem"}
                     borderRadius={false}
                     border={`solid 0.2rem ${Theme.colors.brightGrayColor}`}
-                    onClick={(e) => {}}
+                    onClick={(e) => {
+                      form.reset();
+                    }}
                     type={"button"}
                   />
                 </div>

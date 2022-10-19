@@ -17,3 +17,11 @@ export const callProfileUpdatePost = (
 ) => {
   return post(`${HostEndpoint}/employee/${employeeId}`, data, config);
 };
+
+//To change Password
+export const callPasswordChange = (
+  data: any,
+  config: { headers: { Authorization: string } }
+) => {
+  return post(`${HostEndpoint}/user/changePassword`, data, config);
+};

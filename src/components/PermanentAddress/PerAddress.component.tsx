@@ -51,7 +51,7 @@ const PermanentAddress = ({
           permanentPincode: permanentAdd?.permanentPincode,
           permanentState: permanentAdd?.permanentState,
         }}
-        render={({ handleSubmit }) => (
+        render={({ handleSubmit, form }) => (
           <form onSubmit={handleSubmit}>
             <div className={PageStyle.perAddress__formContainer}>
               <div>
@@ -147,7 +147,9 @@ const PermanentAddress = ({
                       size={"2rem"}
                       borderRadius={false}
                       border={`solid 0.2rem ${Theme.colors.brightGrayColor}`}
-                      onClick={(e) => {}}
+                      onClick={(e) => {
+                        form.reset();
+                      }}
                       type={"button"}
                     />
                   </div>
