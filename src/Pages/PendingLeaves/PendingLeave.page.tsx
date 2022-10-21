@@ -4,7 +4,6 @@ import { DataTable, Input, PageTitle } from '../../stories'
 import { getLeaveData } from '../../APIs';
 import { responseDataType } from '../../Types/globalTypes';
 import { dummyData } from '../../Util/Constants';
-import { getData } from '../../Util/Helper';
 import style from './PendingLeave.module.scss';
 
 export type pendingLeavePropType = {
@@ -97,13 +96,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
     }
 
     useEffect(() => {
-        const loginData = getData("loginData");
-
-        const config = {
-            headers: { Authorization: `Bearer ${loginData.token} ` }
-        };
-
-        getLeaveData(config, 'Pending').then((res) => {
+        getLeaveData('Pending', { pageNumber: 1, recordsPerPage: 10 }).then((res) => {
             let intermidate = res.data.payload.data;
 
             intermidate = intermidate.map((pendingleave: responseDataType) => {

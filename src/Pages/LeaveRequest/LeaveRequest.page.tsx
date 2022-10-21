@@ -41,11 +41,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
             }
         }
 
-        const loginData = getData("loginData");
-        const config = {
-            headers: { Authorization: `Bearer ${loginData.token}` }
-        };
-        postNewLeave(config, newLeave).then().catch((e) => { alert(e.response.data.message) })
+        postNewLeave(newLeave).then().catch((e) => { alert(e.response.data.message) })
     };
 
 

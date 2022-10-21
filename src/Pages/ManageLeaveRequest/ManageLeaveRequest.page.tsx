@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { DataTable, PageTitle } from '../../stories'
 import { getLeaveData } from '../../APIs'
 import { responseDataType } from '../../Types/globalTypes'
-import { getData } from '../../Util/Helper'
 import { dummyData } from '../../Util/Constants'
 import style from './ManageLeaveRequest.module.scss'
 
@@ -15,13 +14,7 @@ function ManageLeaveRequest({ logindate }: manageLeaveRequestPropType) {
     const [pendingLeaveData, setpendingLeaveData] = useState<responseDataType[]>([]);
 
     useEffect(() => {
-        const loginData = getData("loginData");
-
-        const config = {
-            headers: { Authorization: `Bearer ${loginData.token} ` }
-        };
-
-        getLeaveData(config, 'Pending').then((res) => {
+        getLeaveData('Pending', { pageNumber: 1, recordsPerPage: 10 }).then((res) => {
             let intermidate = res.data.payload.data;
 
             intermidate = intermidate.map((pendingleave: responseDataType) => {

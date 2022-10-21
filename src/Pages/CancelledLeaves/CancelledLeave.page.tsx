@@ -3,7 +3,6 @@ import { Form, Field } from 'react-final-form'
 import { DataTable, Input, PageTitle } from '../../stories'
 import { getLeaveData } from '../../APIs'
 import { responseDataType } from '../../Types/globalTypes'
-import { getData } from '../../Util/Helper'
 import { dummyData } from '../../Util/Constants'
 import style from './CancelledLeave.module.scss'
 
@@ -97,13 +96,7 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
     }
 
     useEffect(() => {
-        const loginData = getData("loginData");
-
-        const config = {
-            headers: { Authorization: `Bearer ${loginData.token} ` }
-        };
-
-        getLeaveData(config, 'Cancelled').then((res) => {
+        getLeaveData('Cancelled', { pageNumber: 1, recordsPerPage: 10 }).then((res) => {
             let intermidate = res.data.payload.data;
 
             intermidate = intermidate.map((cencelledleave: responseDataType) => {
