@@ -1,7 +1,6 @@
 import { Form, Field } from "react-final-form";
 import { Input, Button } from "../../stories";
 import { callPasswordChange } from "../../APIs";
-import { getData } from "../../Util/Helper";
 import { ChangePasswordType } from "../../Types";
 import { Theme } from "../../Theme";
 import PageStyle from "./ChangePassword.module.scss";
@@ -14,13 +13,8 @@ const initialValues = {
 
 const ChangePassword = () => {
   const onSubmit = (e: ChangePasswordType) => {
-    const requiredData = getData("loginData");
-    const token = requiredData.token;
-
     //Calling the update password api
-    callPasswordChange(e, {
-      headers: { Authorization: "bearer" + token },
-    })
+    callPasswordChange(e)
       .then((res) => {
         if (res.status === 200) {
           alert("Password updated successfully");

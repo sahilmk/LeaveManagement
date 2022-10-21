@@ -4,7 +4,6 @@ import { DataTable, Input, PageTitle } from "../../stories";
 import { getLeaveData } from "../../APIs";
 import { responseDataType } from "../../Types/globalTypes";
 import { DUMMYDATA } from "../../Util/Constants";
-import { getData } from "../../Util/Helper";
 import style from "./PendingLeave.module.scss";
 
 export type pendingLeavePropType = {

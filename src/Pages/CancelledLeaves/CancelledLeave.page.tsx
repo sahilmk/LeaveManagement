@@ -3,7 +3,6 @@ import { Form, Field } from "react-final-form";
 import { DataTable, Input, PageTitle } from "../../stories";
 import { getLeaveData } from "../../APIs";
 import { responseDataType } from "../../Types/globalTypes";
-import { getData } from "../../Util/Helper";
 import { DUMMYDATA } from "../../Util/Constants";
 import style from "./CancelledLeave.module.scss";
 

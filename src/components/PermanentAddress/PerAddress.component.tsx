@@ -14,7 +14,6 @@ const PermanentAddress = ({
 }) => {
   const onSubmit = (e: AddressType) => {
     const requiredData = getData("loginData");
-    const token = requiredData.token;
     const employeeId = requiredData.data.user.employee.id;
     const formType = {
       formType: "all",
@@ -22,9 +21,7 @@ const PermanentAddress = ({
 
     permanentAdd = { ...permanentAdd, ...e, ...formType };
 
-    callProfileUpdatePost(employeeId, permanentAdd, {
-      headers: { Authorization: "bearer" + token },
-    })
+    callProfileUpdatePost(employeeId, permanentAdd)
       .then((res) => {
         if (res.status === 200) {
           alert("Permanent Addresss has been updated successfully.");

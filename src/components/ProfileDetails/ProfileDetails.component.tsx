@@ -21,7 +21,6 @@ const ProfileDetails = ({
 }) => {
   const onSubmit = (e: ProfileDetailType) => {
     const requiredData = getData("loginData");
-    const token = requiredData.token;
     const employeeId = requiredData.data.user.employee.id;
     const formType = {
       formType: "all",
@@ -29,9 +28,7 @@ const ProfileDetails = ({
 
     profileData = { ...profileData, ...e, ...formType };
 
-    callProfileUpdatePost(employeeId, profileData, {
-      headers: { Authorization: "bearer" + token },
-    })
+    callProfileUpdatePost(employeeId, profileData)
       .then((res) => {
         if (res.status === 200) {
           requiredData.data.user.employee.firstName = profileData?.firstName;

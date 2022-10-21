@@ -4,6 +4,7 @@ import { Input, PageTitle, Button } from "../../stories";
 import { postNewLeave } from "../../APIs";
 import { Theme } from "../../Theme";
 import style from "./LeaveRequest.module.scss";
+import { enterDateRequired } from "../../Util/Validation";
 
 type fieldInputType = {
   leavefrom?: string | undefined;
@@ -41,19 +42,17 @@ function LeaveRequest({ logindate }: { logindate: string }) {
       };
     }
 
-    postNewLeave(newLeave).then().catch((e) => { alert(e.response.data.message) })
+    postNewLeave(newLeave)
+      .then()
+      .catch((e) => {
+        alert(e.response.data.message);
+      });
   };
 
   const validate = (e: fieldInputType) => {
     const errors: fieldInputType = {};
 
     if (radioValue) {
-      if (!e.leavefrom) {
-        errors.leavefrom = "Please enter date";
-      }
-      if (!e.leaveto) {
-        errors.leaveto = "Please enter date";
-      }
       if (e.leavefrom! > e.leaveto!) {
         errors.leavefrom = "Leave From date must be less than Leave To date";
         errors.leaveto = "Leave To date must be higher than Leave From date";
@@ -131,7 +130,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                     <div className={style.displayflex}>
                       <div className={style.displayinnerflex}>
                         <div className={style.inputcontrol}>
-                          <Field name="leavefrom">
+                          <Field name="leavefrom" validate={enterDateRequired}>
                             {(e) => (
                               <div>
                                 <label htmlFor="leavefrom">Leave From</label>
@@ -156,7 +155,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                           </Field>
                         </div>
                         <div className={style.inputcontrol}>
-                          <Field name="leaveto">
+                          <Field name="leaveto" validate={enterDateRequired}>
                             {(e) => (
                               <div>
                                 <label htmlFor="leaveto">Leave To</label>

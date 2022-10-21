@@ -47,7 +47,7 @@ export type AddressType = {
 };
 
 export type ChangePasswordType = {
-  oldPassword: string;
-  newPassword: string;
-  confirmPassword: string;
+  oldPassword?: string;
+  newPassword?: string;
+  confirmPassword?: string;
 };
