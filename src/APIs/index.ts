@@ -3,15 +3,15 @@ import {
   callForgotPasswordPost,
   callLogoutGet,
   setLoginData,
-} from "./authData";
+} from "./Authentication.api";
 
-import { getLeaveData } from "./getLeaveData";
+import { getLeaveData, postNewLeave } from "./LeaveModule.api";
 
 import {
   callProfilePageGet,
   callProfileUpdatePost,
   callPasswordChange,
-} from "./profilePage";
+} from "./ProfileData.api";
 
 export {
   callLoginPost,
@@ -22,4 +22,5 @@ export {
   callProfilePageGet,
   callProfileUpdatePost,
   callPasswordChange,
+  postNewLeave,
 };
