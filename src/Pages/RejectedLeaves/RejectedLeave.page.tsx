@@ -25,42 +25,89 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
     const [unchangedData, setUnchangedData] = useState<responseDataType[]>([]);
 
     const onSubmit = (e: formInputTypes) => {
-        let newRejectedLeaveData;
+        let newPendingLeaveData: responseDataType[] = [];
 
-        if (e.startdate) {
-            newRejectedLeaveData = unchangedData.filter((leave) => {
-                return leave.startDate === e.startdate;
-            })
-            if (newRejectedLeaveData.length === 0) {
-                alert('No Data Found');
-            } else {
-                setrejectedLeaveData(newRejectedLeaveData)
-            }
+        if (e === {}) {
+            setrejectedLeaveData([{
+                id: 0,
+                type: '',
+                reason: '',
+                date: '',
+                appliedOn: ''
+            }]);
         }
 
-        if (e.enddate) {
-            newRejectedLeaveData = unchangedData.filter((leave) => {
-                return leave.endDate === e.enddate;
-            })
-            if (newRejectedLeaveData.length === 0) {
-                alert('No Data Found');
-            } else {
-                setrejectedLeaveData(newRejectedLeaveData)
+
+        if (e.startdate || e.enddate) {
+            if (e.startdate) {
+
+                (unchangedData.filter((leave) => {
+                    return leave.startDate! >= e.startdate!;
+                })).map((filterData) => {
+                    newPendingLeaveData.push(filterData)
+                });
+
+                if (newPendingLeaveData.length === 0) {
+                    alert('No Data Found');
+                    setrejectedLeaveData([{
+                        id: 0,
+                        type: '',
+                        reason: '',
+                        date: '',
+                        appliedOn: ''
+                    }]);
+                } else {
+                    setrejectedLeaveData(newPendingLeaveData);
+                }
             }
+
+            if (e.enddate) {
+
+                newPendingLeaveData = ((newPendingLeaveData.length === 0 ? unchangedData : newPendingLeaveData).filter((leave) => {
+                    return leave.endDate! <= e.enddate!;
+                }))
+
+                if (newPendingLeaveData.length === 0) {
+                    alert('No Data Found');
+                    setrejectedLeaveData([{
+                        id: 0,
+                        type: '',
+                        reason: '',
+                        date: '',
+                        appliedOn: ''
+                    }]);
+                } else {
+                    setrejectedLeaveData(newPendingLeaveData)
+                }
+            }
+        } else {
+            setrejectedLeaveData(unchangedData);
         }
 
         if (e.search) {
-            newRejectedLeaveData = unchangedData.filter((leave) => {
-                return leave.reason.includes(e.search);
+            newPendingLeaveData = (newPendingLeaveData.length === 0 ? unchangedData : newPendingLeaveData).filter((leave) => {
+                return leave.reason.includes(e.search!);
             })
-            if (newRejectedLeaveData.length === 0) {
+
+            if (newPendingLeaveData.length === 0) {
                 alert('No Data Found');
+                (document.getElementById('search')! as HTMLInputElement).value = '';
             } else {
-                setrejectedLeaveData(newRejectedLeaveData)
+                setrejectedLeaveData(newPendingLeaveData)
             }
         }
 
     };
+
+    const validate = (e: formInputTypes) => {
+        const errors: formInputTypes = {};
+
+        if (e.enddate! < e.startdate!) {
+            errors.enddate = 'Enddate must be less than start date';
+        }
+
+        return errors;
+    }
 
     useEffect(() => {
         const loginData = getData("loginData");
@@ -97,7 +144,8 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
             <div className={style.approvedpage}>
                 <Form
                     onSubmit={onSubmit}
-                    render={({ handleSubmit }) => (
+                    validate={validate}
+                    render={({ handleSubmit, form }) => (
                         <form onChange={handleSubmit}>
                             <div className={style.displayflex}>
                                 <div className={style.inputcontrol}>
@@ -165,7 +213,7 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
                                 </div>
 
                                 <div className={style.inputcontrol}>
-                                    <Button label='Clear' type='reset' borderRadius={false} color={Theme.colors.yankeesBlueColor} bgColor={Theme.colors.lotionColor} border={`solid 0.2rem ${Theme.colors.brightGrayColor}`} />
+                                    <Button label='Clear' type='reset' borderRadius={false} color={Theme.colors.yankeesBlueColor} bgColor={Theme.colors.lotionColor} border={`solid 0.2rem ${Theme.colors.brightGrayColor}`} onClick={() => form.reset} />
                                 </div>
                             </div>
                         </form>

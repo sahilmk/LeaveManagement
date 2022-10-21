@@ -24,40 +24,77 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
     const [unchangedData, setUnchangedData] = useState<responseDataType[]>([]);
 
     const onSubmit = (e: formInputTypes) => {
-        let newPendingLeaveData
-        if (e.startdate) {
-            newPendingLeaveData = unchangedData.filter((leave) => {
-                return leave.startDate === e.startdate;
-            })
-            if (newPendingLeaveData.length === 0) {
-                alert('No Data Found');
-            } else {
-                setpendingLeaveData(newPendingLeaveData)
-            }
-        }
+        let newPendingLeaveData: responseDataType[] = [];
 
-        if (e.endDate) {
-            newPendingLeaveData = unchangedData.filter((leave) => {
-                return leave.endDate === e.endDate;
-            })
-            if (newPendingLeaveData.length === 0) {
-                alert('No Data Found');
-            } else {
-                setpendingLeaveData(newPendingLeaveData)
+        if (e.startdate || e.endDate) {
+            if (e.startdate) {
+
+                (unchangedData.filter((leave) => {
+                    return leave.startDate! >= e.startdate!;
+                })).map((filterData) => {
+                    newPendingLeaveData.push(filterData)
+                });
+
+                if (newPendingLeaveData.length === 0) {
+                    alert('No Data Found');
+                    setpendingLeaveData([{
+                        id: 0,
+                        type: '',
+                        reason: '',
+                        date: '',
+                        appliedOn: ''
+                    }]);
+                } else {
+                    setpendingLeaveData(newPendingLeaveData);
+                }
             }
+
+            if (e.endDate) {
+
+                newPendingLeaveData = ((newPendingLeaveData.length === 0 ? unchangedData : newPendingLeaveData).filter((leave) => {
+                    return leave.endDate! <= e.endDate!;
+                }))
+
+                if (newPendingLeaveData.length === 0) {
+                    alert('No Data Found');
+                    setpendingLeaveData([{
+                        id: 0,
+                        type: '',
+                        reason: '',
+                        date: '',
+                        appliedOn: ''
+                    }]);
+                } else {
+                    setpendingLeaveData(newPendingLeaveData)
+                }
+            }
+        } else {
+            setpendingLeaveData(unchangedData);
         }
 
         if (e.search) {
-            newPendingLeaveData = unchangedData.filter((leave) => {
-                return leave.reason.includes(e.search);
+            newPendingLeaveData = (newPendingLeaveData.length === 0 ? unchangedData : newPendingLeaveData).filter((leave) => {
+                return leave.reason.includes(e.search!);
             })
+
             if (newPendingLeaveData.length === 0) {
                 alert('No Data Found');
+                (document.getElementById('search')! as HTMLInputElement).value = '';
             } else {
                 setpendingLeaveData(newPendingLeaveData)
             }
         }
     };
+
+    const validate = (e: formInputTypes) => {
+        const errors: formInputTypes = {};
+
+        if (e.endDate! < e.startdate!) {
+            errors.endDate = 'Enddate must be less than start date';
+        }
+
+        return errors;
+    }
 
     useEffect(() => {
         const loginData = getData("loginData");
@@ -94,6 +131,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
             <div className={style.approvedpage}>
                 <Form
                     onSubmit={onSubmit}
+                    validate={validate}
                     initialValues={{ type: 'Paid' }}
                     render={({ handleSubmit }) => (
                         <form onChange={handleSubmit} >

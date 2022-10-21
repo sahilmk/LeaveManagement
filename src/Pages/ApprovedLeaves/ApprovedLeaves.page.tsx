@@ -26,36 +26,62 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
     const [unchangedData, setUnchangedData] = useState<responseDataType[]>([]);
 
     const onSubmit = (e: formInputTypes) => {
-        let newApprovedLeaveData;
+        let newApprovedLeaveData: responseDataType[] = [];
 
-        if (e.startdate) {
-            newApprovedLeaveData = unchangedData.filter((leave) => {
-                return leave.startDate === e.startdate;
-            })
-            if (newApprovedLeaveData.length === 0) {
-                alert('No Data Found');
-            } else {
-                setapprovedLeaveData(newApprovedLeaveData)
-            }
-        }
+        if (e.startdate || e.enddate) {
+            if (e.startdate) {
 
-        if (e.enddate) {
-            newApprovedLeaveData = unchangedData.filter((leave) => {
-                return leave.endDate === e.enddate;
-            })
-            if (newApprovedLeaveData.length === 0) {
-                alert('No Data Found');
-            } else {
-                setapprovedLeaveData(newApprovedLeaveData)
+                (unchangedData.filter((leave) => {
+                    return leave.startDate! >= e.startdate!;
+                })).map((filterData) => {
+                    newApprovedLeaveData.push(filterData)
+                });
+
+                if (newApprovedLeaveData.length === 0) {
+                    alert('No Data Found');
+                    setapprovedLeaveData([{
+                        id: 0,
+                        type: '',
+                        reason: '',
+                        date: '',
+                        appliedOn: ''
+                    }]);
+                } else {
+                    setapprovedLeaveData(newApprovedLeaveData);
+                }
             }
+
+            if (e.enddate) {
+
+                newApprovedLeaveData = ((newApprovedLeaveData.length === 0 ? unchangedData : newApprovedLeaveData).filter((leave) => {
+                    return leave.endDate! <= e.enddate!;
+                }))
+
+                if (newApprovedLeaveData.length === 0) {
+                    alert('No Data Found');
+                    setapprovedLeaveData([{
+                        id: 0,
+                        type: '',
+                        reason: '',
+                        date: '',
+                        appliedOn: ''
+                    }]);
+                } else {
+                    setapprovedLeaveData(newApprovedLeaveData)
+                }
+            }
+        } else {
+            setapprovedLeaveData(unchangedData);
         }
 
         if (e.search) {
-            newApprovedLeaveData = unchangedData.filter((leave) => {
-                return leave.reason.includes(e.search);
+            newApprovedLeaveData = (newApprovedLeaveData.length === 0 ? unchangedData : newApprovedLeaveData).filter((leave) => {
+                return leave.reason.includes(e.search!);
             })
+
             if (newApprovedLeaveData.length === 0) {
                 alert('No Data Found');
+                (document.getElementById('search')! as HTMLInputElement).value = '';
             } else {
                 setapprovedLeaveData(newApprovedLeaveData)
             }
@@ -67,11 +93,22 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
             })
             if (newApprovedLeaveData.length === 0) {
                 alert('No Data Found');
+                (document.getElementById('type')! as HTMLInputElement).value = '';
             } else {
                 setapprovedLeaveData(newApprovedLeaveData)
             }
         }
     };
+
+    const validate = (e: formInputTypes) => {
+        const errors: formInputTypes = {};
+
+        if (e.enddate! < e.startdate!) {
+            errors.enddate = 'Enddate must be less than start date';
+        }
+
+        return errors;
+    }
 
     useEffect(() => {
         const loginData = getData("loginData");
@@ -109,6 +146,7 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                 <div className={style.approvedpage}>
                     <Form
                         onSubmit={onSubmit}
+                        validate={validate}
                         initialValues={{ type: 'Paid' }}
                         render={({ handleSubmit }) => (
                             <form onChange={handleSubmit}>
