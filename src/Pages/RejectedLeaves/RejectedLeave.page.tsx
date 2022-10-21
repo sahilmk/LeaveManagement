@@ -119,32 +119,30 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
   };
 
   useEffect(() => {
-    const loginData = getData("loginData");
+    getLeaveData("Rejected", { pageNumber: 1, recordsPerPage: 10 }).then(
+      (res) => {
+        let intermidate = res.data.payload.data;
 
-    const config = {
-      headers: { Authorization: `Bearer ${loginData.token} ` },
-    };
-
-    getLeaveData(config, "Rejected").then((res) => {
-      let intermidate = res.data.payload.data;
-
-      intermidate = intermidate.map((rejectedleave: responseDataType) => {
-        const leaveObj = {
-          id: rejectedleave.id,
-          type: rejectedleave.type,
-          reason: rejectedleave.reason,
-          date: `${rejectedleave.startDate}${
-            rejectedleave.endDate !== rejectedleave.startDate
-              ? ` to ${rejectedleave.endDate}`
-              : ""
-          } `,
-          appliedOn: rejectedleave.created_at?.split(" ")[0],
-        };
-        return { ...rejectedleave, ...leaveObj };
-      });
-      setrejectedLeaveData(intermidate.length === 0 ? DUMMYDATA : intermidate);
-      setUnchangedData(intermidate.length === 0 ? DUMMYDATA : intermidate);
-    });
+        intermidate = intermidate.map((rejectedleave: responseDataType) => {
+          const leaveObj = {
+            id: rejectedleave.id,
+            type: rejectedleave.type,
+            reason: rejectedleave.reason,
+            date: `${rejectedleave.startDate}${
+              rejectedleave.endDate !== rejectedleave.startDate
+                ? ` to ${rejectedleave.endDate}`
+                : ""
+            } `,
+            appliedOn: rejectedleave.created_at?.split(" ")[0],
+          };
+          return { ...rejectedleave, ...leaveObj };
+        });
+        setrejectedLeaveData(
+          intermidate.length === 0 ? DUMMYDATA : intermidate
+        );
+        setUnchangedData(intermidate.length === 0 ? DUMMYDATA : intermidate);
+      }
+    );
   }, []);
 
   return (

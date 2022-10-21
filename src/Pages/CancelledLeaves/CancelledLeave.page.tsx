@@ -110,32 +110,28 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
   };
 
   useEffect(() => {
-    const loginData = getData("loginData");
+    getLeaveData("Cancelled", { pageNumber: 1, recordsPerPage: 10 }).then(
+      (res) => {
+        let intermidate = res.data.payload.data;
 
-    const config = {
-      headers: { Authorization: `Bearer ${loginData.token} ` },
-    };
-
-    getLeaveData(config, "Cancelled").then((res) => {
-      let intermidate = res.data.payload.data;
-
-      intermidate = intermidate.map((cencelledleave: responseDataType) => {
-        const leaveObj = {
-          id: cencelledleave.id,
-          type: cencelledleave.type,
-          reason: cencelledleave.reason,
-          date: `${cencelledleave.startDate}${
-            cencelledleave.endDate !== cencelledleave.startDate
-              ? ` to ${cencelledleave.endDate}`
-              : ""
-          } `,
-          appliedOn: cencelledleave.created_at?.split(" ")[0],
-        };
-        return { ...cencelledleave, ...leaveObj };
-      });
-      setcancelledLeaveData(intermidate);
-      setUnchangedData(intermidate.length === 0 ? DUMMYDATA : intermidate);
-    });
+        intermidate = intermidate.map((cencelledleave: responseDataType) => {
+          const leaveObj = {
+            id: cencelledleave.id,
+            type: cencelledleave.type,
+            reason: cencelledleave.reason,
+            date: `${cencelledleave.startDate}${
+              cencelledleave.endDate !== cencelledleave.startDate
+                ? ` to ${cencelledleave.endDate}`
+                : ""
+            } `,
+            appliedOn: cencelledleave.created_at?.split(" ")[0],
+          };
+          return { ...cencelledleave, ...leaveObj };
+        });
+        setcancelledLeaveData(intermidate);
+        setUnchangedData(intermidate.length === 0 ? DUMMYDATA : intermidate);
+      }
+    );
   }, []);
 
   return (

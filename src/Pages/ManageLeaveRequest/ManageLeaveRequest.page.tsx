@@ -16,31 +16,27 @@ function ManageLeaveRequest({ logindate }: manageLeaveRequestPropType) {
   );
 
   useEffect(() => {
-    const loginData = getData("loginData");
+    getLeaveData("Pending", { pageNumber: 1, recordsPerPage: 10 }).then(
+      (res) => {
+        let intermidate = res.data.payload.data;
 
-    const config = {
-      headers: { Authorization: `Bearer ${loginData.token} ` },
-    };
-
-    getLeaveData(config, "Pending").then((res) => {
-      let intermidate = res.data.payload.data;
-
-      intermidate = intermidate.map((pendingleave: responseDataType) => {
-        const leaveObj = {
-          id: pendingleave.id,
-          department: pendingleave.department,
-          reason: pendingleave.reason,
-          name: `${pendingleave.firstName} ${pendingleave.lastName}`,
-          date: `${pendingleave.startDate}${
-            pendingleave.endDate !== pendingleave.startDate
-              ? ` to ${pendingleave.endDate}`
-              : ""
-          } `,
-        };
-        return { ...pendingleave, ...leaveObj };
-      });
-      setpendingLeaveData(intermidate);
-    });
+        intermidate = intermidate.map((pendingleave: responseDataType) => {
+          const leaveObj = {
+            id: pendingleave.id,
+            department: pendingleave.department,
+            reason: pendingleave.reason,
+            name: `${pendingleave.firstName} ${pendingleave.lastName}`,
+            date: `${pendingleave.startDate}${
+              pendingleave.endDate !== pendingleave.startDate
+                ? ` to ${pendingleave.endDate}`
+                : ""
+            } `,
+          };
+          return { ...pendingleave, ...leaveObj };
+        });
+        setpendingLeaveData(intermidate);
+      }
+    );
   }, []);
 
   return (

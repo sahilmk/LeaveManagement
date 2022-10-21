@@ -3,7 +3,6 @@ import { Form, Field } from "react-final-form";
 import { Button, DataTable, Input, PageTitle } from "../../stories";
 import { getLeaveData } from "../../APIs";
 import { responseDataType } from "../../Types/globalTypes";
-import { getData } from "../../Util/Helper";
 import { DUMMYDATA } from "../../Util/Constants";
 import { Theme } from "../../Theme";
 import "../../Icons/css/material-design-iconic-font.css";
@@ -122,32 +121,30 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
   };
 
   useEffect(() => {
-    const loginData = getData("loginData");
+    getLeaveData("Approved", { pageNumber: 1, recordsPerPage: 10 }).then(
+      (res) => {
+        let intermidate = res.data.payload.data;
 
-    const config = {
-      headers: { Authorization: `Bearer ${loginData.token} ` },
-    };
-
-    getLeaveData(config, "Approved").then((res) => {
-      let intermidate = res.data.payload.data;
-
-      intermidate = intermidate.map((approvedleave: responseDataType) => {
-        const leaveObj = {
-          id: approvedleave.id,
-          type: approvedleave.type,
-          reason: approvedleave.reason,
-          date: `${approvedleave.startDate}${
-            approvedleave.endDate !== approvedleave.startDate
-              ? ` to ${approvedleave.endDate}`
-              : ""
-          } `,
-          appliedOn: approvedleave.created_at?.split(" ")[0],
-        };
-        return { ...approvedleave, ...leaveObj };
-      });
-      setapprovedLeaveData(intermidate.length === 0 ? DUMMYDATA : intermidate);
-      setUnchangedData(intermidate.length === 0 ? DUMMYDATA : intermidate);
-    });
+        intermidate = intermidate.map((approvedleave: responseDataType) => {
+          const leaveObj = {
+            id: approvedleave.id,
+            type: approvedleave.type,
+            reason: approvedleave.reason,
+            date: `${approvedleave.startDate}${
+              approvedleave.endDate !== approvedleave.startDate
+                ? ` to ${approvedleave.endDate}`
+                : ""
+            } `,
+            appliedOn: approvedleave.created_at?.split(" ")[0],
+          };
+          return { ...approvedleave, ...leaveObj };
+        });
+        setapprovedLeaveData(
+          intermidate.length === 0 ? DUMMYDATA : intermidate
+        );
+        setUnchangedData(intermidate.length === 0 ? DUMMYDATA : intermidate);
+      }
+    );
   }, []);
 
   return (

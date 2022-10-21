@@ -106,32 +106,28 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
   };
 
   useEffect(() => {
-    const loginData = getData("loginData");
+    getLeaveData("Pending", { pageNumber: 1, recordsPerPage: 10 }).then(
+      (res) => {
+        let intermidate = res.data.payload.data;
 
-    const config = {
-      headers: { Authorization: `Bearer ${loginData.token} ` },
-    };
-
-    getLeaveData(config, "Pending").then((res) => {
-      let intermidate = res.data.payload.data;
-
-      intermidate = intermidate.map((pendingleave: responseDataType) => {
-        const leaveObj = {
-          id: pendingleave.id,
-          type: pendingleave.type,
-          reason: pendingleave.reason,
-          date: `${pendingleave.startDate}${
-            pendingleave.endDate !== pendingleave.startDate
-              ? ` to ${pendingleave.endDate}`
-              : ""
-          } `,
-          appliedOn: pendingleave.created_at?.split(" ")[0],
-        };
-        return { ...pendingleave, ...leaveObj };
-      });
-      setpendingLeaveData(intermidate);
-      setUnchangedData(intermidate.length === 0 ? DUMMYDATA : intermidate);
-    });
+        intermidate = intermidate.map((pendingleave: responseDataType) => {
+          const leaveObj = {
+            id: pendingleave.id,
+            type: pendingleave.type,
+            reason: pendingleave.reason,
+            date: `${pendingleave.startDate}${
+              pendingleave.endDate !== pendingleave.startDate
+                ? ` to ${pendingleave.endDate}`
+                : ""
+            } `,
+            appliedOn: pendingleave.created_at?.split(" ")[0],
+          };
+          return { ...pendingleave, ...leaveObj };
+        });
+        setpendingLeaveData(intermidate);
+        setUnchangedData(intermidate.length === 0 ? DUMMYDATA : intermidate);
+      }
+    );
   }, []);
 
   return (

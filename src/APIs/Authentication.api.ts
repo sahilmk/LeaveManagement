@@ -18,8 +18,6 @@ export const callForgotPasswordPost = (values: { email: string }) => {
 };
 
 //To LogOut from application
-export const callLogoutGet = (config: {
-  headers: { Authorization: string };
-}) => {
-  return get(`${HostEndpoint}/logout`, config);
+export const callLogoutGet = () => {
+  return get(`${HostEndpoint}/logout`);
 };
