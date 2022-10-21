@@ -67,9 +67,7 @@ function Sidebar({
 
   const logout = () => {
     removeData("loginData");
-    callLogoutGet({
-      headers: { Authorization: "bearer " + loginData.token },
-    }).then((Response) => alert(Response.data.message));
+    callLogoutGet().then((Response) => alert(Response.data.message));
     dispatch({ type: "LOGGED_OUT", loggedIn: false });
     navigate("/");
   };
