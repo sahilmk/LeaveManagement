@@ -3,6 +3,7 @@ import { Form, Field } from "react-final-form";
 import { Input, Button } from "../../stories";
 import OTPPageStyle from "./OTPPage.module.scss";
 import { Theme } from "../../Theme";
+import { required } from "../../Util/Validation";
 
 const OTPPage = () => {
   const navigate = useNavigate();
@@ -18,17 +19,10 @@ const OTPPage = () => {
           <div className={OTPPageStyle.otp__cardBody}>
             <Form
               onSubmit={onSubmit}
-              validate={(values) => {
-                const errors = {};
-                if (!values.otp) {
-                  errors.otp = "*Required";
-                }
-                return errors;
-              }}
               initialValues={{ otp: "" }}
-              render={({ handleSubmit, values }) => (
+              render={({ handleSubmit }) => (
                 <form onSubmit={handleSubmit}>
-                  <Field name="otp">
+                  <Field name="otp" validate={required}>
                     {(e) => (
                       <div>
                         <Input
