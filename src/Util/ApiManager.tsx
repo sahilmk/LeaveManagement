@@ -5,7 +5,7 @@ axios.interceptors.request.use(
   config => {
 
     const localData = getData("loginData");
-    if (localData.token) {
+    if (localData?.token) {
       config.headers!['Authorization'] = 'Bearer ' + localData.token
     }
     config.headers!['Content-Type'] = 'application/json';
