@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { Form, Field } from "react-final-form";
 import { Button, DataTable, Input, PageTitle } from "../../stories";
 import { getLeaveData } from "../../APIs";
-import { responseDataType } from "../../Types/globalTypes";
 import { DUMMYDATA } from "../../Util/Constants";
-import { getData } from "../../Util/Helper";
-import style from "./RejectedLeave.module.scss";
+import { responseDataType } from "../../Types/globalTypes";
 import { Theme } from "../../Theme";
+import style from "./RejectedLeave.module.scss";
 
 export type rejectedLeavePropType = {
   logindate: string;
