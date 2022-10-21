@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Form, Field } from 'react-final-form'
 import { Button, DataTable, Input, PageTitle } from '../../stories';
 import { getLeaveData } from '../../APIs';
@@ -23,10 +23,11 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
 
     const [approvedLeaveData, setapprovedLeaveData] = useState<responseDataType[]>([]);
     const [unchangedData, setUnchangedData] = useState<responseDataType[]>([]);
+    const searchInput = useRef('');
+    const typeInput = useRef('');
 
     const onSubmit = (e: formInputTypes) => {
         let newApprovedLeaveData: responseDataType[] = [];
-
         if (e.startdate || e.enddate) {
             if (e.startdate) {
 
@@ -79,8 +80,15 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
             })
 
             if (newApprovedLeaveData.length === 0) {
-                alert('No Data Found');
-                (document.getElementById('search')! as HTMLInputElement).value = '';
+                alert(`${searchInput.current.value} not found`);
+                searchInput.current.value = '';
+                setapprovedLeaveData([{
+                    id: 0,
+                    type: '',
+                    reason: '',
+                    date: '',
+                    appliedOn: ''
+                }]);
             } else {
                 setapprovedLeaveData(newApprovedLeaveData)
             }
@@ -91,8 +99,15 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                 return leave.type === e.type;
             })
             if (newApprovedLeaveData.length === 0) {
-                alert('No Data Found');
-                (document.getElementById('type')! as HTMLInputElement).value = '';
+                alert(`${typeInput.current.value} not found`);
+                typeInput.current.value = '';
+                setapprovedLeaveData([{
+                    id: 0,
+                    type: '',
+                    reason: '',
+                    date: '',
+                    appliedOn: ''
+                }]);
             } else {
                 setapprovedLeaveData(newApprovedLeaveData)
             }
@@ -201,7 +216,8 @@ function ApprovedLeave({ logindate }: approvedLeavePropType) {
                                                         width='30rem'
                                                         onChange={e.input.onChange}
                                                         onBlur={e.input.onBlur}
-                                                        onFocus={e.input.onFocus} />
+                                                        onFocus={e.input.onFocus}
+                                                        reference={searchInput} />
                                                     {e.meta.error && e.meta.touched && <span className={style.error}>{e.meta.error}</span>}
                                                 </div>
                                             )}

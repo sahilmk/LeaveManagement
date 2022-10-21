@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Form, Field } from 'react-final-form'
 import { DataTable, Input, PageTitle } from '../../stories'
 import { getLeaveData } from '../../APIs'
@@ -21,6 +21,7 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
 
     const [cancelledLeaveData, setcancelledLeaveData] = useState<responseDataType[]>([]);
     const [unchangedData, setUnchangedData] = useState<responseDataType[]>([]);
+    const searchInput = useRef('');
 
     const onSubmit = (e: formInputTypes) => {
         let newCancelledLeaveData: responseDataType[] = [];
@@ -77,8 +78,15 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
             })
 
             if (newCancelledLeaveData.length === 0) {
-                alert('No Data Found');
-                (document.getElementById('search')! as HTMLInputElement).value = '';
+                alert(`${searchInput.current.value} not found`);
+                searchInput.current.value = '';
+                setcancelledLeaveData([{
+                    id: 0,
+                    type: '',
+                    reason: '',
+                    date: '',
+                    appliedOn: ''
+                }]);
             } else {
                 setcancelledLeaveData(newCancelledLeaveData)
             }
@@ -184,7 +192,8 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
                                                     width='30rem'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
-                                                    onFocus={e.input.onFocus} />
+                                                    onFocus={e.input.onFocus}
+                                                    reference={searchInput} />
                                                 {e.meta.error && e.meta.touched && <span className={style.error}>{e.meta.error}</span>}
                                             </div>
                                         )}

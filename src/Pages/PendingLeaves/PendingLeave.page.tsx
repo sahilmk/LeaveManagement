@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Field, Form } from 'react-final-form';
 import { DataTable, Input, PageTitle } from '../../stories'
 import { getLeaveData } from '../../APIs';
@@ -21,6 +21,7 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
 
     const [pendingLeaveData, setpendingLeaveData] = useState<responseDataType[]>([]);
     const [unchangedData, setUnchangedData] = useState<responseDataType[]>([]);
+    const searchInput = useRef('');
 
     const onSubmit = (e: formInputTypes) => {
         let newPendingLeaveData: responseDataType[] = [];
@@ -77,8 +78,15 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
             })
 
             if (newPendingLeaveData.length === 0) {
-                alert('No Data Found');
-                (document.getElementById('search')! as HTMLInputElement).value = '';
+                alert(`${searchInput.current.value} not found`);
+                searchInput.current.value = '';
+                setpendingLeaveData([{
+                    id: 0,
+                    type: '',
+                    reason: '',
+                    date: '',
+                    appliedOn: ''
+                }]);
             } else {
                 setpendingLeaveData(newPendingLeaveData)
             }
@@ -186,7 +194,8 @@ function PendingLeave({ logindate }: pendingLeavePropType) {
                                                     width='30rem'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
-                                                    onFocus={e.input.onFocus} />
+                                                    onFocus={e.input.onFocus}
+                                                    reference={searchInput} />
                                                 {e.meta.error && e.meta.touched && <span className={style.error}>{e.meta.error}</span>}
                                             </div>
                                         )}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Form, Field } from 'react-final-form'
 import { Button, DataTable, Input, PageTitle } from '../../stories'
 import { getLeaveData } from '../../APIs'
@@ -19,9 +19,9 @@ export type formInputTypes = {
 }
 
 function RejectedLeave({ logindate }: rejectedLeavePropType) {
-
     const [rejectedLeaveData, setrejectedLeaveData] = useState<responseDataType[]>([]);
     const [unchangedData, setUnchangedData] = useState<responseDataType[]>([]);
+    const searchInput = useRef('');
 
     const onSubmit = (e: formInputTypes) => {
         let newPendingLeaveData: responseDataType[] = [];
@@ -89,8 +89,15 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
             })
 
             if (newPendingLeaveData.length === 0) {
-                alert('No Data Found');
-                (document.getElementById('search')! as HTMLInputElement).value = '';
+                alert(`${searchInput.current.value} not found`);
+                searchInput.current.value = '';
+                setrejectedLeaveData([{
+                    id: 0,
+                    type: '',
+                    reason: '',
+                    date: '',
+                    appliedOn: ''
+                }]);
             } else {
                 setrejectedLeaveData(newPendingLeaveData)
             }
@@ -198,7 +205,8 @@ function RejectedLeave({ logindate }: rejectedLeavePropType) {
                                                     width='30rem'
                                                     onChange={e.input.onChange}
                                                     onBlur={e.input.onBlur}
-                                                    onFocus={e.input.onFocus} />
+                                                    onFocus={e.input.onFocus}
+                                                    reference={searchInput} />
                                                 {e.meta.error && e.meta.touched && <span className={style.error}>{e.meta.error}</span>}
                                             </div>
                                         )}
