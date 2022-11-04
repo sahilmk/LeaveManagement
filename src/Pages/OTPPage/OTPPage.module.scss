@@ -1,0 +1,56 @@
+@import '../../Styles/variable.scss';
+
+.otp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: url("/assets/images/backgroundImage.jpg");
+  min-height: 100vh;
+
+  &__card {
+    width: 35%;
+    background-color: $yankeesBlueColor;
+    margin: 0 auto;
+    padding: 3rem 0 5rem;
+  }
+
+  &__cardHeader {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  &__cardBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    form {
+      div {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 4rem;
+
+        &:first-child {
+          flex-direction: column;
+        }
+
+        span {
+          color: $redColor;
+          padding: 0.5rem 0 0 4rem;
+          font-weight: bold;
+        }
+      }
+    }
+
+    a {
+      color: $darkSlateGrayColor;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 600;
+    }
+  }
+}
