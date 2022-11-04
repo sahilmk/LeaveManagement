@@ -29,7 +29,10 @@ const ResetPasswordPage = () => {
             <Form
               onSubmit={onSubmit}
               validate={(values) => {
-                const errors = {};
+                const errors: {
+                  newPassword?: string;
+                  confirmPassword?: string;
+                } = {};
                 if (!values.newPassword) {
                   errors.newPassword = "*Required";
                 }

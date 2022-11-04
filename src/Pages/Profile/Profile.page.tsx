@@ -44,9 +44,7 @@ const ProfilePage = () => {
   });
 
   useEffect(() => {
-    callProfilePageGet(userInfo.data.user.id, {
-      headers: { Authorization: "bearer " + userInfo.token },
-    })
+    callProfilePageGet(userInfo.data.user.id)
       .then((Response) => {
         const requiredData = Response.data.payload.data.employee;
         setProfileDetail({

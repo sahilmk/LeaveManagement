@@ -10,7 +10,6 @@ import PageStyle from "./LocalAddress.module.scss";
 const LocalAddress = ({ localAdd }: { localAdd: AddressType | undefined }) => {
   const onSubmit = (e: AddressType) => {
     const requiredData = getData("loginData");
-    const token = requiredData.token;
     const employeeId = requiredData.data.user.employee.id;
     const formType = {
       formType: "all",
@@ -19,9 +18,7 @@ const LocalAddress = ({ localAdd }: { localAdd: AddressType | undefined }) => {
     localAdd = { ...localAdd, ...e, ...formType };
 
     //Calling the update Profile Post
-    callProfileUpdatePost(employeeId, localAdd, {
-      headers: { Authorization: "bearer" + token },
-    })
+    callProfileUpdatePost(employeeId, localAdd)
       .then((res) => {
         if (res.status === 200) {
           alert("Local Addresss has been updated successfully.");

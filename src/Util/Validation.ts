@@ -12,6 +12,8 @@ const mustBeString = (value: string) =>
   !stringInput.test(value) ? "Enter a valid Name" : undefined;
 const mustBeDesignation = (value: string) =>
   !stringInputWithSpace.test(value) ? "Enter a valid designation." : undefined;
+const enterDateRequired = (value: string) =>
+  value ? undefined : "Please Enter Date";
 
 const composeValidators =
   (...validators) =>
@@ -28,4 +30,5 @@ export {
   mustBePhoneNo,
   mustBeDesignation,
   composeValidators,
+  enterDateRequired,
 };

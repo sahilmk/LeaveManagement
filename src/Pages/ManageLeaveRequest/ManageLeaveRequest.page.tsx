@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { DataTable, PageTitle } from "../../stories";
 import { getLeaveData } from "../../APIs";
 import { responseDataType } from "../../Types/globalTypes";
-import { getData } from "../../Util/Helper";
 import { DUMMYDATA } from "../../Util/Constants";
 import style from "./ManageLeaveRequest.module.scss";
 

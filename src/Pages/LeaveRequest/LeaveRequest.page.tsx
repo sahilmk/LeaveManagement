@@ -5,6 +5,7 @@ import { postNewLeave } from "../../APIs";
 import { errorMessages } from "../../Util/Constants";
 import { Theme } from "../../Theme";
 import style from "./LeaveRequest.module.scss";
+import { enterDateRequired } from "../../Util/Validation";
 
 type fieldInputType = {
   leavefrom?: string | undefined;
@@ -42,7 +43,11 @@ function LeaveRequest({ logindate }: { logindate: string }) {
       };
     }
 
-    postNewLeave(newLeave).then().catch((e) => { alert(e.response.data.message) })
+    postNewLeave(newLeave)
+      .then()
+      .catch((e) => {
+        alert(e.response.data.message);
+      });
   };
 
   const validate = (e: fieldInputType) => {
@@ -132,7 +137,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                     <div className={style.displayflex}>
                       <div className={style.displayinnerflex}>
                         <div className={style.inputcontrol}>
-                          <Field name="leavefrom">
+                          <Field name="leavefrom" validate={enterDateRequired}>
                             {(e) => (
                               <div>
                                 <label htmlFor="leavefrom">Leave From</label>
@@ -157,7 +162,7 @@ function LeaveRequest({ logindate }: { logindate: string }) {
                           </Field>
                         </div>
                         <div className={style.inputcontrol}>
-                          <Field name="leaveto">
+                          <Field name="leaveto" validate={enterDateRequired}>
                             {(e) => (
                               <div>
                                 <label htmlFor="leaveto">Leave To</label>
