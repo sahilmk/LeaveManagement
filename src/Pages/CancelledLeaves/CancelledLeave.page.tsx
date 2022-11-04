@@ -3,7 +3,7 @@ import { Form, Field } from 'react-final-form'
 import { DataTable, Input, PageTitle } from '../../stories'
 import { getLeaveData } from '../../APIs'
 import { responseDataType } from '../../Types/globalTypes'
-import { dummyData } from '../../Util/Constants'
+import { DUMMYDATA, errorMessages } from '../../Util/Constants'
 import style from './CancelledLeave.module.scss'
 
 export type cancelledLeavePropType = {
@@ -97,7 +97,7 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
         const errors: formInputTypes = {};
 
         if (e.enddate! < e.startdate!) {
-            errors.enddate = 'Enddate must be less than start date';
+            errors.enddate = errorMessages.wrongDate3;
         }
 
         return errors;
@@ -118,7 +118,7 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
                 return { ...cencelledleave, ...leaveObj }
             })
             setcancelledLeaveData(intermidate);
-            setUnchangedData(intermidate.length === 0 ? dummyData : intermidate);
+            setUnchangedData(intermidate.length === 0 ? DUMMYDATA : intermidate);
         });
 
     }, [])
@@ -232,7 +232,7 @@ function CancelledLeave({ logindate }: cancelledLeavePropType) {
                             flex: 1,
                         },
                     ]}
-                    rows={cancelledLeaveData.length === 0 ? dummyData : cancelledLeaveData}
+                    rows={cancelledLeaveData.length === 0 ? DUMMYDATA : cancelledLeaveData}
                 />
             </div>
         </>

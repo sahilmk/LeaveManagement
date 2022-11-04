@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Form, Field } from "react-final-form";
 import { Input, PageTitle, Button } from "../../stories";
 import { postNewLeave } from "../../APIs";
+import { errorMessages } from "../../Util/Constants";
 import { Theme } from "../../Theme";
 import style from "./LeaveRequest.module.scss";
 
@@ -49,23 +50,23 @@ function LeaveRequest({ logindate }: { logindate: string }) {
 
     if (radioValue) {
       if (!e.leavefrom) {
-        errors.leavefrom = "Please enter date";
+        errors.leavefrom = errorMessages.dateNotEntered;
       }
       if (!e.leaveto) {
-        errors.leaveto = "Please enter date";
+        errors.leaveto = errorMessages.dateNotEntered;
       }
       if (e.leavefrom! > e.leaveto!) {
-        errors.leavefrom = "Leave From date must be less than Leave To date";
-        errors.leaveto = "Leave To date must be higher than Leave From date";
+        errors.leavefrom = errorMessages.wrongDate;
+        errors.leaveto = errorMessages.wrongDate2;
       }
     } else {
       if (!e.leavedate) {
-        errors.leavedate = "Please enter a date from leavedate";
+        errors.leavedate = errorMessages.dateNotEntered;
       }
     }
 
     if (!e.otherremark) {
-      errors.otherremark = "Please enter other remark";
+      errors.otherremark = errorMessages.remarkError;
     }
 
     return errors;
